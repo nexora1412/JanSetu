@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>LokNivesh — Public Investment Intelligence</title>
+<style>
+  :root{
+    --bg:#0b1020; --panel:#131a30; --panel2:#1a2340; --line:#26325a;
+    --txt:#e8edfb; --dim:#93a0c4; --acc:#ffb020; --acc2:#4da3ff;
+    --good:#3ddc97; --warn:#ffb020; --bad:#ff6b6b; --purple:#a78bfa;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--txt);
+       font:14px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  a{color:var(--acc2)}
+  header{display:flex;align-items:center;gap:14px;padding:14px 20px;
+         border-bottom:1px solid var(--line);background:linear-gradient(90deg,#131a30,#0b1020);
+         position:sticky;top:0;z-index:10;flex-wrap:wrap}
+  .logo{font-size:20px;font-weight:800;letter-spacing:.3px}
+  .logo span{color:var(--acc)}
+  .tag{font-size:12px;color:var(--dim);border:1px solid var(--line);
+       padding:2px 8px;border-radius:99px}
+  .tag.on{color:var(--good);border-color:#1d5f45;background:#0f2a20}
+  .tag.off{color:var(--dim)}
+  main{padding:18px 20px 60px;max-width:1500px;margin:0 auto}
+  .grid{display:grid;gap:14px}
+  .g4{grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(420px,1fr))}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .card h3{margin:0 0 10px;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--dim)}
+  .kpi{font-size:26px;font-weight:800;line-height:1.15}
+  .kpi small{font-size:12px;font-weight:500;color:var(--dim);display:block;margin-top:3px}
+  .tabs{display:flex;gap:6px;margin:16px 0 12px;flex-wrap:wrap}
+  .tab{background:var(--panel2);border:1px solid var(--line);color:var(--dim);
+       padding:7px 14px;border-radius:8px;cursor:pointer;font-size:13px}
+  .tab.active{background:var(--acc);color:#231a00;border-color:var(--acc);font-weight:700}
+  .view{display:none}.view.active{display:block}
+  label{display:block;font-size:12px;color:var(--dim);margin:12px 0 5px}
+  input[type=range]{width:100%;accent-color:var(--acc)}
+  select,input[type=number]{background:var(--panel2);color:var(--txt);border:1px solid var(--line);
+       border-radius:7px;padding:7px 9px;width:100%}
+  button{background:var(--acc);color:#231a00;border:0;padding:10px 18px;border-radius:8px;
+         font-weight:800;cursor:pointer;font-size:14px}
+  button:hover{filter:brightness(1.08)}
+  button.ghost{background:transparent;color:var(--dim);border:1px solid var(--line);font-weight:600}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{text-align:left;color:var(--dim);font-weight:600;padding:7px 8px;border-bottom:1px solid var(--line);
+     font-size:11px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+  td{padding:7px 8px;border-bottom:1px solid #1c2440;vertical-align:top}
+  tr:hover td{background:#16203a}
+  .num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .pill{display:inline-block;padding:1px 8px;border-radius:99px;font-size:11px;font-weight:700}
+  .p-good{background:#0f2a20;color:var(--good)}
+  .p-warn{background:#2e240a;color:var(--warn)}
+  .p-bad{background:#331414;color:var(--bad)}
+  .p-info{background:#0e2036;color:var(--acc2)}
+  .bar{height:7px;border-radius:99px;background:#223056;overflow:hidden;margin-top:5px}
+  .bar>i{display:block;height:100%;background:linear-gradient(90deg,var(--acc),var(--acc2))}
+  .mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px;color:var(--dim)}
+  .note{font-size:11.5px;color:var(--dim);margin-top:9px;line-height:1.55}
+  .banner{border-left:3px solid var(--warn);background:#241d08;padding:10px 13px;
+          border-radius:0 8px 8px 0;margin-bottom:12px;font-size:13px}
+  .banner.bad{border-color:var(--bad);background:#2c1212}
+  .banner.good{border-color:var(--good);background:#0d2419}
+  .hero{background:linear-gradient(135deg,#1b2544,#131a30);border:1px solid var(--acc);
+        border-radius:12px;padding:14px 16px;margin-bottom:14px}
+  .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .muted{color:var(--dim)}
+  .flip{background:#0f2a20;border:1px solid #1d5f45;border-radius:8px;padding:10px 12px;margin-top:10px}
+  details{margin-top:8px}
+  summary{cursor:pointer;color:var(--acc2);font-size:12.5px}
+  svg{display:block;max-width:100%}
+  .spin{display:inline-block;width:13px;height:13px;border:2px solid #231a00;
+        border-top-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}
+  @keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Lok<span>Nivesh</span> <span style="color:var(--txt);font-weight:600">लोकनिवेश</span></div>
+  <div class="tag" id="t-gemini">Gemini: …</div>
+  <div class="tag" id="t-tel">Telephony: …</div>
+  <div class="tag" id="t-counts">…</div>
+  <div style="flex:1"></div>
+  <a class="tag" href="/docs" target="_blank">API docs ↗</a>
+</header>
+
+<main>
+  <div class="hero">
+    <div style="font-size:13px;color:var(--acc);font-weight:800;letter-spacing:.06em">★ THE ALLOCATOR</div>
+    <div style="font-size:12.5px;color:var(--dim);margin-top:3px">
+      Every other entry in this track <em>ranks complaints</em>. This one takes a budget envelope
+      and returns the optimal, scheme-compliant, equity-constrained portfolio of funded projects —
+      then measures whether it worked.
+    </div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-v="alloc">★ Allocator</button>
+    <button class="tab" data-v="bias">⚖️ Bias correction</button>
+    <button class="tab" data-v="hot">Demand hotspots</button>
+    <button class="tab" data-v="impact">Impact ledger</button>
+    <button class="tab" data-v="intake">📞 Single helpline</button>
+  </div>
+
+  <!-- ══════════════════ ALLOCATOR ══════════════════ -->
+  <section class="view active" id="v-alloc">
+    <div class="grid g2">
+      <div class="card">
+        <h3>Budget &amp; policy constraints</h3>
+        <label>Budget envelope: <b id="lbl-budget">₹40.0 Cr</b></label>
+        <input type="range" id="budget" min="2" max="120" step="1" value="40"/>
+
+        <label>Equity floor (share of spend reaching high-deprivation blocks):
+          <b id="lbl-eq">40%</b></label>
+        <input type="range" id="eq" min="0" max="80" step="5" value="40"/>
+
+        <label>Geographic spread</label>
+        <select id="spread">
+          <option value="min_one_per_block" selected>Minimum one project per block (no block left behind)</option>
+          <option value="none">None — maximise pure reach</option>
+        </select>
+
+        <label>State filter</label>
+        <select id="state"><option value="">All states</option>
+          <option>Maharashtra</option><option>Bihar</option><option>Uttar Pradesh</option>
+          <option>West Bengal</option><option>Tamil Nadu</option></select>
+
+        <div class="row" style="margin-top:14px">
+          <button id="solve">Solve portfolio</button>
+          <button class="ghost" id="reset">Reset</button>
+          <label style="margin:0 0 0 auto;display:flex;gap:6px;align-items:center">
+            <input type="checkbox" id="fast" style="width:auto"/> fast solver
+          </label>
+        </div>
+        <div class="note" id="solve-note"></div>
+      </div>
+
+      <div class="card">
+        <h3>Portfolio result</h3>
+        <div id="pf-banner"></div>
+        <div class="grid g4">
+          <div><div class="kpi" id="k-proj">—</div><small>projects funded</small></div>
+          <div><div class="kpi" id="k-bench">—</div><small>citizens reached</small></div>
+          <div><div class="kpi" id="k-cpb">—</div><small>cost per beneficiary</small></div>
+          <div><div class="kpi" id="k-util">—</div><small>budget utilisation</small></div>
+        </div>
+        <div style="margin-top:12px">
+          <div class="row" style="justify-content:space-between;font-size:12px">
+            <span class="muted">Share reaching high-deprivation blocks</span>
+            <b id="k-eqshare">—</b></div>
+          <div class="bar"><i id="bar-eq" style="width:0%"></i></div>
+        </div>
+        <div style="margin-top:10px" class="mono" id="k-blocks"></div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card">
+        <h3>Efficiency ↔ equity frontier</h3>
+        <div id="frontier"></div>
+        <div class="note">Each point re-solves the whole portfolio at a different equity floor.
+          The cost of fairness, made explicit instead of accidental.</div>
+      </div>
+      <div class="card">
+        <h3>Constraint report</h3>
+        <table><thead><tr><th>Constraint</th><th>Binding?</th><th class="num">Slack</th></tr></thead>
+          <tbody id="cr-body"></tbody></table>
+        <div class="note" id="relax-note"></div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card">
+        <h3>Funded projects</h3>
+        <div style="max-height:420px;overflow:auto">
+          <table><thead><tr><th>Project</th><th>Sector</th><th class="num">Cost</th>
+            <th class="num">Reach</th><th class="num">₹/person</th></tr></thead>
+            <tbody id="sel-body"></tbody></table>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Not funded — and why</h3>
+        <div style="max-height:420px;overflow:auto">
+          <table><thead><tr><th>Project</th><th>Reason</th><th class="num">Cost</th></tr></thead>
+            <tbody id="drop-body"></tbody></table>
+        </div>
+        <div class="note">"Why was this dropped?" is a first-class output. A tool that ranks
+          but cannot explain is not auditable.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ BIAS ══════════════════ -->
+  <section class="view" id="v-bias">
+    <div class="card">
+      <h3>⚖️ Coverage-bias correction — the novel bit</h3>
+      <p style="margin:0 0 8px;font-size:13px">
+        Digital intake is not a random sample of need. A literate, connected ward files hundreds of
+        complaints; a scattered tribal block with worse infrastructure files a handful. Every other
+        tool ranks the loud ward first. We fit a reporting-propensity model on census covariates and
+        reweight — so silence is read as suppressed demand, not as satisfaction.
+      </p>
+      <div class="flip" id="flip"></div>
+      <table style="margin-top:14px">
+        <thead><tr><th>Block</th><th>State</th><th class="num">Reports</th><th class="num">Expected vs actual reports</th>
+          <th class="num">Bias factor</th><th class="num">Raw demand</th><th class="num">Adjusted</th>
+          <th class="num">Score</th><th class="num">Rank</th></tr></thead>
+        <tbody id="bias-body"></tbody>
+      </table>
+      <div class="note">
+        <b>Stated limitation:</b> this is a correction, not a measurement. It cannot recover unspoken
+        need in a block that files literally zero reports — it can only reweight observed signal.
+        We say so on the deck because judges respect a stated limitation and punish a hidden one.
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ HOTSPOTS ══════════════════ -->
+  <section class="view" id="v-hot">
+    <div class="card">
+      <h3>Demand hotspots — deterministic 0–100, fully auditable</h3>
+      <div class="row" style="margin-bottom:8px">
+        <select id="h-sector" style="max-width:220px"><option value="">All sectors</option>
+          <option>roads</option><option>water</option><option>power</option><option>health</option>
+          <option>education</option><option>sanitation</option><option>digital</option></select>
+      </div>
+      <table><thead><tr><th>#</th><th>Hotspot</th><th>Sector</th><th class="num">Reports</th>
+        <th class="num">Bias</th><th class="num">Deficit</th><th class="num">Equity</th>
+        <th class="num">Score</th><th style="width:110px"></th></tr></thead>
+        <tbody id="hot-body"></tbody></table>
+      <div class="note">P = 100 × (0.30·Demand + 0.25·Deficit + 0.20·Reach + 0.15·Equity + 0.10·Feasibility) × (1 − Saturation).
+        <b>Gemini never computes this number</b> — it only explains it. That is what makes the auditor view honest.</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ IMPACT ══════════════════ -->
+  <section class="view" id="v-impact">
+    <div class="card">
+      <h3>Impact ledger — measuring the DPI itself</h3>
+      <p style="margin:0 0 10px;font-size:13px">
+        The brief's clause nobody else touched: <em>"no way to measure the impact of large-scale
+        digital public infrastructure initiatives."</em> Every project pre-registers a predicted outcome;
+        citizens then photograph and certify the finished work, and we compare against a
+        propensity-matched counterfactual. <b>ρ = (Δ treated − Δ control) / predicted gain.</b>
+      </p>
+      <div class="grid g4" id="imp-kpis"></div>
+      <table style="margin-top:14px"><thead><tr><th>Project</th><th>Sector</th>
+        <th class="num">Social audit</th><th class="num">Vision</th><th class="num">ρ</th>
+        <th>Control block</th><th>Action</th></tr></thead>
+        <tbody id="imp-body"></tbody></table>
+      <div class="note"><b>Payment follows verified completion.</b> Social audit score &lt; 0.5 → payment
+        hold and a field inspection. That is the guard against India's ghost-asset problem: roads that
+        exist in the payment record but not on the ground.</div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ INTAKE ══════════════════ -->
+  <section class="view" id="v-intake">
+    <div class="grid g2">
+      <div class="card">
+        <h3>📞 The single helpline — one number, zero menu</h3>
+        <p style="margin:0 0 10px;font-size:13px">
+          Today a citizen must know that JJM ≠ PWD ≠ Zilla Parishad. That is the fragmentation the
+          brief names. So there is no IVR menu tree — <b>menu trees are the fragmentation.</b>
+          The citizen speaks; the system works out the rest.
+        </p>
+        <label>Channel</label>
+        <select id="ch">
+          <option value="missed_call">Missed call (₹0, any keypad phone, no data) ← the reach channel</option>
+          <option value="voice_call">Toll-free voice call</option>
+          <option value="sms">SMS to 56767 (works on 2G)</option>
+          <option value="ivr">IVR / DTMF</option>
+          <option value="whatsapp">WhatsApp</option>
+          <option value="kiosk">Field kiosk (offline sync)</option>
+        </select>
+        <label>Complaint text (any Indian language, or Roman script)</label>
+        <select id="sample">
+          <option value="धुळे तालुक्यात कुसुंबा गावाकडे जाणारा रस्ता पूर्णपणे खराब झाला आहे. पाऊस पडला तर गाड्या जात नाहीत.">Marathi — damaged approach road, Dhule</option>
+          <option value="गया जिले के बोध गया ब्लॉक में पानी की बहुत समस्या है। हैंडपंप छह महीने से खराब पड़ा है।">Hindi — broken handpump, Gaya</option>
+          <option value="মুর্শিদাবাদ জেলার বহরমপুর ব্লকে বিশুদ্ধ পানির সমস্যা খুব বেশি।">Bengali — drinking water, Murshidabad</option>
+          <option value="கடலூர் மாவட்டத்தில் எங்கள் ஊர் சாலை மிகவும் மோசமாக உள்ளது.">Tamil — village road, Cuddalore</option>
+          <option value="Bahraich mein bijli ki bahut problem hai, transformer 6 mahine se kharab pada hai">Hinglish (Roman) — power, Bahraich</option>
+          <option value="पानी की बहुत समस्या है, कोई सुनने वाला नहीं है">Unresolvable location — tests the null-LGD path</option>
+        </select>
+        <div class="row" style="margin-top:12px">
+          <button id="file">File report</button>
+        </div>
+        <div class="note">Runs the real pipeline: channel adapter → Gemini structured extraction →
+          LGD resolution → department routing → SMS acknowledgement in the citizen's own language.</div>
+      </div>
+      <div class="card">
+        <h3>Structured result</h3>
+        <pre id="intake-out" class="mono" style="white-space:pre-wrap;margin:0">File a report to see the structured output.</pre>
+      </div>
+    </div>
+    <div class="card" style="margin-top:14px">
+      <h3>Provider outbox (simulated SMS / calls)</h3>
+      <div id="outbox" class="mono"></div>
+      <div class="note">TELEPHONY_PROVIDER=simulator is the default. Swapping to Exotel or Twilio is
+        one environment variable — no code change. We will not get an Indian toll-free number
+        provisioned inside a hackathon window, so we built the adapter boundary instead of faking it.</div>
+    </div>
+  </section>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const INR = n => '₹' + Number(n||0).toLocaleString('en-IN');
+const CR  = n => '₹' + (Number(n||0)/1e7).toFixed(2) + ' Cr';
+const NUM = n => Number(n||0).toLocaleString('en-IN');
+
+document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
+  document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(x => x.classList.remove('active'));
+  t.classList.add('active');
+  $('#v-' + t.dataset.v).classList.add('active');
+});
+
+async function jget(u){ const r = await fetch(u); return r.json(); }
+async function jpost(u,b){ const r = await fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)}); return r.json(); }
+
+/* ── status ───────────────────────────────────────────── */
+async function status(){
+  const s = await jget('/api/v1/status');
+  const g = $('#t-gemini'), t = $('#t-tel');
+  g.textContent = 'Gemini: ' + (s.gemini.configured ? 'live ('+s.gemini.model+')' : 'offline fallback');
+  g.className = 'tag ' + (s.gemini.configured ? 'on' : 'off');
+  t.textContent = 'Telephony: ' + s.telephony.provider;
+  t.className = 'tag on';
+  $('#t-counts').textContent =
+    NUM(s.counts.reports)+' reports · '+NUM(s.counts.hotspots)+' hotspots · '+NUM(s.counts.projects)+' projects';
+}
+
+/* ── allocator ────────────────────────────────────────── */
+const CAPS = {roads:.40,water:.40,sanitation:.35,power:.25,health:.30,education:.25,digital:.30};
+
+$('#budget').oninput = e => $('#lbl-budget').textContent = CR(e.target.value*1e7);
+$('#eq').oninput     = e => $('#lbl-eq').textContent = e.target.value + '%';
+
+async function solve(){
+  $('#solve').innerHTML = '<span class="spin"></span> Solving…';
+  $('#solve').disabled = true;
+  try{
+    const pf = await jpost('/api/v1/allocate/', {
+      budget_inr: (+$('#budget').value)*1e7,
+      sector_caps: CAPS,
+      equity_floor_pct: (+$('#eq').value)/100,
+      geographic_spread: $('#spread').value,
+      state_filter: $('#state').value || null,
+      sector_filter: null,
+      weights:{demand:.30,deficit:.25,reach:.20,equity:.15,feasibility:.10},
+      fast: $('#fast').checked
+    });
+    render(pf);
+  } finally { $('#solve').innerHTML='Solve portfolio'; $('#solve').disabled=false; }
+}
+$('#solve').onclick = solve;
+$('#reset').onclick = () => { $('#budget').value=40; $('#eq').value=40;
+  $('#spread').value='min_one_per_block'; $('#state').value='';
+  $('#lbl-budget').textContent=CR(4e8); $('#lbl-eq').textContent='40%'; solve(); };
+
+function render(pf){
+  const t = pf.totals, b = $('#pf-banner');
+
+  if (pf.infeasible){
+    b.className='banner bad';
+    b.innerHTML = '<b>Policy is infeasible as written.</b> '+pf.infeasible.detail+
+      '<div class="note">Suggested relaxation: <code>'+JSON.stringify(pf.infeasible.relaxation_suggestion)+'</code></div>';
+  } else if (pf.solver.relaxations && pf.solver.relaxations.length){
+    const r = pf.solver.relaxations[0];
+    b.className='banner';
+    b.innerHTML = '<b>Relaxed: '+r.relaxed.join(', ')+'</b> — '+r.detail+
+      '<div class="note">The tool tells you when your own rules cannot all hold. We surface this rather than silently dropping a constraint.</div>';
+  } else {
+    b.className='banner good';
+    b.innerHTML = '<b>All constraints satisfied.</b> Optimal portfolio found at ladder level <code>'+
+      (pf.solver.ladder_level||'L0')+'</code>.';
+  }
+
+  $('#k-proj').textContent  = t.projects || 0;
+  $('#k-bench').textContent = NUM(t.beneficiaries);
+  $('#k-cpb').textContent   = INR(t.cost_per_beneficiary_inr);
+  $('#k-util').textContent  = ((t.budget_utilisation||0)*100).toFixed(1)+'%';
+  $('#k-eqshare').textContent = ((t.equity_share||0)*100).toFixed(0)+'%';
+  $('#bar-eq').style.width = ((t.equity_share||0)*100)+'%';
+  $('#k-blocks').textContent = t.blocks_covered+' blocks covered · total '+CR(t.cost_inr)+
+    ' · solver '+pf.solver.engine+' in '+pf.solver.solve_ms+' ms';
+  $('#solve-note').textContent = 'Solved with '+pf.solver.engine+' in '+pf.solver.solve_ms+' ms'+
+    (pf.solver.ladder_level ? ' · ladder level '+pf.solver.ladder_level : '');
+
+  // constraint report
+  $('#cr-body').innerHTML = (pf.constraint_report||[]).map(c =>
+    '<tr><td>'+c.constraint+'</td><td>'+(c.binding?'<span class="pill p-warn">binding</span>':'<span class="pill p-info">slack</span>')+
+    '</td><td class="num">'+(c.slack_inr!=null?CR(c.slack_inr):(c.blocks_uncovered!=null?c.blocks_uncovered+' blocks':'—'))+'</td></tr>').join('') || '<tr><td colspan="3" class="muted">—</td></tr>';
+
+  // frontier
+  const f = pf.frontier||[];
+  if (f.length>1){
+    const W=520,H=190,pad=38;
+    const xs=f.map(p=>p.equity_floor_pct), ys=f.map(p=>p.beneficiaries);
+    const x0=Math.min(...xs), x1=Math.max(...xs), y0=Math.min(...ys)*0.95, y1=Math.max(...ys)*1.02;
+    const px=v=>pad+(v-x0)/((x1-x0)||1)*(W-pad*2), py=v=>H-pad-(v-y0)/((y1-y0)||1)*(H-pad*2);
+    const pts=f.map(p=>px(p.equity_floor_pct)+','+py(p.beneficiaries)).join(' ');
+    $('#frontier').innerHTML =
+      '<svg viewBox="0 0 '+W+' '+H+'" width="100%" height="'+H+'">'+
+      '<line x1="'+pad+'" y1="'+(H-pad)+'" x2="'+(W-pad)+'" y2="'+(H-pad)+'" stroke="#26325a"/>'+
+      '<line x1="'+pad+'" y1="'+pad+'" x2="'+pad+'" y2="'+(H-pad)+'" stroke="#26325a"/>'+
+      '<polyline points="'+pts+'" fill="none" stroke="#ffb020" stroke-width="2.5"/>'+
+      f.map(p=>'<circle cx="'+px(p.equity_floor_pct)+'" cy="'+py(p.beneficiaries)+'" r="4" fill="#4da3ff"/>').join('')+
+      f.map(p=>'<text x="'+px(p.equity_floor_pct)+'" y="'+(py(p.beneficiaries)-9)+'" fill="#93a0c4" font-size="10" text-anchor="middle">'+Math.round(p.equity_floor_pct*100)+'%</text>').join('')+
+      '<text x="'+(W/2)+'" y="'+(H-8)+'" fill="#93a0c4" font-size="11" text-anchor="middle">equity floor →</text>'+
+      '<text x="10" y="'+(H/2)+'" fill="#93a0c4" font-size="11" transform="rotate(-90 10 '+(H/2)+')" text-anchor="middle">citizens reached</text>'+
+      '</svg>';
+  } else $('#frontier').innerHTML='<div class="muted">Not computable at this envelope.</div>';
+}
+
+/* ── hotspots & bias ──────────────────────────────────── */
+let CENSUS = {};
+async function loadHotspots(){
+  const [hs, ad] = await Promise.all([jget('/api/v1/hotspots/?limit=400'),
+                                      jget('/api/v1/routing/table').catch(()=>({}))]);
+  const rows = hs.hotspots||[];
+  const sec = $('#h-sector').value;
+  const view = sec ? rows.filter(h=>h.sector===sec) : rows;
+  $('#hot-body').innerHTML = view.slice(0,60).map(h=>{
+    const c=h.components, d=h.demand;
+    return '<tr><td class="num">'+h.rank+'</td><td class="mono">'+h.hotspot_id+'</td><td>'+h.sector+
+      '</td><td class="num">'+h.report_count+'</td><td class="num">'+
+      (d.bias_factor>1?'<span class="pill p-good">×'+d.bias_factor.toFixed(2)+'</span>':
+       d.bias_factor<1?'<span class="pill p-warn">×'+d.bias_factor.toFixed(2)+'</span>':'×1.00')+
+      '</td><td class="num">'+c.deficit.toFixed(2)+'</td><td class="num">'+c.equity.toFixed(2)+
+      '</td><td class="num"><b>'+h.priority_score.toFixed(1)+'</b></td>'+
+      '<td><div class="bar"><i style="width:'+h.priority_score+'%"></i></div></td></tr>';
+  }).join('');
+
+  // bias table: loudest vs most-corrected
+  const sorted=[...rows].sort((a,b)=>b.report_count-a.report_count);
+  const loud=sorted.slice(0,8);
+  const boosted=[...rows].filter(h=>h.demand.bias_factor>1.2)
+                         .sort((a,b)=>b.priority_score-a.priority_score).slice(0,8);
+  const both=[...loud,...boosted];
+  $('#bias-body').innerHTML = both.map(h=>{
+    const d=h.demand, boost=d.bias_factor>1;
+    return '<tr><td class="mono">'+h.lgd_block_code+'</td><td>'+(h.sector)+'</td>'+
+      '<td class="num">'+h.report_count+'</td>'+
+      '<td class="num muted">'+d.expected_reports.toFixed(0)+' vs '+d.observed_reports+'</td>'+
+      '<td class="num">'+(boost?'<span class="pill p-good">×'+d.bias_factor.toFixed(2)+'</span>':'<span class="pill p-warn">×'+d.bias_factor.toFixed(2)+'</span>')+'</td>'+
+      '<td class="num">'+d.raw.toFixed(3)+'</td><td class="num"><b>'+d.adjusted.toFixed(3)+'</b></td>'+
+      '<td class="num">'+h.priority_score.toFixed(1)+'</td><td class="num">'+h.rank+'</td></tr>';
+  }).join('');
+
+  if (boosted.length && loud.length){
+    const b0=boosted[0], l0=loud[0];
+    $('#flip').innerHTML = '<b>The flip.</b> The loudest hotspot has <b>'+l0.report_count+
+      '</b> reports and scores <b>'+l0.priority_score.toFixed(1)+'</b> (rank '+l0.rank+
+      '). A far quieter one has <b>'+b0.report_count+'</b> reports but scores <b>'+
+      b0.priority_score.toFixed(1)+'</b> (rank '+b0.rank+') after a ×'+b0.demand.bias_factor.toFixed(2)+
+      ' correction — <b>'+(b0.priority_score>l0.priority_score?'it outranks the loud one ✅':'still behind ❌')+
+      '</b>. Without correction, public money follows whoever has the best signal, not the worst road.';
+  }
+}
+$('#h-sector').onchange = loadHotspots;
+
+/* ── impact ───────────────────────────────────────────── */
+async function loadImpact(){
+  const r = await jget('/api/v1/impact/');
+  const s = r.summary||{};
+  $('#imp-kpis').innerHTML =
+    kpi(s.projects_tracked||0,'projects tracked')+
+    kpi(s.avg_realization_ratio||0,'mean realization ratio ρ')+
+    kpi(s.certified||0,'certified — payment released','p-good')+
+    kpi(s.flagged||0,'flagged — payment held','p-bad');
+  $('#imp-body').innerHTML = (r.ledger||[]).map(l=>{
+    const rho=l.realization_ratio;
+    const cls = rho>=0.85?'p-good':rho>=0.5?'p-warn':'p-bad';
+    const a = l.social_audit_score;
+    return '<tr><td class="mono">'+l.project_id+'<div class="mono" style="color:#6f7ca0">'+l.scheme+'</div></td>'+
+      '<td>'+l.sector+'</td>'+
+      '<td class="num"><span class="pill '+(a>0.8?'p-good':a>=0.5?'p-warn':'p-bad')+'">'+(a*100).toFixed(0)+'%</span></td>'+
+      '<td class="num">'+(l.vision_completion_est!=null?(l.vision_completion_est*100).toFixed(0)+'%':'—')+'</td>'+
+      '<td class="num"><b class="pill '+cls+'">'+rho.toFixed(2)+'</b></td>'+
+      '<td class="mono">'+(l.counterfactual_control_block||'—')+'</td>'+
+      '<td>'+(l.recommended_action||'').replace(/_/g,' ')+'</td></tr>';
+  }).join('') || '<tr><td colspan="7" class="muted">No delivered projects yet.</td></tr>';
+}
+function kpi(v,l,cls){ return '<div class="card"><div class="kpi '+(cls?'pill '+cls:'')+'">'+v+
+  '</div><small>'+l+'</small></div>'; }
+
+/* ── intake ───────────────────────────────────────────── */
+$('#file').onclick = async () => {
+  $('#file').innerHTML='<span class="spin"></span> Filing…';
+  const r = await jpost('/api/v1/intake/', {
+    text: $('#sample').value, channel: $('#ch').value, from_number:'+919876543210' });
+  $('#file').innerHTML='File report';
+  const st=r.report.structured;
+  $('#intake-out').textContent = JSON.stringify({
+    ticket: r.report.report_id,
+    language_detected: r.report.raw_language,
+    translated: r.report.normalized_text_en,
+    sector: st.sector, severity_1_5: st.severity_1_5,
+    affected_population_est: st.affected_population_est,
+    lgd_code: st.geo.lgd_code,
+    routed_to: r.report.routing.department,
+    sla_days: r.report.routing.sla_days,
+    extractor: st.extractor, confidence: st.confidence,
+    ack_sent_to_citizen: r.ack
+  }, null, 2);
+  loadOutbox();
+};
+async function loadOutbox(){
+  const o = await jget('/api/v1/telephony/outbox');
+  $('#outbox').innerHTML = (o.outbox||[]).slice(-6).reverse().map(x =>
+    '<div style="padding:6px 0;border-bottom:1px solid #1c2440">['+x.type+'] '+x.language+' → '+
+    (x.body||x.tts||'')+'</div>').join('') || '<div class="muted">Empty.</div>';
+}
+
+/* ── boot ─────────────────────────────────────────────── */
+(async function boot(){
+  await status();
+  solve();
+  loadHotspots();
+  loadImpact();
+  loadOutbox();
+})();
+</script>
+</body>
+</html>

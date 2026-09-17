@@ -1,0 +1,1982 @@
+[
+  {
+    "project_id": "P-27001004-HEA-000",
+    "hotspot_id": "HS-27001004-HEALTH",
+    "lgd_block_code": "27001004",
+    "sector": "health",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "108 ambulance + crew (annual) — Taloda, Nandurbar",
+    "intervention_code": "AMBULANCE",
+    "cost_inr": 1600000,
+    "cost_basis": "108 ambulance + crew (annual): 1 per unit x ₹1,600,000 (NHM unit cost)",
+    "beneficiaries": 16241,
+    "cost_per_beneficiary_inr": 98,
+    "scheme": "NHM",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27001004",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "outpatients_per_month",
+      "baseline_value": 3457,
+      "predicted_value": 15334,
+      "confidence": 0.66
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.49,
+      "lead_time_days": 329
+    },
+    "priority_score": 65.84
+  },
+  {
+    "project_id": "P-19005003-HEA-001",
+    "hotspot_id": "HS-19005003-HEALTH",
+    "lgd_block_code": "19005003",
+    "sector": "health",
+    "district": "Maldah",
+    "state": "West Bengal",
+    "intervention": "PHC upgrade to 24x7 (IPHS norms) — Old Malda, Maldah",
+    "intervention_code": "PHC-UPGRADE",
+    "cost_inr": 9500000,
+    "cost_basis": "PHC upgrade to 24x7 (IPHS norms): 1 per unit x ₹9,500,000 (NHM unit cost)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 380,
+    "scheme": "NHM",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "19005003",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "outpatients_per_month",
+      "baseline_value": 5684,
+      "predicted_value": 18347,
+      "confidence": 0.55
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.55,
+      "lead_time_days": 369
+    },
+    "priority_score": 65.18
+  },
+  {
+    "project_id": "P-27003000-DIG-002",
+    "hotspot_id": "HS-27003000-DIGITAL",
+    "lgd_block_code": "27003000",
+    "sector": "digital",
+    "district": "Gadchiroli",
+    "state": "Maharashtra",
+    "intervention": "Mobile tower site (gap-fill) — Gadchiroli, Gadchiroli",
+    "intervention_code": "TOWER-SITE",
+    "cost_inr": 8400000,
+    "cost_basis": "Mobile tower site (gap-fill): 2 per unit x ₹4,200,000 (USOF / state SOR)",
+    "beneficiaries": 18830,
+    "cost_per_beneficiary_inr": 446,
+    "scheme": "BharatNet Phase-III",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27003000",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "villages_with_broadband",
+      "baseline_value": 3648,
+      "predicted_value": 16233,
+      "confidence": 0.63
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.76,
+      "lead_time_days": 250
+    },
+    "priority_score": 64.83
+  },
+  {
+    "project_id": "P-27001002-EDU-003",
+    "hotspot_id": "HS-27001002-EDUCATION",
+    "lgd_block_code": "27001002",
+    "sector": "education",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "School toilet block (separate G/B) — Nandurbar, Nandurbar",
+    "intervention_code": "SCHOOL-TOILET",
+    "cost_inr": 28800000,
+    "cost_basis": "School toilet block (separate G/B): 60 per unit x ₹480,000 (Samagra Shiksha)",
+    "beneficiaries": 12021,
+    "cost_per_beneficiary_inr": 2395,
+    "scheme": "Samagra Shiksha",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "27001002",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "girls_enrolled_class_9",
+      "baseline_value": 2797,
+      "predicted_value": 8001,
+      "confidence": 0.66
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.63,
+      "lead_time_days": 216
+    },
+    "priority_score": 64.72
+  },
+  {
+    "project_id": "P-19005005-WAT-004",
+    "hotspot_id": "HS-19005005-WATER",
+    "lgd_block_code": "19005005",
+    "sector": "water",
+    "district": "Uttar Dinajpur",
+    "state": "West Bengal",
+    "intervention": "Distribution main pipeline — Raiganj, Uttar Dinajpur",
+    "intervention_code": "JJM-PIPE-MAIN",
+    "cost_inr": 30000000,
+    "cost_basis": "Distribution main pipeline: 12,500 per m x ₹2,400 (JJM / state SOR 2025)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 1200,
+    "scheme": "Jal Jeevan Mission",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "19005005",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_tap_connection",
+      "baseline_value": 11015,
+      "predicted_value": 15496,
+      "confidence": 0.83
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.76,
+      "lead_time_days": 287
+    },
+    "priority_score": 64.34
+  },
+  {
+    "project_id": "P-27003000-ROA-005",
+    "hotspot_id": "HS-27003000-ROADS",
+    "lgd_block_code": "27003000",
+    "sector": "roads",
+    "district": "Gadchiroli",
+    "state": "Maharashtra",
+    "intervention": "Culvert / cross-drainage repair — Gadchiroli, Gadchiroli",
+    "intervention_code": "CULVERT-REPAIR",
+    "cost_inr": 6800000,
+    "cost_basis": "Culvert / cross-drainage repair: 8 per unit x ₹850,000 (Maharashtra PWD SOR 2025)",
+    "beneficiaries": 23472,
+    "cost_per_beneficiary_inr": 289,
+    "scheme": "PMGSY-III",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27003000",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "avg_travel_time_min_to_pucca_road",
+      "baseline_value": 6013,
+      "predicted_value": 19727,
+      "confidence": 0.69
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.6,
+      "lead_time_days": 348
+    },
+    "priority_score": 64.25
+  },
+  {
+    "project_id": "P-10003004-SAN-006",
+    "hotspot_id": "HS-10003004-SANITATION",
+    "lgd_block_code": "10003004",
+    "sector": "sanitation",
+    "district": "Gaya",
+    "state": "Bihar",
+    "intervention": "Individual household latrine — Bodh Gaya, Gaya",
+    "intervention_code": "SBM-IHHL",
+    "cost_inr": 66672000,
+    "cost_basis": "Individual household latrine: 5,556 per unit x ₹12,000 (SBM-G 2.0)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 2666,
+    "scheme": "SBM-G 2.0",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "10003004",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_toilet",
+      "baseline_value": 10193,
+      "predicted_value": 21230,
+      "confidence": 0.7
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.74,
+      "lead_time_days": 144
+    },
+    "priority_score": 64.04
+  },
+  {
+    "project_id": "P-09004007-EDU-007",
+    "hotspot_id": "HS-09004007-EDUCATION",
+    "lgd_block_code": "09004007",
+    "sector": "education",
+    "district": "Sonbhadra",
+    "state": "Uttar Pradesh",
+    "intervention": "Additional classroom construction — Robertsganj, Sonbhadra",
+    "intervention_code": "SCHOOL-CLASSROOM",
+    "cost_inr": 492500000,
+    "cost_basis": "Additional classroom construction: 394 per unit x ₹1,250,000 (Samagra Shiksha)",
+    "beneficiaries": 23645,
+    "cost_per_beneficiary_inr": 20828,
+    "scheme": "Samagra Shiksha",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "09004007",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "girls_enrolled_class_9",
+      "baseline_value": 9643,
+      "predicted_value": 20254,
+      "confidence": 0.74
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.49,
+      "lead_time_days": 99
+    },
+    "priority_score": 63.9
+  },
+  {
+    "project_id": "P-27003000-HEA-008",
+    "hotspot_id": "HS-27003000-HEALTH",
+    "lgd_block_code": "27003000",
+    "sector": "health",
+    "district": "Gadchiroli",
+    "state": "Maharashtra",
+    "intervention": "PHC upgrade to 24x7 (IPHS norms) — Gadchiroli, Gadchiroli",
+    "intervention_code": "PHC-UPGRADE",
+    "cost_inr": 9500000,
+    "cost_basis": "PHC upgrade to 24x7 (IPHS norms): 1 per unit x ₹9,500,000 (NHM unit cost)",
+    "beneficiaries": 24427,
+    "cost_per_beneficiary_inr": 388,
+    "scheme": "NHM",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27003000",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "outpatients_per_month",
+      "baseline_value": 10363,
+      "predicted_value": 18595,
+      "confidence": 0.7
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.67,
+      "lead_time_days": 273
+    },
+    "priority_score": 63.8
+  },
+  {
+    "project_id": "P-27003000-SAN-009",
+    "hotspot_id": "HS-27003000-SANITATION",
+    "lgd_block_code": "27003000",
+    "sector": "sanitation",
+    "district": "Gadchiroli",
+    "state": "Maharashtra",
+    "intervention": "Solid/liquid waste management plant — Gadchiroli, Gadchiroli",
+    "intervention_code": "SLWM-PLANT",
+    "cost_inr": 6800000,
+    "cost_basis": "Solid/liquid waste management plant: 1 per unit x ₹6,800,000 (SBM-G 2.0)",
+    "beneficiaries": 16522,
+    "cost_per_beneficiary_inr": 411,
+    "scheme": "SBM-G 2.0",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27003000",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_toilet",
+      "baseline_value": 5711,
+      "predicted_value": 15398,
+      "confidence": 0.67
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.54,
+      "lead_time_days": 140
+    },
+    "priority_score": 63.74
+  },
+  {
+    "project_id": "P-27003000-EDU-010",
+    "hotspot_id": "HS-27003000-EDUCATION",
+    "lgd_block_code": "27003000",
+    "sector": "education",
+    "district": "Gadchiroli",
+    "state": "Maharashtra",
+    "intervention": "School toilet block (separate G/B) — Gadchiroli, Gadchiroli",
+    "intervention_code": "SCHOOL-TOILET",
+    "cost_inr": 36480000,
+    "cost_basis": "School toilet block (separate G/B): 76 per unit x ₹480,000 (Samagra Shiksha)",
+    "beneficiaries": 15265,
+    "cost_per_beneficiary_inr": 2389,
+    "scheme": "Samagra Shiksha",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27003000",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "girls_enrolled_class_9",
+      "baseline_value": 6521,
+      "predicted_value": 11305,
+      "confidence": 0.72
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.49,
+      "lead_time_days": 187
+    },
+    "priority_score": 63.66
+  },
+  {
+    "project_id": "P-27001005-SAN-011",
+    "hotspot_id": "HS-27001005-SANITATION",
+    "lgd_block_code": "27001005",
+    "sector": "sanitation",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "Individual household latrine — Navapur, Nandurbar",
+    "intervention_code": "SBM-IHHL",
+    "cost_inr": 26172000,
+    "cost_basis": "Individual household latrine: 2,181 per unit x ₹12,000 (SBM-G 2.0)",
+    "beneficiaries": 9813,
+    "cost_per_beneficiary_inr": 2667,
+    "scheme": "SBM-G 2.0",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27001005",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_toilet",
+      "baseline_value": 4152,
+      "predicted_value": 8254,
+      "confidence": 0.74
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.7,
+      "lead_time_days": 396
+    },
+    "priority_score": 63.58
+  },
+  {
+    "project_id": "P-27003000-POW-012",
+    "hotspot_id": "HS-27003000-POWER",
+    "lgd_block_code": "27003000",
+    "sector": "power",
+    "district": "Gadchiroli",
+    "state": "Maharashtra",
+    "intervention": "Distribution transformer (100 kVA) — Gadchiroli, Gadchiroli",
+    "intervention_code": "RDSS-TRANSFORMER",
+    "cost_inr": 4620000,
+    "cost_basis": "Distribution transformer (100 kVA): 11 per unit x ₹420,000 (RDSS unit cost)",
+    "beneficiaries": 17148,
+    "cost_per_beneficiary_inr": 269,
+    "scheme": "RDSS",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27003000",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "hours_of_supply_per_day",
+      "baseline_value": 6101,
+      "predicted_value": 13232,
+      "confidence": 0.8
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.83,
+      "lead_time_days": 226
+    },
+    "priority_score": 63.58
+  },
+  {
+    "project_id": "P-27001004-DIG-013",
+    "hotspot_id": "HS-27001004-DIGITAL",
+    "lgd_block_code": "27001004",
+    "sector": "digital",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "BharatNet last-mile fibre to GP — Taloda, Nandurbar",
+    "intervention_code": "BHARATNET",
+    "cost_inr": 14500000,
+    "cost_basis": "BharatNet last-mile fibre to GP: 5 per GP x ₹2,900,000 (BharatNet Phase-III)",
+    "beneficiaries": 20299,
+    "cost_per_beneficiary_inr": 714,
+    "scheme": "BharatNet Phase-III",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27001004",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "villages_with_broadband",
+      "baseline_value": 8012,
+      "predicted_value": 12219,
+      "confidence": 0.74
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.45,
+      "lead_time_days": 211
+    },
+    "priority_score": 63.38
+  },
+  {
+    "project_id": "P-27001004-EDU-014",
+    "hotspot_id": "HS-27001004-EDUCATION",
+    "lgd_block_code": "27001004",
+    "sector": "education",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "Smart classroom / ICT lab — Taloda, Nandurbar",
+    "intervention_code": "SCHOOL-DIGITAL",
+    "cost_inr": 33000000,
+    "cost_basis": "Smart classroom / ICT lab: 44 per unit x ₹750,000 (Samagra Shiksha)",
+    "beneficiaries": 17638,
+    "cost_per_beneficiary_inr": 1870,
+    "scheme": "Samagra Shiksha",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27001004",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "girls_enrolled_class_9",
+      "baseline_value": 6362,
+      "predicted_value": 15855,
+      "confidence": 0.58
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.63,
+      "lead_time_days": 91
+    },
+    "priority_score": 63.28
+  },
+  {
+    "project_id": "P-10003004-ROA-015",
+    "hotspot_id": "HS-10003004-ROADS",
+    "lgd_block_code": "10003004",
+    "sector": "roads",
+    "district": "Gaya",
+    "state": "Bihar",
+    "intervention": "Upgradation of existing rural road — Bodh Gaya, Gaya",
+    "intervention_code": "PMGSY-ROAD-UPG",
+    "cost_inr": 20090000,
+    "cost_basis": "Upgradation of existing rural road: 5 per km x ₹4,100,000 (PMGSY-III unit cost)",
+    "beneficiaries": 19579,
+    "cost_per_beneficiary_inr": 1026,
+    "scheme": "PMGSY-III",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "10003004",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "avg_travel_time_min_to_pucca_road",
+      "baseline_value": 6335,
+      "predicted_value": 13960,
+      "confidence": 0.7
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.56,
+      "lead_time_days": 202
+    },
+    "priority_score": 63.04
+  },
+  {
+    "project_id": "P-27001005-POW-016",
+    "hotspot_id": "HS-27001005-POWER",
+    "lgd_block_code": "27001005",
+    "sector": "power",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "11 kV feeder upgrade — Navapur, Nandurbar",
+    "intervention_code": "RDSS-FEEDER",
+    "cost_inr": 21700000,
+    "cost_basis": "11 kV feeder upgrade: 7 per km x ₹3,100,000 (RDSS unit cost)",
+    "beneficiaries": 8407,
+    "cost_per_beneficiary_inr": 2581,
+    "scheme": "RDSS",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27001005",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "hours_of_supply_per_day",
+      "baseline_value": 2958,
+      "predicted_value": 7156,
+      "confidence": 0.84
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.65,
+      "lead_time_days": 157
+    },
+    "priority_score": 63.0
+  },
+  {
+    "project_id": "P-27001002-DIG-017",
+    "hotspot_id": "HS-27001002-DIGITAL",
+    "lgd_block_code": "27001002",
+    "sector": "digital",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "Mobile tower site (gap-fill) — Nandurbar, Nandurbar",
+    "intervention_code": "TOWER-SITE",
+    "cost_inr": 12600000,
+    "cost_basis": "Mobile tower site (gap-fill): 3 per unit x ₹4,200,000 (USOF / state SOR)",
+    "beneficiaries": 23002,
+    "cost_per_beneficiary_inr": 547,
+    "scheme": "BharatNet Phase-III",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "27001002",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "villages_with_broadband",
+      "baseline_value": 4546,
+      "predicted_value": 18121,
+      "confidence": 0.67
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.6,
+      "lead_time_days": 299
+    },
+    "priority_score": 62.83
+  },
+  {
+    "project_id": "P-27001001-SAN-018",
+    "hotspot_id": "HS-27001001-SANITATION",
+    "lgd_block_code": "27001001",
+    "sector": "sanitation",
+    "district": "Dhule",
+    "state": "Maharashtra",
+    "intervention": "Solid/liquid waste management plant — Sakri, Dhule",
+    "intervention_code": "SLWM-PLANT",
+    "cost_inr": 6800000,
+    "cost_basis": "Solid/liquid waste management plant: 1 per unit x ₹6,800,000 (SBM-G 2.0)",
+    "beneficiaries": 19697,
+    "cost_per_beneficiary_inr": 345,
+    "scheme": "SBM-G 2.0",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": false,
+      "block": "27001001",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_toilet",
+      "baseline_value": 3611,
+      "predicted_value": 13282,
+      "confidence": 0.56
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.69,
+      "lead_time_days": 192
+    },
+    "priority_score": 62.81
+  },
+  {
+    "project_id": "P-27001004-SAN-019",
+    "hotspot_id": "HS-27001004-SANITATION",
+    "lgd_block_code": "27001004",
+    "sector": "sanitation",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "Individual household latrine — Taloda, Nandurbar",
+    "intervention_code": "SBM-IHHL",
+    "cost_inr": 56052000,
+    "cost_basis": "Individual household latrine: 4,671 per unit x ₹12,000 (SBM-G 2.0)",
+    "beneficiaries": 21019,
+    "cost_per_beneficiary_inr": 2666,
+    "scheme": "SBM-G 2.0",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27001004",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_toilet",
+      "baseline_value": 8147,
+      "predicted_value": 15262,
+      "confidence": 0.58
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.78,
+      "lead_time_days": 131
+    },
+    "priority_score": 62.77
+  },
+  {
+    "project_id": "P-09004003-POW-020",
+    "hotspot_id": "HS-09004003-POWER",
+    "lgd_block_code": "09004003",
+    "sector": "power",
+    "district": "Bahraich",
+    "state": "Uttar Pradesh",
+    "intervention": "11 kV feeder upgrade — Bahraich, Bahraich",
+    "intervention_code": "RDSS-FEEDER",
+    "cost_inr": 64480000,
+    "cost_basis": "11 kV feeder upgrade: 21 per km x ₹3,100,000 (RDSS unit cost)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 2579,
+    "scheme": "RDSS",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "09004003",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "hours_of_supply_per_day",
+      "baseline_value": 4548,
+      "predicted_value": 15900,
+      "confidence": 0.72
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.79,
+      "lead_time_days": 103
+    },
+    "priority_score": 62.68
+  },
+  {
+    "project_id": "P-09004007-DIG-021",
+    "hotspot_id": "HS-09004007-DIGITAL",
+    "lgd_block_code": "09004007",
+    "sector": "digital",
+    "district": "Sonbhadra",
+    "state": "Uttar Pradesh",
+    "intervention": "Mobile tower site (gap-fill) — Robertsganj, Sonbhadra",
+    "intervention_code": "TOWER-SITE",
+    "cost_inr": 8400000,
+    "cost_basis": "Mobile tower site (gap-fill): 2 per unit x ₹4,200,000 (USOF / state SOR)",
+    "beneficiaries": 13179,
+    "cost_per_beneficiary_inr": 637,
+    "scheme": "BharatNet Phase-III",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "09004007",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "villages_with_broadband",
+      "baseline_value": 3098,
+      "predicted_value": 9647,
+      "confidence": 0.65
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.59,
+      "lead_time_days": 202
+    },
+    "priority_score": 62.5
+  },
+  {
+    "project_id": "P-27001004-WAT-022",
+    "hotspot_id": "HS-27001004-WATER",
+    "lgd_block_code": "27001004",
+    "sector": "water",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "Distribution main pipeline — Taloda, Nandurbar",
+    "intervention_code": "JJM-PIPE-MAIN",
+    "cost_inr": 15944400,
+    "cost_basis": "Distribution main pipeline: 6,644 per m x ₹2,400 (JJM / state SOR 2025)",
+    "beneficiaries": 13287,
+    "cost_per_beneficiary_inr": 1200,
+    "scheme": "Jal Jeevan Mission",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27001004",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_tap_connection",
+      "baseline_value": 2818,
+      "predicted_value": 7984,
+      "confidence": 0.69
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.46,
+      "lead_time_days": 109
+    },
+    "priority_score": 62.15
+  },
+  {
+    "project_id": "P-10003004-POW-023",
+    "hotspot_id": "HS-10003004-POWER",
+    "lgd_block_code": "10003004",
+    "sector": "power",
+    "district": "Gaya",
+    "state": "Bihar",
+    "intervention": "Distribution transformer (100 kVA) — Bodh Gaya, Gaya",
+    "intervention_code": "RDSS-TRANSFORMER",
+    "cost_inr": 7140000,
+    "cost_basis": "Distribution transformer (100 kVA): 17 per unit x ₹420,000 (RDSS unit cost)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 285,
+    "scheme": "RDSS",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "10003004",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "hours_of_supply_per_day",
+      "baseline_value": 4390,
+      "predicted_value": 19681,
+      "confidence": 0.74
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.74,
+      "lead_time_days": 278
+    },
+    "priority_score": 62.02
+  },
+  {
+    "project_id": "P-27001002-SAN-024",
+    "hotspot_id": "HS-27001002-SANITATION",
+    "lgd_block_code": "27001002",
+    "sector": "sanitation",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "Individual household latrine — Nandurbar, Nandurbar",
+    "intervention_code": "SBM-IHHL",
+    "cost_inr": 66672000,
+    "cost_basis": "Individual household latrine: 5,556 per unit x ₹12,000 (SBM-G 2.0)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 2666,
+    "scheme": "SBM-G 2.0",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "27001002",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_toilet",
+      "baseline_value": 8183,
+      "predicted_value": 20645,
+      "confidence": 0.62
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.68,
+      "lead_time_days": 274
+    },
+    "priority_score": 61.74
+  },
+  {
+    "project_id": "P-09004007-SAN-025",
+    "hotspot_id": "HS-09004007-SANITATION",
+    "lgd_block_code": "09004007",
+    "sector": "sanitation",
+    "district": "Sonbhadra",
+    "state": "Uttar Pradesh",
+    "intervention": "Solid/liquid waste management plant — Robertsganj, Sonbhadra",
+    "intervention_code": "SLWM-PLANT",
+    "cost_inr": 6800000,
+    "cost_basis": "Solid/liquid waste management plant: 1 per unit x ₹6,800,000 (SBM-G 2.0)",
+    "beneficiaries": 12078,
+    "cost_per_beneficiary_inr": 563,
+    "scheme": "SBM-G 2.0",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "09004007",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_toilet",
+      "baseline_value": 2191,
+      "predicted_value": 8677,
+      "confidence": 0.67
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.54,
+      "lead_time_days": 201
+    },
+    "priority_score": 61.57
+  },
+  {
+    "project_id": "P-27001001-ROA-026",
+    "hotspot_id": "HS-27001001-ROADS",
+    "lgd_block_code": "27001001",
+    "sector": "roads",
+    "district": "Dhule",
+    "state": "Maharashtra",
+    "intervention": "Upgradation of existing rural road — Sakri, Dhule",
+    "intervention_code": "PMGSY-ROAD-UPG",
+    "cost_inr": 13940000,
+    "cost_basis": "Upgradation of existing rural road: 3 per km x ₹4,100,000 (PMGSY-III unit cost)",
+    "beneficiaries": 13633,
+    "cost_per_beneficiary_inr": 1022,
+    "scheme": "PMGSY-III",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": false,
+      "block": "27001001",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "avg_travel_time_min_to_pucca_road",
+      "baseline_value": 5896,
+      "predicted_value": 8494,
+      "confidence": 0.57
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.67,
+      "lead_time_days": 166
+    },
+    "priority_score": 61.47
+  },
+  {
+    "project_id": "P-10003005-POW-027",
+    "hotspot_id": "HS-10003005-POWER",
+    "lgd_block_code": "10003005",
+    "sector": "power",
+    "district": "Muzaffarpur",
+    "state": "Bihar",
+    "intervention": "11 kV feeder upgrade — Muzaffarpur, Muzaffarpur",
+    "intervention_code": "RDSS-FEEDER",
+    "cost_inr": 64480000,
+    "cost_basis": "11 kV feeder upgrade: 21 per km x ₹3,100,000 (RDSS unit cost)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 2579,
+    "scheme": "RDSS",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "10003005",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "hours_of_supply_per_day",
+      "baseline_value": 10996,
+      "predicted_value": 21168,
+      "confidence": 0.8
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.55,
+      "lead_time_days": 91
+    },
+    "priority_score": 61.42
+  },
+  {
+    "project_id": "P-10003004-EDU-028",
+    "hotspot_id": "HS-10003004-EDUCATION",
+    "lgd_block_code": "10003004",
+    "sector": "education",
+    "district": "Gaya",
+    "state": "Bihar",
+    "intervention": "Additional classroom construction — Bodh Gaya, Gaya",
+    "intervention_code": "SCHOOL-CLASSROOM",
+    "cost_inr": 521250000,
+    "cost_basis": "Additional classroom construction: 417 per unit x ₹1,250,000 (Samagra Shiksha)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 20850,
+    "scheme": "Samagra Shiksha",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "10003004",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "girls_enrolled_class_9",
+      "baseline_value": 10794,
+      "predicted_value": 21489,
+      "confidence": 0.63
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.74,
+      "lead_time_days": 302
+    },
+    "priority_score": 61.27
+  },
+  {
+    "project_id": "P-19005005-EDU-029",
+    "hotspot_id": "HS-19005005-EDUCATION",
+    "lgd_block_code": "19005005",
+    "sector": "education",
+    "district": "Uttar Dinajpur",
+    "state": "West Bengal",
+    "intervention": "Smart classroom / ICT lab — Raiganj, Uttar Dinajpur",
+    "intervention_code": "SCHOOL-DIGITAL",
+    "cost_inr": 46500000,
+    "cost_basis": "Smart classroom / ICT lab: 62 per unit x ₹750,000 (Samagra Shiksha)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 1860,
+    "scheme": "Samagra Shiksha",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "19005005",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "girls_enrolled_class_9",
+      "baseline_value": 8114,
+      "predicted_value": 19233,
+      "confidence": 0.78
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.5,
+      "lead_time_days": 296
+    },
+    "priority_score": 61.27
+  },
+  {
+    "project_id": "P-27001002-WAT-030",
+    "hotspot_id": "HS-27001002-WATER",
+    "lgd_block_code": "27001002",
+    "sector": "water",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "Distribution main pipeline — Nandurbar, Nandurbar",
+    "intervention_code": "JJM-PIPE-MAIN",
+    "cost_inr": 19824000,
+    "cost_basis": "Distribution main pipeline: 8,260 per m x ₹2,400 (JJM / state SOR 2025)",
+    "beneficiaries": 16520,
+    "cost_per_beneficiary_inr": 1200,
+    "scheme": "Jal Jeevan Mission",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "27001002",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_tap_connection",
+      "baseline_value": 7283,
+      "predicted_value": 11346,
+      "confidence": 0.75
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.85,
+      "lead_time_days": 113
+    },
+    "priority_score": 61.25
+  },
+  {
+    "project_id": "P-27001001-HEA-031",
+    "hotspot_id": "HS-27001001-HEALTH",
+    "lgd_block_code": "27001001",
+    "sector": "health",
+    "district": "Dhule",
+    "state": "Maharashtra",
+    "intervention": "PHC upgrade to 24x7 (IPHS norms) — Sakri, Dhule",
+    "intervention_code": "PHC-UPGRADE",
+    "cost_inr": 9500000,
+    "cost_basis": "PHC upgrade to 24x7 (IPHS norms): 1 per unit x ₹9,500,000 (NHM unit cost)",
+    "beneficiaries": 23451,
+    "cost_per_beneficiary_inr": 405,
+    "scheme": "NHM",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": false,
+      "block": "27001001",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "outpatients_per_month",
+      "baseline_value": 4019,
+      "predicted_value": 17024,
+      "confidence": 0.73
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.62,
+      "lead_time_days": 211
+    },
+    "priority_score": 61.17
+  },
+  {
+    "project_id": "P-27001003-SAN-032",
+    "hotspot_id": "HS-27001003-SANITATION",
+    "lgd_block_code": "27001003",
+    "sector": "sanitation",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "Individual household latrine — Shahada, Nandurbar",
+    "intervention_code": "SBM-IHHL",
+    "cost_inr": 62964000,
+    "cost_basis": "Individual household latrine: 5,247 per unit x ₹12,000 (SBM-G 2.0)",
+    "beneficiaries": 23612,
+    "cost_per_beneficiary_inr": 2666,
+    "scheme": "SBM-G 2.0",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "27001003",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_toilet",
+      "baseline_value": 5785,
+      "predicted_value": 16167,
+      "confidence": 0.64
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.53,
+      "lead_time_days": 306
+    },
+    "priority_score": 60.96
+  },
+  {
+    "project_id": "P-27001002-POW-033",
+    "hotspot_id": "HS-27001002-POWER",
+    "lgd_block_code": "27001002",
+    "sector": "power",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "Solar street lighting cluster (50 poles) — Nandurbar, Nandurbar",
+    "intervention_code": "SOLAR-STREET",
+    "cost_inr": 6120000,
+    "cost_basis": "Solar street lighting cluster (50 poles): 9 per cluster x ₹680,000 (State SOR 2025)",
+    "beneficiaries": 11226,
+    "cost_per_beneficiary_inr": 545,
+    "scheme": "RDSS",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "27001002",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "hours_of_supply_per_day",
+      "baseline_value": 4355,
+      "predicted_value": 7016,
+      "confidence": 0.65
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.78,
+      "lead_time_days": 186
+    },
+    "priority_score": 60.72
+  },
+  {
+    "project_id": "P-09004007-POW-034",
+    "hotspot_id": "HS-09004007-POWER",
+    "lgd_block_code": "09004007",
+    "sector": "power",
+    "district": "Sonbhadra",
+    "state": "Uttar Pradesh",
+    "intervention": "Solar street lighting cluster (50 poles) — Robertsganj, Sonbhadra",
+    "intervention_code": "SOLAR-STREET",
+    "cost_inr": 6800000,
+    "cost_basis": "Solar street lighting cluster (50 poles): 10 per cluster x ₹680,000 (State SOR 2025)",
+    "beneficiaries": 11857,
+    "cost_per_beneficiary_inr": 573,
+    "scheme": "RDSS",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "09004007",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "hours_of_supply_per_day",
+      "baseline_value": 2659,
+      "predicted_value": 11219,
+      "confidence": 0.7
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.89,
+      "lead_time_days": 170
+    },
+    "priority_score": 60.57
+  },
+  {
+    "project_id": "P-27003002-WAT-035",
+    "hotspot_id": "HS-27003002-WATER",
+    "lgd_block_code": "27003002",
+    "sector": "water",
+    "district": "Osmanabad",
+    "state": "Maharashtra",
+    "intervention": "Distribution main pipeline — Osmanabad, Osmanabad",
+    "intervention_code": "JJM-PIPE-MAIN",
+    "cost_inr": 30000000,
+    "cost_basis": "Distribution main pipeline: 12,500 per m x ₹2,400 (JJM / state SOR 2025)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 1200,
+    "scheme": "Jal Jeevan Mission",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27003002",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_tap_connection",
+      "baseline_value": 4121,
+      "predicted_value": 16692,
+      "confidence": 0.79
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.5,
+      "lead_time_days": 330
+    },
+    "priority_score": 60.47
+  },
+  {
+    "project_id": "P-10004000-ROA-036",
+    "hotspot_id": "HS-10004000-ROADS",
+    "lgd_block_code": "10004000",
+    "sector": "roads",
+    "district": "Katihar",
+    "state": "Bihar",
+    "intervention": "Culvert / cross-drainage repair — Katihar, Katihar",
+    "intervention_code": "CULVERT-REPAIR",
+    "cost_inr": 6800000,
+    "cost_basis": "Culvert / cross-drainage repair: 8 per unit x ₹850,000 (Maharashtra PWD SOR 2025)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 272,
+    "scheme": "PMGSY-III",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "10004000",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "avg_travel_time_min_to_pucca_road",
+      "baseline_value": 10516,
+      "predicted_value": 17499,
+      "confidence": 0.71
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.5,
+      "lead_time_days": 379
+    },
+    "priority_score": 60.46
+  },
+  {
+    "project_id": "P-19005003-WAT-037",
+    "hotspot_id": "HS-19005003-WATER",
+    "lgd_block_code": "19005003",
+    "sector": "water",
+    "district": "Maldah",
+    "state": "West Bengal",
+    "intervention": "Handpump / borewell repair — Old Malda, Maldah",
+    "intervention_code": "BORE-REPAIR",
+    "cost_inr": 5500000,
+    "cost_basis": "Handpump / borewell repair: 100 per unit x ₹55,000 (State SOR 2025)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 220,
+    "scheme": "Jal Jeevan Mission",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "19005003",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_tap_connection",
+      "baseline_value": 5292,
+      "predicted_value": 20124,
+      "confidence": 0.72
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.45,
+      "lead_time_days": 313
+    },
+    "priority_score": 60.25
+  },
+  {
+    "project_id": "P-10004000-EDU-038",
+    "hotspot_id": "HS-10004000-EDUCATION",
+    "lgd_block_code": "10004000",
+    "sector": "education",
+    "district": "Katihar",
+    "state": "Bihar",
+    "intervention": "School toilet block (separate G/B) — Katihar, Katihar",
+    "intervention_code": "SCHOOL-TOILET",
+    "cost_inr": 60000000,
+    "cost_basis": "School toilet block (separate G/B): 125 per unit x ₹480,000 (Samagra Shiksha)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 2400,
+    "scheme": "Samagra Shiksha",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "10004000",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "girls_enrolled_class_9",
+      "baseline_value": 8083,
+      "predicted_value": 18605,
+      "confidence": 0.8
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.47,
+      "lead_time_days": 174
+    },
+    "priority_score": 59.95
+  },
+  {
+    "project_id": "P-19005003-SAN-039",
+    "hotspot_id": "HS-19005003-SANITATION",
+    "lgd_block_code": "19005003",
+    "sector": "sanitation",
+    "district": "Maldah",
+    "state": "West Bengal",
+    "intervention": "Individual household latrine — Old Malda, Maldah",
+    "intervention_code": "SBM-IHHL",
+    "cost_inr": 66672000,
+    "cost_basis": "Individual household latrine: 5,556 per unit x ₹12,000 (SBM-G 2.0)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 2666,
+    "scheme": "SBM-G 2.0",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "19005003",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_toilet",
+      "baseline_value": 9283,
+      "predicted_value": 20387,
+      "confidence": 0.85
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.88,
+      "lead_time_days": 346
+    },
+    "priority_score": 59.79
+  },
+  {
+    "project_id": "P-09004005-ROA-040",
+    "hotspot_id": "HS-09004005-ROADS",
+    "lgd_block_code": "09004005",
+    "sector": "roads",
+    "district": "Shravasti",
+    "state": "Uttar Pradesh",
+    "intervention": "Culvert / cross-drainage repair — Bhinga, Shravasti",
+    "intervention_code": "CULVERT-REPAIR",
+    "cost_inr": 6800000,
+    "cost_basis": "Culvert / cross-drainage repair: 8 per unit x ₹850,000 (Maharashtra PWD SOR 2025)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 272,
+    "scheme": "PMGSY-III",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "09004005",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "avg_travel_time_min_to_pucca_road",
+      "baseline_value": 7729,
+      "predicted_value": 23224,
+      "confidence": 0.56
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.78,
+      "lead_time_days": 271
+    },
+    "priority_score": 59.59
+  },
+  {
+    "project_id": "P-27001005-WAT-041",
+    "hotspot_id": "HS-27001005-WATER",
+    "lgd_block_code": "27001005",
+    "sector": "water",
+    "district": "Nandurbar",
+    "state": "Maharashtra",
+    "intervention": "Overhead storage tank (100 KL) — Navapur, Nandurbar",
+    "intervention_code": "JJM-OHT",
+    "cost_inr": 10800000,
+    "cost_basis": "Overhead storage tank (100 KL): 6 per unit x ₹1,800,000 (JJM / state SOR 2025)",
+    "beneficiaries": 14691,
+    "cost_per_beneficiary_inr": 735,
+    "scheme": "Jal Jeevan Mission",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "27001005",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_tap_connection",
+      "baseline_value": 4214,
+      "predicted_value": 12108,
+      "confidence": 0.57
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.68,
+      "lead_time_days": 166
+    },
+    "priority_score": 59.57
+  },
+  {
+    "project_id": "P-09004003-DIG-042",
+    "hotspot_id": "HS-09004003-DIGITAL",
+    "lgd_block_code": "09004003",
+    "sector": "digital",
+    "district": "Bahraich",
+    "state": "Uttar Pradesh",
+    "intervention": "Mobile tower site (gap-fill) — Bahraich, Bahraich",
+    "intervention_code": "TOWER-SITE",
+    "cost_inr": 12600000,
+    "cost_basis": "Mobile tower site (gap-fill): 3 per unit x ₹4,200,000 (USOF / state SOR)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 504,
+    "scheme": "BharatNet Phase-III",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": false,
+      "aspirational_district": true,
+      "block": "09004003",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "villages_with_broadband",
+      "baseline_value": 10212,
+      "predicted_value": 22090,
+      "confidence": 0.68
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.7,
+      "lead_time_days": 248
+    },
+    "priority_score": 59.56
+  },
+  {
+    "project_id": "P-10003004-WAT-043",
+    "hotspot_id": "HS-10003004-WATER",
+    "lgd_block_code": "10003004",
+    "sector": "water",
+    "district": "Gaya",
+    "state": "Bihar",
+    "intervention": "Distribution main pipeline — Bodh Gaya, Gaya",
+    "intervention_code": "JJM-PIPE-MAIN",
+    "cost_inr": 30000000,
+    "cost_basis": "Distribution main pipeline: 12,500 per m x ₹2,400 (JJM / state SOR 2025)",
+    "beneficiaries": 25000,
+    "cost_per_beneficiary_inr": 1200,
+    "scheme": "Jal Jeevan Mission",
+    "eligibility": {
+      "eligible": true,
+      "conditions_met": [
+        "gp_resolution_attached",
+        "no_pending_utilisation_certificate"
+      ],
+      "conditions_failed": [],
+      "funding_split": {
+        "centre": 0.6,
+        "state": 0.4
+      }
+    },
+    "constraint_tags": {
+      "deprivation_flag": true,
+      "aspirational_district": true,
+      "block": "10003004",
+      "exclusive_group": null
+    },
+    "predicted_outcome": {
+      "kpi": "households_with_tap_connection",
+      "baseline_value": 6280,
+      "predicted_value": 17293,
+      "confidence": 0.58
+    },
+    "feasibility": {
+      "land_available": true,
+      "agency_capacity": 0.71,
+      "lead_time_days": 357
+    },
+    "priority_score": 59.53
+  }
+]

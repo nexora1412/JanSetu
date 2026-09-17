@@ -1,0 +1,49 @@
+lgd_block_code,state,district,block,population,literacy_rate,female_literacy_rate,sc_st_share,bpl_share,phone_penetration,net_penetration,urban,tribal,aspirational,digital_access_index
+27001000,Maharashtra,Dhule,Dhule,301653,0.701,0.563,0.276,0.161,0.75,0.482,False,False,False,0.6464
+27001001,Maharashtra,Dhule,Sakri,173950,0.517,0.391,0.837,0.431,0.607,0.173,False,True,False,0.4371
+27001002,Maharashtra,Nandurbar,Nandurbar,171554,0.537,0.384,0.681,0.416,0.495,0.258,False,True,True,0.4204
+27001003,Maharashtra,Nandurbar,Shahada,135650,0.589,0.479,0.812,0.38,0.594,0.219,False,True,True,0.4617
+27001004,Maharashtra,Nandurbar,Taloda,188653,0.624,0.482,0.811,0.433,0.573,0.195,False,True,True,0.4509
+27001005,Maharashtra,Nandurbar,Navapur,114404,0.534,0.418,0.676,0.454,0.468,0.19,False,True,True,0.3839
+27001006,Maharashtra,Nandurbar,Akkalkuwa,74176,0.552,0.449,0.57,0.404,0.476,0.228,False,True,True,0.4044
+27001007,Maharashtra,Nandurbar,Akrani,86642,0.529,0.349,0.777,0.406,0.476,0.188,False,True,True,0.3858
+27002000,Maharashtra,Pune,Haveli,160782,0.706,0.576,0.306,0.24,0.858,0.573,False,False,False,0.7278
+27002001,Maharashtra,Pune,Khed,378978,0.691,0.606,0.293,0.283,0.794,0.481,False,False,False,0.6638
+27002002,Maharashtra,Pune,Mulshi,275718,0.686,0.576,0.229,0.183,0.856,0.446,False,False,False,0.6785
+27002003,Maharashtra,Pune,Bhor,212426,0.807,0.704,0.314,0.27,0.723,0.546,False,False,False,0.6778
+27002004,Maharashtra,Jalgaon,Jalgaon,215380,0.703,0.594,0.199,0.2,0.702,0.514,False,False,False,0.6364
+27002005,Maharashtra,Jalgaon,Bhusawal,310130,0.725,0.637,0.155,0.274,0.858,0.454,False,False,False,0.69
+27002006,Maharashtra,Nashik,Nashik,376874,0.829,0.723,0.272,0.269,0.822,0.496,False,False,False,0.7093
+27002007,Maharashtra,Nashik,Malegaon,308944,0.798,0.706,0.237,0.289,0.77,0.391,False,False,False,0.643
+27003000,Maharashtra,Gadchiroli,Gadchiroli,151140,0.575,0.402,0.814,0.592,0.522,0.249,False,True,True,0.437
+27003001,Maharashtra,Washim,Washim,172710,0.621,0.515,0.234,0.302,0.706,0.295,False,False,True,0.5452
+27003002,Maharashtra,Osmanabad,Osmanabad,268898,0.701,0.556,0.311,0.479,0.671,0.286,False,False,True,0.5423
+10003003,Bihar,Gaya,Gaya Town,125491,0.611,0.512,0.307,0.313,0.663,0.265,False,False,True,0.5133
+10003004,Bihar,Gaya,Bodh Gaya,319867,0.61,0.474,0.364,0.453,0.717,0.259,False,False,True,0.5353
+10003005,Bihar,Muzaffarpur,Muzaffarpur,303656,0.68,0.57,0.267,0.4,0.662,0.376,False,False,True,0.5655
+10003006,Bihar,Sitamarhi,Sitamarhi,169222,0.705,0.599,0.334,0.477,0.65,0.372,False,False,True,0.5637
+10003007,Bihar,Purnia,Purnia East,235456,0.667,0.573,0.394,0.359,0.72,0.367,False,False,True,0.5858
+10004000,Bihar,Katihar,Katihar,261607,0.649,0.555,0.374,0.327,0.585,0.341,False,False,True,0.5124
+10004001,Bihar,Patna,Patna Sadar,488370,0.901,0.85,0.085,0.177,0.92,0.604,True,False,False,0.8056
+10004002,Bihar,Patna,Danapur,273043,0.863,0.798,0.088,0.164,0.928,0.693,True,False,False,0.8327
+09004003,Uttar Pradesh,Bahraich,Bahraich,308140,0.631,0.513,0.339,0.364,0.651,0.336,False,False,True,0.5368
+09004004,Uttar Pradesh,Balrampur,Balrampur,262028,0.58,0.446,0.369,0.296,0.73,0.246,False,False,True,0.5306
+09004005,Uttar Pradesh,Shravasti,Bhinga,234227,0.612,0.461,0.298,0.459,0.747,0.321,False,False,True,0.5709
+09004006,Uttar Pradesh,Siddharthnagar,Naugarh,217225,0.584,0.475,0.396,0.428,0.643,0.313,False,False,True,0.5157
+09004007,Uttar Pradesh,Sonbhadra,Robertsganj,139077,0.611,0.445,0.734,0.575,0.576,0.28,False,True,True,0.4794
+09005000,Uttar Pradesh,Lucknow,Lucknow,472633,0.822,0.771,0.112,0.071,0.872,0.78,True,False,False,0.8298
+09005001,Uttar Pradesh,Lucknow,Mohanlalganj,598768,0.839,0.749,0.129,0.171,0.876,0.585,True,False,False,0.7668
+19005002,West Bengal,Murshidabad,Berhampore,197786,0.64,0.491,0.243,0.447,0.658,0.282,False,False,True,0.5228
+19005003,West Bengal,Maldah,Old Malda,280580,0.639,0.492,0.314,0.385,0.663,0.246,False,False,True,0.5122
+19005004,West Bengal,Purulia,Purulia II,92165,0.599,0.494,0.752,0.481,0.59,0.297,False,True,True,0.4893
+19005005,West Bengal,Uttar Dinajpur,Raiganj,223812,0.555,0.424,0.256,0.396,0.593,0.263,False,False,True,0.4699
+19005006,West Bengal,Birbhum,Suri I,316570,0.758,0.666,0.3,0.175,0.798,0.529,False,False,False,0.6959
+19005007,West Bengal,Kolkata,Borough V,510139,0.845,0.801,0.123,0.101,0.804,0.633,True,False,False,0.7524
+19006000,West Bengal,Kolkata,Borough VII,257577,0.862,0.804,0.138,0.078,0.938,0.667,True,False,False,0.8279
+33006001,Tamil Nadu,Cuddalore,Cuddalore,177491,0.816,0.737,0.248,0.193,0.786,0.385,False,False,False,0.6517
+33006002,Tamil Nadu,Perambalur,Perambalur,200819,0.778,0.66,0.253,0.261,0.725,0.495,False,False,False,0.6551
+33006003,Tamil Nadu,Ariyalur,Ariyalur,344661,0.693,0.604,0.296,0.265,0.714,0.464,False,False,False,0.6223
+33006004,Tamil Nadu,Namakkal,Namakkal,362091,0.779,0.674,0.313,0.234,0.807,0.381,False,False,False,0.6523
+33006005,Tamil Nadu,Ramanathapuram,Ramanathapuram,139287,0.688,0.564,0.348,0.46,0.687,0.318,False,False,True,0.5581
+33006006,Tamil Nadu,Chennai,Alandur,194172,0.898,0.82,0.152,0.141,0.939,0.561,True,False,False,0.7985
+33006007,Tamil Nadu,Chennai,Madhavaram,521540,0.921,0.856,0.092,0.098,0.856,0.68,True,False,False,0.8074

@@ -1,0 +1,18 @@
+nation: South Africa
+iso3: ZAF
+languages: [en, zu, xh, af]
+primary_script: Latin
+currency: {code: ZAR, symbol: "R"}
+admin_hierarchy: [province, district_municipality, local_municipality, ward]
+admin_registry: {name: "Stats SA / MDB", url: "https://www.statssa.gov.za", code_field: mdb_code}
+schemes:
+  roads: Municipal Infrastructure Grant (MIG)
+  water: Water Services Infrastructure Grant
+  power: Integrated National Electrification Programme
+  health: National Health Insurance
+  education: Education Infrastructure Grant
+  sanitation: Urban Settlements Development Grant (USDG)
+  digital: SA Connect
+channels: [{type: ussd, note: "*134* — dominant channel, zero data"}, {type: sms}, {type: whatsapp}]
+helpline: {number: "0800", toll_free: true}
+voice_stack: {stt: [Google_Chirp], tts: [Google_TTS]}

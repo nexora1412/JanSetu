@@ -1,0 +1,49 @@
+lgd_state_code,lgd_district_code,lgd_block_code,state,district,block,aspirational,tribal,urban
+27,27001,27001000,Maharashtra,Dhule,Dhule,False,False,False
+27,27001,27001001,Maharashtra,Dhule,Sakri,False,True,False
+27,27001,27001002,Maharashtra,Nandurbar,Nandurbar,True,True,False
+27,27001,27001003,Maharashtra,Nandurbar,Shahada,True,True,False
+27,27001,27001004,Maharashtra,Nandurbar,Taloda,True,True,False
+27,27001,27001005,Maharashtra,Nandurbar,Navapur,True,True,False
+27,27001,27001006,Maharashtra,Nandurbar,Akkalkuwa,True,True,False
+27,27001,27001007,Maharashtra,Nandurbar,Akrani,True,True,False
+27,27002,27002000,Maharashtra,Pune,Haveli,False,False,False
+27,27002,27002001,Maharashtra,Pune,Khed,False,False,False
+27,27002,27002002,Maharashtra,Pune,Mulshi,False,False,False
+27,27002,27002003,Maharashtra,Pune,Bhor,False,False,False
+27,27002,27002004,Maharashtra,Jalgaon,Jalgaon,False,False,False
+27,27002,27002005,Maharashtra,Jalgaon,Bhusawal,False,False,False
+27,27002,27002006,Maharashtra,Nashik,Nashik,False,False,False
+27,27002,27002007,Maharashtra,Nashik,Malegaon,False,False,False
+27,27003,27003000,Maharashtra,Gadchiroli,Gadchiroli,True,True,False
+27,27003,27003001,Maharashtra,Washim,Washim,True,False,False
+27,27003,27003002,Maharashtra,Osmanabad,Osmanabad,True,False,False
+10,10003,10003003,Bihar,Gaya,Gaya Town,True,False,False
+10,10003,10003004,Bihar,Gaya,Bodh Gaya,True,False,False
+10,10003,10003005,Bihar,Muzaffarpur,Muzaffarpur,True,False,False
+10,10003,10003006,Bihar,Sitamarhi,Sitamarhi,True,False,False
+10,10003,10003007,Bihar,Purnia,Purnia East,True,False,False
+10,10004,10004000,Bihar,Katihar,Katihar,True,False,False
+10,10004,10004001,Bihar,Patna,Patna Sadar,False,False,True
+10,10004,10004002,Bihar,Patna,Danapur,False,False,True
+09,09004,09004003,Uttar Pradesh,Bahraich,Bahraich,True,False,False
+09,09004,09004004,Uttar Pradesh,Balrampur,Balrampur,True,False,False
+09,09004,09004005,Uttar Pradesh,Shravasti,Bhinga,True,False,False
+09,09004,09004006,Uttar Pradesh,Siddharthnagar,Naugarh,True,False,False
+09,09004,09004007,Uttar Pradesh,Sonbhadra,Robertsganj,True,True,False
+09,09005,09005000,Uttar Pradesh,Lucknow,Lucknow,False,False,True
+09,09005,09005001,Uttar Pradesh,Lucknow,Mohanlalganj,False,False,True
+19,19005,19005002,West Bengal,Murshidabad,Berhampore,True,False,False
+19,19005,19005003,West Bengal,Maldah,Old Malda,True,False,False
+19,19005,19005004,West Bengal,Purulia,Purulia II,True,True,False
+19,19005,19005005,West Bengal,Uttar Dinajpur,Raiganj,True,False,False
+19,19005,19005006,West Bengal,Birbhum,Suri I,False,False,False
+19,19005,19005007,West Bengal,Kolkata,Borough V,False,False,True
+19,19006,19006000,West Bengal,Kolkata,Borough VII,False,False,True
+33,33006,33006001,Tamil Nadu,Cuddalore,Cuddalore,False,False,False
+33,33006,33006002,Tamil Nadu,Perambalur,Perambalur,False,False,False
+33,33006,33006003,Tamil Nadu,Ariyalur,Ariyalur,False,False,False
+33,33006,33006004,Tamil Nadu,Namakkal,Namakkal,False,False,False
+33,33006,33006005,Tamil Nadu,Ramanathapuram,Ramanathapuram,True,False,False
+33,33006,33006006,Tamil Nadu,Chennai,Alandur,False,False,True
+33,33006,33006007,Tamil Nadu,Chennai,Madhavaram,False,False,True

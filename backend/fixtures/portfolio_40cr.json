@@ -1,0 +1,324 @@
+{
+  "portfolio_id": "PF-20260917-08519",
+  "computed_at": "2026-09-17 12:48:49.194700+00:00",
+  "solver": {
+    "engine": "pulp_cbc",
+    "status": "optimal",
+    "solve_ms": 13,
+    "ladder_level": "spread+equity+caps",
+    "relaxations": []
+  },
+  "request": {
+    "budget_inr": 400000000,
+    "sector_caps": {
+      "roads": 0.4,
+      "water": 0.4,
+      "sanitation": 0.35,
+      "power": 0.25,
+      "health": 0.3,
+      "education": 0.25,
+      "digital": 0.3
+    },
+    "equity_floor_pct": 0.4,
+    "geographic_spread": "min_one_per_block",
+    "state_filter": null,
+    "sector_filter": null,
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "fast": false
+  },
+  "selected": [
+    "P-27001004-HEA-000",
+    "P-19005003-HEA-001",
+    "P-27003000-DIG-002",
+    "P-19005005-WAT-004",
+    "P-27003000-ROA-005",
+    "P-27003000-HEA-008",
+    "P-27003000-SAN-009",
+    "P-27003000-POW-012",
+    "P-27001004-DIG-013",
+    "P-27001002-DIG-017",
+    "P-27001001-SAN-018",
+    "P-09004007-DIG-021",
+    "P-10003004-POW-023",
+    "P-09004007-SAN-025",
+    "P-27001001-ROA-026",
+    "P-10003005-POW-027",
+    "P-27001001-HEA-031",
+    "P-27001003-SAN-032",
+    "P-27001002-POW-033",
+    "P-09004007-POW-034",
+    "P-27003002-WAT-035",
+    "P-10004000-ROA-036",
+    "P-19005003-WAT-037",
+    "P-09004005-ROA-040",
+    "P-27001005-WAT-041",
+    "P-09004003-DIG-042",
+    "P-10003004-WAT-043"
+  ],
+  "totals": {
+    "projects": 27,
+    "cost_inr": 399764000,
+    "budget_utilisation": 0.9994,
+    "beneficiaries": 553365,
+    "cost_per_beneficiary_inr": 722,
+    "equity_share": 0.4733,
+    "blocks_covered": 15,
+    "sector_breakdown": {
+      "digital": 0.1413,
+      "health": 0.0753,
+      "power": 0.223,
+      "roads": 0.0859,
+      "sanitation": 0.2085,
+      "water": 0.2659
+    }
+  },
+  "dropped": [
+    {
+      "project_id": "P-19005005-EDU-029",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹4.65 Cr, ₹0.02 Cr available",
+      "would_need_inr": 46500000
+    },
+    {
+      "project_id": "P-10004000-EDU-038",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹6.00 Cr, ₹0.02 Cr available",
+      "would_need_inr": 60000000
+    },
+    {
+      "project_id": "P-27001004-SAN-019",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹5.61 Cr, ₹0.02 Cr available",
+      "would_need_inr": 56052000
+    },
+    {
+      "project_id": "P-10003004-ROA-015",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹2.01 Cr, ₹0.02 Cr available",
+      "would_need_inr": 20090000
+    },
+    {
+      "project_id": "P-27001004-EDU-014",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹3.30 Cr, ₹0.02 Cr available",
+      "would_need_inr": 33000000
+    },
+    {
+      "project_id": "P-27001002-WAT-030",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹1.98 Cr, ₹0.02 Cr available",
+      "would_need_inr": 19824000
+    },
+    {
+      "project_id": "P-27003000-EDU-010",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹3.65 Cr, ₹0.02 Cr available",
+      "would_need_inr": 36480000
+    },
+    {
+      "project_id": "P-27001004-WAT-022",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹1.59 Cr, ₹0.02 Cr available",
+      "would_need_inr": 15944400
+    },
+    {
+      "project_id": "P-27001002-EDU-003",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹2.88 Cr, ₹0.02 Cr available",
+      "would_need_inr": 28800000
+    },
+    {
+      "project_id": "P-27001005-SAN-011",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹2.62 Cr, ₹0.02 Cr available",
+      "would_need_inr": 26172000
+    },
+    {
+      "project_id": "P-10003004-SAN-006",
+      "reason": "sector_cap_binding",
+      "detail": "sanitation cap 35% reached (20.8% spent; +16.7% would exceed)"
+    },
+    {
+      "project_id": "P-09004003-POW-020",
+      "reason": "sector_cap_binding",
+      "detail": "power cap 25% reached (22.3% spent; +16.1% would exceed)"
+    },
+    {
+      "project_id": "P-27001002-SAN-024",
+      "reason": "sector_cap_binding",
+      "detail": "sanitation cap 35% reached (20.8% spent; +16.7% would exceed)"
+    },
+    {
+      "project_id": "P-10003004-EDU-028",
+      "reason": "sector_cap_binding",
+      "detail": "education cap 25% reached (0.0% spent; +130.3% would exceed)"
+    },
+    {
+      "project_id": "P-19005003-SAN-039",
+      "reason": "sector_cap_binding",
+      "detail": "sanitation cap 35% reached (20.8% spent; +16.7% would exceed)"
+    },
+    {
+      "project_id": "P-09004007-EDU-007",
+      "reason": "sector_cap_binding",
+      "detail": "education cap 25% reached (0.0% spent; +123.1% would exceed)"
+    },
+    {
+      "project_id": "P-27001005-POW-016",
+      "reason": "sector_cap_binding",
+      "detail": "power cap 25% reached (22.3% spent; +5.4% would exceed)"
+    }
+  ],
+  "constraint_report": [
+    {
+      "constraint": "budget",
+      "binding": true,
+      "slack_inr": 236000
+    },
+    {
+      "constraint": "sector_cap_digital",
+      "binding": false,
+      "slack_inr": 63500000
+    },
+    {
+      "constraint": "sector_cap_education",
+      "binding": false,
+      "slack_inr": 100000000
+    },
+    {
+      "constraint": "sector_cap_health",
+      "binding": false,
+      "slack_inr": 89900000
+    },
+    {
+      "constraint": "sector_cap_power",
+      "binding": false,
+      "slack_inr": 10840000
+    },
+    {
+      "constraint": "sector_cap_roads",
+      "binding": false,
+      "slack_inr": 125660000
+    },
+    {
+      "constraint": "sector_cap_sanitation",
+      "binding": false,
+      "slack_inr": 56636000
+    },
+    {
+      "constraint": "sector_cap_water",
+      "binding": false,
+      "slack_inr": 53700000
+    },
+    {
+      "constraint": "equity_floor",
+      "binding": false,
+      "slack_inr": -29200000
+    },
+    {
+      "constraint": "spread_09004003",
+      "binding": true
+    },
+    {
+      "constraint": "spread_09004005",
+      "binding": true
+    },
+    {
+      "constraint": "spread_09004007",
+      "binding": true
+    },
+    {
+      "constraint": "spread_10003004",
+      "binding": true
+    },
+    {
+      "constraint": "spread_10003005",
+      "binding": true
+    },
+    {
+      "constraint": "spread_10004000",
+      "binding": true
+    },
+    {
+      "constraint": "spread_19005003",
+      "binding": true
+    },
+    {
+      "constraint": "spread_19005005",
+      "binding": true
+    },
+    {
+      "constraint": "spread_27001001",
+      "binding": true
+    },
+    {
+      "constraint": "spread_27001002",
+      "binding": true
+    },
+    {
+      "constraint": "spread_27001003",
+      "binding": true
+    },
+    {
+      "constraint": "spread_27001004",
+      "binding": true
+    },
+    {
+      "constraint": "spread_27001005",
+      "binding": true
+    },
+    {
+      "constraint": "spread_27003000",
+      "binding": true
+    },
+    {
+      "constraint": "spread_27003002",
+      "binding": true
+    }
+  ],
+  "frontier": [
+    {
+      "equity_floor_pct": 0.0,
+      "beneficiaries": 553365,
+      "cost_per_beneficiary_inr": 722,
+      "ladder_level": "spread+equity+caps"
+    },
+    {
+      "equity_floor_pct": 0.2,
+      "beneficiaries": 553365,
+      "cost_per_beneficiary_inr": 722,
+      "ladder_level": "spread+equity+caps"
+    },
+    {
+      "equity_floor_pct": 0.3,
+      "beneficiaries": 553365,
+      "cost_per_beneficiary_inr": 722,
+      "ladder_level": "spread+equity+caps"
+    },
+    {
+      "equity_floor_pct": 0.4,
+      "beneficiaries": 553365,
+      "cost_per_beneficiary_inr": 722,
+      "ladder_level": "spread+equity+caps"
+    },
+    {
+      "equity_floor_pct": 0.5,
+      "beneficiaries": 547944,
+      "cost_per_beneficiary_inr": 711,
+      "ladder_level": "spread+equity+caps"
+    },
+    {
+      "equity_floor_pct": 0.6,
+      "beneficiaries": 547944,
+      "cost_per_beneficiary_inr": 711,
+      "ladder_level": "spread+equity+caps"
+    }
+  ],
+  "infeasible": null
+}

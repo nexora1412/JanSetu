@@ -1,0 +1,337 @@
+lgd_block_code,state,district,block,sector,deficit_0_1,coverage_pct
+27001000,Maharashtra,Dhule,Dhule,roads,0.5334,53.86
+27001000,Maharashtra,Dhule,Dhule,water,0.4768,53.72
+27001000,Maharashtra,Dhule,Dhule,power,0.59,48.68
+27001000,Maharashtra,Dhule,Dhule,health,0.5293,51.22
+27001000,Maharashtra,Dhule,Dhule,education,0.3877,56.8
+27001000,Maharashtra,Dhule,Dhule,sanitation,0.5272,43.54
+27001000,Maharashtra,Dhule,Dhule,digital,0.5727,44.98
+27001001,Maharashtra,Dhule,Sakri,roads,0.7474,31.54
+27001001,Maharashtra,Dhule,Sakri,water,0.607,34.76
+27001001,Maharashtra,Dhule,Sakri,power,0.5865,41.15
+27001001,Maharashtra,Dhule,Sakri,health,0.6514,33.24
+27001001,Maharashtra,Dhule,Sakri,education,0.7286,31.69
+27001001,Maharashtra,Dhule,Sakri,sanitation,0.7878,17.98
+27001001,Maharashtra,Dhule,Sakri,digital,0.6114,41.86
+27001002,Maharashtra,Nandurbar,Nandurbar,roads,0.8213,11.32
+27001002,Maharashtra,Nandurbar,Nandurbar,water,0.7624,29.34
+27001002,Maharashtra,Nandurbar,Nandurbar,power,0.6993,27.72
+27001002,Maharashtra,Nandurbar,Nandurbar,health,0.7532,30.86
+27001002,Maharashtra,Nandurbar,Nandurbar,education,0.8708,13.9
+27001002,Maharashtra,Nandurbar,Nandurbar,sanitation,0.7333,33.51
+27001002,Maharashtra,Nandurbar,Nandurbar,digital,0.8883,18.52
+27001003,Maharashtra,Nandurbar,Shahada,roads,0.7309,20.99
+27001003,Maharashtra,Nandurbar,Shahada,water,0.7636,21.7
+27001003,Maharashtra,Nandurbar,Shahada,power,0.7838,14.33
+27001003,Maharashtra,Nandurbar,Shahada,health,0.7641,22.68
+27001003,Maharashtra,Nandurbar,Shahada,education,0.7869,29.26
+27001003,Maharashtra,Nandurbar,Shahada,sanitation,0.8405,8.73
+27001003,Maharashtra,Nandurbar,Shahada,digital,0.8409,20.1
+27001004,Maharashtra,Nandurbar,Taloda,roads,0.7265,21.69
+27001004,Maharashtra,Nandurbar,Taloda,water,0.8051,17.88
+27001004,Maharashtra,Nandurbar,Taloda,power,0.6979,27.28
+27001004,Maharashtra,Nandurbar,Taloda,health,0.8906,18.49
+27001004,Maharashtra,Nandurbar,Taloda,education,0.8588,13.91
+27001004,Maharashtra,Nandurbar,Taloda,sanitation,0.8767,5.03
+27001004,Maharashtra,Nandurbar,Taloda,digital,0.8148,25.92
+27001005,Maharashtra,Nandurbar,Navapur,roads,0.8688,16.49
+27001005,Maharashtra,Nandurbar,Navapur,water,0.7251,28.59
+27001005,Maharashtra,Nandurbar,Navapur,power,0.8962,11.1
+27001005,Maharashtra,Nandurbar,Navapur,health,0.7648,17.15
+27001005,Maharashtra,Nandurbar,Navapur,education,0.8143,13.25
+27001005,Maharashtra,Nandurbar,Navapur,sanitation,0.9028,6.73
+27001005,Maharashtra,Nandurbar,Navapur,digital,0.7373,23.72
+27001006,Maharashtra,Nandurbar,Akkalkuwa,roads,0.8957,17.29
+27001006,Maharashtra,Nandurbar,Akkalkuwa,water,0.7562,23.62
+27001006,Maharashtra,Nandurbar,Akkalkuwa,power,0.8724,5.97
+27001006,Maharashtra,Nandurbar,Akkalkuwa,health,0.8649,21.45
+27001006,Maharashtra,Nandurbar,Akkalkuwa,education,0.7523,28.99
+27001006,Maharashtra,Nandurbar,Akkalkuwa,sanitation,0.8047,21.42
+27001006,Maharashtra,Nandurbar,Akkalkuwa,digital,0.8278,12.71
+27001007,Maharashtra,Nandurbar,Akrani,roads,0.8199,20.95
+27001007,Maharashtra,Nandurbar,Akrani,water,0.8524,13.62
+27001007,Maharashtra,Nandurbar,Akrani,power,0.7506,18.94
+27001007,Maharashtra,Nandurbar,Akrani,health,0.878,15.55
+27001007,Maharashtra,Nandurbar,Akrani,education,0.7885,26.99
+27001007,Maharashtra,Nandurbar,Akrani,sanitation,0.8459,9.21
+27001007,Maharashtra,Nandurbar,Akrani,digital,0.8473,22.0
+27002000,Maharashtra,Pune,Haveli,roads,0.3774,59.93
+27002000,Maharashtra,Pune,Haveli,water,0.4259,65.32
+27002000,Maharashtra,Pune,Haveli,power,0.5436,48.82
+27002000,Maharashtra,Pune,Haveli,health,0.5595,46.54
+27002000,Maharashtra,Pune,Haveli,education,0.4361,53.87
+27002000,Maharashtra,Pune,Haveli,sanitation,0.5028,47.93
+27002000,Maharashtra,Pune,Haveli,digital,0.5379,51.3
+27002001,Maharashtra,Pune,Khed,roads,0.5989,35.63
+27002001,Maharashtra,Pune,Khed,water,0.5508,38.28
+27002001,Maharashtra,Pune,Khed,power,0.518,43.15
+27002001,Maharashtra,Pune,Khed,health,0.4304,52.03
+27002001,Maharashtra,Pune,Khed,education,0.5737,44.89
+27002001,Maharashtra,Pune,Khed,sanitation,0.6,44.44
+27002001,Maharashtra,Pune,Khed,digital,0.4134,60.9
+27002002,Maharashtra,Pune,Mulshi,roads,0.5054,51.71
+27002002,Maharashtra,Pune,Mulshi,water,0.4103,62.47
+27002002,Maharashtra,Pune,Mulshi,power,0.4018,60.14
+27002002,Maharashtra,Pune,Mulshi,health,0.4926,46.11
+27002002,Maharashtra,Pune,Mulshi,education,0.5007,57.77
+27002002,Maharashtra,Pune,Mulshi,sanitation,0.5499,49.52
+27002002,Maharashtra,Pune,Mulshi,digital,0.4718,54.61
+27002003,Maharashtra,Pune,Bhor,roads,0.4045,65.23
+27002003,Maharashtra,Pune,Bhor,water,0.5213,49.9
+27002003,Maharashtra,Pune,Bhor,power,0.4818,57.13
+27002003,Maharashtra,Pune,Bhor,health,0.4364,51.09
+27002003,Maharashtra,Pune,Bhor,education,0.4811,58.05
+27002003,Maharashtra,Pune,Bhor,sanitation,0.6012,39.56
+27002003,Maharashtra,Pune,Bhor,digital,0.5016,51.93
+27002004,Maharashtra,Jalgaon,Jalgaon,roads,0.5372,40.62
+27002004,Maharashtra,Jalgaon,Jalgaon,water,0.4848,49.05
+27002004,Maharashtra,Jalgaon,Jalgaon,power,0.5131,46.51
+27002004,Maharashtra,Jalgaon,Jalgaon,health,0.618,34.54
+27002004,Maharashtra,Jalgaon,Jalgaon,education,0.5226,48.4
+27002004,Maharashtra,Jalgaon,Jalgaon,sanitation,0.3991,58.02
+27002004,Maharashtra,Jalgaon,Jalgaon,digital,0.5238,49.38
+27002005,Maharashtra,Jalgaon,Bhusawal,roads,0.5801,38.67
+27002005,Maharashtra,Jalgaon,Bhusawal,water,0.4019,55.35
+27002005,Maharashtra,Jalgaon,Bhusawal,power,0.4762,55.28
+27002005,Maharashtra,Jalgaon,Bhusawal,health,0.4831,48.76
+27002005,Maharashtra,Jalgaon,Bhusawal,education,0.5083,48.9
+27002005,Maharashtra,Jalgaon,Bhusawal,sanitation,0.4492,55.94
+27002005,Maharashtra,Jalgaon,Bhusawal,digital,0.4774,50.26
+27002006,Maharashtra,Nashik,Nashik,roads,0.4384,48.61
+27002006,Maharashtra,Nashik,Nashik,water,0.3974,60.49
+27002006,Maharashtra,Nashik,Nashik,power,0.4609,49.09
+27002006,Maharashtra,Nashik,Nashik,health,0.4442,62.47
+27002006,Maharashtra,Nashik,Nashik,education,0.4323,61.2
+27002006,Maharashtra,Nashik,Nashik,sanitation,0.4713,53.3
+27002006,Maharashtra,Nashik,Nashik,digital,0.563,43.52
+27002007,Maharashtra,Nashik,Malegaon,roads,0.4968,44.9
+27002007,Maharashtra,Nashik,Malegaon,water,0.5014,45.48
+27002007,Maharashtra,Nashik,Malegaon,power,0.5089,51.68
+27002007,Maharashtra,Nashik,Malegaon,health,0.5467,46.13
+27002007,Maharashtra,Nashik,Malegaon,education,0.6287,34.33
+27002007,Maharashtra,Nashik,Malegaon,sanitation,0.5477,47.56
+27002007,Maharashtra,Nashik,Malegaon,digital,0.5628,47.84
+27003000,Maharashtra,Gadchiroli,Gadchiroli,roads,0.8734,12.18
+27003000,Maharashtra,Gadchiroli,Gadchiroli,water,0.9219,2.8
+27003000,Maharashtra,Gadchiroli,Gadchiroli,power,0.7384,27.82
+27003000,Maharashtra,Gadchiroli,Gadchiroli,health,0.8447,10.4
+27003000,Maharashtra,Gadchiroli,Gadchiroli,education,0.8456,19.39
+27003000,Maharashtra,Gadchiroli,Gadchiroli,sanitation,0.7924,19.51
+27003000,Maharashtra,Gadchiroli,Gadchiroli,digital,0.9212,10.91
+27003001,Maharashtra,Washim,Washim,roads,0.6615,26.18
+27003001,Maharashtra,Washim,Washim,water,0.6948,38.48
+27003001,Maharashtra,Washim,Washim,power,0.6888,24.79
+27003001,Maharashtra,Washim,Washim,health,0.7024,25.41
+27003001,Maharashtra,Washim,Washim,education,0.6139,44.95
+27003001,Maharashtra,Washim,Washim,sanitation,0.5845,36.67
+27003001,Maharashtra,Washim,Washim,digital,0.6985,30.51
+27003002,Maharashtra,Osmanabad,Osmanabad,roads,0.7764,25.33
+27003002,Maharashtra,Osmanabad,Osmanabad,water,0.7726,22.43
+27003002,Maharashtra,Osmanabad,Osmanabad,power,0.6528,33.04
+27003002,Maharashtra,Osmanabad,Osmanabad,health,0.7347,30.48
+27003002,Maharashtra,Osmanabad,Osmanabad,education,0.6187,44.94
+27003002,Maharashtra,Osmanabad,Osmanabad,sanitation,0.5896,42.63
+27003002,Maharashtra,Osmanabad,Osmanabad,digital,0.7106,23.62
+10003003,Bihar,Gaya,Gaya Town,roads,0.6626,26.37
+10003003,Bihar,Gaya,Gaya Town,water,0.6931,34.41
+10003003,Bihar,Gaya,Gaya Town,power,0.6157,38.31
+10003003,Bihar,Gaya,Gaya Town,health,0.6956,27.41
+10003003,Bihar,Gaya,Gaya Town,education,0.5918,43.32
+10003003,Bihar,Gaya,Gaya Town,sanitation,0.6354,42.75
+10003003,Bihar,Gaya,Gaya Town,digital,0.6578,33.21
+10003004,Bihar,Gaya,Bodh Gaya,roads,0.7052,29.58
+10003004,Bihar,Gaya,Bodh Gaya,water,0.7387,18.32
+10003004,Bihar,Gaya,Bodh Gaya,power,0.7017,23.82
+10003004,Bihar,Gaya,Bodh Gaya,health,0.789,14.07
+10003004,Bihar,Gaya,Bodh Gaya,education,0.8063,19.09
+10003004,Bihar,Gaya,Bodh Gaya,sanitation,0.7904,23.32
+10003004,Bihar,Gaya,Bodh Gaya,digital,0.5909,44.11
+10003005,Bihar,Muzaffarpur,Muzaffarpur,roads,0.7547,24.1
+10003005,Bihar,Muzaffarpur,Muzaffarpur,water,0.5903,33.1
+10003005,Bihar,Muzaffarpur,Muzaffarpur,power,0.7464,17.45
+10003005,Bihar,Muzaffarpur,Muzaffarpur,health,0.7043,28.42
+10003005,Bihar,Muzaffarpur,Muzaffarpur,education,0.6728,25.04
+10003005,Bihar,Muzaffarpur,Muzaffarpur,sanitation,0.588,35.56
+10003005,Bihar,Muzaffarpur,Muzaffarpur,digital,0.6623,26.13
+10003006,Bihar,Sitamarhi,Sitamarhi,roads,0.7317,25.35
+10003006,Bihar,Sitamarhi,Sitamarhi,water,0.6565,38.8
+10003006,Bihar,Sitamarhi,Sitamarhi,power,0.6776,27.21
+10003006,Bihar,Sitamarhi,Sitamarhi,health,0.7381,34.03
+10003006,Bihar,Sitamarhi,Sitamarhi,education,0.6382,40.19
+10003006,Bihar,Sitamarhi,Sitamarhi,sanitation,0.687,27.36
+10003006,Bihar,Sitamarhi,Sitamarhi,digital,0.6003,42.85
+10003007,Bihar,Purnia,Purnia East,roads,0.6881,26.68
+10003007,Bihar,Purnia,Purnia East,water,0.6728,30.63
+10003007,Bihar,Purnia,Purnia East,power,0.5742,47.55
+10003007,Bihar,Purnia,Purnia East,health,0.5541,50.83
+10003007,Bihar,Purnia,Purnia East,education,0.5835,49.47
+10003007,Bihar,Purnia,Purnia East,sanitation,0.6305,35.93
+10003007,Bihar,Purnia,Purnia East,digital,0.5533,50.95
+10004000,Bihar,Katihar,Katihar,roads,0.7924,17.84
+10004000,Bihar,Katihar,Katihar,water,0.6534,29.98
+10004000,Bihar,Katihar,Katihar,power,0.603,32.37
+10004000,Bihar,Katihar,Katihar,health,0.7705,18.82
+10004000,Bihar,Katihar,Katihar,education,0.6917,25.41
+10004000,Bihar,Katihar,Katihar,sanitation,0.6461,32.21
+10004000,Bihar,Katihar,Katihar,digital,0.6127,41.25
+10004001,Bihar,Patna,Patna Sadar,roads,0.2684,74.81
+10004001,Bihar,Patna,Patna Sadar,water,0.2689,80.75
+10004001,Bihar,Patna,Patna Sadar,power,0.1964,85.1
+10004001,Bihar,Patna,Patna Sadar,health,0.3232,65.55
+10004001,Bihar,Patna,Patna Sadar,education,0.373,61.76
+10004001,Bihar,Patna,Patna Sadar,sanitation,0.2542,75.86
+10004001,Bihar,Patna,Patna Sadar,digital,0.2104,80.0
+10004002,Bihar,Patna,Danapur,roads,0.3505,71.61
+10004002,Bihar,Patna,Danapur,water,0.3855,60.85
+10004002,Bihar,Patna,Danapur,power,0.3327,63.6
+10004002,Bihar,Patna,Danapur,health,0.3161,65.23
+10004002,Bihar,Patna,Danapur,education,0.3096,73.05
+10004002,Bihar,Patna,Danapur,sanitation,0.2496,82.45
+10004002,Bihar,Patna,Danapur,digital,0.38,55.7
+09004003,Uttar Pradesh,Bahraich,Bahraich,roads,0.6583,29.83
+09004003,Uttar Pradesh,Bahraich,Bahraich,water,0.65,34.53
+09004003,Uttar Pradesh,Bahraich,Bahraich,power,0.7528,17.68
+09004003,Uttar Pradesh,Bahraich,Bahraich,health,0.6712,39.83
+09004003,Uttar Pradesh,Bahraich,Bahraich,education,0.6697,33.59
+09004003,Uttar Pradesh,Bahraich,Bahraich,sanitation,0.6001,39.8
+09004003,Uttar Pradesh,Bahraich,Bahraich,digital,0.7586,24.23
+09004004,Uttar Pradesh,Balrampur,Balrampur,roads,0.6568,41.31
+09004004,Uttar Pradesh,Balrampur,Balrampur,water,0.6587,29.13
+09004004,Uttar Pradesh,Balrampur,Balrampur,power,0.7125,26.48
+09004004,Uttar Pradesh,Balrampur,Balrampur,health,0.6909,27.37
+09004004,Uttar Pradesh,Balrampur,Balrampur,education,0.6261,34.88
+09004004,Uttar Pradesh,Balrampur,Balrampur,sanitation,0.616,41.73
+09004004,Uttar Pradesh,Balrampur,Balrampur,digital,0.6429,41.8
+09004005,Uttar Pradesh,Shravasti,Bhinga,roads,0.7665,16.9
+09004005,Uttar Pradesh,Shravasti,Bhinga,water,0.6102,32.74
+09004005,Uttar Pradesh,Shravasti,Bhinga,power,0.6404,33.81
+09004005,Uttar Pradesh,Shravasti,Bhinga,health,0.7439,27.92
+09004005,Uttar Pradesh,Shravasti,Bhinga,education,0.6935,37.85
+09004005,Uttar Pradesh,Shravasti,Bhinga,sanitation,0.7787,23.0
+09004005,Uttar Pradesh,Shravasti,Bhinga,digital,0.6902,30.75
+09004006,Uttar Pradesh,Siddharthnagar,Naugarh,roads,0.6863,24.2
+09004006,Uttar Pradesh,Siddharthnagar,Naugarh,water,0.6245,36.1
+09004006,Uttar Pradesh,Siddharthnagar,Naugarh,power,0.6702,32.13
+09004006,Uttar Pradesh,Siddharthnagar,Naugarh,health,0.6669,26.01
+09004006,Uttar Pradesh,Siddharthnagar,Naugarh,education,0.6041,43.64
+09004006,Uttar Pradesh,Siddharthnagar,Naugarh,sanitation,0.7577,18.75
+09004006,Uttar Pradesh,Siddharthnagar,Naugarh,digital,0.6321,34.97
+09004007,Uttar Pradesh,Sonbhadra,Robertsganj,roads,0.8575,17.12
+09004007,Uttar Pradesh,Sonbhadra,Robertsganj,water,0.7172,24.8
+09004007,Uttar Pradesh,Sonbhadra,Robertsganj,power,0.8655,16.17
+09004007,Uttar Pradesh,Sonbhadra,Robertsganj,health,0.7412,20.73
+09004007,Uttar Pradesh,Sonbhadra,Robertsganj,education,0.8493,10.84
+09004007,Uttar Pradesh,Sonbhadra,Robertsganj,sanitation,0.8028,12.03
+09004007,Uttar Pradesh,Sonbhadra,Robertsganj,digital,0.7588,23.95
+09005000,Uttar Pradesh,Lucknow,Lucknow,roads,0.2332,77.41
+09005000,Uttar Pradesh,Lucknow,Lucknow,water,0.1853,86.88
+09005000,Uttar Pradesh,Lucknow,Lucknow,power,0.31,65.1
+09005000,Uttar Pradesh,Lucknow,Lucknow,health,0.2868,73.17
+09005000,Uttar Pradesh,Lucknow,Lucknow,education,0.205,73.69
+09005000,Uttar Pradesh,Lucknow,Lucknow,sanitation,0.2296,79.24
+09005000,Uttar Pradesh,Lucknow,Lucknow,digital,0.2032,71.73
+09005001,Uttar Pradesh,Lucknow,Mohanlalganj,roads,0.249,72.67
+09005001,Uttar Pradesh,Lucknow,Mohanlalganj,water,0.3756,62.8
+09005001,Uttar Pradesh,Lucknow,Mohanlalganj,power,0.3724,59.2
+09005001,Uttar Pradesh,Lucknow,Mohanlalganj,health,0.2954,70.74
+09005001,Uttar Pradesh,Lucknow,Mohanlalganj,education,0.4163,65.97
+09005001,Uttar Pradesh,Lucknow,Mohanlalganj,sanitation,0.244,79.4
+09005001,Uttar Pradesh,Lucknow,Mohanlalganj,digital,0.234,72.97
+19005002,West Bengal,Murshidabad,Berhampore,roads,0.7864,15.04
+19005002,West Bengal,Murshidabad,Berhampore,water,0.6981,30.11
+19005002,West Bengal,Murshidabad,Berhampore,power,0.6764,28.46
+19005002,West Bengal,Murshidabad,Berhampore,health,0.5996,41.62
+19005002,West Bengal,Murshidabad,Berhampore,education,0.6034,36.79
+19005002,West Bengal,Murshidabad,Berhampore,sanitation,0.6371,29.49
+19005002,West Bengal,Murshidabad,Berhampore,digital,0.7362,26.9
+19005003,West Bengal,Maldah,Old Malda,roads,0.6739,31.44
+19005003,West Bengal,Maldah,Old Malda,water,0.764,19.48
+19005003,West Bengal,Maldah,Old Malda,power,0.6921,29.86
+19005003,West Bengal,Maldah,Old Malda,health,0.7637,30.35
+19005003,West Bengal,Maldah,Old Malda,education,0.7738,29.75
+19005003,West Bengal,Maldah,Old Malda,sanitation,0.7691,18.7
+19005003,West Bengal,Maldah,Old Malda,digital,0.6265,43.29
+19005004,West Bengal,Purulia,Purulia II,roads,0.6801,32.88
+19005004,West Bengal,Purulia,Purulia II,water,0.734,32.38
+19005004,West Bengal,Purulia,Purulia II,power,0.7915,24.78
+19005004,West Bengal,Purulia,Purulia II,health,0.8561,8.13
+19005004,West Bengal,Purulia,Purulia II,education,0.8147,24.22
+19005004,West Bengal,Purulia,Purulia II,sanitation,0.7081,30.76
+19005004,West Bengal,Purulia,Purulia II,digital,0.7581,22.73
+19005005,West Bengal,Uttar Dinajpur,Raiganj,roads,0.7215,24.34
+19005005,West Bengal,Uttar Dinajpur,Raiganj,water,0.8233,9.92
+19005005,West Bengal,Uttar Dinajpur,Raiganj,power,0.6197,38.87
+19005005,West Bengal,Uttar Dinajpur,Raiganj,health,0.6546,32.83
+19005005,West Bengal,Uttar Dinajpur,Raiganj,education,0.805,21.47
+19005005,West Bengal,Uttar Dinajpur,Raiganj,sanitation,0.7621,29.78
+19005005,West Bengal,Uttar Dinajpur,Raiganj,digital,0.6113,38.13
+19005006,West Bengal,Birbhum,Suri I,roads,0.3749,58.73
+19005006,West Bengal,Birbhum,Suri I,water,0.4319,49.49
+19005006,West Bengal,Birbhum,Suri I,power,0.4854,54.54
+19005006,West Bengal,Birbhum,Suri I,health,0.5617,47.35
+19005006,West Bengal,Birbhum,Suri I,education,0.4463,62.04
+19005006,West Bengal,Birbhum,Suri I,sanitation,0.4505,57.53
+19005006,West Bengal,Birbhum,Suri I,digital,0.4469,57.5
+19005007,West Bengal,Kolkata,Borough V,roads,0.2833,65.56
+19005007,West Bengal,Kolkata,Borough V,water,0.3045,72.69
+19005007,West Bengal,Kolkata,Borough V,power,0.3434,65.63
+19005007,West Bengal,Kolkata,Borough V,health,0.215,86.49
+19005007,West Bengal,Kolkata,Borough V,education,0.2946,77.2
+19005007,West Bengal,Kolkata,Borough V,sanitation,0.3222,60.03
+19005007,West Bengal,Kolkata,Borough V,digital,0.2238,76.96
+19006000,West Bengal,Kolkata,Borough VII,roads,0.3286,63.99
+19006000,West Bengal,Kolkata,Borough VII,water,0.2821,77.28
+19006000,West Bengal,Kolkata,Borough VII,power,0.3222,61.55
+19006000,West Bengal,Kolkata,Borough VII,health,0.3346,68.68
+19006000,West Bengal,Kolkata,Borough VII,education,0.236,69.5
+19006000,West Bengal,Kolkata,Borough VII,sanitation,0.3607,71.33
+19006000,West Bengal,Kolkata,Borough VII,digital,0.2822,69.46
+33006001,Tamil Nadu,Cuddalore,Cuddalore,roads,0.4462,61.83
+33006001,Tamil Nadu,Cuddalore,Cuddalore,water,0.5125,46.18
+33006001,Tamil Nadu,Cuddalore,Cuddalore,power,0.4946,42.84
+33006001,Tamil Nadu,Cuddalore,Cuddalore,health,0.524,40.62
+33006001,Tamil Nadu,Cuddalore,Cuddalore,education,0.5164,44.74
+33006001,Tamil Nadu,Cuddalore,Cuddalore,sanitation,0.5777,39.59
+33006001,Tamil Nadu,Cuddalore,Cuddalore,digital,0.5004,49.25
+33006002,Tamil Nadu,Perambalur,Perambalur,roads,0.4775,47.89
+33006002,Tamil Nadu,Perambalur,Perambalur,water,0.4238,50.94
+33006002,Tamil Nadu,Perambalur,Perambalur,power,0.4757,51.31
+33006002,Tamil Nadu,Perambalur,Perambalur,health,0.4304,54.95
+33006002,Tamil Nadu,Perambalur,Perambalur,education,0.5929,46.36
+33006002,Tamil Nadu,Perambalur,Perambalur,sanitation,0.438,58.91
+33006002,Tamil Nadu,Perambalur,Perambalur,digital,0.5114,43.35
+33006003,Tamil Nadu,Ariyalur,Ariyalur,roads,0.4594,47.95
+33006003,Tamil Nadu,Ariyalur,Ariyalur,water,0.4348,57.63
+33006003,Tamil Nadu,Ariyalur,Ariyalur,power,0.4484,54.58
+33006003,Tamil Nadu,Ariyalur,Ariyalur,health,0.5209,43.36
+33006003,Tamil Nadu,Ariyalur,Ariyalur,education,0.4534,58.83
+33006003,Tamil Nadu,Ariyalur,Ariyalur,sanitation,0.4418,62.94
+33006003,Tamil Nadu,Ariyalur,Ariyalur,digital,0.6298,29.62
+33006004,Tamil Nadu,Namakkal,Namakkal,roads,0.4062,67.09
+33006004,Tamil Nadu,Namakkal,Namakkal,water,0.45,58.52
+33006004,Tamil Nadu,Namakkal,Namakkal,power,0.5733,36.02
+33006004,Tamil Nadu,Namakkal,Namakkal,health,0.4565,60.74
+33006004,Tamil Nadu,Namakkal,Namakkal,education,0.4014,65.5
+33006004,Tamil Nadu,Namakkal,Namakkal,sanitation,0.4736,46.43
+33006004,Tamil Nadu,Namakkal,Namakkal,digital,0.5192,47.33
+33006005,Tamil Nadu,Ramanathapuram,Ramanathapuram,roads,0.7155,30.16
+33006005,Tamil Nadu,Ramanathapuram,Ramanathapuram,water,0.5974,36.31
+33006005,Tamil Nadu,Ramanathapuram,Ramanathapuram,power,0.6403,30.15
+33006005,Tamil Nadu,Ramanathapuram,Ramanathapuram,health,0.6594,37.43
+33006005,Tamil Nadu,Ramanathapuram,Ramanathapuram,education,0.6212,34.76
+33006005,Tamil Nadu,Ramanathapuram,Ramanathapuram,sanitation,0.7169,30.44
+33006005,Tamil Nadu,Ramanathapuram,Ramanathapuram,digital,0.6264,35.59
+33006006,Tamil Nadu,Chennai,Alandur,roads,0.3792,54.51
+33006006,Tamil Nadu,Chennai,Alandur,water,0.2591,67.92
+33006006,Tamil Nadu,Chennai,Alandur,power,0.2312,79.54
+33006006,Tamil Nadu,Chennai,Alandur,health,0.2717,70.3
+33006006,Tamil Nadu,Chennai,Alandur,education,0.2497,76.83
+33006006,Tamil Nadu,Chennai,Alandur,sanitation,0.2815,71.36
+33006006,Tamil Nadu,Chennai,Alandur,digital,0.2063,76.88
+33006007,Tamil Nadu,Chennai,Madhavaram,roads,0.2647,81.31
+33006007,Tamil Nadu,Chennai,Madhavaram,water,0.2753,71.77
+33006007,Tamil Nadu,Chennai,Madhavaram,power,0.2188,78.4
+33006007,Tamil Nadu,Chennai,Madhavaram,health,0.2865,68.99
+33006007,Tamil Nadu,Chennai,Madhavaram,education,0.2419,79.79
+33006007,Tamil Nadu,Chennai,Madhavaram,sanitation,0.2031,82.57
+33006007,Tamil Nadu,Chennai,Madhavaram,digital,0.2639,69.99

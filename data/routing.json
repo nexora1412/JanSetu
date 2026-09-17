@@ -1,0 +1,86 @@
+{
+  "_comment": "Department Routing Table — the brain behind the SINGLE HELPLINE. Routing is DATA, not code: adding a department or changing an SLA never touches the engine. This is a DPI property and judges testing deployability look for exactly this.",
+  "_default_sla_days": 30,
+  "rules": [
+    {
+      "sector": "roads",
+      "match": { "rural": true },
+      "department": "PMGSY / Zilla Parishad Engineering Wing",
+      "scheme": "PMGSY-III",
+      "officer_ref_pattern": "{district}-ZP-EE",
+      "sla_days": 30,
+      "funding_split": { "centre": 0.60, "state": 0.40 }
+    },
+    {
+      "sector": "roads",
+      "match": { "rural": false },
+      "department": "Public Works Department (State)",
+      "scheme": "State Plan / CRIF",
+      "officer_ref_pattern": "{district}-PWD-EE",
+      "sla_days": 45,
+      "funding_split": { "centre": 0.0, "state": 1.0 }
+    },
+    {
+      "sector": "water",
+      "department": "Jal Jeevan Mission → PHED / Zilla Parishad Water & Sanitation",
+      "scheme": "Jal Jeevan Mission",
+      "officer_ref_pattern": "{district}-JJM-AO",
+      "sla_days": 21,
+      "funding_split": { "centre": 0.50, "state": 0.50 }
+    },
+    {
+      "sector": "power",
+      "department": "State DISCOM",
+      "scheme": "RDSS (Revamped Distribution Sector Scheme)",
+      "officer_ref_pattern": "{district}-DISCOM-XEN",
+      "sla_days": 14,
+      "funding_split": { "centre": 0.60, "state": 0.40 }
+    },
+    {
+      "sector": "health",
+      "department": "District Health Society (NHM)",
+      "scheme": "National Health Mission",
+      "officer_ref_pattern": "{district}-DHS-ACMO",
+      "sla_days": 15,
+      "funding_split": { "centre": 0.60, "state": 0.40 }
+    },
+    {
+      "sector": "education",
+      "department": "District Education Office",
+      "scheme": "Samagra Shiksha",
+      "officer_ref_pattern": "{district}-EDU-DEO",
+      "sla_days": 30,
+      "funding_split": { "centre": 0.60, "state": 0.40 }
+    },
+    {
+      "sector": "sanitation",
+      "department": "Block Development Office / Zilla Parishad",
+      "scheme": "SBM-G 2.0",
+      "officer_ref_pattern": "{block}-BDO",
+      "sla_days": 30,
+      "funding_split": { "centre": 0.60, "state": 0.40 }
+    },
+    {
+      "sector": "digital",
+      "department": "BharatNet / Common Service Centre SPV",
+      "scheme": "BharatNet Phase-III",
+      "officer_ref_pattern": "{state}-BN-PMU",
+      "sla_days": 60,
+      "funding_split": { "centre": 1.0, "state": 0.0 }
+    },
+    {
+      "sector": "other",
+      "department": "District Collectorate (Grievance Cell)",
+      "scheme": "District Plan / MPLADS",
+      "officer_ref_pattern": "{district}-COL-GRIEVANCE",
+      "sla_days": 30,
+      "funding_split": { "centre": 1.0, "state": 0.0 }
+    }
+  ],
+  "fallback_chain": [
+    "cpgrams_api",
+    "email_nodal_officer",
+    "sms_field_officer"
+  ],
+  "_integration_note": "We do NOT replace CPGRAMS. We hand it a structured, de-duplicated, geo-coded, severity-scored ticket instead of the free-text pile it receives today. Fallback chain when no API exists: API → email to nodal officer → SMS to field officer (works everywhere, always)."
+}

@@ -1,0 +1,18 @@
+nation: Brazil
+iso3: BRA
+languages: [pt-BR]
+primary_script: Latin
+currency: {code: BRL, symbol: "R$"}
+admin_hierarchy: [state, mesoregion, microregion, municipio]
+admin_registry: {name: IBGE, url: "https://www.ibge.gov.br", code_field: ibge_code}
+schemes:
+  roads: PAC
+  water: Agua Para Todos
+  power: Luz Para Todos
+  health: SUS
+  education: Fundeb
+  sanitation: Saneamento Basico
+  digital: Brasil Conectado
+channels: [{type: sms}, {type: whatsapp}, {type: voice_call}]
+helpline: {number: "135", toll_free: true}
+voice_stack: {stt: [Google_Chirp], tts: [Google_TTS]}

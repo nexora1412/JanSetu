@@ -1,0 +1,302 @@
+{
+  "portfolio_id": "PF-20260917-47064",
+  "computed_at": "2026-09-17 12:48:49.238959+00:00",
+  "solver": {
+    "engine": "pulp_cbc",
+    "status": "optimal",
+    "solve_ms": 23,
+    "ladder_level": "equity+caps",
+    "relaxations": [
+      {
+        "relaxed": [
+          "geographic_spread"
+        ],
+        "detail": "Covering every block needs at least ₹26.30 Cr; envelope is ₹12.00 Cr."
+      }
+    ]
+  },
+  "request": {
+    "budget_inr": 120000000,
+    "sector_caps": {
+      "roads": 0.4,
+      "water": 0.4,
+      "sanitation": 0.35,
+      "power": 0.25,
+      "health": 0.3,
+      "education": 0.25,
+      "digital": 0.3
+    },
+    "equity_floor_pct": 0.4,
+    "geographic_spread": "min_one_per_block",
+    "state_filter": null,
+    "sector_filter": null,
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "fast": false
+  },
+  "selected": [
+    "P-27001004-HEA-000",
+    "P-19005003-HEA-001",
+    "P-27003000-ROA-005",
+    "P-27003000-HEA-008",
+    "P-27003000-SAN-009",
+    "P-27003000-POW-012",
+    "P-27001002-DIG-017",
+    "P-27001001-SAN-018",
+    "P-10003004-POW-023",
+    "P-09004007-SAN-025",
+    "P-27001001-HEA-031",
+    "P-27001002-POW-033",
+    "P-10004000-ROA-036",
+    "P-19005003-WAT-037",
+    "P-09004005-ROA-040",
+    "P-09004003-DIG-042"
+  ],
+  "totals": {
+    "projects": 16,
+    "cost_inr": 119480000,
+    "budget_utilisation": 0.9957,
+    "beneficiaries": 337264,
+    "cost_per_beneficiary_inr": 354,
+    "equity_share": 0.5554,
+    "blocks_covered": 10,
+    "sector_breakdown": {
+      "digital": 0.2109,
+      "health": 0.2519,
+      "power": 0.1496,
+      "roads": 0.1707,
+      "sanitation": 0.1707,
+      "water": 0.046
+    }
+  },
+  "dropped": [
+    {
+      "project_id": "P-19005005-WAT-004",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹3.00 Cr, ₹0.05 Cr available",
+      "would_need_inr": 30000000
+    },
+    {
+      "project_id": "P-27003002-WAT-035",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹3.00 Cr, ₹0.05 Cr available",
+      "would_need_inr": 30000000
+    },
+    {
+      "project_id": "P-10003004-WAT-043",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹3.00 Cr, ₹0.05 Cr available",
+      "would_need_inr": 30000000
+    },
+    {
+      "project_id": "P-10003004-ROA-015",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹2.01 Cr, ₹0.05 Cr available",
+      "would_need_inr": 20090000
+    },
+    {
+      "project_id": "P-27003000-DIG-002",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹0.84 Cr, ₹0.05 Cr available",
+      "would_need_inr": 8400000
+    },
+    {
+      "project_id": "P-27001002-WAT-030",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹1.98 Cr, ₹0.05 Cr available",
+      "would_need_inr": 19824000
+    },
+    {
+      "project_id": "P-27001005-WAT-041",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹1.08 Cr, ₹0.05 Cr available",
+      "would_need_inr": 10800000
+    },
+    {
+      "project_id": "P-27001001-ROA-026",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹1.39 Cr, ₹0.05 Cr available",
+      "would_need_inr": 13940000
+    },
+    {
+      "project_id": "P-27001004-WAT-022",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹1.59 Cr, ₹0.05 Cr available",
+      "would_need_inr": 15944400
+    },
+    {
+      "project_id": "P-09004007-DIG-021",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹0.84 Cr, ₹0.05 Cr available",
+      "would_need_inr": 8400000
+    },
+    {
+      "project_id": "P-27001002-EDU-003",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹2.88 Cr, ₹0.05 Cr available",
+      "would_need_inr": 28800000
+    },
+    {
+      "project_id": "P-09004007-POW-034",
+      "reason": "budget_exhausted",
+      "detail": "Needs ₹0.68 Cr, ₹0.05 Cr available",
+      "would_need_inr": 6800000
+    },
+    {
+      "project_id": "P-10003004-SAN-006",
+      "reason": "sector_cap_binding",
+      "detail": "sanitation cap 35% reached (17.0% spent; +55.6% would exceed)"
+    },
+    {
+      "project_id": "P-09004003-POW-020",
+      "reason": "sector_cap_binding",
+      "detail": "power cap 25% reached (14.9% spent; +53.7% would exceed)"
+    },
+    {
+      "project_id": "P-27001002-SAN-024",
+      "reason": "sector_cap_binding",
+      "detail": "sanitation cap 35% reached (17.0% spent; +55.6% would exceed)"
+    },
+    {
+      "project_id": "P-10003005-POW-027",
+      "reason": "sector_cap_binding",
+      "detail": "power cap 25% reached (14.9% spent; +53.7% would exceed)"
+    },
+    {
+      "project_id": "P-10003004-EDU-028",
+      "reason": "sector_cap_binding",
+      "detail": "education cap 25% reached (0.0% spent; +434.4% would exceed)"
+    },
+    {
+      "project_id": "P-19005005-EDU-029",
+      "reason": "sector_cap_binding",
+      "detail": "education cap 25% reached (0.0% spent; +38.8% would exceed)"
+    },
+    {
+      "project_id": "P-10004000-EDU-038",
+      "reason": "sector_cap_binding",
+      "detail": "education cap 25% reached (0.0% spent; +50.0% would exceed)"
+    },
+    {
+      "project_id": "P-19005003-SAN-039",
+      "reason": "sector_cap_binding",
+      "detail": "sanitation cap 35% reached (17.0% spent; +55.6% would exceed)"
+    },
+    {
+      "project_id": "P-09004007-EDU-007",
+      "reason": "sector_cap_binding",
+      "detail": "education cap 25% reached (0.0% spent; +410.4% would exceed)"
+    },
+    {
+      "project_id": "P-27001003-SAN-032",
+      "reason": "sector_cap_binding",
+      "detail": "sanitation cap 35% reached (17.0% spent; +52.5% would exceed)"
+    },
+    {
+      "project_id": "P-27001004-SAN-019",
+      "reason": "sector_cap_binding",
+      "detail": "sanitation cap 35% reached (17.0% spent; +46.7% would exceed)"
+    },
+    {
+      "project_id": "P-27001004-DIG-013",
+      "reason": "sector_cap_binding",
+      "detail": "digital cap 30% reached (21.0% spent; +12.1% would exceed)"
+    },
+    {
+      "project_id": "P-27001004-EDU-014",
+      "reason": "sector_cap_binding",
+      "detail": "education cap 25% reached (0.0% spent; +27.5% would exceed)"
+    }
+  ],
+  "constraint_report": [
+    {
+      "constraint": "budget",
+      "binding": true,
+      "slack_inr": 520000
+    },
+    {
+      "constraint": "sector_cap_digital",
+      "binding": false,
+      "slack_inr": 10800000
+    },
+    {
+      "constraint": "sector_cap_education",
+      "binding": false,
+      "slack_inr": 30000000
+    },
+    {
+      "constraint": "sector_cap_health",
+      "binding": false,
+      "slack_inr": 5900000
+    },
+    {
+      "constraint": "sector_cap_power",
+      "binding": false,
+      "slack_inr": 12120000
+    },
+    {
+      "constraint": "sector_cap_roads",
+      "binding": false,
+      "slack_inr": 27600000
+    },
+    {
+      "constraint": "sector_cap_sanitation",
+      "binding": false,
+      "slack_inr": 21600000
+    },
+    {
+      "constraint": "sector_cap_water",
+      "binding": false,
+      "slack_inr": 42500000
+    },
+    {
+      "constraint": "equity_floor",
+      "binding": false,
+      "slack_inr": -18360000
+    }
+  ],
+  "frontier": [
+    {
+      "equity_floor_pct": 0.0,
+      "beneficiaries": 332790,
+      "cost_per_beneficiary_inr": 345,
+      "ladder_level": "equity+caps"
+    },
+    {
+      "equity_floor_pct": 0.2,
+      "beneficiaries": 332790,
+      "cost_per_beneficiary_inr": 345,
+      "ladder_level": "equity+caps"
+    },
+    {
+      "equity_floor_pct": 0.3,
+      "beneficiaries": 332790,
+      "cost_per_beneficiary_inr": 345,
+      "ladder_level": "equity+caps"
+    },
+    {
+      "equity_floor_pct": 0.4,
+      "beneficiaries": 332790,
+      "cost_per_beneficiary_inr": 345,
+      "ladder_level": "equity+caps"
+    },
+    {
+      "equity_floor_pct": 0.5,
+      "beneficiaries": 332790,
+      "cost_per_beneficiary_inr": 345,
+      "ladder_level": "equity+caps"
+    },
+    {
+      "equity_floor_pct": 0.6,
+      "beneficiaries": 330087,
+      "cost_per_beneficiary_inr": 354,
+      "ladder_level": "equity+caps"
+    }
+  ],
+  "infeasible": null
+}

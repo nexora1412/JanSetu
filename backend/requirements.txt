@@ -1,0 +1,11 @@
+# LokNivesh backend — keep it small; every dependency is a deploy risk.
+fastapi>=0.115
+uvicorn[standard]>=0.30
+pydantic>=2.9
+numpy>=1.26
+PuLP>=2.8            # CBC ships with PuLP — no separate solver install
+python-multipart>=0.0.9
+# Optional, only needed for real image verification (Day 9):
+# google-genai>=1.0
+# Optional, only needed for a real telephony provider:
+# twilio>=9.0

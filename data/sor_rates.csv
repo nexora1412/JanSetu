@@ -1,0 +1,23 @@
+intervention_code,sector,description,unit_rate_inr,unit,source,people_served_per_unit
+PMGSY-ROAD-NEW,roads,New rural road construction (PMGSY),6200000,per km,PMGSY-III unit cost,3000
+PMGSY-ROAD-UPG,roads,Upgradation of existing rural road,4100000,per km,PMGSY-III unit cost,4000
+CULVERT-REPAIR,roads,Culvert / cross-drainage repair,850000,per unit,Maharashtra PWD SOR 2025,3000
+JJM-HH-CONN,water,Household tap connection (FHTC),6900,per HH,JJM unit cost,4.5
+JJM-OHT,water,Overhead storage tank (100 KL),1800000,per unit,JJM / state SOR 2025,2500
+JJM-PIPE-MAIN,water,Distribution main pipeline,2400,per m,JJM / state SOR 2025,2
+BORE-REPAIR,water,Handpump / borewell repair,55000,per unit,State SOR 2025,250
+RDSS-FEEDER,power,11 kV feeder upgrade,3100000,per km,RDSS unit cost,1200
+RDSS-TRANSFORMER,power,Distribution transformer (100 kVA),420000,per unit,RDSS unit cost,1500
+SOLAR-STREET,power,Solar street lighting cluster (50 poles),680000,per cluster,State SOR 2025,1200
+PHC-UPGRADE,health,PHC upgrade to 24x7 (IPHS norms),9500000,per unit,NHM unit cost,25000
+PHC-EQUIP,health,PHC diagnostic equipment package,2200000,per unit,NHM unit cost,25000
+AMBULANCE,health,108 ambulance + crew (annual),1600000,per unit,NHM unit cost,60000
+SCHOOL-TOILET,education,School toilet block (separate G/B),480000,per unit,Samagra Shiksha,200
+SCHOOL-CLASSROOM,education,Additional classroom construction,1250000,per unit,Samagra Shiksha,60
+SCHOOL-DIGITAL,education,Smart classroom / ICT lab,750000,per unit,Samagra Shiksha,400
+SBM-IHHL,sanitation,Individual household latrine,12000,per unit,SBM-G 2.0,4.5
+SLWM-PLANT,sanitation,Solid/liquid waste management plant,6800000,per unit,SBM-G 2.0,15000
+DRAINAGE,sanitation,Village drainage network,3400000,per km,15th FC grant norms,2500
+BHARATNET,digital,BharatNet last-mile fibre to GP,2900000,per GP,BharatNet Phase-III,4000
+CSC-UPGRADE,digital,Common Service Centre upgrade,340000,per unit,CSC SPV,3000
+TOWER-SITE,digital,Mobile tower site (gap-fill),4200000,per unit,USOF / state SOR,8000
