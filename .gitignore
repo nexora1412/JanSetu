@@ -1,21 +1,19 @@
-# ── Python ──────────────────────────────────────────────
-__pycache__/  *.py[cod]  *$py.class  *.so
-.venv/  venv/  env/  ENV/
-*.egg-info/  build/  dist/
-.pytest_cache/  .mypy_cache/  .ruff_cache/
-.coverage  htmlcov/
 
-# ── Secrets — NEVER commit these ────────────────────────
-.env  .env.local  .env.*.local
-*.pem  *.key  service-account*.json
 !.env.example
-
-# ── Node (if the frontend is rewritten in React/Vite) ───
-node_modules/  dist/  .vite/  .next/  .turbo/
-
 # ── Editors / OS ────────────────────────────────────────
-.vscode/  .idea/  *.swp  .DS_Store  Thumbnails
-
 # ── Local runtime artefacts ─────────────────────────────
+# ── Node (if the frontend is rewritten in React/Vite) ───
+# ── Python ──────────────────────────────────────────────
+# ── Secrets — NEVER commit these ────────────────────────
+*.egg-info/  build/  dist/
 *.log  *.sqlite3  *.db
+*.pem  *.key  service-account*.json
+.coverage  htmlcov/
+.env  .env.local  .env.*.local
+.pytest_cache/  .mypy_cache/  .ruff_cache/
+.venv/  venv/  env/  ENV/
+.vscode/  .idea/  *.swp  .DS_Store  Thumbnails
+__pycache__/
+__pycache__/  *.py[cod]  *$py.class  *.so
 data/cache/  backend/uploads/
+node_modules/  dist/  .vite/  .next/  .turbo/
