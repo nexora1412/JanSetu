@@ -1,4 +1,4 @@
-# LokNivesh — API Contracts v1.0
+# JanSetu — API Contracts v1.0
 ### **LOCKED ON DAY 1.** Changes require a message in the group chat.
 
 These five objects are the entire interface between workstreams. If your code produces these and consumes these, it will integrate. Every workstream tests against `backend/fixtures/*.json` — **never wait for another person's code.**
@@ -16,14 +16,14 @@ One normalised citizen complaint. The channel it arrived on is metadata, never a
 
 ```json
 {
-  "report_id": "LN-2026-MH-DHU-000123",
+  "report_id": "JS-2026-MH-DHU-000123",
   "created_at": "2026-09-17T10:22:31+05:30",
 
   "channel": "missed_call",
   "channel_meta": {
     "msisdn_hash": "sha256:9f2c...",
     "duration_s": 42,
-    "audio_uri": "gs://loknivesh-audio/2026/09/abc.wav",
+    "audio_uri": "gs://jansetu-audio/2026/09/abc.wav",
     "provider": "simulator",
     "handset_class": "feature_phone"
   },
@@ -56,7 +56,7 @@ One normalised citizen complaint. The channel it arrived on is metadata, never a
   "evidence": [
     {
       "type": "photo",
-      "uri": "gs://loknivesh-evidence/abc.jpg",
+      "uri": "gs://jansetu-evidence/abc.jpg",
       "vision_verdict": "plausible",
       "vision_score": 0.72,
       "vision_note": "Image shows a damaged rural road consistent with the report"
@@ -109,7 +109,7 @@ A clustered, bias-corrected, scored demand hotspot. **Every number here must be 
 
   "report_count": 47,
   "me_too_total": 210,
-  "report_ids": ["LN-2026-MH-DHU-000123"],
+  "report_ids": ["JS-2026-MH-DHU-000123"],
 
   "demand": {
     "raw": 0.82,
@@ -317,7 +317,7 @@ A citizen's verdict on a completed project. **This is the ground truth that driv
   "comment_en": "The road is half done; the culvert work is still pending",
 
   "photo": {
-    "uri": "gs://loknivesh-evidence/verify/00871.jpg",
+    "uri": "gs://jansetu-evidence/verify/00871.jpg",
     "vision_check": {
       "matches_scope": true,
       "asset_visible": true,

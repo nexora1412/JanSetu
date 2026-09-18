@@ -1,4 +1,4 @@
-# LokNivesh — Team Execution Plan
+# JanSetu — Team Execution Plan
 ### How you and your friends actually reach the goal by 30 Sep 2026
 
 **The single biggest risk to a student team is not difficulty. It's integration hell on day 12** — four people with four working modules that have never met. This plan is built to make that impossible.
@@ -211,7 +211,7 @@ Official requirements from the hackathon page:
 
 ### The 2–3 line description (draft, ready to paste)
 
-> **LokNivesh (लोकनिवेश)** turns fragmented citizen voice — via a single toll-free number, missed call, or SMS on any handset, in any Indian language — into a costed, scheme-compliant public investment portfolio. A Gemini-powered routing brain sends each complaint to the right department, a bias-correction model ensures under-connected communities aren't drowned out, and an optimiser allocates a fixed budget to maximise beneficiaries per rupee under equity and geographic-spread constraints. Citizens then photograph and certify the finished work, giving government an audited impact ledger instead of self-reported completion.
+> **JanSetu (जनसेतु)** turns fragmented citizen voice — via a single toll-free number, missed call, or SMS on any handset, in any Indian language — into a costed, scheme-compliant public investment portfolio. A Gemini-powered routing brain sends each complaint to the right department, a bias-correction model ensures under-connected communities aren't drowned out, and an optimiser allocates a fixed budget to maximise beneficiaries per rupee under equity and geographic-spread constraints. Citizens then photograph and certify the finished work, giving government an audited impact ledger instead of self-reported completion.
 
 ---
 

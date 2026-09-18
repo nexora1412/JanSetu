@@ -1,4 +1,4 @@
-# LokNivesh — Solution Architecture v2
+# JanSetu — Solution Architecture v2
 ### The three new features, and how they change the build
 
 **v2 changelog:** Added ① Single Helpline (one number, all departments), ② Feature-phone access (missed call · SMS · IVR · USSD · kiosk), ③ Citizen photo/comment verification feeding the Impact Ledger. Pipeline restructured 7 → 8 layers. Demo script and team split updated.
@@ -19,11 +19,11 @@ Read together: **you just closed all four clauses of the problem statement.** No
 
 ### The bigger framing this unlocks
 
-> **LokNivesh is the missing coordination layer on India's DPI stack.**
+> **JanSetu is the missing coordination layer on India's DPI stack.**
 
 India already has the bricks. Nobody has assembled them for this job:
 
-| India DPI brick | What LokNivesh takes from it |
+| India DPI brick | What JanSetu takes from it |
 |---|---|
 | **Aadhaar** | De-duplicated identity (optional, consented) — one citizen, one vote |
 | **LGD** (Local Government Directory) | Canonical location codes — every complaint resolves to a real administrative unit |
@@ -72,7 +72,7 @@ No `Press 1 for roads, Press 2 for water`. IVR menu trees *are* the fragmentatio
    "आपकी समस्या — धुले ब्लॉक में सड़क खराब। सही है?  1 हाँ ·  2 नहीं"
                                   │
                                   ▼
-   DTMF / speech confirm  →  ticket LN-2026-MH-DHU-000123 created
+   DTMF / speech confirm  →  ticket JS-2026-MH-DHU-000123 created
                                   │
               ┌───────────────────┴───────────────────┐
               ▼                                       ▼
@@ -159,7 +159,7 @@ Indian public works has a **ghost asset** problem: roads and toilets that exist 
 Project marked complete by department
               │
               ▼
-LokNivesh pushes a VERIFICATION REQUEST to citizens in that geohash
+JanSetu pushes a VERIFICATION REQUEST to citizens in that geohash
    (SMS / WhatsApp / IVR voice blast — in their language):
    "धुले ब्लॉक में सड़क का काम पूरा हुआ? फोटो भेजें या 1/2 दबाएं"
               │

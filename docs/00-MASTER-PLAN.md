@@ -1,4 +1,4 @@
-# LokNivesh (लोकनिवेश) — Master Plan
+# JanSetu (जनसेतु) — Master Plan
 ### *Track 01 · AI for Digital Public Infrastructure & Governance · BRICS Theme: Innovation*
 **Build with AI: Code for Communities — Second Edition** (Google Cloud × Hack2Skill)
 
@@ -15,7 +15,7 @@
 > §§ 5–7 and 9 below remain authoritative. §3 (pipeline) and §11 (demo) are superseded by `01-SOLUTION-v2.md`.
 
 > **One-line positioning:**
-> Every other entry in this track **ranks complaints**. LokNivesh **allocates the budget**.
+> Every other entry in this track **ranks complaints**. JanSetu **allocates the budget**.
 > *From citizen voice → verified demand → a costed, scheme-compliant, equity-constrained project portfolio → a measured outcome.*
 
 - **Deadline:** 30 Sep 2026 (prototype submission) · 13 days from today
@@ -71,7 +71,7 @@ Five openings, ranked by how much they'd move a judge.
 
 ## 3. The concept
 
-# LokNivesh — लोकनिवेश
+# JanSetu — जनसेतु
 **"The public investment intelligence layer."**
 A Digital Public Good that turns fragmented citizen voice into a **costed, auditable, budget-optimal public investment portfolio** — and then measures whether it worked.
 
@@ -84,7 +84,7 @@ A Digital Public Good that turns fragmented citizen voice into a **costed, audit
 **No other team can show that. It is the "so what?" of the entire track.**
 
 ### Name options
-1. **LokNivesh (लोकनिवेश)** — *public investment* ← recommended; names the actual object
+1. **JanSetu (जनसेतु)** — *public investment* ← recommended; names the actual object
 2. **NirmanSetu (निर्माणसेतु)** — bridge from voice to construction
 3. **JanNivesh / NyayaNivesh** — *just investment*
 
@@ -231,7 +231,7 @@ did right, and it makes the auditor view honest.
 
 ## 7. Scoring against the official rubric
 
-| Criterion | Weight | How LokNivesh scores |
+| Criterion | Weight | How JanSetu scores |
 |---|---|---|
 | **AI / Technical Execution** | **25%** | Gemini does real work across 5 surfaces, *and* we add genuine OR (ILP), a bias-correction GLM, and counterfactual evaluation. Structured output + fallbacks everywhere; it demos even with the network down. |
 | **Problem–Solution Fit** | **20%** | Directly answers all four clauses: consolidate feedback ✔, align with national priorities ✔, *misaligned spending* → the Allocator ✔, *measure DPI impact* → the Impact Ledger ✔. |
@@ -331,7 +331,7 @@ that decides what the complaint box was always trying to tell us — and then pr
 
 ## 12. Pitch deck — 10–12 slides
 
-1. Title — LokNivesh लोकनिवेश · Track 01
+1. Title — JanSetu जनसेतु · Track 01
 2. Problem — the four clauses; ₹ spent vs need unmet
 3. Why current systems fail — the bias diagram (loud ≠ needy)
 4. Solution — the 7-layer pipeline
@@ -351,7 +351,7 @@ that decides what the complaint box was always trying to tell us — and then pr
 I'll scaffold the repo and build **Day 0–2** now:
 
 ```
-loknivesh/
+jansetu/
 ├── backend/          FastAPI · app/, services/ (gemini, stt, geo), engine/ (score, allocate, bias)
 ├── frontend/         React + Vite + TS · MapLibre + deck.gl
 ├── data/             census, indices, seeds, PROVENANCE.md

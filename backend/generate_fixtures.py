@@ -1,5 +1,5 @@
 """
-LokNivesh — Fixture generator
+JanSetu — Fixture generator
 =============================
 Produces backend/fixtures/*.json so that EVERY workstream can start on Day 1
 without waiting for anyone else's code. Workstream D builds the whole dashboard
@@ -111,7 +111,7 @@ def main() -> None:
         rid += 1
         lgd = block["lgd_block_code"] if lgd is None else lgd
         return {
-            "report_id": f"LN-2026-{block['state'][:2].upper()}-{rid:05d}",
+            "report_id": f"JS-2026-{block['state'][:2].upper()}-{rid:05d}",
             "created_at": (NOW - timedelta(days=age_days)).isoformat(),
             "channel": channel,
             "channel_meta": {"msisdn_hash": f"sha256:{rid:064x}"[:74], "provider": "simulator",
@@ -334,7 +334,7 @@ def main() -> None:
             "comment_language": "mr",
             "comment_en": ("The road is complete, vehicles pass easily now"
                            if good else "The road is only half done; the culvert work is still pending"),
-            "photo": {"uri": f"gs://loknivesh-evidence/verify/{i:05d}.jpg",
+            "photo": {"uri": f"gs://jansetu-evidence/verify/{i:05d}.jpg",
                       "vision_check": {"matches_scope": True, "asset_visible": True,
                                        "completion_est": 0.95 if good else 0.40,
                                        "confidence": 0.82 if good else 0.71,

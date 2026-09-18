@@ -1,5 +1,5 @@
 """
-LokNivesh — Telephony SIMULATOR  (workstream A)
+JanSetu — Telephony SIMULATOR  (workstream A)
 ===============================================
 A phone that lives in the browser. The default provider.
 
@@ -22,11 +22,11 @@ from services.telephony.base import TelephonyProvider, hash_msisdn
 
 # Ack templates in the languages the demo actually uses. TTS fills {ticket}.
 ACK_TEMPLATES = {
-    "en": "LokNivesh: your report {ticket} has been registered and sent to {dept}. "
+    "en": "JanSetu: your report {ticket} has been registered and sent to {dept}. "
           "Expected response in {sla} days. Quote {ticket} for updates.",
-    "hi": "लोकनिवेश: आपकी शिकायत {ticket} दर्ज हो गई है और {dept} को भेज दी गई है। "
+    "hi": "जनसेतु: आपकी शिकायत {ticket} दर्ज हो गई है और {dept} को भेज दी गई है। "
           "{sla} दिनों में जवाब की उम्मीद है। जानकारी के लिए {ticket} बताएं।",
-    "mr": "लोकनिवेश: आपकी तक्रार {ticket} नोंदवली गेली आणि {dept} कडे पाठवली गेली. "
+    "mr": "जनसेतु: आपकी तक्रार {ticket} नोंदवली गेली आणि {dept} कडे पाठवली गेली. "
           "{sla} दिवसांत उत्तराची अपेक्षा. माहितीसाठी {ticket} सांगा.",
     "bn": "লোকনিবেশ: আপনার অভিযোগ {ticket} নথিভুক্ত হয়েছে এবং {dept}-এ পাঠানো হয়েছে। "
           "{sla} দিনের মধ্যে উত্তর আশা করুন। আপডেটের জন্য {ticket} উল্লেখ করুন।",
@@ -38,9 +38,9 @@ ACK_TEMPLATES = {
 
 # The single-helpline greeting. NO IVR MENU — that is the whole design point.
 GREETING = {
-    "en": "Hello. You have reached LokNivesh. Please describe your problem in your own language.",
-    "hi": "नमस्ते। आप लोकनिवेश से जुड़े हैं। कृपया अपनी समस्या अपनी भाषा में बताइए।",
-    "mr": "नमस्कार. आपण लोकनिवेश शी जोडले आहात. कृपया आपली समस्या आपल्या भाषेत सांगा.",
+    "en": "Hello. You have reached JanSetu. Please describe your problem in your own language.",
+    "hi": "नमस्ते। आप जनसेतु से जुड़े हैं। कृपया अपनी समस्या अपनी भाषा में बताइए।",
+    "mr": "नमस्कार. आपण जनसेतु शी जोडले आहात. कृपया आपली समस्या आपल्या भाषेत सांगा.",
     "bn": "নমস্কার। আপনি লোকনিবেশে যুক্ত হয়েছেন। অনুগ্রহ করে আপনার সমস্যা নিজের ভাষায় বলুন।",
     "ta": "வணக்கம். நீங்கள் லோக்நிவேஷை அடைந்துள்ளீர்கள். உங்கள் பிரச்சனையை உங்கள் மொழியில் சொல்லுங்கள்.",
     "te": "నమస్కారం. మీరు లోక్నివేష్ కి చేరుకున్నారు. దయచేసి మీ సమస్యను మీ భాషలో చెప్పండి.",

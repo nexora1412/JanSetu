@@ -1,5 +1,5 @@
 """
-LokNivesh — Deterministic Priority Scoring  (workstream B)
+JanSetu — Deterministic Priority Scoring  (workstream B)
 ==========================================================
 ⚠️ GOLDEN RULE, restated here because it is the single most important line in this repo:
 

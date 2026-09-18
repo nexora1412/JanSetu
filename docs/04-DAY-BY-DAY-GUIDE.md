@@ -1,4 +1,4 @@
-# LokNivesh — Day-by-Day Guide
+# JanSetu — Day-by-Day Guide
 ## Submitting 26 Sep 2026 · 9 working days · Thu 17 → Sat 26 Sep
 
 > **Read this first.** Day 0 is already done — the foundation is built and running.
@@ -35,7 +35,7 @@ Do not rebuild any of this. Read it, run it, then extend it.
 ## 1 · Setup — 30 minutes, whole team, do it together (TODAY)
 
 ```bash
-git clone <your-repo> && cd loknivesh
+git clone <your-repo> && cd jansetu
 python3 -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\activate
 pip install -r backend/requirements.txt
 python3 data/generate_seed.py
@@ -192,7 +192,7 @@ in the build. If it isn't yet, spend Day 6 on it.
 
 ## 3 · The 2–3 line description (paste-ready)
 
-> **LokNivesh (लोकनिवेश)** turns fragmented citizen voice — via a single toll-free number,
+> **JanSetu (जनसेतु)** turns fragmented citizen voice — via a single toll-free number,
 > missed call, or SMS on any handset, in any Indian language — into a costed, scheme-compliant
 > public investment portfolio. A Gemini-powered routing brain sends each complaint to the right
 > department, a bias-correction model stops under-connected communities being drowned out, and

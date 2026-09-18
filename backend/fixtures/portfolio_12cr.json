@@ -1,10 +1,10 @@
 {
-  "portfolio_id": "PF-20260917-47064",
-  "computed_at": "2026-09-17 12:48:49.238959+00:00",
+  "portfolio_id": "PF-20260918-14543",
+  "computed_at": "2026-09-18 15:37:25.521880+00:00",
   "solver": {
     "engine": "pulp_cbc",
     "status": "optimal",
-    "solve_ms": 23,
+    "solve_ms": 26,
     "ladder_level": "equity+caps",
     "relaxations": [
       {

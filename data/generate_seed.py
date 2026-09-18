@@ -1,5 +1,5 @@
 """
-LokNivesh — Seed data generator
+JanSetu — Seed data generator
 ===============================
 Deterministic (seeded) generator for the demo dataset.
 
@@ -240,7 +240,7 @@ def write_csv(path: Path, rows: list[dict]) -> None:
 
 
 def main() -> None:
-    print("Generating LokNivesh seed data (deterministic)…")
+    print("Generating JanSetu seed data (deterministic)…")
     admin = build_admin()
     census = build_census(admin)
     nidi = build_nidi(census)

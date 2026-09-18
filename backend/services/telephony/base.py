@@ -1,5 +1,5 @@
 """
-LokNivesh — Telephony abstraction  (workstream A)
+JanSetu — Telephony abstraction  (workstream A)
 =================================================
 THE SINGLE HELPLINE, made architectural.
 
@@ -30,7 +30,7 @@ from typing import Any
 
 def hash_msisdn(number: str) -> str:
     """Never store a raw phone number. DPDP Act 2023 hygiene, enforced at the boundary."""
-    salt = os.getenv("MSISDN_HASH_SALT", "loknivesh-demo-salt")
+    salt = os.getenv("MSISDN_HASH_SALT", "jansetu-demo-salt")
     return "sha256:" + hashlib.sha256(f"{salt}:{number}".encode()).hexdigest()
 
 

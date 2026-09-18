@@ -1,5 +1,5 @@
 """
-LokNivesh — Impact Ledger  (workstream C)
+JanSetu — Impact Ledger  (workstream C)
 =========================================
 THE CLAUSE OF THE BRIEF THAT NOBODY ELSE ANSWERS:
     "...and no way to measure the impact of large-scale digital public

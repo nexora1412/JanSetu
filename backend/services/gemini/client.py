@@ -1,5 +1,5 @@
 """
-LokNivesh — Google Gemini client  (workstream B)
+JanSetu — Google Gemini client  (workstream B)
 ================================================
 MANDATORY Google AI integration, used across FOUR load-bearing surfaces:
   1. structured extraction  — language, sector, severity, LGD geo-entity, affected population
@@ -105,7 +105,7 @@ def _json_or_none(text: str | None) -> dict | None:
 # 1 · Structured extraction
 # ---------------------------------------------------------------------------
 
-STRUCTURE_PROMPT = """You are the intake engine of LokNivesh, an Indian government
+STRUCTURE_PROMPT = """You are the intake engine of JanSetu, an Indian government
 platform that turns citizen complaints into funded infrastructure projects.
 
 Analyse this citizen complaint. It may be in any Indian language, in Roman script,

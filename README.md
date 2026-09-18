@@ -1,9 +1,11 @@
-# LokNivesh (लोकनिवेश) — Public Investment Intelligence
+# JanSetu (जनसेतु) — Public Investment Intelligence
+
+**🔗 Live demo:** _add your Cloud Run / Render URL here on Day 8_
 
 **Track 01 · AI for Digital Public Infrastructure & Governance · BRICS Theme: Innovation**
 Build with AI: Code for Communities — Second Edition (Google Cloud × Hack2Skill)
 
-> Every other entry in this track **ranks complaints**. LokNivesh **allocates the budget**.
+> Every other entry in this track **ranks complaints**. JanSetu **allocates the budget**.
 > *From citizen voice → verified demand → a costed, scheme-compliant, equity-constrained project portfolio → a measured outcome.*
 
 ---
@@ -11,7 +13,7 @@ Build with AI: Code for Communities — Second Edition (Google Cloud × Hack2Ski
 ## 60-second quickstart
 
 ```bash
-cd loknivesh
+cd jansetu
 python3 -m venv .venv && source .venv/bin/activate      # Windows: .venv\Scripts\activate
 pip install -r backend/requirements.txt
 
@@ -101,7 +103,7 @@ score from components and asserts it equals the stored value — that assertion 
 ## Repository layout
 
 ```
-loknivesh/
+jansetu/
 ├── backend/
 │   ├── app/main.py               FastAPI — 16 endpoints, serves the dashboard
 │   ├── models/schemas.py         ★ THE CONTRACTS (Pydantic). Change = team-wide event.

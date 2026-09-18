@@ -1,5 +1,5 @@
 """
-LokNivesh — ★ The Allocator  (workstream C — THE HERO MODULE)
+JanSetu — ★ The Allocator  (workstream C — THE HERO MODULE)
 ==============================================================
 Every other entry in this track ranks complaints and stops. This one takes a budget
 envelope and returns the optimal portfolio of funded projects.
@@ -100,7 +100,7 @@ def solve_ilp(
     if not eligible:
         return {"status": "infeasible", "selected": [], "reason": "no_eligible_projects"}
 
-    prob = pulp.LpProblem("LokNivesh_Allocation", pulp.LpMaximize)
+    prob = pulp.LpProblem("JanSetu_Allocation", pulp.LpMaximize)
     x = {p["project_id"]: pulp.LpVariable(f"x_{i}", cat="Binary") for i, p in enumerate(eligible)}
 
     prob += pulp.lpSum(benefit(p, score_by_hotspot) * x[p["project_id"]] for p in eligible)

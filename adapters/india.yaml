@@ -1,4 +1,4 @@
-# LokNivesh nation adapter — INDIA
+# JanSetu nation adapter — INDIA
 # Onboarding a nation = this file + one index CSV. Zero code change.
 nation: India
 iso3: IND

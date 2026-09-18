@@ -1,5 +1,5 @@
 """
-LokNivesh — ⚖️ Coverage-Bias Correction  (workstream B)
+JanSetu — ⚖️ Coverage-Bias Correction  (workstream B)
 =======================================================
 THE NOVEL BIT. Digital intake is not a random sample of need.
 

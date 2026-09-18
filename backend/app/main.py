@@ -1,5 +1,5 @@
 """
-LokNivesh — FastAPI application
+JanSetu — FastAPI application
 ===============================
 The single contract every workstream builds against.
 
@@ -45,7 +45,7 @@ FIX = BACKEND / "fixtures"
 STATIC = BACKEND / "static"
 
 app = FastAPI(
-    title="LokNivesh (लोकनिवेश)",
+    title="JanSetu (जनसेतु)",
     description="From citizen voice to a costed, auditable public investment portfolio.",
     version="0.1.0",
 )
@@ -111,7 +111,7 @@ def _route(sector: str, geo: dict) -> dict:
 
 
 def _next_ticket() -> str:
-    return f"LN-2026-{len(REPORTS) + 1:06d}"
+    return f"JS-2026-{len(REPORTS) + 1:06d}"
 
 
 # ---------------------------------------------------------------------------
@@ -488,7 +488,7 @@ def dashboard():
     idx = STATIC / "index.html"
     if idx.exists():
         return HTMLResponse(idx.read_text(encoding="utf-8"))
-    return HTMLResponse("<h1>LokNivesh</h1><p>Dashboard not built yet (workstream D).</p>")
+    return HTMLResponse("<h1>JanSetu</h1><p>Dashboard not built yet (workstream D).</p>")
 
 
 if STATIC.exists():

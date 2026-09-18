@@ -1,4 +1,4 @@
-# LokNivesh backend — keep it small; every dependency is a deploy risk.
+# JanSetu backend — keep it small; every dependency is a deploy risk.
 fastapi>=0.115
 uvicorn[standard]>=0.30
 pydantic>=2.9

@@ -1,5 +1,5 @@
 """
-LokNivesh — Shared API contracts (Pydantic v2)
+JanSetu — Shared API contracts (Pydantic v2)
 ==============================================
 CONTRACT VERSION 1.0 — LOCKED. Changing a model here is a team-wide event.
 Every workstream imports from this file. No duplicate schema definitions anywhere.
@@ -400,7 +400,7 @@ class ErrorEnvelope(BaseModel):
 
 class HealthResponse(BaseModel):
     status: str = "ok"
-    service: str = "loknivesh"
+    service: str = "jansetu"
     version: str = "0.1.0"
     gemini: bool = False
     telephony_provider: str = "simulator"

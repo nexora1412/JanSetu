@@ -1,0 +1,21 @@
+# ── Python ──────────────────────────────────────────────
+__pycache__/  *.py[cod]  *$py.class  *.so
+.venv/  venv/  env/  ENV/
+*.egg-info/  build/  dist/
+.pytest_cache/  .mypy_cache/  .ruff_cache/
+.coverage  htmlcov/
+
+# ── Secrets — NEVER commit these ────────────────────────
+.env  .env.local  .env.*.local
+*.pem  *.key  service-account*.json
+!.env.example
+
+# ── Node (if the frontend is rewritten in React/Vite) ───
+node_modules/  dist/  .vite/  .next/  .turbo/
+
+# ── Editors / OS ────────────────────────────────────────
+.vscode/  .idea/  *.swp  .DS_Store  Thumbnails
+
+# ── Local runtime artefacts ─────────────────────────────
+*.log  *.sqlite3  *.db
+data/cache/  backend/uploads/
