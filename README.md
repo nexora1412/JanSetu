@@ -1,3 +1,4 @@
+
 # JanSetu (जनसेतु) — Public Investment Intelligence
 
 **🔗 Live demo:** _add your Cloud Run / Render URL here on Day 8_
@@ -8,7 +9,6 @@ Build with AI: Code for Communities — Second Edition (Google Cloud × Hack2Ski
 > Every other entry in this track **ranks complaints**. JanSetu **allocates the budget**.
 > *From citizen voice → verified demand → a costed, scheme-compliant, equity-constrained project portfolio → a measured outcome.*
 
----
 
 ## 60-second quickstart
 
@@ -158,3 +158,7 @@ about which is which — that honesty is part of the submission, not a caveat to
 ## Licence
 
 MIT — built as a Digital Public Good.
+=======
+# JanSetu
+JanSetu (जनसेतु) — AI that turns citizen voice into a costed, auditable public investment portfolio.
+
