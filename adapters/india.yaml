@@ -1,0 +1,38 @@
+# JanSetu nation adapter — INDIA
+# Onboarding a nation = this file + one index CSV. Zero code change.
+nation: India
+iso3: IND
+languages: [hi, mr, bn, ta, te, en, hi-Latn]
+primary_script: Devanagari
+currency: {code: INR, symbol: "₹", crore: 10000000}
+
+# Administrative hierarchy — India uses LGD (Local Government Directory),
+# the canonical registry. Every complaint resolves to a real LGD code.
+admin_hierarchy: [state, district, block, gram_panchayat]
+admin_registry:
+  name: LGD
+  url: https://lgdirectory.gov.in
+  code_field: lgd_code
+  note: "Codes in data/lgd_admin.csv are SYNTHETIC placeholders — swap in real ones (Day 6)."
+
+schemes:
+  roads:      PMGSY-III
+  water:      Jal Jeevan Mission
+  power:      RDSS
+  health:     National Health Mission
+  education:  Samagra Shiksha
+  sanitation: SBM-G 2.0
+  digital:    BharatNet Phase-III
+
+channels:
+  - {type: missed_call, cost_to_citizen: 0, handset: feature_phone, priority: 1}
+  - {type: voice_call,  cost_to_citizen: 0, handset: feature_phone, priority: 2}
+  - {type: sms,         cost_to_citizen: 0, handset: feature_phone, priority: 3}
+  - {type: ivr,         cost_to_citizen: 0, handset: feature_phone, priority: 4}
+  - {type: whatsapp,    cost_to_citizen: 0, handset: smartphone,    priority: 5}
+  - {type: kiosk,       cost_to_citizen: 0, handset: kiosk,         priority: 6}
+
+helpline: {number: "155XXX", toll_free: true, short_code_sms: "56767"}
+voice_stack: {stt: [Bhashini, Sarvam, Google_Chirp], tts: [Bhashini, Google_TTS]}
+grievance_backend: CPGRAMS
+dpdp_act_2023: true

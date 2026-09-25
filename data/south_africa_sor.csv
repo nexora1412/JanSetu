@@ -1,0 +1,15 @@
+intervention_code,sector,description,unit_rate_zar,unit,source,people_served_per_unit,unit_rate_inr
+MIG-ROAD-GRAVEL,roads,Rural access gravel road upgrade to engineered standard,3500000,per km,CoGTA MIG Standard Technical Norms 2024,3500,3500000
+MIG-ROAD-SURFACE,roads,Rural road upgrade to paved / asphalt surface,6800000,per km,SANRAL / CoGTA MIG Cost Guidelines,4500,6800000
+MIG-BRIDGE-REPAIR,roads,Pedestrian bridge and low-level culvert crossing,1200000,per unit,Eastern Cape DPWI Schedule of Rates,4000,1200000
+WSIG-BOREHOLE,water,"Solar borehole, storage tanks, and reticulation standpipes",850000,per scheme,DWS Water Services Infrastructure Grant Norms,1800,850000
+WSIG-WATER-MAIN,water,Bulk regional water reticulation pipeline,1800,per m,DWS Bulk Infrastructure Guidelines,3,1800
+WSIG-SPRING-PROT,water,Protected spring development and chlorination unit,220000,per unit,Amathole / OR Tambo Water Master Plan,650,220000
+INEP-GRID,power,Household grid electrification connections (50 HH),925000,per cluster,DMRE INEP Capital Cost Benchmark,250,925000
+INEP-HIGHMAST,power,Solar high-mast security lighting cluster,280000,per mast,CoGTA Municipal Asset Guide,2000,280000
+NHI-CLINIC-UPG,health,Ideal Clinic realization: maternity & pharmacy upgrade,7500000,per clinic,National Health Insurance (NHI) Facility Norms,22000,7500000
+NHI-AMBULANCE,health,4x4 Rural EMS ambulance unit (annual operating cost),1400000,per unit,Eastern Cape Health RoP,45000,1400000
+EIG-SANITATION,education,Safe sanitation block replacing pit latrines (SAFE Initiative),1200000,per school,DBE SAFE Sanitation Norms 2024,450,1200000
+EIG-CLASSROOM,education,Modular classroom construction with solar backup,850000,per classroom,Education Infrastructure Grant Norms,45,850000
+USDG-SEWER,sanitation,Bulk outfall sewer line rehabilitation,4200000,per km,Urban Settlements Development Grant Norms,5000,4200000
+SACONNECT-FIBRE,digital,SA Connect community broadband point of presence,1650000,per site,DCDT SA Connect Phase 2 Norms,6000,1650000

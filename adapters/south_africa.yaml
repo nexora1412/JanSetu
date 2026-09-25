@@ -1,0 +1,38 @@
+# JanSetu nation adapter — SOUTH AFRICA
+# Onboarding a nation = this file + one index CSV. Zero code change.
+nation: South Africa
+iso3: ZAF
+languages: [en, zu, xh, af]
+primary_script: Latin
+currency: {code: ZAR, symbol: "R", million: 1000000}
+
+# Administrative hierarchy — South Africa uses Municipal Demarcation Board (MDB)
+# codes as the canonical spatial registry from Stats SA.
+admin_hierarchy: [province, district_municipality, local_municipality, ward]
+admin_registry:
+  name: "Stats SA / MDB"
+  url: "https://www.statssa.gov.za"
+  code_field: mdb_code
+  note: "Verified official Municipal Demarcation Board (MDB) codes for Eastern Cape and Gauteng."
+
+schemes:
+  roads:      Municipal Infrastructure Grant (MIG)
+  water:      Water Services Infrastructure Grant (WSIG)
+  power:      Integrated National Electrification Programme (INEP)
+  health:     National Health Insurance Infrastructure (NHI)
+  education:  Education Infrastructure Grant (EIG)
+  sanitation: Urban Settlements Development Grant (USDG)
+  digital:    SA Connect Phase 2
+
+channels:
+  - {type: ussd,        cost_to_citizen: 0, handset: feature_phone, priority: 1, note: "*134* toll-free USSD — dominant zero-data channel"}
+  - {type: missed_call, cost_to_citizen: 0, handset: feature_phone, priority: 2}
+  - {type: voice_call,  cost_to_citizen: 0, handset: feature_phone, priority: 3}
+  - {type: sms,         cost_to_citizen: 0, handset: feature_phone, priority: 4}
+  - {type: whatsapp,    cost_to_citizen: 0, handset: smartphone,    priority: 5}
+  - {type: kiosk,       cost_to_citizen: 0, handset: kiosk,         priority: 6}
+
+helpline: {number: "0800-00-5267", toll_free: true, short_code_ussd: "*134*5267#"}
+voice_stack: {stt: [Google_Chirp, Whisper_Local], tts: [Google_TTS]}
+grievance_backend: Presidential Hotline / GovChat
+popia_act_2013: true

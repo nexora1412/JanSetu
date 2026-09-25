@@ -1,0 +1,17 @@
+mdb_code,province,district_municipality,local_municipality,population,literacy_rate,sampi_poverty_headcount,phone_penetration,net_penetration,digital_access_index,is_deep_rural,is_metro,lgd_block_code,state,district,block,bpl_share,sc_st_share,urban,tribal,aspirational
+EC154,Eastern Cape,OR Tambo,Port St Johns,195416,0.623,0.574,0.488,0.257,0.4341,True,False,EC154,Eastern Cape,OR Tambo,Port St Johns,0.574,0.85,False,True,True
+EC155,Eastern Cape,OR Tambo,Nyandeni,136519,0.629,0.717,0.532,0.185,0.43,True,False,EC155,Eastern Cape,OR Tambo,Nyandeni,0.717,0.85,False,True,True
+EC157,Eastern Cape,OR Tambo,King Sabata Dalindyebo,148721,0.806,0.307,0.732,0.418,0.6369,False,False,EC157,Eastern Cape,OR Tambo,King Sabata Dalindyebo,0.307,0.4,False,False,False
+EC156,Eastern Cape,OR Tambo,Mhlontlo,86095,0.627,0.58,0.617,0.206,0.4752,True,False,EC156,Eastern Cape,OR Tambo,Mhlontlo,0.58,0.85,False,True,True
+EC153,Eastern Cape,OR Tambo,Ingquza Hill,110843,0.665,0.707,0.59,0.249,0.4857,True,False,EC153,Eastern Cape,OR Tambo,Ingquza Hill,0.707,0.85,False,True,True
+EC139,Eastern Cape,Chris Hani,Enoch Mgijima,263192,0.799,0.331,0.787,0.42,0.661,False,False,EC139,Eastern Cape,Chris Hani,Enoch Mgijima,0.331,0.4,False,False,False
+EC135,Eastern Cape,Chris Hani,Intsika Yethu,112080,0.67,0.575,0.54,0.227,0.4565,True,False,EC135,Eastern Cape,Chris Hani,Intsika Yethu,0.575,0.85,False,True,True
+EC137,Eastern Cape,Chris Hani,Engcobo,87891,0.708,0.653,0.519,0.202,0.4459,True,False,EC137,Eastern Cape,Chris Hani,Engcobo,0.653,0.85,False,True,True
+JHB-D,Gauteng,City of Johannesburg,Soweto (Region D),512752,0.93,0.037,0.921,0.731,0.8563,False,True,JHB-D,Gauteng,City of Johannesburg,Soweto (Region D),0.037,0.4,True,False,False
+JHB-E,Gauteng,City of Johannesburg,Sandton / Alex (Region E),306432,0.94,0.092,0.922,0.74,0.8619,False,True,JHB-E,Gauteng,City of Johannesburg,Sandton / Alex (Region E),0.092,0.4,True,False,False
+JHB-C,Gauteng,City of Johannesburg,Roodepoort (Region C),387553,0.93,0.11,0.935,0.847,0.9032,False,True,JHB-C,Gauteng,City of Johannesburg,Roodepoort (Region C),0.11,0.4,True,False,False
+TSH-1,Gauteng,City of Tshwane,Pretoria Central,384315,0.937,0.024,0.946,0.891,0.9249,False,True,TSH-1,Gauteng,City of Tshwane,Pretoria Central,0.024,0.4,True,False,False
+TSH-2,Gauteng,City of Tshwane,Mamelodi,432019,0.943,0.024,0.942,0.883,0.9215,False,True,TSH-2,Gauteng,City of Tshwane,Mamelodi,0.024,0.4,True,False,False
+TSH-3,Gauteng,City of Tshwane,Soshanguve,440998,0.909,0.083,0.942,0.813,0.8902,False,True,TSH-3,Gauteng,City of Tshwane,Soshanguve,0.083,0.4,True,False,False
+EKU-1,Gauteng,Ekurhuleni,Kempton Park / Tembisa,545722,0.932,0.03,0.921,0.804,0.8823,False,True,EKU-1,Gauteng,Ekurhuleni,Kempton Park / Tembisa,0.03,0.4,True,False,False
+EKU-2,Gauteng,Ekurhuleni,Germiston / Katlehong,454976,0.922,0.04,0.946,0.883,0.9192,False,True,EKU-2,Gauteng,Ekurhuleni,Germiston / Katlehong,0.04,0.4,True,False,False

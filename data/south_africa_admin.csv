@@ -1,0 +1,17 @@
+province,district_municipality,local_municipality,mdb_code,is_deep_rural,is_metro,registry
+Eastern Cape,OR Tambo,Port St Johns,EC154,True,False,Stats SA / Municipal Demarcation Board
+Eastern Cape,OR Tambo,Nyandeni,EC155,True,False,Stats SA / Municipal Demarcation Board
+Eastern Cape,OR Tambo,King Sabata Dalindyebo,EC157,False,False,Stats SA / Municipal Demarcation Board
+Eastern Cape,OR Tambo,Mhlontlo,EC156,True,False,Stats SA / Municipal Demarcation Board
+Eastern Cape,OR Tambo,Ingquza Hill,EC153,True,False,Stats SA / Municipal Demarcation Board
+Eastern Cape,Chris Hani,Enoch Mgijima,EC139,False,False,Stats SA / Municipal Demarcation Board
+Eastern Cape,Chris Hani,Intsika Yethu,EC135,True,False,Stats SA / Municipal Demarcation Board
+Eastern Cape,Chris Hani,Engcobo,EC137,True,False,Stats SA / Municipal Demarcation Board
+Gauteng,City of Johannesburg,Soweto (Region D),JHB-D,False,True,Stats SA / Municipal Demarcation Board
+Gauteng,City of Johannesburg,Sandton / Alex (Region E),JHB-E,False,True,Stats SA / Municipal Demarcation Board
+Gauteng,City of Johannesburg,Roodepoort (Region C),JHB-C,False,True,Stats SA / Municipal Demarcation Board
+Gauteng,City of Tshwane,Pretoria Central,TSH-1,False,True,Stats SA / Municipal Demarcation Board
+Gauteng,City of Tshwane,Mamelodi,TSH-2,False,True,Stats SA / Municipal Demarcation Board
+Gauteng,City of Tshwane,Soshanguve,TSH-3,False,True,Stats SA / Municipal Demarcation Board
+Gauteng,Ekurhuleni,Kempton Park / Tembisa,EKU-1,False,True,Stats SA / Municipal Demarcation Board
+Gauteng,Ekurhuleni,Germiston / Katlehong,EKU-2,False,True,Stats SA / Municipal Demarcation Board

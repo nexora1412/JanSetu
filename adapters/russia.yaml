@@ -1,0 +1,18 @@
+nation: Russia
+iso3: RUS
+languages: [ru]
+primary_script: Cyrillic
+currency: {code: RUB, symbol: "₽"}
+admin_hierarchy: [federal_subject, district, settlement]
+admin_registry: {name: OKTMO, url: "https://rosstat.gov.ru", code_field: oktmo_code}
+schemes:
+  roads: National Project Safe Quality Roads
+  water: Clean Water
+  power: Energy Security
+  health: Healthcare National Project
+  education: Education National Project
+  sanitation: Ecology National Project
+  digital: Digital Economy
+channels: [{type: sms}, {type: voice_call}, {type: web}]
+helpline: {number: "8-800", toll_free: true}
+voice_stack: {stt: [Google_Chirp], tts: [Google_TTS]}

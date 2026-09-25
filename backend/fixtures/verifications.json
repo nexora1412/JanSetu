@@ -1,0 +1,78 @@
+[
+  {
+    "verification_id": "V-2026-09-17-00000",
+    "project_id": "P-4173-HEA-000",
+    "report_id": null,
+    "created_at": "2026-09-25T14:39:15.266949+00:00",
+    "channel": "whatsapp",
+    "respondent": {
+      "msisdn_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+      "prior_verifications": 6,
+      "trust_weight": 0.8
+    },
+    "verdict": "completed",
+    "raw_comment": "रस्ता पूर्ण झाला आहे, आता गाड्या सहज जातात",
+    "comment_language": "mr",
+    "comment_en": "The road is complete, vehicles pass easily now",
+    "photo": {
+      "uri": "gs://jansetu-evidence/verify/00000.jpg",
+      "vision_check": {
+        "matches_scope": true,
+        "asset_visible": true,
+        "completion_est": 0.95,
+        "confidence": 0.82,
+        "note": "Completed pucca surface, ~2.4 km"
+      }
+    },
+    "geo_check": {
+      "geohash": "teq7z",
+      "within_project_radius": true
+    },
+    "aggregates": {
+      "project_verification_count": 63,
+      "positive": 48,
+      "partial": 11,
+      "negative": 4,
+      "social_audit_score": 0.849,
+      "recommended_action": "certified_release_payment"
+    }
+  },
+  {
+    "verification_id": "V-2026-09-17-00001",
+    "project_id": "P-2305-HEA-001",
+    "report_id": null,
+    "created_at": "2026-09-25T14:39:15.266949+00:00",
+    "channel": "sms",
+    "respondent": {
+      "msisdn_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000001",
+      "prior_verifications": 6,
+      "trust_weight": 0.8
+    },
+    "verdict": "not_done",
+    "raw_comment": "सडक अर्धीच राहिली आहे, पुलाचे काम बाकी आहे",
+    "comment_language": "mr",
+    "comment_en": "The road is only half done; the culvert work is still pending",
+    "photo": {
+      "uri": "gs://jansetu-evidence/verify/00001.jpg",
+      "vision_check": {
+        "matches_scope": true,
+        "asset_visible": true,
+        "completion_est": 0.4,
+        "confidence": 0.71,
+        "note": "Surface present for ~400 m; culvert absent"
+      }
+    },
+    "geo_check": {
+      "geohash": "teq7z",
+      "within_project_radius": true
+    },
+    "aggregates": {
+      "project_verification_count": 58,
+      "positive": 9,
+      "partial": 15,
+      "negative": 34,
+      "social_audit_score": 0.284,
+      "recommended_action": "payment_hold_field_inspection"
+    }
+  }
+]

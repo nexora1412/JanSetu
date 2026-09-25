@@ -1,0 +1,5977 @@
+[
+  {
+    "hotspot_id": "HS-EC154-WATER",
+    "lgd_block_code": "EC154",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 9,
+    "me_too_total": 136,
+    "report_ids": [
+      "JS-ZAF-00002",
+      "JS-ZAF-00007",
+      "JS-ZAF-00008",
+      "JS-ZAF-00009",
+      "JS-ZAF-00012",
+      "JS-ZAF-00013",
+      "JS-ZAF-00014",
+      "JS-ZAF-00016",
+      "JS-ZAF-00017"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.3985,
+      "expected_reports": 18.39,
+      "observed_reports": 9.0,
+      "bias_factor": 2.0432,
+      "adjusted": 0.8143,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.8143,
+      "deficit": 0.7816,
+      "reach": 0.8739,
+      "equity": 0.7369,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 77.0,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC154",
+      "nidi_row": "data/nidi_index.csv#EC154:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.132154+00:00"
+    },
+    "rank": 1
+  },
+  {
+    "hotspot_id": "HS-EC154-ROADS",
+    "lgd_block_code": "EC154",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 3,
+    "me_too_total": 67,
+    "report_ids": [
+      "JS-ZAF-00010",
+      "JS-ZAF-00011",
+      "JS-ZAF-00015"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2641,
+      "expected_reports": 6.13,
+      "observed_reports": 3.0,
+      "bias_factor": 2.0432,
+      "adjusted": 0.5395,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.5395,
+      "deficit": 0.8508,
+      "reach": 0.8739,
+      "equity": 0.7369,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 70.49,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC154",
+      "nidi_row": "data/nidi_index.csv#EC154:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.132154+00:00"
+    },
+    "rank": 2
+  },
+  {
+    "hotspot_id": "HS-EC155-ROADS",
+    "lgd_block_code": "EC155",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 74,
+    "report_ids": [
+      "JS-ZAF-00001",
+      "JS-ZAF-00019",
+      "JS-ZAF-00022",
+      "JS-ZAF-00023",
+      "JS-ZAF-00031"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2967,
+      "expected_reports": 6.32,
+      "observed_reports": 5.0,
+      "bias_factor": 1.2636,
+      "adjusted": 0.3749,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3749,
+      "deficit": 0.8717,
+      "reach": 0.8544,
+      "equity": 0.8584,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 67.5,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC155",
+      "nidi_row": "data/nidi_index.csv#EC155:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.132154+00:00"
+    },
+    "rank": 3
+  },
+  {
+    "hotspot_id": "HS-EC155-EDUCATION",
+    "lgd_block_code": "EC155",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 3,
+    "me_too_total": 85,
+    "report_ids": [
+      "JS-ZAF-00006",
+      "JS-ZAF-00025",
+      "JS-ZAF-00028"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2709,
+      "expected_reports": 3.79,
+      "observed_reports": 3.0,
+      "bias_factor": 1.2636,
+      "adjusted": 0.3424,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3424,
+      "deficit": 0.8397,
+      "reach": 0.8544,
+      "equity": 0.8584,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 65.73,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC155",
+      "nidi_row": "data/nidi_index.csv#EC155:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.132154+00:00"
+    },
+    "rank": 4
+  },
+  {
+    "hotspot_id": "HS-EC155-DIGITAL",
+    "lgd_block_code": "EC155",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 39,
+    "report_ids": [
+      "JS-ZAF-00018",
+      "JS-ZAF-00021"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2118,
+      "expected_reports": 2.53,
+      "observed_reports": 2.0,
+      "bias_factor": 1.2636,
+      "adjusted": 0.2676,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2676,
+      "deficit": 0.8707,
+      "reach": 0.8544,
+      "equity": 0.8584,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 64.26,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC155",
+      "nidi_row": "data/nidi_index.csv#EC155:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.132154+00:00"
+    },
+    "rank": 5
+  },
+  {
+    "hotspot_id": "HS-EC155-HEALTH",
+    "lgd_block_code": "EC155",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 4,
+    "me_too_total": 67,
+    "report_ids": [
+      "JS-ZAF-00005",
+      "JS-ZAF-00020",
+      "JS-ZAF-00024",
+      "JS-ZAF-00029"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2631,
+      "expected_reports": 5.05,
+      "observed_reports": 4.0,
+      "bias_factor": 1.2636,
+      "adjusted": 0.3324,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3324,
+      "deficit": 0.742,
+      "reach": 0.8544,
+      "equity": 0.8584,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 62.99,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC155",
+      "nidi_row": "data/nidi_index.csv#EC155:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.132154+00:00"
+    },
+    "rank": 6
+  },
+  {
+    "hotspot_id": "HS-EC155-WATER",
+    "lgd_block_code": "EC155",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 43,
+    "report_ids": [
+      "JS-ZAF-00027",
+      "JS-ZAF-00032"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2118,
+      "expected_reports": 2.53,
+      "observed_reports": 2.0,
+      "bias_factor": 1.2636,
+      "adjusted": 0.2676,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2676,
+      "deficit": 0.7722,
+      "reach": 0.8544,
+      "equity": 0.8584,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 61.8,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC155",
+      "nidi_row": "data/nidi_index.csv#EC155:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.132154+00:00"
+    },
+    "rank": 7
+  },
+  {
+    "hotspot_id": "HS-EC155-POWER",
+    "lgd_block_code": "EC155",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 13,
+    "report_ids": [
+      "JS-ZAF-00026",
+      "JS-ZAF-00030"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.1564,
+      "expected_reports": 2.53,
+      "observed_reports": 2.0,
+      "bias_factor": 1.2636,
+      "adjusted": 0.1976,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1976,
+      "deficit": 0.839,
+      "reach": 0.8544,
+      "equity": 0.8584,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 61.37,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC155",
+      "nidi_row": "data/nidi_index.csv#EC155:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.132154+00:00"
+    },
+    "rank": 8
+  },
+  {
+    "hotspot_id": "HS-EC153-DIGITAL",
+    "lgd_block_code": "EC153",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 1,
+    "me_too_total": 24,
+    "report_ids": [
+      "JS-ZAF-00070"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.168,
+      "expected_reports": 0.98,
+      "observed_reports": 1.0,
+      "bias_factor": 0.9835,
+      "adjusted": 0.1652,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1652,
+      "deficit": 0.8456,
+      "reach": 0.8431,
+      "equity": 0.8772,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 60.62,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC153",
+      "nidi_row": "data/nidi_index.csv#EC153:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 9
+  },
+  {
+    "hotspot_id": "HS-EC153-POWER",
+    "lgd_block_code": "EC153",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 3,
+    "me_too_total": 31,
+    "report_ids": [
+      "JS-ZAF-00074",
+      "JS-ZAF-00078",
+      "JS-ZAF-00079"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2142,
+      "expected_reports": 2.95,
+      "observed_reports": 3.0,
+      "bias_factor": 0.9835,
+      "adjusted": 0.2106,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2106,
+      "deficit": 0.7818,
+      "reach": 0.8431,
+      "equity": 0.8772,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 60.38,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC153",
+      "nidi_row": "data/nidi_index.csv#EC153:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 10
+  },
+  {
+    "hotspot_id": "HS-EC153-WATER",
+    "lgd_block_code": "EC153",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 4,
+    "me_too_total": 66,
+    "report_ids": [
+      "JS-ZAF-00067",
+      "JS-ZAF-00071",
+      "JS-ZAF-00076",
+      "JS-ZAF-00081"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2579,
+      "expected_reports": 3.93,
+      "observed_reports": 4.0,
+      "bias_factor": 0.9835,
+      "adjusted": 0.2537,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2537,
+      "deficit": 0.729,
+      "reach": 0.8431,
+      "equity": 0.8772,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 60.36,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC153",
+      "nidi_row": "data/nidi_index.csv#EC153:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 11
+  },
+  {
+    "hotspot_id": "HS-EC153-EDUCATION",
+    "lgd_block_code": "EC153",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 30,
+    "report_ids": [
+      "JS-ZAF-00075",
+      "JS-ZAF-00080"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.1966,
+      "expected_reports": 1.97,
+      "observed_reports": 2.0,
+      "bias_factor": 0.9835,
+      "adjusted": 0.1934,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1934,
+      "deficit": 0.7663,
+      "reach": 0.8431,
+      "equity": 0.8772,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 59.48,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC153",
+      "nidi_row": "data/nidi_index.csv#EC153:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 12
+  },
+  {
+    "hotspot_id": "HS-EC156-EDUCATION",
+    "lgd_block_code": "EC156",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 3,
+    "me_too_total": 77,
+    "report_ids": [
+      "JS-ZAF-00058",
+      "JS-ZAF-00061",
+      "JS-ZAF-00066"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2657,
+      "expected_reports": 2.37,
+      "observed_reports": 3.0,
+      "bias_factor": 0.7903,
+      "adjusted": 0.21,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.21,
+      "deficit": 0.8148,
+      "reach": 0.8294,
+      "equity": 0.7448,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 58.93,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC156",
+      "nidi_row": "data/nidi_index.csv#EC156:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 13
+  },
+  {
+    "hotspot_id": "HS-EC135-EDUCATION",
+    "lgd_block_code": "EC135",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 42,
+    "report_ids": [
+      "JS-ZAF-00111",
+      "JS-ZAF-00112"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2112,
+      "expected_reports": 2.11,
+      "observed_reports": 2.0,
+      "bias_factor": 1.0543,
+      "adjusted": 0.2226,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2226,
+      "deficit": 0.7638,
+      "reach": 0.8437,
+      "equity": 0.773,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 58.74,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC135",
+      "nidi_row": "data/nidi_index.csv#EC135:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 14
+  },
+  {
+    "hotspot_id": "HS-EC153-ROADS",
+    "lgd_block_code": "EC153",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 46,
+    "report_ids": [
+      "JS-ZAF-00068",
+      "JS-ZAF-00073"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2255,
+      "expected_reports": 1.97,
+      "observed_reports": 2.0,
+      "bias_factor": 0.9835,
+      "adjusted": 0.2218,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2218,
+      "deficit": 0.6909,
+      "reach": 0.8431,
+      "equity": 0.8772,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 58.45,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC153",
+      "nidi_row": "data/nidi_index.csv#EC153:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 15
+  },
+  {
+    "hotspot_id": "HS-EC137-DIGITAL",
+    "lgd_block_code": "EC137",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 34,
+    "report_ids": [
+      "JS-ZAF-00119",
+      "JS-ZAF-00121"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2004,
+      "expected_reports": 1.64,
+      "observed_reports": 2.0,
+      "bias_factor": 0.8182,
+      "adjusted": 0.164,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.164,
+      "deficit": 0.7695,
+      "reach": 0.8305,
+      "equity": 0.8653,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 58.25,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC137",
+      "nidi_row": "data/nidi_index.csv#EC137:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 16
+  },
+  {
+    "hotspot_id": "HS-EC153-SANITATION",
+    "lgd_block_code": "EC153",
+    "sector": "sanitation",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 48,
+    "report_ids": [
+      "JS-ZAF-00069",
+      "JS-ZAF-00072"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2158,
+      "expected_reports": 1.97,
+      "observed_reports": 2.0,
+      "bias_factor": 0.9835,
+      "adjusted": 0.2122,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2122,
+      "deficit": 0.6924,
+      "reach": 0.8431,
+      "equity": 0.8772,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 58.2,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC153",
+      "nidi_row": "data/nidi_index.csv#EC153:sanitation",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 17
+  },
+  {
+    "hotspot_id": "HS-EC137-WATER",
+    "lgd_block_code": "EC137",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 23,
+    "report_ids": [
+      "JS-ZAF-00113",
+      "JS-ZAF-00114"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.1907,
+      "expected_reports": 1.64,
+      "observed_reports": 2.0,
+      "bias_factor": 0.8182,
+      "adjusted": 0.1561,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1561,
+      "deficit": 0.7565,
+      "reach": 0.8305,
+      "equity": 0.8653,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 57.68,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC137",
+      "nidi_row": "data/nidi_index.csv#EC137:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 18
+  },
+  {
+    "hotspot_id": "HS-EC135-POWER",
+    "lgd_block_code": "EC135",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 3,
+    "me_too_total": 30,
+    "report_ids": [
+      "JS-ZAF-00106",
+      "JS-ZAF-00108",
+      "JS-ZAF-00110"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2076,
+      "expected_reports": 3.16,
+      "observed_reports": 3.0,
+      "bias_factor": 1.0543,
+      "adjusted": 0.2189,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2189,
+      "deficit": 0.7175,
+      "reach": 0.8437,
+      "equity": 0.773,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 57.47,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC135",
+      "nidi_row": "data/nidi_index.csv#EC135:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 19
+  },
+  {
+    "hotspot_id": "HS-EC137-ROADS",
+    "lgd_block_code": "EC137",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 25,
+    "report_ids": [
+      "JS-ZAF-00116",
+      "JS-ZAF-00117"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.1903,
+      "expected_reports": 1.64,
+      "observed_reports": 2.0,
+      "bias_factor": 0.8182,
+      "adjusted": 0.1557,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1557,
+      "deficit": 0.7467,
+      "reach": 0.8305,
+      "equity": 0.8653,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 57.43,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC137",
+      "nidi_row": "data/nidi_index.csv#EC137:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 20
+  },
+  {
+    "hotspot_id": "HS-EC153-HEALTH",
+    "lgd_block_code": "EC153",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 1,
+    "me_too_total": 3,
+    "report_ids": [
+      "JS-ZAF-00077"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.0825,
+      "expected_reports": 0.98,
+      "observed_reports": 1.0,
+      "bias_factor": 0.9835,
+      "adjusted": 0.0812,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.0812,
+      "deficit": 0.813,
+      "reach": 0.8431,
+      "equity": 0.8772,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 57.28,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC153",
+      "nidi_row": "data/nidi_index.csv#EC153:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 21
+  },
+  {
+    "hotspot_id": "HS-EC137-HEALTH",
+    "lgd_block_code": "EC137",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 16,
+    "report_ids": [
+      "JS-ZAF-00118",
+      "JS-ZAF-00120"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.1678,
+      "expected_reports": 1.64,
+      "observed_reports": 2.0,
+      "bias_factor": 0.8182,
+      "adjusted": 0.1373,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1373,
+      "deficit": 0.7392,
+      "reach": 0.8305,
+      "equity": 0.8653,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 56.69,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC137",
+      "nidi_row": "data/nidi_index.csv#EC137:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 22
+  },
+  {
+    "hotspot_id": "HS-EC135-WATER",
+    "lgd_block_code": "EC135",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 30,
+    "report_ids": [
+      "JS-ZAF-00105",
+      "JS-ZAF-00107"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.1906,
+      "expected_reports": 2.11,
+      "observed_reports": 2.0,
+      "bias_factor": 1.0543,
+      "adjusted": 0.2009,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2009,
+      "deficit": 0.6794,
+      "reach": 0.8437,
+      "equity": 0.773,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 55.98,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC135",
+      "nidi_row": "data/nidi_index.csv#EC135:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 23
+  },
+  {
+    "hotspot_id": "HS-EC156-POWER",
+    "lgd_block_code": "EC156",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 1,
+    "me_too_total": 27,
+    "report_ids": [
+      "JS-ZAF-00064"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.1763,
+      "expected_reports": 0.79,
+      "observed_reports": 1.0,
+      "bias_factor": 0.7903,
+      "adjusted": 0.1393,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1393,
+      "deficit": 0.7646,
+      "reach": 0.8294,
+      "equity": 0.7448,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 55.55,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC156",
+      "nidi_row": "data/nidi_index.csv#EC156:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 24
+  },
+  {
+    "hotspot_id": "HS-EC135-ROADS",
+    "lgd_block_code": "EC135",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 1,
+    "me_too_total": 23,
+    "report_ids": [
+      "JS-ZAF-00109"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.1681,
+      "expected_reports": 1.05,
+      "observed_reports": 1.0,
+      "bias_factor": 1.0543,
+      "adjusted": 0.1772,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1772,
+      "deficit": 0.6817,
+      "reach": 0.8437,
+      "equity": 0.773,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 55.33,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC135",
+      "nidi_row": "data/nidi_index.csv#EC135:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 25
+  },
+  {
+    "hotspot_id": "HS-EC137-POWER",
+    "lgd_block_code": "EC137",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 1,
+    "me_too_total": 4,
+    "report_ids": [
+      "JS-ZAF-00122"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.0974,
+      "expected_reports": 0.82,
+      "observed_reports": 1.0,
+      "bias_factor": 0.8182,
+      "adjusted": 0.0797,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.0797,
+      "deficit": 0.7493,
+      "reach": 0.8305,
+      "equity": 0.8653,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 55.21,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC137",
+      "nidi_row": "data/nidi_index.csv#EC137:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 26
+  },
+  {
+    "hotspot_id": "HS-EC139-WATER",
+    "lgd_block_code": "EC139",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 8,
+    "me_too_total": 89,
+    "report_ids": [
+      "JS-ZAF-00083",
+      "JS-ZAF-00084",
+      "JS-ZAF-00087",
+      "JS-ZAF-00089",
+      "JS-ZAF-00091",
+      "JS-ZAF-00092",
+      "JS-ZAF-00098",
+      "JS-ZAF-00099"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.3528,
+      "expected_reports": 9.08,
+      "observed_reports": 8.0,
+      "bias_factor": 1.1351,
+      "adjusted": 0.4004,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.4004,
+      "deficit": 0.5483,
+      "reach": 0.7775,
+      "equity": 0.5201,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 55.07,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC139",
+      "nidi_row": "data/nidi_index.csv#EC139:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 27
+  },
+  {
+    "hotspot_id": "HS-EC156-ROADS",
+    "lgd_block_code": "EC156",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 38,
+    "report_ids": [
+      "JS-ZAF-00059",
+      "JS-ZAF-00063"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2021,
+      "expected_reports": 1.58,
+      "observed_reports": 2.0,
+      "bias_factor": 0.7903,
+      "adjusted": 0.1597,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1597,
+      "deficit": 0.6823,
+      "reach": 0.8294,
+      "equity": 0.7448,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 54.11,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC156",
+      "nidi_row": "data/nidi_index.csv#EC156:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 28
+  },
+  {
+    "hotspot_id": "HS-EC156-DIGITAL",
+    "lgd_block_code": "EC156",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 44,
+    "report_ids": [
+      "JS-ZAF-00062",
+      "JS-ZAF-00065"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2163,
+      "expected_reports": 1.58,
+      "observed_reports": 2.0,
+      "bias_factor": 0.7903,
+      "adjusted": 0.1709,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1709,
+      "deficit": 0.6654,
+      "reach": 0.8294,
+      "equity": 0.7448,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 54.02,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC156",
+      "nidi_row": "data/nidi_index.csv#EC156:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 29
+  },
+  {
+    "hotspot_id": "HS-EC137-SANITATION",
+    "lgd_block_code": "EC137",
+    "sector": "sanitation",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 1,
+    "me_too_total": 2,
+    "report_ids": [
+      "JS-ZAF-00115"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.066,
+      "expected_reports": 0.82,
+      "observed_reports": 1.0,
+      "bias_factor": 0.8182,
+      "adjusted": 0.054,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.054,
+      "deficit": 0.7043,
+      "reach": 0.8305,
+      "equity": 0.8653,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 53.32,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC137",
+      "nidi_row": "data/nidi_index.csv#EC137:sanitation",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 30
+  },
+  {
+    "hotspot_id": "HS-EC156-HEALTH",
+    "lgd_block_code": "EC156",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 1,
+    "me_too_total": 8,
+    "report_ids": [
+      "JS-ZAF-00060"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.1231,
+      "expected_reports": 0.79,
+      "observed_reports": 1.0,
+      "bias_factor": 0.7903,
+      "adjusted": 0.0973,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.0973,
+      "deficit": 0.675,
+      "reach": 0.8294,
+      "equity": 0.7448,
+      "feasibility": 0.45,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 52.05,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC156",
+      "nidi_row": "data/nidi_index.csv#EC156:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 31
+  },
+  {
+    "hotspot_id": "HS-EC139-HEALTH",
+    "lgd_block_code": "EC139",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 4,
+    "me_too_total": 68,
+    "report_ids": [
+      "JS-ZAF-00082",
+      "JS-ZAF-00094",
+      "JS-ZAF-00096",
+      "JS-ZAF-00102"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2674,
+      "expected_reports": 4.54,
+      "observed_reports": 4.0,
+      "bias_factor": 1.1351,
+      "adjusted": 0.3036,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3036,
+      "deficit": 0.5272,
+      "reach": 0.7775,
+      "equity": 0.5201,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 51.64,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC139",
+      "nidi_row": "data/nidi_index.csv#EC139:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 32
+  },
+  {
+    "hotspot_id": "HS-EC139-ROADS",
+    "lgd_block_code": "EC139",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 3,
+    "me_too_total": 52,
+    "report_ids": [
+      "JS-ZAF-00004",
+      "JS-ZAF-00086",
+      "JS-ZAF-00100"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2475,
+      "expected_reports": 3.41,
+      "observed_reports": 3.0,
+      "bias_factor": 1.1351,
+      "adjusted": 0.2809,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2809,
+      "deficit": 0.548,
+      "reach": 0.7775,
+      "equity": 0.5201,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 51.48,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC139",
+      "nidi_row": "data/nidi_index.csv#EC139:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.132154+00:00"
+    },
+    "rank": 33
+  },
+  {
+    "hotspot_id": "HS-EC139-SANITATION",
+    "lgd_block_code": "EC139",
+    "sector": "sanitation",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 56,
+    "report_ids": [
+      "JS-ZAF-00085",
+      "JS-ZAF-00093",
+      "JS-ZAF-00095",
+      "JS-ZAF-00097",
+      "JS-ZAF-00103"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2652,
+      "expected_reports": 5.68,
+      "observed_reports": 5.0,
+      "bias_factor": 1.1351,
+      "adjusted": 0.301,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.301,
+      "deficit": 0.505,
+      "reach": 0.7775,
+      "equity": 0.5201,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 51.01,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC139",
+      "nidi_row": "data/nidi_index.csv#EC139:sanitation",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 34
+  },
+  {
+    "hotspot_id": "HS-EC139-POWER",
+    "lgd_block_code": "EC139",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 38,
+    "report_ids": [
+      "JS-ZAF-00090",
+      "JS-ZAF-00101"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2093,
+      "expected_reports": 2.27,
+      "observed_reports": 2.0,
+      "bias_factor": 1.1351,
+      "adjusted": 0.2376,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2376,
+      "deficit": 0.5426,
+      "reach": 0.7775,
+      "equity": 0.5201,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 50.04,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC139",
+      "nidi_row": "data/nidi_index.csv#EC139:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 35
+  },
+  {
+    "hotspot_id": "HS-EC157-SANITATION",
+    "lgd_block_code": "EC157",
+    "sector": "sanitation",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 4,
+    "me_too_total": 80,
+    "report_ids": [
+      "JS-ZAF-00040",
+      "JS-ZAF-00043",
+      "JS-ZAF-00048",
+      "JS-ZAF-00049"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2863,
+      "expected_reports": 3.37,
+      "observed_reports": 4.0,
+      "bias_factor": 0.8429,
+      "adjusted": 0.2414,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2414,
+      "deficit": 0.5426,
+      "reach": 0.7465,
+      "equity": 0.5057,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 49.32,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC157",
+      "nidi_row": "data/nidi_index.csv#EC157:sanitation",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 36
+  },
+  {
+    "hotspot_id": "HS-TSH-3-SANITATION",
+    "lgd_block_code": "TSH-3",
+    "sector": "sanitation",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 14,
+    "me_too_total": 221,
+    "report_ids": [
+      "JS-ZAF-00389",
+      "JS-ZAF-00390",
+      "JS-ZAF-00394",
+      "JS-ZAF-00395",
+      "JS-ZAF-00398",
+      "JS-ZAF-00399",
+      "JS-ZAF-00406",
+      "JS-ZAF-00409",
+      "JS-ZAF-00413",
+      "JS-ZAF-00414",
+      "JS-ZAF-00415",
+      "JS-ZAF-00430",
+      "JS-ZAF-00432",
+      "JS-ZAF-00436"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.4634,
+      "expected_reports": 14.01,
+      "observed_reports": 14.0,
+      "bias_factor": 1.0005,
+      "adjusted": 0.4636,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.4636,
+      "deficit": 0.2695,
+      "reach": 0.8056,
+      "equity": 0.3997,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 48.75,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-3",
+      "nidi_row": "data/nidi_index.csv#TSH-3:sanitation",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 37
+  },
+  {
+    "hotspot_id": "HS-EC157-HEALTH",
+    "lgd_block_code": "EC157",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 74,
+    "report_ids": [
+      "JS-ZAF-00035",
+      "JS-ZAF-00038",
+      "JS-ZAF-00039",
+      "JS-ZAF-00044",
+      "JS-ZAF-00051"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2858,
+      "expected_reports": 4.21,
+      "observed_reports": 5.0,
+      "bias_factor": 0.8429,
+      "adjusted": 0.2409,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2409,
+      "deficit": 0.5029,
+      "reach": 0.7465,
+      "equity": 0.5057,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 48.32,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC157",
+      "nidi_row": "data/nidi_index.csv#EC157:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 38
+  },
+  {
+    "hotspot_id": "HS-EC157-ROADS",
+    "lgd_block_code": "EC157",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 55,
+    "report_ids": [
+      "JS-ZAF-00033",
+      "JS-ZAF-00041",
+      "JS-ZAF-00047",
+      "JS-ZAF-00050",
+      "JS-ZAF-00057"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2838,
+      "expected_reports": 4.21,
+      "observed_reports": 5.0,
+      "bias_factor": 0.8429,
+      "adjusted": 0.2393,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2393,
+      "deficit": 0.4807,
+      "reach": 0.7465,
+      "equity": 0.5057,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 47.71,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC157",
+      "nidi_row": "data/nidi_index.csv#EC157:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.132154+00:00"
+    },
+    "rank": 39
+  },
+  {
+    "hotspot_id": "HS-EC157-POWER",
+    "lgd_block_code": "EC157",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 68,
+    "report_ids": [
+      "JS-ZAF-00034",
+      "JS-ZAF-00042",
+      "JS-ZAF-00046",
+      "JS-ZAF-00052",
+      "JS-ZAF-00053"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2857,
+      "expected_reports": 4.21,
+      "observed_reports": 5.0,
+      "bias_factor": 0.8429,
+      "adjusted": 0.2408,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2408,
+      "deficit": 0.4684,
+      "reach": 0.7465,
+      "equity": 0.5057,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 47.45,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC157",
+      "nidi_row": "data/nidi_index.csv#EC157:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 40
+  },
+  {
+    "hotspot_id": "HS-TSH-2-DIGITAL",
+    "lgd_block_code": "TSH-2",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 11,
+    "me_too_total": 187,
+    "report_ids": [
+      "JS-ZAF-00346",
+      "JS-ZAF-00347",
+      "JS-ZAF-00349",
+      "JS-ZAF-00351",
+      "JS-ZAF-00355",
+      "JS-ZAF-00356",
+      "JS-ZAF-00359",
+      "JS-ZAF-00361",
+      "JS-ZAF-00368",
+      "JS-ZAF-00375",
+      "JS-ZAF-00384"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.4297,
+      "expected_reports": 11.26,
+      "observed_reports": 11.0,
+      "bias_factor": 1.0234,
+      "adjusted": 0.4398,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.4398,
+      "deficit": 0.2324,
+      "reach": 0.8044,
+      "equity": 0.3769,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 46.75,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-2",
+      "nidi_row": "data/nidi_index.csv#TSH-2:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 41
+  },
+  {
+    "hotspot_id": "HS-EC139-DIGITAL",
+    "lgd_block_code": "EC139",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 24,
+    "report_ids": [
+      "JS-ZAF-00088",
+      "JS-ZAF-00104"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.1896,
+      "expected_reports": 2.27,
+      "observed_reports": 2.0,
+      "bias_factor": 1.1351,
+      "adjusted": 0.2152,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2152,
+      "deficit": 0.4347,
+      "reach": 0.7775,
+      "equity": 0.5201,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 46.67,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC139",
+      "nidi_row": "data/nidi_index.csv#EC139:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 42
+  },
+  {
+    "hotspot_id": "HS-EC157-EDUCATION",
+    "lgd_block_code": "EC157",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 1,
+    "me_too_total": 20,
+    "report_ids": [
+      "JS-ZAF-00055"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.1583,
+      "expected_reports": 0.84,
+      "observed_reports": 1.0,
+      "bias_factor": 0.8429,
+      "adjusted": 0.1334,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1334,
+      "deficit": 0.5551,
+      "reach": 0.7465,
+      "equity": 0.5057,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 46.4,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC157",
+      "nidi_row": "data/nidi_index.csv#EC157:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 43
+  },
+  {
+    "hotspot_id": "HS-EKU-1-SANITATION",
+    "lgd_block_code": "EKU-1",
+    "sector": "sanitation",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 7,
+    "me_too_total": 138,
+    "report_ids": [
+      "JS-ZAF-00439",
+      "JS-ZAF-00440",
+      "JS-ZAF-00441",
+      "JS-ZAF-00448",
+      "JS-ZAF-00452",
+      "JS-ZAF-00462",
+      "JS-ZAF-00468"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3635,
+      "expected_reports": 7.95,
+      "observed_reports": 7.0,
+      "bias_factor": 1.1356,
+      "adjusted": 0.4128,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.4128,
+      "deficit": 0.2289,
+      "reach": 0.8171,
+      "equity": 0.3735,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 46.05,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-1",
+      "nidi_row": "data/nidi_index.csv#EKU-1:sanitation",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 44
+  },
+  {
+    "hotspot_id": "HS-EC157-WATER",
+    "lgd_block_code": "EC157",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 3,
+    "me_too_total": 44,
+    "report_ids": [
+      "JS-ZAF-00037",
+      "JS-ZAF-00045",
+      "JS-ZAF-00054"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.2304,
+      "expected_reports": 2.53,
+      "observed_reports": 3.0,
+      "bias_factor": 0.8429,
+      "adjusted": 0.1942,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1942,
+      "deficit": 0.4558,
+      "reach": 0.7465,
+      "equity": 0.5057,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 45.74,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC157",
+      "nidi_row": "data/nidi_index.csv#EC157:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 45
+  },
+  {
+    "hotspot_id": "HS-EKU-2-SANITATION",
+    "lgd_block_code": "EKU-2",
+    "sector": "sanitation",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 14,
+    "me_too_total": 108,
+    "report_ids": [
+      "JS-ZAF-00484",
+      "JS-ZAF-00488",
+      "JS-ZAF-00491",
+      "JS-ZAF-00495",
+      "JS-ZAF-00499",
+      "JS-ZAF-00500",
+      "JS-ZAF-00504",
+      "JS-ZAF-00507",
+      "JS-ZAF-00510",
+      "JS-ZAF-00518",
+      "JS-ZAF-00519",
+      "JS-ZAF-00525",
+      "JS-ZAF-00528",
+      "JS-ZAF-00529"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.4296,
+      "expected_reports": 15.46,
+      "observed_reports": 14.0,
+      "bias_factor": 1.1045,
+      "adjusted": 0.4745,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.4745,
+      "deficit": 0.1271,
+      "reach": 0.8072,
+      "equity": 0.3742,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 45.17,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-2",
+      "nidi_row": "data/nidi_index.csv#EKU-2:sanitation",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 46
+  },
+  {
+    "hotspot_id": "HS-JHB-D-SANITATION",
+    "lgd_block_code": "JHB-D",
+    "sector": "sanitation",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 9,
+    "me_too_total": 101,
+    "report_ids": [
+      "JS-ZAF-00124",
+      "JS-ZAF-00125",
+      "JS-ZAF-00126",
+      "JS-ZAF-00136",
+      "JS-ZAF-00139",
+      "JS-ZAF-00144",
+      "JS-ZAF-00164",
+      "JS-ZAF-00176",
+      "JS-ZAF-00179"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.347,
+      "expected_reports": 8.71,
+      "observed_reports": 9.0,
+      "bias_factor": 0.9678,
+      "adjusted": 0.3358,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3358,
+      "deficit": 0.2735,
+      "reach": 0.8137,
+      "equity": 0.3778,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 44.85,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-D",
+      "nidi_row": "data/nidi_index.csv#JHB-D:sanitation",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 47
+  },
+  {
+    "hotspot_id": "HS-EKU-1-ROADS",
+    "lgd_block_code": "EKU-1",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 93,
+    "report_ids": [
+      "JS-ZAF-00461",
+      "JS-ZAF-00463",
+      "JS-ZAF-00467",
+      "JS-ZAF-00477",
+      "JS-ZAF-00478"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3017,
+      "expected_reports": 5.68,
+      "observed_reports": 5.0,
+      "bias_factor": 1.1356,
+      "adjusted": 0.3426,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3426,
+      "deficit": 0.2634,
+      "reach": 0.8171,
+      "equity": 0.3735,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 44.81,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-1",
+      "nidi_row": "data/nidi_index.csv#EKU-1:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 48
+  },
+  {
+    "hotspot_id": "HS-JHB-D-EDUCATION",
+    "lgd_block_code": "JHB-D",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 10,
+    "me_too_total": 133,
+    "report_ids": [
+      "JS-ZAF-00127",
+      "JS-ZAF-00134",
+      "JS-ZAF-00142",
+      "JS-ZAF-00145",
+      "JS-ZAF-00147",
+      "JS-ZAF-00150",
+      "JS-ZAF-00154",
+      "JS-ZAF-00163",
+      "JS-ZAF-00175",
+      "JS-ZAF-00181"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3936,
+      "expected_reports": 9.68,
+      "observed_reports": 10.0,
+      "bias_factor": 0.9678,
+      "adjusted": 0.3809,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3809,
+      "deficit": 0.2173,
+      "reach": 0.8137,
+      "equity": 0.3778,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 44.8,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-D",
+      "nidi_row": "data/nidi_index.csv#JHB-D:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 49
+  },
+  {
+    "hotspot_id": "HS-TSH-3-WATER",
+    "lgd_block_code": "TSH-3",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 6,
+    "me_too_total": 114,
+    "report_ids": [
+      "JS-ZAF-00387",
+      "JS-ZAF-00402",
+      "JS-ZAF-00421",
+      "JS-ZAF-00423",
+      "JS-ZAF-00427",
+      "JS-ZAF-00437"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.328,
+      "expected_reports": 6.0,
+      "observed_reports": 6.0,
+      "bias_factor": 1.0005,
+      "adjusted": 0.3282,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3282,
+      "deficit": 0.2661,
+      "reach": 0.8056,
+      "equity": 0.3997,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 44.61,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-3",
+      "nidi_row": "data/nidi_index.csv#TSH-3:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 50
+  },
+  {
+    "hotspot_id": "HS-EKU-1-EDUCATION",
+    "lgd_block_code": "EKU-1",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 9,
+    "me_too_total": 154,
+    "report_ids": [
+      "JS-ZAF-00438",
+      "JS-ZAF-00442",
+      "JS-ZAF-00445",
+      "JS-ZAF-00447",
+      "JS-ZAF-00449",
+      "JS-ZAF-00469",
+      "JS-ZAF-00470",
+      "JS-ZAF-00471",
+      "JS-ZAF-00479"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3774,
+      "expected_reports": 10.22,
+      "observed_reports": 9.0,
+      "bias_factor": 1.1356,
+      "adjusted": 0.4285,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.4285,
+      "deficit": 0.1516,
+      "reach": 0.8171,
+      "equity": 0.3735,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 44.59,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-1",
+      "nidi_row": "data/nidi_index.csv#EKU-1:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 51
+  },
+  {
+    "hotspot_id": "HS-TSH-3-POWER",
+    "lgd_block_code": "TSH-3",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 8,
+    "me_too_total": 125,
+    "report_ids": [
+      "JS-ZAF-00386",
+      "JS-ZAF-00401",
+      "JS-ZAF-00403",
+      "JS-ZAF-00404",
+      "JS-ZAF-00410",
+      "JS-ZAF-00419",
+      "JS-ZAF-00420",
+      "JS-ZAF-00433"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3587,
+      "expected_reports": 8.0,
+      "observed_reports": 8.0,
+      "bias_factor": 1.0005,
+      "adjusted": 0.3589,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3589,
+      "deficit": 0.2193,
+      "reach": 0.8056,
+      "equity": 0.3997,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 44.36,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-3",
+      "nidi_row": "data/nidi_index.csv#TSH-3:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 52
+  },
+  {
+    "hotspot_id": "HS-EC157-DIGITAL",
+    "lgd_block_code": "EC157",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 2,
+    "me_too_total": 12,
+    "report_ids": [
+      "JS-ZAF-00036",
+      "JS-ZAF-00056"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.1496,
+      "expected_reports": 1.69,
+      "observed_reports": 2.0,
+      "bias_factor": 0.8429,
+      "adjusted": 0.1261,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.1261,
+      "deficit": 0.4785,
+      "reach": 0.7465,
+      "equity": 0.5057,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 44.26,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EC157",
+      "nidi_row": "data/nidi_index.csv#EC157:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.133132+00:00"
+    },
+    "rank": 53
+  },
+  {
+    "hotspot_id": "HS-JHB-D-DIGITAL",
+    "lgd_block_code": "JHB-D",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 11,
+    "me_too_total": 125,
+    "report_ids": [
+      "JS-ZAF-00123",
+      "JS-ZAF-00129",
+      "JS-ZAF-00131",
+      "JS-ZAF-00133",
+      "JS-ZAF-00140",
+      "JS-ZAF-00146",
+      "JS-ZAF-00155",
+      "JS-ZAF-00156",
+      "JS-ZAF-00158",
+      "JS-ZAF-00171",
+      "JS-ZAF-00178"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.4087,
+      "expected_reports": 10.65,
+      "observed_reports": 11.0,
+      "bias_factor": 0.9678,
+      "adjusted": 0.3955,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3955,
+      "deficit": 0.1773,
+      "reach": 0.8137,
+      "equity": 0.3778,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 44.24,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-D",
+      "nidi_row": "data/nidi_index.csv#JHB-D:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.134136+00:00"
+    },
+    "rank": 54
+  },
+  {
+    "hotspot_id": "HS-JHB-D-HEALTH",
+    "lgd_block_code": "JHB-D",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 9,
+    "me_too_total": 143,
+    "report_ids": [
+      "JS-ZAF-00128",
+      "JS-ZAF-00130",
+      "JS-ZAF-00135",
+      "JS-ZAF-00149",
+      "JS-ZAF-00159",
+      "JS-ZAF-00160",
+      "JS-ZAF-00165",
+      "JS-ZAF-00169",
+      "JS-ZAF-00177"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3697,
+      "expected_reports": 8.71,
+      "observed_reports": 9.0,
+      "bias_factor": 0.9678,
+      "adjusted": 0.3578,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3578,
+      "deficit": 0.2216,
+      "reach": 0.8137,
+      "equity": 0.3778,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 44.21,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-D",
+      "nidi_row": "data/nidi_index.csv#JHB-D:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 55
+  },
+  {
+    "hotspot_id": "HS-EKU-2-EDUCATION",
+    "lgd_block_code": "EKU-2",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 10,
+    "me_too_total": 151,
+    "report_ids": [
+      "JS-ZAF-00490",
+      "JS-ZAF-00492",
+      "JS-ZAF-00501",
+      "JS-ZAF-00503",
+      "JS-ZAF-00506",
+      "JS-ZAF-00514",
+      "JS-ZAF-00520",
+      "JS-ZAF-00522",
+      "JS-ZAF-00524",
+      "JS-ZAF-00526"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.4042,
+      "expected_reports": 11.04,
+      "observed_reports": 10.0,
+      "bias_factor": 1.1045,
+      "adjusted": 0.4464,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.4464,
+      "deficit": 0.1206,
+      "reach": 0.8072,
+      "equity": 0.3742,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 44.16,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-2",
+      "nidi_row": "data/nidi_index.csv#EKU-2:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.138133+00:00"
+    },
+    "rank": 56
+  },
+  {
+    "hotspot_id": "HS-TSH-2-ROADS",
+    "lgd_block_code": "TSH-2",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 8,
+    "me_too_total": 92,
+    "report_ids": [
+      "JS-ZAF-00339",
+      "JS-ZAF-00341",
+      "JS-ZAF-00342",
+      "JS-ZAF-00343",
+      "JS-ZAF-00345",
+      "JS-ZAF-00353",
+      "JS-ZAF-00364",
+      "JS-ZAF-00378"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3497,
+      "expected_reports": 8.19,
+      "observed_reports": 8.0,
+      "bias_factor": 1.0234,
+      "adjusted": 0.3579,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3579,
+      "deficit": 0.2226,
+      "reach": 0.8044,
+      "equity": 0.3769,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 44.04,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-2",
+      "nidi_row": "data/nidi_index.csv#TSH-2:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 57
+  },
+  {
+    "hotspot_id": "HS-TSH-3-DIGITAL",
+    "lgd_block_code": "TSH-3",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 7,
+    "me_too_total": 99,
+    "report_ids": [
+      "JS-ZAF-00388",
+      "JS-ZAF-00392",
+      "JS-ZAF-00393",
+      "JS-ZAF-00411",
+      "JS-ZAF-00417",
+      "JS-ZAF-00424",
+      "JS-ZAF-00435"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3357,
+      "expected_reports": 7.0,
+      "observed_reports": 7.0,
+      "bias_factor": 1.0005,
+      "adjusted": 0.3359,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3359,
+      "deficit": 0.2221,
+      "reach": 0.8056,
+      "equity": 0.3997,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 43.74,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-3",
+      "nidi_row": "data/nidi_index.csv#TSH-3:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 58
+  },
+  {
+    "hotspot_id": "HS-JHB-E-HEALTH",
+    "lgd_block_code": "JHB-E",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 14,
+    "me_too_total": 229,
+    "report_ids": [
+      "JS-ZAF-00183",
+      "JS-ZAF-00196",
+      "JS-ZAF-00199",
+      "JS-ZAF-00201",
+      "JS-ZAF-00203",
+      "JS-ZAF-00204",
+      "JS-ZAF-00205",
+      "JS-ZAF-00210",
+      "JS-ZAF-00214",
+      "JS-ZAF-00227",
+      "JS-ZAF-00231",
+      "JS-ZAF-00232",
+      "JS-ZAF-00238",
+      "JS-ZAF-00247"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.4327,
+      "expected_reports": 9.36,
+      "observed_reports": 14.0,
+      "bias_factor": 0.6683,
+      "adjusted": 0.2892,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2892,
+      "deficit": 0.2737,
+      "reach": 0.7858,
+      "equity": 0.4303,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 43.69,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-E",
+      "nidi_row": "data/nidi_index.csv#JHB-E:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 59
+  },
+  {
+    "hotspot_id": "HS-EKU-2-HEALTH",
+    "lgd_block_code": "EKU-2",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 7,
+    "me_too_total": 125,
+    "report_ids": [
+      "JS-ZAF-00489",
+      "JS-ZAF-00493",
+      "JS-ZAF-00509",
+      "JS-ZAF-00511",
+      "JS-ZAF-00513",
+      "JS-ZAF-00517",
+      "JS-ZAF-00527"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3361,
+      "expected_reports": 7.73,
+      "observed_reports": 7.0,
+      "bias_factor": 1.1045,
+      "adjusted": 0.3712,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3712,
+      "deficit": 0.1868,
+      "reach": 0.8072,
+      "equity": 0.3742,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 43.56,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-2",
+      "nidi_row": "data/nidi_index.csv#EKU-2:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 60
+  },
+  {
+    "hotspot_id": "HS-JHB-C-SANITATION",
+    "lgd_block_code": "JHB-C",
+    "sector": "sanitation",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 8,
+    "me_too_total": 122,
+    "report_ids": [
+      "JS-ZAF-00256",
+      "JS-ZAF-00262",
+      "JS-ZAF-00264",
+      "JS-ZAF-00267",
+      "JS-ZAF-00274",
+      "JS-ZAF-00275",
+      "JS-ZAF-00276",
+      "JS-ZAF-00284"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3697,
+      "expected_reports": 7.48,
+      "observed_reports": 8.0,
+      "bias_factor": 0.9354,
+      "adjusted": 0.3458,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3458,
+      "deficit": 0.1857,
+      "reach": 0.7985,
+      "equity": 0.4375,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 43.55,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-C",
+      "nidi_row": "data/nidi_index.csv#JHB-C:sanitation",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 61
+  },
+  {
+    "hotspot_id": "HS-JHB-C-HEALTH",
+    "lgd_block_code": "JHB-C",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 9,
+    "me_too_total": 81,
+    "report_ids": [
+      "JS-ZAF-00260",
+      "JS-ZAF-00266",
+      "JS-ZAF-00270",
+      "JS-ZAF-00277",
+      "JS-ZAF-00280",
+      "JS-ZAF-00283",
+      "JS-ZAF-00285",
+      "JS-ZAF-00289",
+      "JS-ZAF-00291"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3497,
+      "expected_reports": 8.42,
+      "observed_reports": 9.0,
+      "bias_factor": 0.9354,
+      "adjusted": 0.3271,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3271,
+      "deficit": 0.2073,
+      "reach": 0.7985,
+      "equity": 0.4375,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 43.53,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-C",
+      "nidi_row": "data/nidi_index.csv#JHB-C:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 62
+  },
+  {
+    "hotspot_id": "HS-JHB-C-EDUCATION",
+    "lgd_block_code": "JHB-C",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 68,
+    "report_ids": [
+      "JS-ZAF-00250",
+      "JS-ZAF-00259",
+      "JS-ZAF-00265",
+      "JS-ZAF-00281",
+      "JS-ZAF-00290"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2846,
+      "expected_reports": 4.68,
+      "observed_reports": 5.0,
+      "bias_factor": 0.9354,
+      "adjusted": 0.2662,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2662,
+      "deficit": 0.2701,
+      "reach": 0.7985,
+      "equity": 0.4375,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 43.27,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-C",
+      "nidi_row": "data/nidi_index.csv#JHB-C:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 63
+  },
+  {
+    "hotspot_id": "HS-EKU-1-POWER",
+    "lgd_block_code": "EKU-1",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 6,
+    "me_too_total": 75,
+    "report_ids": [
+      "JS-ZAF-00443",
+      "JS-ZAF-00451",
+      "JS-ZAF-00472",
+      "JS-ZAF-00473",
+      "JS-ZAF-00475",
+      "JS-ZAF-00476"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3246,
+      "expected_reports": 6.81,
+      "observed_reports": 6.0,
+      "bias_factor": 1.1356,
+      "adjusted": 0.3686,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3686,
+      "deficit": 0.1669,
+      "reach": 0.8171,
+      "equity": 0.3735,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 43.18,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-1",
+      "nidi_row": "data/nidi_index.csv#EKU-1:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 64
+  },
+  {
+    "hotspot_id": "HS-TSH-1-WATER",
+    "lgd_block_code": "TSH-1",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 9,
+    "me_too_total": 119,
+    "report_ids": [
+      "JS-ZAF-00295",
+      "JS-ZAF-00299",
+      "JS-ZAF-00305",
+      "JS-ZAF-00306",
+      "JS-ZAF-00310",
+      "JS-ZAF-00311",
+      "JS-ZAF-00314",
+      "JS-ZAF-00318",
+      "JS-ZAF-00332"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3602,
+      "expected_reports": 8.65,
+      "observed_reports": 9.0,
+      "bias_factor": 0.9606,
+      "adjusted": 0.346,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.346,
+      "deficit": 0.1974,
+      "reach": 0.7981,
+      "equity": 0.3724,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 42.86,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-1",
+      "nidi_row": "data/nidi_index.csv#TSH-1:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 65
+  },
+  {
+    "hotspot_id": "HS-EKU-2-DIGITAL",
+    "lgd_block_code": "EKU-2",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 45,
+    "report_ids": [
+      "JS-ZAF-00482",
+      "JS-ZAF-00485",
+      "JS-ZAF-00486",
+      "JS-ZAF-00494",
+      "JS-ZAF-00512"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2695,
+      "expected_reports": 5.52,
+      "observed_reports": 5.0,
+      "bias_factor": 1.1045,
+      "adjusted": 0.2976,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2976,
+      "deficit": 0.2447,
+      "reach": 0.8072,
+      "equity": 0.3742,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 42.8,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-2",
+      "nidi_row": "data/nidi_index.csv#EKU-2:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 66
+  },
+  {
+    "hotspot_id": "HS-TSH-3-EDUCATION",
+    "lgd_block_code": "TSH-3",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 7,
+    "me_too_total": 110,
+    "report_ids": [
+      "JS-ZAF-00400",
+      "JS-ZAF-00407",
+      "JS-ZAF-00408",
+      "JS-ZAF-00418",
+      "JS-ZAF-00426",
+      "JS-ZAF-00429",
+      "JS-ZAF-00434"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3386,
+      "expected_reports": 7.0,
+      "observed_reports": 7.0,
+      "bias_factor": 1.0005,
+      "adjusted": 0.3387,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3387,
+      "deficit": 0.1801,
+      "reach": 0.8056,
+      "equity": 0.3997,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 42.77,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-3",
+      "nidi_row": "data/nidi_index.csv#TSH-3:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 67
+  },
+  {
+    "hotspot_id": "HS-JHB-D-ROADS",
+    "lgd_block_code": "JHB-D",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 6,
+    "me_too_total": 65,
+    "report_ids": [
+      "JS-ZAF-00138",
+      "JS-ZAF-00151",
+      "JS-ZAF-00152",
+      "JS-ZAF-00166",
+      "JS-ZAF-00167",
+      "JS-ZAF-00168"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3135,
+      "expected_reports": 5.81,
+      "observed_reports": 6.0,
+      "bias_factor": 0.9678,
+      "adjusted": 0.3034,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3034,
+      "deficit": 0.2209,
+      "reach": 0.8137,
+      "equity": 0.3778,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 42.57,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-D",
+      "nidi_row": "data/nidi_index.csv#JHB-D:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 68
+  },
+  {
+    "hotspot_id": "HS-TSH-1-ROADS",
+    "lgd_block_code": "TSH-1",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 78,
+    "report_ids": [
+      "JS-ZAF-00293",
+      "JS-ZAF-00297",
+      "JS-ZAF-00298",
+      "JS-ZAF-00304",
+      "JS-ZAF-00334"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3076,
+      "expected_reports": 4.8,
+      "observed_reports": 5.0,
+      "bias_factor": 0.9606,
+      "adjusted": 0.2954,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2954,
+      "deficit": 0.2384,
+      "reach": 0.7981,
+      "equity": 0.3724,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 42.37,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-1",
+      "nidi_row": "data/nidi_index.csv#TSH-1:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 69
+  },
+  {
+    "hotspot_id": "HS-JHB-E-SANITATION",
+    "lgd_block_code": "JHB-E",
+    "sector": "sanitation",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 9,
+    "me_too_total": 181,
+    "report_ids": [
+      "JS-ZAF-00195",
+      "JS-ZAF-00200",
+      "JS-ZAF-00206",
+      "JS-ZAF-00212",
+      "JS-ZAF-00221",
+      "JS-ZAF-00243",
+      "JS-ZAF-00244",
+      "JS-ZAF-00246",
+      "JS-ZAF-00249"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3695,
+      "expected_reports": 6.01,
+      "observed_reports": 9.0,
+      "bias_factor": 0.6683,
+      "adjusted": 0.247,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.247,
+      "deficit": 0.2673,
+      "reach": 0.7858,
+      "equity": 0.4303,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 42.26,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-E",
+      "nidi_row": "data/nidi_index.csv#JHB-E:sanitation",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 70
+  },
+  {
+    "hotspot_id": "HS-JHB-D-POWER",
+    "lgd_block_code": "JHB-D",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 8,
+    "me_too_total": 128,
+    "report_ids": [
+      "JS-ZAF-00003",
+      "JS-ZAF-00132",
+      "JS-ZAF-00137",
+      "JS-ZAF-00153",
+      "JS-ZAF-00162",
+      "JS-ZAF-00172",
+      "JS-ZAF-00173",
+      "JS-ZAF-00180"
+    ],
+    "created_at": "2026-09-25 14:43:46.116303+00:00",
+    "demand": {
+      "raw": 0.3758,
+      "expected_reports": 7.74,
+      "observed_reports": 8.0,
+      "bias_factor": 0.9678,
+      "adjusted": 0.3637,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3637,
+      "deficit": 0.1315,
+      "reach": 0.8137,
+      "equity": 0.3778,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 42.14,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-D",
+      "nidi_row": "data/nidi_index.csv#JHB-D:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.132154+00:00"
+    },
+    "rank": 71
+  },
+  {
+    "hotspot_id": "HS-JHB-E-ROADS",
+    "lgd_block_code": "JHB-E",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 8,
+    "me_too_total": 141,
+    "report_ids": [
+      "JS-ZAF-00185",
+      "JS-ZAF-00198",
+      "JS-ZAF-00211",
+      "JS-ZAF-00215",
+      "JS-ZAF-00216",
+      "JS-ZAF-00229",
+      "JS-ZAF-00239",
+      "JS-ZAF-00248"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3512,
+      "expected_reports": 5.35,
+      "observed_reports": 8.0,
+      "bias_factor": 0.6683,
+      "adjusted": 0.2347,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2347,
+      "deficit": 0.2769,
+      "reach": 0.7858,
+      "equity": 0.4303,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 42.13,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-E",
+      "nidi_row": "data/nidi_index.csv#JHB-E:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 72
+  },
+  {
+    "hotspot_id": "HS-EKU-1-WATER",
+    "lgd_block_code": "EKU-1",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 7,
+    "me_too_total": 115,
+    "report_ids": [
+      "JS-ZAF-00446",
+      "JS-ZAF-00450",
+      "JS-ZAF-00453",
+      "JS-ZAF-00456",
+      "JS-ZAF-00457",
+      "JS-ZAF-00464",
+      "JS-ZAF-00480"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.327,
+      "expected_reports": 7.95,
+      "observed_reports": 7.0,
+      "bias_factor": 1.1356,
+      "adjusted": 0.3713,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3713,
+      "deficit": 0.1178,
+      "reach": 0.8171,
+      "equity": 0.3735,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 42.03,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-1",
+      "nidi_row": "data/nidi_index.csv#EKU-1:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 73
+  },
+  {
+    "hotspot_id": "HS-TSH-2-SANITATION",
+    "lgd_block_code": "TSH-2",
+    "sector": "sanitation",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 7,
+    "me_too_total": 134,
+    "report_ids": [
+      "JS-ZAF-00336",
+      "JS-ZAF-00340",
+      "JS-ZAF-00344",
+      "JS-ZAF-00354",
+      "JS-ZAF-00365",
+      "JS-ZAF-00371",
+      "JS-ZAF-00373"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.355,
+      "expected_reports": 7.16,
+      "observed_reports": 7.0,
+      "bias_factor": 1.0234,
+      "adjusted": 0.3633,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3633,
+      "deficit": 0.133,
+      "reach": 0.8044,
+      "equity": 0.3769,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 41.97,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-2",
+      "nidi_row": "data/nidi_index.csv#TSH-2:sanitation",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 74
+  },
+  {
+    "hotspot_id": "HS-JHB-C-DIGITAL",
+    "lgd_block_code": "JHB-C",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 3,
+    "me_too_total": 39,
+    "report_ids": [
+      "JS-ZAF-00263",
+      "JS-ZAF-00268",
+      "JS-ZAF-00279"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.239,
+      "expected_reports": 2.81,
+      "observed_reports": 3.0,
+      "bias_factor": 0.9354,
+      "adjusted": 0.2236,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2236,
+      "deficit": 0.265,
+      "reach": 0.7985,
+      "equity": 0.4375,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 41.87,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-C",
+      "nidi_row": "data/nidi_index.csv#JHB-C:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 75
+  },
+  {
+    "hotspot_id": "HS-EKU-2-POWER",
+    "lgd_block_code": "EKU-2",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 7,
+    "me_too_total": 113,
+    "report_ids": [
+      "JS-ZAF-00481",
+      "JS-ZAF-00483",
+      "JS-ZAF-00487",
+      "JS-ZAF-00497",
+      "JS-ZAF-00498",
+      "JS-ZAF-00505",
+      "JS-ZAF-00516"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3401,
+      "expected_reports": 7.73,
+      "observed_reports": 7.0,
+      "bias_factor": 1.1045,
+      "adjusted": 0.3756,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3756,
+      "deficit": 0.1053,
+      "reach": 0.8072,
+      "equity": 0.3742,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 41.66,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-2",
+      "nidi_row": "data/nidi_index.csv#EKU-2:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 76
+  },
+  {
+    "hotspot_id": "HS-JHB-C-WATER",
+    "lgd_block_code": "JHB-C",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 8,
+    "me_too_total": 146,
+    "report_ids": [
+      "JS-ZAF-00251",
+      "JS-ZAF-00252",
+      "JS-ZAF-00253",
+      "JS-ZAF-00257",
+      "JS-ZAF-00261",
+      "JS-ZAF-00269",
+      "JS-ZAF-00271",
+      "JS-ZAF-00286"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3669,
+      "expected_reports": 7.48,
+      "observed_reports": 8.0,
+      "bias_factor": 0.9354,
+      "adjusted": 0.3432,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3432,
+      "deficit": 0.1067,
+      "reach": 0.7985,
+      "equity": 0.4375,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 41.5,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-C",
+      "nidi_row": "data/nidi_index.csv#JHB-C:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 77
+  },
+  {
+    "hotspot_id": "HS-EKU-1-HEALTH",
+    "lgd_block_code": "EKU-1",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 3,
+    "me_too_total": 35,
+    "report_ids": [
+      "JS-ZAF-00455",
+      "JS-ZAF-00459",
+      "JS-ZAF-00466"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2316,
+      "expected_reports": 3.41,
+      "observed_reports": 3.0,
+      "bias_factor": 1.1356,
+      "adjusted": 0.263,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.263,
+      "deficit": 0.2242,
+      "reach": 0.8171,
+      "equity": 0.3735,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 41.44,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-1",
+      "nidi_row": "data/nidi_index.csv#EKU-1:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 78
+  },
+  {
+    "hotspot_id": "HS-JHB-E-DIGITAL",
+    "lgd_block_code": "JHB-E",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 11,
+    "me_too_total": 117,
+    "report_ids": [
+      "JS-ZAF-00184",
+      "JS-ZAF-00188",
+      "JS-ZAF-00189",
+      "JS-ZAF-00191",
+      "JS-ZAF-00192",
+      "JS-ZAF-00202",
+      "JS-ZAF-00208",
+      "JS-ZAF-00224",
+      "JS-ZAF-00240",
+      "JS-ZAF-00241",
+      "JS-ZAF-00245"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3813,
+      "expected_reports": 7.35,
+      "observed_reports": 11.0,
+      "bias_factor": 0.6683,
+      "adjusted": 0.2548,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2548,
+      "deficit": 0.2234,
+      "reach": 0.7858,
+      "equity": 0.4303,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 41.4,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-E",
+      "nidi_row": "data/nidi_index.csv#JHB-E:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 79
+  },
+  {
+    "hotspot_id": "HS-TSH-3-HEALTH",
+    "lgd_block_code": "TSH-3",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 86,
+    "report_ids": [
+      "JS-ZAF-00391",
+      "JS-ZAF-00416",
+      "JS-ZAF-00422",
+      "JS-ZAF-00425",
+      "JS-ZAF-00431"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2896,
+      "expected_reports": 5.0,
+      "observed_reports": 5.0,
+      "bias_factor": 1.0005,
+      "adjusted": 0.2898,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2898,
+      "deficit": 0.1796,
+      "reach": 0.8056,
+      "equity": 0.3997,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 41.29,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-3",
+      "nidi_row": "data/nidi_index.csv#TSH-3:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 80
+  },
+  {
+    "hotspot_id": "HS-EKU-1-DIGITAL",
+    "lgd_block_code": "EKU-1",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 6,
+    "me_too_total": 75,
+    "report_ids": [
+      "JS-ZAF-00444",
+      "JS-ZAF-00454",
+      "JS-ZAF-00458",
+      "JS-ZAF-00460",
+      "JS-ZAF-00465",
+      "JS-ZAF-00474"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2948,
+      "expected_reports": 6.81,
+      "observed_reports": 6.0,
+      "bias_factor": 1.1356,
+      "adjusted": 0.3347,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3347,
+      "deficit": 0.1315,
+      "reach": 0.8171,
+      "equity": 0.3735,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 41.27,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-1",
+      "nidi_row": "data/nidi_index.csv#EKU-1:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 81
+  },
+  {
+    "hotspot_id": "HS-TSH-1-SANITATION",
+    "lgd_block_code": "TSH-1",
+    "sector": "sanitation",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 7,
+    "me_too_total": 108,
+    "report_ids": [
+      "JS-ZAF-00300",
+      "JS-ZAF-00301",
+      "JS-ZAF-00302",
+      "JS-ZAF-00316",
+      "JS-ZAF-00317",
+      "JS-ZAF-00320",
+      "JS-ZAF-00324"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3286,
+      "expected_reports": 6.72,
+      "observed_reports": 7.0,
+      "bias_factor": 0.9606,
+      "adjusted": 0.3156,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3156,
+      "deficit": 0.1619,
+      "reach": 0.7981,
+      "equity": 0.3724,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 41.06,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-1",
+      "nidi_row": "data/nidi_index.csv#TSH-1:sanitation",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 82
+  },
+  {
+    "hotspot_id": "HS-TSH-2-EDUCATION",
+    "lgd_block_code": "TSH-2",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 7,
+    "me_too_total": 133,
+    "report_ids": [
+      "JS-ZAF-00335",
+      "JS-ZAF-00350",
+      "JS-ZAF-00360",
+      "JS-ZAF-00367",
+      "JS-ZAF-00370",
+      "JS-ZAF-00372",
+      "JS-ZAF-00385"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3523,
+      "expected_reports": 7.16,
+      "observed_reports": 7.0,
+      "bias_factor": 1.0234,
+      "adjusted": 0.3605,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3605,
+      "deficit": 0.0994,
+      "reach": 0.8044,
+      "equity": 0.3769,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 41.04,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-2",
+      "nidi_row": "data/nidi_index.csv#TSH-2:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 83
+  },
+  {
+    "hotspot_id": "HS-TSH-1-EDUCATION",
+    "lgd_block_code": "TSH-1",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 6,
+    "me_too_total": 48,
+    "report_ids": [
+      "JS-ZAF-00292",
+      "JS-ZAF-00294",
+      "JS-ZAF-00296",
+      "JS-ZAF-00312",
+      "JS-ZAF-00319",
+      "JS-ZAF-00327"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2784,
+      "expected_reports": 5.76,
+      "observed_reports": 6.0,
+      "bias_factor": 0.9606,
+      "adjusted": 0.2674,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2674,
+      "deficit": 0.2182,
+      "reach": 0.7981,
+      "equity": 0.3724,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 41.02,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-1",
+      "nidi_row": "data/nidi_index.csv#TSH-1:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 84
+  },
+  {
+    "hotspot_id": "HS-TSH-2-HEALTH",
+    "lgd_block_code": "TSH-2",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 7,
+    "me_too_total": 126,
+    "report_ids": [
+      "JS-ZAF-00338",
+      "JS-ZAF-00352",
+      "JS-ZAF-00357",
+      "JS-ZAF-00363",
+      "JS-ZAF-00369",
+      "JS-ZAF-00380",
+      "JS-ZAF-00381"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.359,
+      "expected_reports": 7.16,
+      "observed_reports": 7.0,
+      "bias_factor": 1.0234,
+      "adjusted": 0.3674,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3674,
+      "deficit": 0.0904,
+      "reach": 0.8044,
+      "equity": 0.3769,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 41.02,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-2",
+      "nidi_row": "data/nidi_index.csv#TSH-2:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 85
+  },
+  {
+    "hotspot_id": "HS-JHB-E-POWER",
+    "lgd_block_code": "JHB-E",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 11,
+    "me_too_total": 182,
+    "report_ids": [
+      "JS-ZAF-00187",
+      "JS-ZAF-00213",
+      "JS-ZAF-00218",
+      "JS-ZAF-00222",
+      "JS-ZAF-00225",
+      "JS-ZAF-00230",
+      "JS-ZAF-00234",
+      "JS-ZAF-00235",
+      "JS-ZAF-00236",
+      "JS-ZAF-00237",
+      "JS-ZAF-00242"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.4027,
+      "expected_reports": 7.35,
+      "observed_reports": 11.0,
+      "bias_factor": 0.6683,
+      "adjusted": 0.2692,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2692,
+      "deficit": 0.1865,
+      "reach": 0.7858,
+      "equity": 0.4303,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 40.91,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-E",
+      "nidi_row": "data/nidi_index.csv#JHB-E:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 86
+  },
+  {
+    "hotspot_id": "HS-TSH-1-DIGITAL",
+    "lgd_block_code": "TSH-1",
+    "sector": "digital",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 6,
+    "me_too_total": 75,
+    "report_ids": [
+      "JS-ZAF-00308",
+      "JS-ZAF-00315",
+      "JS-ZAF-00321",
+      "JS-ZAF-00322",
+      "JS-ZAF-00330",
+      "JS-ZAF-00331"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3062,
+      "expected_reports": 5.76,
+      "observed_reports": 6.0,
+      "bias_factor": 0.9606,
+      "adjusted": 0.2942,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2942,
+      "deficit": 0.1792,
+      "reach": 0.7981,
+      "equity": 0.3724,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 40.85,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-1",
+      "nidi_row": "data/nidi_index.csv#TSH-1:digital",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 87
+  },
+  {
+    "hotspot_id": "HS-JHB-C-ROADS",
+    "lgd_block_code": "JHB-C",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 6,
+    "me_too_total": 85,
+    "report_ids": [
+      "JS-ZAF-00255",
+      "JS-ZAF-00272",
+      "JS-ZAF-00273",
+      "JS-ZAF-00282",
+      "JS-ZAF-00287",
+      "JS-ZAF-00288"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2999,
+      "expected_reports": 5.61,
+      "observed_reports": 6.0,
+      "bias_factor": 0.9354,
+      "adjusted": 0.2805,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2805,
+      "deficit": 0.1462,
+      "reach": 0.7985,
+      "equity": 0.4375,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 40.6,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-C",
+      "nidi_row": "data/nidi_index.csv#JHB-C:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 88
+  },
+  {
+    "hotspot_id": "HS-JHB-E-WATER",
+    "lgd_block_code": "JHB-E",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 86,
+    "report_ids": [
+      "JS-ZAF-00182",
+      "JS-ZAF-00207",
+      "JS-ZAF-00209",
+      "JS-ZAF-00220",
+      "JS-ZAF-00226"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2783,
+      "expected_reports": 3.34,
+      "observed_reports": 5.0,
+      "bias_factor": 0.6683,
+      "adjusted": 0.186,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.186,
+      "deficit": 0.27,
+      "reach": 0.7858,
+      "equity": 0.4303,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 40.5,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-E",
+      "nidi_row": "data/nidi_index.csv#JHB-E:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 89
+  },
+  {
+    "hotspot_id": "HS-JHB-D-WATER",
+    "lgd_block_code": "JHB-D",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 7,
+    "me_too_total": 68,
+    "report_ids": [
+      "JS-ZAF-00141",
+      "JS-ZAF-00143",
+      "JS-ZAF-00148",
+      "JS-ZAF-00157",
+      "JS-ZAF-00161",
+      "JS-ZAF-00170",
+      "JS-ZAF-00174"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3151,
+      "expected_reports": 6.77,
+      "observed_reports": 7.0,
+      "bias_factor": 0.9678,
+      "adjusted": 0.3049,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3049,
+      "deficit": 0.1199,
+      "reach": 0.8137,
+      "equity": 0.3778,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 40.09,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-D",
+      "nidi_row": "data/nidi_index.csv#JHB-D:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 90
+  },
+  {
+    "hotspot_id": "HS-TSH-2-POWER",
+    "lgd_block_code": "TSH-2",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 60,
+    "report_ids": [
+      "JS-ZAF-00348",
+      "JS-ZAF-00366",
+      "JS-ZAF-00374",
+      "JS-ZAF-00376",
+      "JS-ZAF-00383"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2875,
+      "expected_reports": 5.12,
+      "observed_reports": 5.0,
+      "bias_factor": 1.0234,
+      "adjusted": 0.2942,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2942,
+      "deficit": 0.1355,
+      "reach": 0.8044,
+      "equity": 0.3769,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 39.95,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-2",
+      "nidi_row": "data/nidi_index.csv#TSH-2:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 91
+  },
+  {
+    "hotspot_id": "HS-TSH-3-ROADS",
+    "lgd_block_code": "TSH-3",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 5,
+    "me_too_total": 57,
+    "report_ids": [
+      "JS-ZAF-00396",
+      "JS-ZAF-00397",
+      "JS-ZAF-00405",
+      "JS-ZAF-00412",
+      "JS-ZAF-00428"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2902,
+      "expected_reports": 5.0,
+      "observed_reports": 5.0,
+      "bias_factor": 1.0005,
+      "adjusted": 0.2904,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2904,
+      "deficit": 0.116,
+      "reach": 0.8056,
+      "equity": 0.3997,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 39.72,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-3",
+      "nidi_row": "data/nidi_index.csv#TSH-3:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.137131+00:00"
+    },
+    "rank": 92
+  },
+  {
+    "hotspot_id": "HS-TSH-1-HEALTH",
+    "lgd_block_code": "TSH-1",
+    "sector": "health",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 6,
+    "me_too_total": 117,
+    "report_ids": [
+      "JS-ZAF-00309",
+      "JS-ZAF-00313",
+      "JS-ZAF-00323",
+      "JS-ZAF-00326",
+      "JS-ZAF-00329",
+      "JS-ZAF-00333"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3133,
+      "expected_reports": 5.76,
+      "observed_reports": 6.0,
+      "bias_factor": 0.9606,
+      "adjusted": 0.301,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.301,
+      "deficit": 0.1184,
+      "reach": 0.7981,
+      "equity": 0.3724,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 39.54,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-1",
+      "nidi_row": "data/nidi_index.csv#TSH-1:health",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 93
+  },
+  {
+    "hotspot_id": "HS-EKU-2-WATER",
+    "lgd_block_code": "EKU-2",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 4,
+    "me_too_total": 47,
+    "report_ids": [
+      "JS-ZAF-00496",
+      "JS-ZAF-00508",
+      "JS-ZAF-00521",
+      "JS-ZAF-00523"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2486,
+      "expected_reports": 4.42,
+      "observed_reports": 4.0,
+      "bias_factor": 1.1045,
+      "adjusted": 0.2745,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2745,
+      "deficit": 0.1383,
+      "reach": 0.8072,
+      "equity": 0.3742,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 39.45,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-2",
+      "nidi_row": "data/nidi_index.csv#EKU-2:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.138133+00:00"
+    },
+    "rank": 94
+  },
+  {
+    "hotspot_id": "HS-EKU-2-ROADS",
+    "lgd_block_code": "EKU-2",
+    "sector": "roads",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 3,
+    "me_too_total": 30,
+    "report_ids": [
+      "JS-ZAF-00502",
+      "JS-ZAF-00515",
+      "JS-ZAF-00530"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2127,
+      "expected_reports": 3.31,
+      "observed_reports": 3.0,
+      "bias_factor": 1.1045,
+      "adjusted": 0.2349,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2349,
+      "deficit": 0.1846,
+      "reach": 0.8072,
+      "equity": 0.3742,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 39.42,
+    "lineage": {
+      "census_row": "data/census_seed.csv#EKU-2",
+      "nidi_row": "data/nidi_index.csv#EKU-2:roads",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.138133+00:00"
+    },
+    "rank": 95
+  },
+  {
+    "hotspot_id": "HS-TSH-2-WATER",
+    "lgd_block_code": "TSH-2",
+    "sector": "water",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 6,
+    "me_too_total": 76,
+    "report_ids": [
+      "JS-ZAF-00337",
+      "JS-ZAF-00358",
+      "JS-ZAF-00362",
+      "JS-ZAF-00377",
+      "JS-ZAF-00379",
+      "JS-ZAF-00382"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2986,
+      "expected_reports": 6.14,
+      "observed_reports": 6.0,
+      "bias_factor": 1.0234,
+      "adjusted": 0.3056,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.3056,
+      "deficit": 0.0979,
+      "reach": 0.8044,
+      "equity": 0.3769,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 39.36,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-2",
+      "nidi_row": "data/nidi_index.csv#TSH-2:water",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 96
+  },
+  {
+    "hotspot_id": "HS-JHB-E-EDUCATION",
+    "lgd_block_code": "JHB-E",
+    "sector": "education",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 10,
+    "me_too_total": 112,
+    "report_ids": [
+      "JS-ZAF-00186",
+      "JS-ZAF-00190",
+      "JS-ZAF-00193",
+      "JS-ZAF-00194",
+      "JS-ZAF-00197",
+      "JS-ZAF-00217",
+      "JS-ZAF-00219",
+      "JS-ZAF-00223",
+      "JS-ZAF-00228",
+      "JS-ZAF-00233"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.3607,
+      "expected_reports": 6.68,
+      "observed_reports": 10.0,
+      "bias_factor": 0.6683,
+      "adjusted": 0.241,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.241,
+      "deficit": 0.1137,
+      "reach": 0.7858,
+      "equity": 0.4303,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 38.24,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-E",
+      "nidi_row": "data/nidi_index.csv#JHB-E:education",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 97
+  },
+  {
+    "hotspot_id": "HS-JHB-C-POWER",
+    "lgd_block_code": "JHB-C",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 3,
+    "me_too_total": 44,
+    "report_ids": [
+      "JS-ZAF-00254",
+      "JS-ZAF-00258",
+      "JS-ZAF-00278"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2394,
+      "expected_reports": 2.81,
+      "observed_reports": 3.0,
+      "bias_factor": 0.9354,
+      "adjusted": 0.2239,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2239,
+      "deficit": 0.1004,
+      "reach": 0.7985,
+      "equity": 0.4375,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 37.76,
+    "lineage": {
+      "census_row": "data/census_seed.csv#JHB-C",
+      "nidi_row": "data/nidi_index.csv#JHB-C:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.135132+00:00"
+    },
+    "rank": 98
+  },
+  {
+    "hotspot_id": "HS-TSH-1-POWER",
+    "lgd_block_code": "TSH-1",
+    "sector": "power",
+    "centroid": {
+      "lat": 0.0,
+      "lon": 0.0
+    },
+    "radius_m": 500,
+    "report_count": 4,
+    "me_too_total": 60,
+    "report_ids": [
+      "JS-ZAF-00303",
+      "JS-ZAF-00307",
+      "JS-ZAF-00325",
+      "JS-ZAF-00328"
+    ],
+    "created_at": "2026-09-25 14:43:46.117286+00:00",
+    "demand": {
+      "raw": 0.2548,
+      "expected_reports": 3.84,
+      "observed_reports": 4.0,
+      "bias_factor": 0.9606,
+      "adjusted": 0.2448,
+      "model": "wls_fitted"
+    },
+    "components": {
+      "demand": 0.2448,
+      "deficit": 0.0957,
+      "reach": 0.7981,
+      "equity": 0.3724,
+      "feasibility": 0.6,
+      "saturation": 0.0
+    },
+    "weights": {
+      "demand": 0.3,
+      "deficit": 0.25,
+      "reach": 0.2,
+      "equity": 0.15,
+      "feasibility": 0.1
+    },
+    "priority_score": 37.28,
+    "lineage": {
+      "census_row": "data/census_seed.csv#TSH-1",
+      "nidi_row": "data/nidi_index.csv#TSH-1:power",
+      "model_version": "score_v1.2",
+      "bias_model": "wls_fitted",
+      "bias_coefficients": {
+        "literacy_rate": 2.3254719171677944,
+        "net_penetration": -1.657484066834601,
+        "phone_penetration": 2.19650086252025,
+        "urban": 0.5419743045807321,
+        "log_population": -0.698739107595547
+      },
+      "bias_reference_propensity": 36.79488,
+      "computed_at": "2026-09-25T14:43:46.136130+00:00"
+    },
+    "rank": 99
+  }
+]

@@ -1,0 +1,113 @@
+mdb_code,lgd_block_code,province,district,municipality,state,block,sector,deficit_0_1,coverage_pct
+EC154,EC154,Eastern Cape,OR Tambo,Port St Johns,Eastern Cape,Port St Johns,roads,0.8508,14.92
+EC154,EC154,Eastern Cape,OR Tambo,Port St Johns,Eastern Cape,Port St Johns,water,0.7816,21.84
+EC154,EC154,Eastern Cape,OR Tambo,Port St Johns,Eastern Cape,Port St Johns,power,0.7192,28.08
+EC154,EC154,Eastern Cape,OR Tambo,Port St Johns,Eastern Cape,Port St Johns,health,0.8405,15.95
+EC154,EC154,Eastern Cape,OR Tambo,Port St Johns,Eastern Cape,Port St Johns,education,0.784,21.6
+EC154,EC154,Eastern Cape,OR Tambo,Port St Johns,Eastern Cape,Port St Johns,sanitation,0.7286,27.14
+EC154,EC154,Eastern Cape,OR Tambo,Port St Johns,Eastern Cape,Port St Johns,digital,0.7156,28.44
+EC155,EC155,Eastern Cape,OR Tambo,Nyandeni,Eastern Cape,Nyandeni,roads,0.8717,12.83
+EC155,EC155,Eastern Cape,OR Tambo,Nyandeni,Eastern Cape,Nyandeni,water,0.7722,22.78
+EC155,EC155,Eastern Cape,OR Tambo,Nyandeni,Eastern Cape,Nyandeni,power,0.839,16.1
+EC155,EC155,Eastern Cape,OR Tambo,Nyandeni,Eastern Cape,Nyandeni,health,0.742,25.8
+EC155,EC155,Eastern Cape,OR Tambo,Nyandeni,Eastern Cape,Nyandeni,education,0.8397,16.03
+EC155,EC155,Eastern Cape,OR Tambo,Nyandeni,Eastern Cape,Nyandeni,sanitation,0.7713,22.87
+EC155,EC155,Eastern Cape,OR Tambo,Nyandeni,Eastern Cape,Nyandeni,digital,0.8707,12.93
+EC157,EC157,Eastern Cape,OR Tambo,King Sabata Dalindyebo,Eastern Cape,King Sabata Dalindyebo,roads,0.4807,51.93
+EC157,EC157,Eastern Cape,OR Tambo,King Sabata Dalindyebo,Eastern Cape,King Sabata Dalindyebo,water,0.4558,54.42
+EC157,EC157,Eastern Cape,OR Tambo,King Sabata Dalindyebo,Eastern Cape,King Sabata Dalindyebo,power,0.4684,53.16
+EC157,EC157,Eastern Cape,OR Tambo,King Sabata Dalindyebo,Eastern Cape,King Sabata Dalindyebo,health,0.5029,49.71
+EC157,EC157,Eastern Cape,OR Tambo,King Sabata Dalindyebo,Eastern Cape,King Sabata Dalindyebo,education,0.5551,44.49
+EC157,EC157,Eastern Cape,OR Tambo,King Sabata Dalindyebo,Eastern Cape,King Sabata Dalindyebo,sanitation,0.5426,45.74
+EC157,EC157,Eastern Cape,OR Tambo,King Sabata Dalindyebo,Eastern Cape,King Sabata Dalindyebo,digital,0.4785,52.15
+EC156,EC156,Eastern Cape,OR Tambo,Mhlontlo,Eastern Cape,Mhlontlo,roads,0.6823,31.77
+EC156,EC156,Eastern Cape,OR Tambo,Mhlontlo,Eastern Cape,Mhlontlo,water,0.7332,26.68
+EC156,EC156,Eastern Cape,OR Tambo,Mhlontlo,Eastern Cape,Mhlontlo,power,0.7646,23.54
+EC156,EC156,Eastern Cape,OR Tambo,Mhlontlo,Eastern Cape,Mhlontlo,health,0.675,32.5
+EC156,EC156,Eastern Cape,OR Tambo,Mhlontlo,Eastern Cape,Mhlontlo,education,0.8148,18.52
+EC156,EC156,Eastern Cape,OR Tambo,Mhlontlo,Eastern Cape,Mhlontlo,sanitation,0.7714,22.86
+EC156,EC156,Eastern Cape,OR Tambo,Mhlontlo,Eastern Cape,Mhlontlo,digital,0.6654,33.46
+EC153,EC153,Eastern Cape,OR Tambo,Ingquza Hill,Eastern Cape,Ingquza Hill,roads,0.6909,30.91
+EC153,EC153,Eastern Cape,OR Tambo,Ingquza Hill,Eastern Cape,Ingquza Hill,water,0.729,27.1
+EC153,EC153,Eastern Cape,OR Tambo,Ingquza Hill,Eastern Cape,Ingquza Hill,power,0.7818,21.82
+EC153,EC153,Eastern Cape,OR Tambo,Ingquza Hill,Eastern Cape,Ingquza Hill,health,0.813,18.7
+EC153,EC153,Eastern Cape,OR Tambo,Ingquza Hill,Eastern Cape,Ingquza Hill,education,0.7663,23.37
+EC153,EC153,Eastern Cape,OR Tambo,Ingquza Hill,Eastern Cape,Ingquza Hill,sanitation,0.6924,30.76
+EC153,EC153,Eastern Cape,OR Tambo,Ingquza Hill,Eastern Cape,Ingquza Hill,digital,0.8456,15.44
+EC139,EC139,Eastern Cape,Chris Hani,Enoch Mgijima,Eastern Cape,Enoch Mgijima,roads,0.548,45.2
+EC139,EC139,Eastern Cape,Chris Hani,Enoch Mgijima,Eastern Cape,Enoch Mgijima,water,0.5483,45.17
+EC139,EC139,Eastern Cape,Chris Hani,Enoch Mgijima,Eastern Cape,Enoch Mgijima,power,0.5426,45.74
+EC139,EC139,Eastern Cape,Chris Hani,Enoch Mgijima,Eastern Cape,Enoch Mgijima,health,0.5272,47.28
+EC139,EC139,Eastern Cape,Chris Hani,Enoch Mgijima,Eastern Cape,Enoch Mgijima,education,0.4478,55.22
+EC139,EC139,Eastern Cape,Chris Hani,Enoch Mgijima,Eastern Cape,Enoch Mgijima,sanitation,0.505,49.5
+EC139,EC139,Eastern Cape,Chris Hani,Enoch Mgijima,Eastern Cape,Enoch Mgijima,digital,0.4347,56.53
+EC135,EC135,Eastern Cape,Chris Hani,Intsika Yethu,Eastern Cape,Intsika Yethu,roads,0.6817,31.83
+EC135,EC135,Eastern Cape,Chris Hani,Intsika Yethu,Eastern Cape,Intsika Yethu,water,0.6794,32.06
+EC135,EC135,Eastern Cape,Chris Hani,Intsika Yethu,Eastern Cape,Intsika Yethu,power,0.7175,28.25
+EC135,EC135,Eastern Cape,Chris Hani,Intsika Yethu,Eastern Cape,Intsika Yethu,health,0.728,27.2
+EC135,EC135,Eastern Cape,Chris Hani,Intsika Yethu,Eastern Cape,Intsika Yethu,education,0.7638,23.62
+EC135,EC135,Eastern Cape,Chris Hani,Intsika Yethu,Eastern Cape,Intsika Yethu,sanitation,0.7535,24.65
+EC135,EC135,Eastern Cape,Chris Hani,Intsika Yethu,Eastern Cape,Intsika Yethu,digital,0.7741,22.59
+EC137,EC137,Eastern Cape,Chris Hani,Engcobo,Eastern Cape,Engcobo,roads,0.7467,25.33
+EC137,EC137,Eastern Cape,Chris Hani,Engcobo,Eastern Cape,Engcobo,water,0.7565,24.35
+EC137,EC137,Eastern Cape,Chris Hani,Engcobo,Eastern Cape,Engcobo,power,0.7493,25.07
+EC137,EC137,Eastern Cape,Chris Hani,Engcobo,Eastern Cape,Engcobo,health,0.7392,26.08
+EC137,EC137,Eastern Cape,Chris Hani,Engcobo,Eastern Cape,Engcobo,education,0.7259,27.41
+EC137,EC137,Eastern Cape,Chris Hani,Engcobo,Eastern Cape,Engcobo,sanitation,0.7043,29.57
+EC137,EC137,Eastern Cape,Chris Hani,Engcobo,Eastern Cape,Engcobo,digital,0.7695,23.05
+JHB-D,JHB-D,Gauteng,City of Johannesburg,Soweto (Region D),Gauteng,Soweto (Region D),roads,0.2209,77.91
+JHB-D,JHB-D,Gauteng,City of Johannesburg,Soweto (Region D),Gauteng,Soweto (Region D),water,0.1199,88.01
+JHB-D,JHB-D,Gauteng,City of Johannesburg,Soweto (Region D),Gauteng,Soweto (Region D),power,0.1315,86.85
+JHB-D,JHB-D,Gauteng,City of Johannesburg,Soweto (Region D),Gauteng,Soweto (Region D),health,0.2216,77.84
+JHB-D,JHB-D,Gauteng,City of Johannesburg,Soweto (Region D),Gauteng,Soweto (Region D),education,0.2173,78.27
+JHB-D,JHB-D,Gauteng,City of Johannesburg,Soweto (Region D),Gauteng,Soweto (Region D),sanitation,0.2735,72.65
+JHB-D,JHB-D,Gauteng,City of Johannesburg,Soweto (Region D),Gauteng,Soweto (Region D),digital,0.1773,82.27
+JHB-E,JHB-E,Gauteng,City of Johannesburg,Sandton / Alex (Region E),Gauteng,Sandton / Alex (Region E),roads,0.2769,72.31
+JHB-E,JHB-E,Gauteng,City of Johannesburg,Sandton / Alex (Region E),Gauteng,Sandton / Alex (Region E),water,0.27,73.0
+JHB-E,JHB-E,Gauteng,City of Johannesburg,Sandton / Alex (Region E),Gauteng,Sandton / Alex (Region E),power,0.1865,81.35
+JHB-E,JHB-E,Gauteng,City of Johannesburg,Sandton / Alex (Region E),Gauteng,Sandton / Alex (Region E),health,0.2737,72.63
+JHB-E,JHB-E,Gauteng,City of Johannesburg,Sandton / Alex (Region E),Gauteng,Sandton / Alex (Region E),education,0.1137,88.63
+JHB-E,JHB-E,Gauteng,City of Johannesburg,Sandton / Alex (Region E),Gauteng,Sandton / Alex (Region E),sanitation,0.2673,73.27
+JHB-E,JHB-E,Gauteng,City of Johannesburg,Sandton / Alex (Region E),Gauteng,Sandton / Alex (Region E),digital,0.2234,77.66
+JHB-C,JHB-C,Gauteng,City of Johannesburg,Roodepoort (Region C),Gauteng,Roodepoort (Region C),roads,0.1462,85.38
+JHB-C,JHB-C,Gauteng,City of Johannesburg,Roodepoort (Region C),Gauteng,Roodepoort (Region C),water,0.1067,89.33
+JHB-C,JHB-C,Gauteng,City of Johannesburg,Roodepoort (Region C),Gauteng,Roodepoort (Region C),power,0.1004,89.96
+JHB-C,JHB-C,Gauteng,City of Johannesburg,Roodepoort (Region C),Gauteng,Roodepoort (Region C),health,0.2073,79.27
+JHB-C,JHB-C,Gauteng,City of Johannesburg,Roodepoort (Region C),Gauteng,Roodepoort (Region C),education,0.2701,72.99
+JHB-C,JHB-C,Gauteng,City of Johannesburg,Roodepoort (Region C),Gauteng,Roodepoort (Region C),sanitation,0.1857,81.43
+JHB-C,JHB-C,Gauteng,City of Johannesburg,Roodepoort (Region C),Gauteng,Roodepoort (Region C),digital,0.265,73.5
+TSH-1,TSH-1,Gauteng,City of Tshwane,Pretoria Central,Gauteng,Pretoria Central,roads,0.2384,76.16
+TSH-1,TSH-1,Gauteng,City of Tshwane,Pretoria Central,Gauteng,Pretoria Central,water,0.1974,80.26
+TSH-1,TSH-1,Gauteng,City of Tshwane,Pretoria Central,Gauteng,Pretoria Central,power,0.0957,90.43
+TSH-1,TSH-1,Gauteng,City of Tshwane,Pretoria Central,Gauteng,Pretoria Central,health,0.1184,88.16
+TSH-1,TSH-1,Gauteng,City of Tshwane,Pretoria Central,Gauteng,Pretoria Central,education,0.2182,78.18
+TSH-1,TSH-1,Gauteng,City of Tshwane,Pretoria Central,Gauteng,Pretoria Central,sanitation,0.1619,83.81
+TSH-1,TSH-1,Gauteng,City of Tshwane,Pretoria Central,Gauteng,Pretoria Central,digital,0.1792,82.08
+TSH-2,TSH-2,Gauteng,City of Tshwane,Mamelodi,Gauteng,Mamelodi,roads,0.2226,77.74
+TSH-2,TSH-2,Gauteng,City of Tshwane,Mamelodi,Gauteng,Mamelodi,water,0.0979,90.21
+TSH-2,TSH-2,Gauteng,City of Tshwane,Mamelodi,Gauteng,Mamelodi,power,0.1355,86.45
+TSH-2,TSH-2,Gauteng,City of Tshwane,Mamelodi,Gauteng,Mamelodi,health,0.0904,90.96
+TSH-2,TSH-2,Gauteng,City of Tshwane,Mamelodi,Gauteng,Mamelodi,education,0.0994,90.06
+TSH-2,TSH-2,Gauteng,City of Tshwane,Mamelodi,Gauteng,Mamelodi,sanitation,0.133,86.7
+TSH-2,TSH-2,Gauteng,City of Tshwane,Mamelodi,Gauteng,Mamelodi,digital,0.2324,76.76
+TSH-3,TSH-3,Gauteng,City of Tshwane,Soshanguve,Gauteng,Soshanguve,roads,0.116,88.4
+TSH-3,TSH-3,Gauteng,City of Tshwane,Soshanguve,Gauteng,Soshanguve,water,0.2661,73.39
+TSH-3,TSH-3,Gauteng,City of Tshwane,Soshanguve,Gauteng,Soshanguve,power,0.2193,78.07
+TSH-3,TSH-3,Gauteng,City of Tshwane,Soshanguve,Gauteng,Soshanguve,health,0.1796,82.04
+TSH-3,TSH-3,Gauteng,City of Tshwane,Soshanguve,Gauteng,Soshanguve,education,0.1801,81.99
+TSH-3,TSH-3,Gauteng,City of Tshwane,Soshanguve,Gauteng,Soshanguve,sanitation,0.2695,73.05
+TSH-3,TSH-3,Gauteng,City of Tshwane,Soshanguve,Gauteng,Soshanguve,digital,0.2221,77.79
+EKU-1,EKU-1,Gauteng,Ekurhuleni,Kempton Park / Tembisa,Gauteng,Kempton Park / Tembisa,roads,0.2634,73.66
+EKU-1,EKU-1,Gauteng,Ekurhuleni,Kempton Park / Tembisa,Gauteng,Kempton Park / Tembisa,water,0.1178,88.22
+EKU-1,EKU-1,Gauteng,Ekurhuleni,Kempton Park / Tembisa,Gauteng,Kempton Park / Tembisa,power,0.1669,83.31
+EKU-1,EKU-1,Gauteng,Ekurhuleni,Kempton Park / Tembisa,Gauteng,Kempton Park / Tembisa,health,0.2242,77.58
+EKU-1,EKU-1,Gauteng,Ekurhuleni,Kempton Park / Tembisa,Gauteng,Kempton Park / Tembisa,education,0.1516,84.84
+EKU-1,EKU-1,Gauteng,Ekurhuleni,Kempton Park / Tembisa,Gauteng,Kempton Park / Tembisa,sanitation,0.2289,77.11
+EKU-1,EKU-1,Gauteng,Ekurhuleni,Kempton Park / Tembisa,Gauteng,Kempton Park / Tembisa,digital,0.1315,86.85
+EKU-2,EKU-2,Gauteng,Ekurhuleni,Germiston / Katlehong,Gauteng,Germiston / Katlehong,roads,0.1846,81.54
+EKU-2,EKU-2,Gauteng,Ekurhuleni,Germiston / Katlehong,Gauteng,Germiston / Katlehong,water,0.1383,86.17
+EKU-2,EKU-2,Gauteng,Ekurhuleni,Germiston / Katlehong,Gauteng,Germiston / Katlehong,power,0.1053,89.47
+EKU-2,EKU-2,Gauteng,Ekurhuleni,Germiston / Katlehong,Gauteng,Germiston / Katlehong,health,0.1868,81.32
+EKU-2,EKU-2,Gauteng,Ekurhuleni,Germiston / Katlehong,Gauteng,Germiston / Katlehong,education,0.1206,87.94
+EKU-2,EKU-2,Gauteng,Ekurhuleni,Germiston / Katlehong,Gauteng,Germiston / Katlehong,sanitation,0.1271,87.29
+EKU-2,EKU-2,Gauteng,Ekurhuleni,Germiston / Katlehong,Gauteng,Germiston / Katlehong,digital,0.2447,75.53

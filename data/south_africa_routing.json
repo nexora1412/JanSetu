@@ -1,0 +1,83 @@
+{
+  "_version": "1.0-zaf",
+  "_default_sla_days": 21,
+  "rules": [
+    {
+      "sector": "roads",
+      "department": "Department of Cooperative Governance (CoGTA)",
+      "scheme": "Municipal Infrastructure Grant (MIG)",
+      "officer_ref_pattern": "MIG-ROADS-{state}-{district}",
+      "sla_days": 30,
+      "funding_split": {
+        "national": 0.7,
+        "provincial": 0.2,
+        "municipal": 0.1
+      }
+    },
+    {
+      "sector": "water",
+      "department": "Department of Water & Sanitation (DWS)",
+      "scheme": "Water Services Infrastructure Grant (WSIG)",
+      "officer_ref_pattern": "DWS-WSIG-{state}-{district}",
+      "sla_days": 14,
+      "funding_split": {
+        "national": 0.85,
+        "municipal": 0.15
+      }
+    },
+    {
+      "sector": "power",
+      "department": "Department of Mineral Resources & Energy (DMRE)",
+      "scheme": "Integrated National Electrification Programme (INEP)",
+      "officer_ref_pattern": "DMRE-INEP-{district}",
+      "sla_days": 21,
+      "funding_split": {
+        "national": 0.8,
+        "eskom": 0.2
+      }
+    },
+    {
+      "sector": "health",
+      "department": "National Department of Health (NDoH)",
+      "scheme": "National Health Insurance (NHI) Revitalization",
+      "officer_ref_pattern": "NDOH-NHI-{district}",
+      "sla_days": 21,
+      "funding_split": {
+        "national": 0.9,
+        "provincial": 0.1
+      }
+    },
+    {
+      "sector": "education",
+      "department": "Department of Basic Education (DBE)",
+      "scheme": "Education Infrastructure Grant (EIG)",
+      "officer_ref_pattern": "DBE-EIG-{district}",
+      "sla_days": 30,
+      "funding_split": {
+        "national": 0.8,
+        "provincial": 0.2
+      }
+    },
+    {
+      "sector": "sanitation",
+      "department": "Municipal Infrastructure Services",
+      "scheme": "Urban Settlements Development Grant (USDG)",
+      "officer_ref_pattern": "USDG-SAN-{district}",
+      "sla_days": 14,
+      "funding_split": {
+        "national": 0.75,
+        "municipal": 0.25
+      }
+    },
+    {
+      "sector": "digital",
+      "department": "Department of Communications & Digital Tech (DCDT)",
+      "scheme": "SA Connect Phase 2",
+      "officer_ref_pattern": "DCDT-SACONNECT-{district}",
+      "sla_days": 45,
+      "funding_split": {
+        "national": 1.0
+      }
+    }
+  ]
+}

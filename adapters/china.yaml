@@ -1,0 +1,18 @@
+nation: China
+iso3: CHN
+languages: [zh-CN]
+primary_script: Han
+currency: {code: CNY, symbol: "¥"}
+admin_hierarchy: [province, prefecture, county, township, village]
+admin_registry: {name: "GB/T 2260", code_field: gb_code}
+schemes:
+  roads: Rural Road Upgrade Programme
+  water: Rural Drinking Water Safety
+  power: Rural Grid Reinforcement
+  health: Healthy China 2030
+  education: Compulsory Education Equalisation
+  sanitation: Rural Toilet Retrofit
+  digital: Digital Village
+channels: [{type: sms}, {type: web}, {type: whatsapp}]
+helpline: {number: "12345", toll_free: true}
+voice_stack: {stt: [Google_Chirp], tts: [Google_TTS]}

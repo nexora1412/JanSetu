@@ -1,0 +1,47 @@
+# JanSetu — Render deployment blueprint
+# ---------------------------------------------------------------------------
+# Submitting this file means the deployed link is reproducible, which is
+# itself a "Deployability & Scalability" argument (20% of the rubric).
+#
+# HOW TO DEPLOY (Person 3, ~15 min)
+#   1. Push this file to your GitHub repo
+#   2. Go to https://dashboard.render.com  -> Sign up with GitHub
+#   3. New +  ->  Blueprint  ->  select your `jansetu` repo
+#   4. Render reads this file and asks for the secret values below
+#   5. Paste GEMINI_API_KEY (and SARVAM_API_KEY if you have it)
+#   6. Wait ~4 min. You get a URL like https://jansetu.onrender.com
+#
+# FREE TIER WARNING
+#   Render free web services spin down after ~15 min idle and take ~50 s to
+#   wake up. If a judge opens the link cold it will look broken.
+#   FIX: open the URL yourself 2 minutes before the judging window, or use
+#   https://uptimerobot.com (free) to ping /health every 5 minutes.
+# ---------------------------------------------------------------------------
+services:
+  - type: web
+    name: jansetu
+    runtime: python
+    plan: free
+    region: singapore          # closest to India
+    rootDir: backend
+    healthCheckPath: /health
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.9"
+      # --- secrets: set these in the Render dashboard, never in git -------
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-2.5-flash
+      - key: SARVAM_API_KEY
+        sync: false
+      - key: SARVAM_MODEL
+        value: "saaras:v3"
+      - key: STT_CHAIN
+        value: sarvam,bhashini,google
+      - key: TELEPHONY_PROVIDER
+        value: simulator
+      - key: MSISDN_HASH_SALT
+        generateValue: true

@@ -1,0 +1,48 @@
+# ── Secrets — NEVER commit these ─────────────────────────
+.env
+.env.local
+.env.*.local
+!.env.example
+*.pem
+*.key
+service-account*.json
+
+# ── Editors / OS ─────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# ── Local runtime artefacts ──────────────────────────────
+*.log
+*.sqlite3
+*.db
+data/cache/
+backend/uploads/
+
+# ── Python ───────────────────────────────────────────────
+.venv/
+venv/
+env/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+build/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ── Node / frontend ──────────────────────────────────────
+node_modules/
+.vite/
+.next/
+.turbo/
+# NOTE: frontend/dist IS committed on purpose — a fresh clone (and Render /
+# Cloud Run) then serves the citizen PWA at /app without needing Node.
+# Rebuild with: cd frontend && npm ci && npm run build
