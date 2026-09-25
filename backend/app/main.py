@@ -39,6 +39,7 @@ from pydantic import ValidationError                            # noqa: E402
 from fastapi.staticfiles import StaticFiles                     # noqa: E402
 from pydantic import BaseModel                                  # noqa: E402
 
+import db  # noqa: E402  — SQLite persistence (backend/db.py)
 from engine.allocate import DEFAULT_SECTOR_CAPS, allocate, compute_frontier  # noqa: E402
 from engine.impact import compute_impact_ledger                              # noqa: E402
 from engine.score import score_all                                           # noqa: E402
@@ -54,7 +55,7 @@ STATIC = BACKEND / "static"
 app = FastAPI(
     title="JanSetu (जनसेतु)",
     description="From citizen voice to a costed, auditable public investment portfolio.",
-    version="0.1.0",
+    version="0.2.0",
 )
 
 app.add_middleware(
@@ -65,15 +66,34 @@ app.add_middleware(
 )
 
 # ---------------------------------------------------------------------------
-# State — seeded from fixtures so the app is demoable from the first request
+# Per-nation state — seeded from fixtures, persisted in SQLite.
+# Citizen submissions (mobile app / helpline) are written to the DB, so they
+# survive restarts and appear on the officer dashboard immediately.
 # ---------------------------------------------------------------------------
-REPORTS: list[dict] = []
-HOTSPOTS: list[dict] = []
-PROJECTS: list[dict] = []
-VERIFICATIONS: list[dict] = []
-ROUTING: dict = {}
 PROVIDER = get_provider()
-LEDGER: list[dict] = []
+
+NATIONS = {
+    "in": {
+        "label": "India",
+        "flag": "🇮🇳",
+        "ticket_prefix": "JS-2026-",
+        "fixtures": {"reports": "reports_8lang.json", "hotspots": "hotspots.json",
+                     "projects": "projects.json", "verifications": "verifications.json"},
+        "routing": DATA / "routing.json",
+    },
+    "za": {
+        "label": "South Africa",
+        "flag": "🇿🇦",
+        "ticket_prefix": "ZA-2026-",
+        "fixtures": {"reports": "south_africa_reports.json",
+                     "hotspots": "south_africa_hotspots.json",
+                     "projects": "south_africa_projects.json",
+                     "verifications": "south_africa_verifications.json"},
+        "routing": DATA / "south_africa_routing.json",
+    },
+}
+
+STATE: dict[str, dict] = {}
 
 
 def _load(name: str) -> Any:
@@ -81,27 +101,73 @@ def _load(name: str) -> Any:
         return json.load(f)
 
 
+def _bootstrap_nation(nation: str) -> None:
+    cfg = NATIONS[nation]
+    with open(cfg["routing"], encoding="utf-8") as f:
+        routing = json.load(f)
+
+    seed_reports = _load(cfg["fixtures"]["reports"])
+    seed_verifs = _load(cfg["fixtures"]["verifications"])
+    if db.count_reports(nation) == 0:
+        db.insert_reports(nation, seed_reports, origin="seed")
+        for v in seed_verifs:
+            db.insert_verification(nation, v, origin="seed")
+
+    reports = db.all_reports(nation)
+    verifications = db.all_verifications(nation)
+    hotspots = _load(cfg["fixtures"]["hotspots"])
+    projects = _load(cfg["fixtures"]["projects"])
+
+    STATE[nation] = {
+        "REPORTS": reports,
+        "HOTSPOTS": hotspots,
+        "HOTSPOTS_BASE": hotspots,   # fixture baseline, kept for merge on re-score
+        "PROJECTS": projects,
+        "VERIFICATIONS": verifications,
+        "ROUTING": routing,
+        "LEDGER": compute_impact_ledger(projects, verifications),
+        "ticket_seq": db.max_ticket_seq(nation, cfg["ticket_prefix"]),
+    }
+
+
 def _bootstrap() -> None:
-    global REPORTS, HOTSPOTS, PROJECTS, VERIFICATIONS, ROUTING, LEDGER
-    REPORTS = _load("reports_8lang.json")
-    HOTSPOTS = _load("hotspots.json")
-    PROJECTS = _load("projects.json")
-    VERIFICATIONS = _load("verifications.json")
-    with open(DATA / "routing.json", encoding="utf-8") as f:
-        ROUTING = json.load(f)
-    LEDGER = compute_impact_ledger(PROJECTS, VERIFICATIONS)
+    db.init()
+    for nation in NATIONS:
+        _bootstrap_nation(nation)
 
 
 _bootstrap()
+
+
+def _S(nation: str) -> dict:
+    """State for a nation; unknown codes fall back to India rather than 500."""
+    return STATE.get(nation if nation in STATE else "in")
+
+
+def _rescore(nation: str) -> None:
+    """Recompute hotspots from ALL persisted reports and merge over the fixture
+    baseline (fixture-only hotspots are kept because projects reference them)."""
+    s = _S(nation)
+    calc = {h["hotspot_id"]: h for h in score_all(s["REPORTS"])}
+    merged = list(s["HOTSPOTS_BASE"])
+    for i, h in enumerate(merged):
+        if h["hotspot_id"] in calc:
+            merged[i] = calc.pop(h["hotspot_id"])
+    merged.extend(calc.values())
+    merged.sort(key=lambda h: -h["priority_score"])
+    for i, h in enumerate(merged):
+        h["rank"] = i + 1
+    s["HOTSPOTS"] = merged
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
-def _route(sector: str, geo: dict) -> dict:
+def _route(sector: str, geo: dict, nation: str = "in") -> dict:
     """Department Routing Table lookup. Data-driven: no code change to add a dept."""
+    routing = _S(nation)["ROUTING"]
     rural = not geo.get("urban", False)
-    for rule in ROUTING.get("rules", []):
+    for rule in routing.get("rules", []):
         if rule["sector"] != sector:
             continue
         m = rule.get("match") or {}
@@ -119,13 +185,15 @@ def _route(sector: str, geo: dict) -> dict:
             "ack_sent": False,
             "funding_split": rule.get("funding_split", {}),
         }
-    return {"department": ROUTING["rules"][-1]["department"], "scheme": "District Plan",
-            "officer_ref": "UNROUTED", "sla_days": ROUTING.get("_default_sla_days", 30),
+    return {"department": routing["rules"][-1]["department"], "scheme": "District Plan",
+            "officer_ref": "UNROUTED", "sla_days": routing.get("_default_sla_days", 30),
             "routed_at": datetime.now(timezone.utc).isoformat(), "ack_sent": False}
 
 
-def _next_ticket() -> str:
-    return f"JS-2026-{len(REPORTS) + 1:06d}"
+def _next_ticket(nation: str = "in") -> str:
+    s = _S(nation)
+    s["ticket_seq"] += 1
+    return f"{NATIONS[nation if nation in NATIONS else 'in']['ticket_prefix']}{s['ticket_seq']:06d}"
 
 
 # ---------------------------------------------------------------------------
@@ -153,10 +221,14 @@ def status():
         "gemini": gemini.client.status(),
         "telephony": {"provider": PROVIDER.name,
                       "outbox": len(getattr(PROVIDER, "outbox", []))},
-        "counts": {"reports": len(REPORTS), "hotspots": len(HOTSPOTS),
-                   "projects": len(PROJECTS), "verifications": len(VERIFICATIONS),
-                   "ledger_entries": len(LEDGER)},
-        "contracts_version": "1.0",
+        "counts": {n: {"reports": len(s["REPORTS"]), "hotspots": len(s["HOTSPOTS"]),
+                       "projects": len(s["PROJECTS"]), "verifications": len(s["VERIFICATIONS"]),
+                       "ledger_entries": len(s["LEDGER"])}
+                   for n, s in STATE.items()},
+        "nations": [{"code": n, "label": c["label"], "flag": c["flag"]}
+                    for n, c in NATIONS.items()],
+        "database": {"engine": "sqlite", "path": str(db.DB_PATH)},
+        "contracts_version": "1.1",
     }
 
 
@@ -168,6 +240,7 @@ class IntakeIn(BaseModel):
     from_number: str | None = None
     language_hint: str | None = None
     audio_uri: str | None = None
+    nation: str = "in"
 
 
 @app.post("/api/v1/intake/")
@@ -176,7 +249,10 @@ def intake(body: IntakeIn):
     THE SINGLE HELPLINE entrypoint. Any channel, any language -> one CitizenReport
     -> structured by Gemini -> resolved to an LGD code -> auto-routed to the right
     department -> acknowledged by SMS in the citizen's own language.
+    Persisted to SQLite, so the officer dashboard sees it immediately.
     """
+    nation = body.nation if body.nation in STATE else "in"
+
     # 1 · normalise the channel payload
     partial = PROVIDER.parse_inbound({
         "channel": body.channel, "text": body.text, "from": body.from_number or "+910000000000",
@@ -188,12 +264,12 @@ def intake(body: IntakeIn):
 
     # 3 · resolve an LGD code from the seed admin table when Gemini left it null
     if not geo.get("lgd_code"):
-        code = _resolve_lgd(geo)
+        code = _resolve_lgd(geo, nation)
         geo["lgd_code"] = code
 
     # 4 · route + acknowledge
-    routing = _route(st.get("sector", "other"), geo)
-    ticket = _next_ticket()
+    routing = _route(st.get("sector", "other"), geo, nation)
+    ticket = _next_ticket(nation)
     lang = st.get("language", "en")
     if isinstance(PROVIDER, SimulatorProvider):
         ack = PROVIDER.ack(ticket, routing["department"], routing["sla_days"], lang)
@@ -203,6 +279,7 @@ def intake(body: IntakeIn):
     report = {
         **partial,
         "report_id": ticket,
+        "nation": nation,
         "normalized_text_en": st.get("normalized_text_en"),
         "structured": {
             "sector": st.get("sector", "other"),
@@ -216,8 +293,15 @@ def intake(body: IntakeIn):
         "routing": routing,
         "me_too": 0,
         "status": "routed",
+        "origin": "live",
     }
-    REPORTS.append(report)
+    if not report.get("created_at"):
+        report["created_at"] = datetime.now(timezone.utc).isoformat()
+
+    # 5 · persist + refresh derived state
+    _S(nation)["REPORTS"].append(report)
+    db.insert_report(nation, report, origin="live")
+    _rescore(nation)
 
     return {
         "report": report,
@@ -230,22 +314,39 @@ def intake(body: IntakeIn):
     }
 
 
-def _resolve_lgd(geo: dict) -> str | None:
+def _admin_rows(nation: str) -> list[dict]:
+    import csv
+    admin_csv = "south_africa_admin.csv" if nation == "za" else "lgd_admin.csv"
+    try:
+        with open(DATA / admin_csv, newline="", encoding="utf-8") as f:
+            return list(csv.DictReader(f))
+    except OSError:
+        return []
+
+
+def _admin_code_col(rows: list[dict]) -> str | None:
+    for c in (rows[0] if rows else {}):
+        if c in ("lgd_block_code", "mdb_code"):
+            return c
+    return None
+
+
+def _resolve_lgd(geo: dict, nation: str = "in") -> str | None:
     """Cheap resolver over the seed admin table. Real deployment calls the LGD API.
     Returns null when uncertain — we NEVER invent an LGD code."""
-    try:
-        import csv
-        with open(DATA / "lgd_admin.csv", newline="", encoding="utf-8") as f:
-            rows = list(csv.DictReader(f))
-    except OSError:
+    rows = _admin_rows(nation)
+    code_col = _admin_code_col(rows)
+    if not code_col:
         return None
-    for field in ("block", "district"):
-        target = (geo.get(field) or "").strip().lower()
-        if not target:
-            continue
-        for r in rows:
-            if r[field].strip().lower() == target:
-                return r["lgd_block_code"]
+    name_cols = (("block", "local_municipality"), ("district", "district_municipality"))
+    for fields in name_cols:
+        for field in fields:
+            target = (geo.get(field) or "").strip().lower()
+            if not target:
+                continue
+            for r in rows:
+                if any((r.get(c) or "").strip().lower() == target for c in fields):
+                    return r[code_col]
     return None
 
 
@@ -280,6 +381,7 @@ async def intake_voice(
     language_hint: str = Form("mr"),
     channel: str = Form("app_voice"),
     from_number: str = Form("+910000000000"),
+    nation: str = Form("in"),
 ):
     """Voice intake from the mobile app: recorded audio -> STT chain -> the SAME
     intake pipeline as a missed call or SMS. Never raises on a missing key:
@@ -298,26 +400,43 @@ async def intake_voice(
                      "The app should offer typed text — intake still works."),
         }
     result = intake(IntakeIn(text=st["text"], channel=channel,
-                             from_number=from_number,
+                             from_number=from_number, nation=nation,
                              language_hint=st.get("language") or language_hint))
     return {"transcribed": True, "transcript": st["text"],
             "stt_provider": st.get("provider"), **result}
 
 
 @app.get("/api/v1/reports/")
-def list_reports(limit: int = 50, sector: str | None = None, channel: str | None = None):
-    out = REPORTS
+def list_reports(limit: int = 50, sector: str | None = None, channel: str | None = None,
+                 nation: str = "in", origin: str | None = None):
+    out = _S(nation)["REPORTS"]
     if sector:
         out = [r for r in out if (r.get("structured") or {}).get("sector") == sector]
     if channel:
         out = [r for r in out if r.get("channel") == channel]
-    return {"count": len(out), "reports": out[-limit:][::-1]}
+    if origin:
+        out = [r for r in out if r.get("origin") == origin]
+    return {"count": len(out), "nation": nation, "reports": out[-limit:][::-1]}
+
+
+@app.get("/api/v1/stats/")
+def stats(nation: str = "in"):
+    """Aggregate counters straight from SQLite — feeds the dashboard charts."""
+    n = nation if nation in STATE else "in"
+    return {"nation": n, **db.stats(n)}
 
 
 @app.get("/api/v1/track/{ticket_id}")
-def track(ticket_id: str):
+def track(ticket_id: str, nation: str = "in"):
     """Citizen status lookup — the SAME helpline number, any handset."""
-    r = next((x for x in REPORTS if x.get("report_id") == ticket_id), None)
+    r = next((x for x in _S(nation)["REPORTS"] if x.get("report_id") == ticket_id), None)
+    if r is None:
+        # tickets are nation-prefixed; try the other nation before 404ing
+        for other, s in STATE.items():
+            if other != nation:
+                r = next((x for x in s["REPORTS"] if x.get("report_id") == ticket_id), None)
+                if r:
+                    break
     if not r:
         raise HTTPException(404, f"Unknown ticket {ticket_id}")
     return {
@@ -336,29 +455,32 @@ def track(ticket_id: str):
 
 @app.get("/api/v1/hotspots/")
 def hotspots(limit: int = 60, sector: str | None = None, state: str | None = None,
-             recompute: bool = False):
-    global HOTSPOTS
+             recompute: bool = False, nation: str = "in"):
+    n = nation if nation in STATE else "in"
     if recompute:
-        HOTSPOTS = score_all(REPORTS)
-    out = HOTSPOTS
+        _rescore(n)
+    out = _S(n)["HOTSPOTS"]
     if sector:
         out = [h for h in out if h["sector"] == sector]
     if state:
-        codes = {c for c in _state_codes(state)}
+        codes = {c for c in _state_codes(state, n)}
         out = [h for h in out if h["lgd_block_code"] in codes]
-    return {"count": len(out), "hotspots": out[:limit]}
+    return {"count": len(out), "nation": n, "hotspots": out[:limit]}
 
 
-def _state_codes(state: str) -> list[str]:
-    import csv
-    with open(DATA / "lgd_admin.csv", newline="", encoding="utf-8") as f:
-        return [r["lgd_block_code"] for r in csv.DictReader(f) if r["state"] == state]
+def _state_codes(state: str, nation: str = "in") -> list[str]:
+    rows = _admin_rows(nation)
+    code_col = _admin_code_col(rows)
+    if not code_col:
+        return []
+    state_col = "province" if nation == "za" else "state"
+    return [r[code_col] for r in rows if r.get(state_col) == state]
 
 
 @app.get("/api/v1/hotspots/{hotspot_id}/lineage")
-def lineage(hotspot_id: str):
+def lineage(hotspot_id: str, nation: str = "in"):
     """AUDITOR VIEW — every number traced to its source rows."""
-    h = next((x for x in HOTSPOTS if x["hotspot_id"] == hotspot_id), None)
+    h = next((x for x in _S(nation)["HOTSPOTS"] if x["hotspot_id"] == hotspot_id), None)
     if not h:
         raise HTTPException(404, f"Unknown hotspot {hotspot_id}")
     return {
@@ -377,14 +499,25 @@ def lineage(hotspot_id: str):
 
 
 @app.post("/api/v1/score/recompute")
-def recompute(weights: dict | None = None):
+def recompute(weights: dict | None = None, nation: str = "in"):
     """Live weight sliders -> full re-score."""
-    global HOTSPOTS
-    HOTSPOTS = score_all(REPORTS, weights)
-    return {"count": len(HOTSPOTS), "weights": weights or "default",
+    n = nation if nation in STATE else "in"
+    s = _S(n)
+    scored = score_all(s["REPORTS"], weights)
+    by_id = {h["hotspot_id"]: h for h in scored}
+    merged = list(s["HOTSPOTS_BASE"])
+    for i, h in enumerate(merged):
+        if h["hotspot_id"] in by_id:
+            merged[i] = by_id.pop(h["hotspot_id"])
+    merged.extend(by_id.values())
+    merged.sort(key=lambda h: -h["priority_score"])
+    for i, h in enumerate(merged):
+        h["rank"] = i + 1
+    s["HOTSPOTS"] = merged
+    return {"count": len(merged), "nation": n, "weights": weights or "default",
             "top": [{"hotspot_id": h["hotspot_id"], "score": h["priority_score"],
                      "sector": h["sector"], "block": h["lgd_block_code"]}
-                    for h in HOTSPOTS[:10]]}
+                    for h in merged[:10]]}
 
 
 # ------------------------------------------------------- ★ ALLOCATE (C)
@@ -393,6 +526,7 @@ def recompute(weights: dict | None = None):
 def allocate_endpoint(req: AllocationRequest):
     """THE HERO ENDPOINT. Budget + constraints -> optimal portfolio.
     Move the slider, call this, re-render. Target < 400 ms."""
+    s = _S(req.nation)
     weights = req.weights.model_dump()
     request = {
         "budget_inr": req.budget_inr,
@@ -404,8 +538,8 @@ def allocate_endpoint(req: AllocationRequest):
         "weights": weights,
         "fast": req.fast,
     }
-    score_by_hs = {h["hotspot_id"]: h["priority_score"] for h in HOTSPOTS}
-    pool = PROJECTS
+    score_by_hs = {h["hotspot_id"]: h["priority_score"] for h in s["HOTSPOTS"]}
+    pool = s["PROJECTS"]
     if req.state_filter:
         pool = [p for p in pool if p.get("state") == req.state_filter]
     if req.sector_filter:
@@ -414,42 +548,50 @@ def allocate_endpoint(req: AllocationRequest):
 
 
 @app.get("/api/v1/frontier/")
-def frontier(budget_inr: int = 400_000_000, equity_floor_pct: float = 0.40):
+def frontier(budget_inr: int = 400_000_000, equity_floor_pct: float = 0.40,
+             nation: str = "in"):
+    s = _S(nation)
     req = {"budget_inr": budget_inr, "sector_caps": DEFAULT_SECTOR_CAPS,
            "equity_floor_pct": equity_floor_pct, "geographic_spread": "min_one_per_block",
            "fast": True}
-    score_by_hs = {h["hotspot_id"]: h["priority_score"] for h in HOTSPOTS}
+    score_by_hs = {h["hotspot_id"]: h["priority_score"] for h in s["HOTSPOTS"]}
     return {"budget_inr": budget_inr,
-            "frontier": compute_frontier(PROJECTS, req, score_by_hs)}
+            "frontier": compute_frontier(s["PROJECTS"], req, score_by_hs)}
 
 
 @app.get("/api/v1/projects/")
-def projects(limit: int = 100):
-    return {"count": len(PROJECTS), "projects": PROJECTS[:limit]}
+def projects(limit: int = 100, nation: str = "in"):
+    p = _S(nation)["PROJECTS"]
+    return {"count": len(p), "nation": nation, "projects": p[:limit]}
 
 
 # ------------------------------------------------------------ IMPACT (C)
 
 @app.get("/api/v1/impact/")
-def impact():
+def impact(nation: str = "in"):
     """The IMPACT LEDGER — the clause of the brief nobody else answered."""
-    return {"count": len(LEDGER), "ledger": LEDGER,
+    ledger = _S(nation)["LEDGER"]
+    return {"count": len(ledger), "nation": nation, "ledger": ledger,
             "summary": {
-                "projects_tracked": len(LEDGER),
-                "avg_realization_ratio": (round(sum(l["realization_ratio"] for l in LEDGER) / len(LEDGER), 3)
-                                          if LEDGER else 0),
-                "flagged": sum(1 for l in LEDGER if l["social_audit_score"] < 0.5),
-                "certified": sum(1 for l in LEDGER if l["social_audit_score"] > 0.8),
+                "projects_tracked": len(ledger),
+                "avg_realization_ratio": (round(sum(l["realization_ratio"] for l in ledger) / len(ledger), 3)
+                                          if ledger else 0),
+                "flagged": sum(1 for l in ledger if l["social_audit_score"] < 0.5),
+                "certified": sum(1 for l in ledger if l["social_audit_score"] > 0.8),
             }}
 
 
 @app.post("/api/v1/verify/")
 def verify(body: dict):
     """Citizen photo / comment verification on a COMPLETED project."""
+    nation = body.get("nation", "in")
+    if nation not in STATE:
+        nation = "in"
+    s = _S(nation)
     pid = body.get("project_id")
     verdict = body.get("verdict", "partial")
     comment = body.get("comment", "")
-    proj = next((p for p in PROJECTS if p["project_id"] == pid), None)
+    proj = next((p for p in s["PROJECTS"] if p["project_id"] == pid), None)
     if not proj:
         raise HTTPException(404, f"Unknown project {pid}")
 
@@ -458,7 +600,7 @@ def verify(body: dict):
     trust = float(body.get("trust_weight", 0.5))
 
     ev = {
-        "verification_id": f"V-{datetime.now(timezone.utc).strftime('%Y%m%d')}-{len(VERIFICATIONS):05d}",
+        "verification_id": f"V-{datetime.now(timezone.utc).strftime('%Y%m%d')}-{len(s['VERIFICATIONS']):05d}",
         "project_id": pid, "created_at": datetime.now(timezone.utc).isoformat(),
         "channel": body.get("channel", "whatsapp"),
         "respondent": {"trust_weight": trust},
@@ -467,10 +609,12 @@ def verify(body: dict):
         "comment_language": PROVIDER.detect_language(comment),
         "photo": {"vision_check": vision},
     }
-    VERIFICATIONS.append(ev)
+    s["VERIFICATIONS"].append(ev)
+    db.insert_verification(nation, ev, origin="live")
+    s["LEDGER"] = compute_impact_ledger(s["PROJECTS"], s["VERIFICATIONS"])
 
     # Recompute the social audit score for this project
-    mine = [v for v in VERIFICATIONS if v["project_id"] == pid]
+    mine = [v for v in s["VERIFICATIONS"] if v["project_id"] == pid]
     num = sum(values.get(v["verdict"], 0.0) * v["respondent"]["trust_weight"] for v in mine
               if v["verdict"] != "spam")
     den = sum(v["respondent"]["trust_weight"] for v in mine if v["verdict"] != "spam")
@@ -488,8 +632,8 @@ def verify(body: dict):
 # ------------------------------------------------------------- ROUTING (C)
 
 @app.get("/api/v1/routing/table")
-def routing_table():
-    return ROUTING
+def routing_table(nation: str = "in"):
+    return _S(nation)["ROUTING"]
 
 
 # ----------------------------------------------------------- BRICS (D)
@@ -512,22 +656,33 @@ def adapters():
 def brief(body: dict):
     kind = body.get("kind", "policy brief")
     language = body.get("language", "English")
+    nation = body.get("nation", "in")
+    if nation not in STATE:
+        nation = "in"
+    s = _S(nation)
     if body.get("subject") == "portfolio":
         req = body.get("request") or {"budget_inr": 400_000_000, "sector_caps": DEFAULT_SECTOR_CAPS,
                                       "equity_floor_pct": 0.40, "geographic_spread": "min_one_per_block",
                                       "fast": False, "weights": {"demand": .3, "deficit": .25,
                                                                  "reach": .2, "equity": .15,
                                                                  "feasibility": .1}}
-        pf = allocate(req, PROJECTS, {h["hotspot_id"]: h["priority_score"] for h in HOTSPOTS})
+        pf = allocate(req, s["PROJECTS"], {h["hotspot_id"]: h["priority_score"] for h in s["HOTSPOTS"]})
         data = {"totals": pf["totals"], "selected_projects": pf["selected"],
                 "dropped": pf["dropped"][:8], "constraint_report": pf["constraint_report"]}
+    elif body.get("subject") == "dashboard":
+        st = db.stats(nation)
+        data = {"nation": NATIONS[nation]["label"], "counters": st,
+                "top_hotspots": [{"hotspot_id": h["hotspot_id"], "sector": h["sector"],
+                                  "block": h["lgd_block_code"], "priority_score": h["priority_score"]}
+                                 for h in s["HOTSPOTS"][:8]]}
     else:
         data = [{"hotspot_id": h["hotspot_id"], "sector": h["sector"],
                  "priority_score": h["priority_score"], "components": h["components"],
-                 "demand": h["demand"]} for h in HOTSPOTS[:12]]
-    return {"kind": kind, "language": language,
-            "text": gemini.client.generate_brief(kind, data, language),
-            "degraded": not gemini.client.available()}
+                 "demand": h["demand"]} for h in s["HOTSPOTS"][:12]]
+    text = gemini.client.generate_brief(kind, data, language)
+    return {"kind": kind, "language": language, "nation": nation,
+            "text": text,
+            "degraded": (not gemini.client.available()) or "offline template" in text[:120]}
 
 
 # ------------------------------------------------------- TELEPHONY DEMO (A)

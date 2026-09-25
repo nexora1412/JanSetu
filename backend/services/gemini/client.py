@@ -72,24 +72,30 @@ def available() -> bool:
     return bool(API_KEY)
 
 
-def _call(prompt: str, max_tokens: int = 2048, temperature: float = 0.2) -> str | None:
+def _call(prompt: str, max_tokens: int = 2048, temperature: float = 0.2,
+          timeout: int | None = None) -> str | None:
     """Minimal stdlib REST call (no SDK dependency). Returns text, or None on ANY failure."""
     if not API_KEY:
         return None
+    gen_config: dict = {
+        "temperature": temperature,
+        "maxOutputTokens": max_tokens,
+        "responseMimeType": "application/json",
+    }
+    if MODEL.startswith("gemini-2.5"):
+        # 2.5-flash spends output tokens on internal "thinking"; with a small cap
+        # the candidate comes back EMPTY (finishReason=MAX_TOKENS). Budget it to 0.
+        gen_config["thinkingConfig"] = {"thinkingBudget": 0}
     body = json.dumps({
         "contents": [{"role": "user", "parts": [{"text": prompt}]}],
-        "generationConfig": {
-            "temperature": temperature,
-            "maxOutputTokens": max_tokens,
-            "responseMimeType": "application/json",
-        },
+        "generationConfig": gen_config,
     }).encode("utf-8")
     req = urllib.request.Request(
         ENDPOINT.format(model=MODEL, key=API_KEY),
         data=body, headers={"Content-Type": "application/json"}, method="POST",
     )
     try:
-        with urllib.request.urlopen(req, timeout=TIMEOUT_S) as resp:
+        with urllib.request.urlopen(req, timeout=timeout or TIMEOUT_S) as resp:
             data = json.loads(resp.read().decode("utf-8"))
         return data["candidates"][0]["content"]["parts"][0]["text"]
     except (urllib.error.URLError, KeyError, IndexError, json.JSONDecodeError, TimeoutError, OSError):
@@ -259,7 +265,7 @@ def generate_brief(kind: str, data: Any, language: str = "English",
                    fmt: str = "4 short paragraphs with a one-line headline") -> str:
     payload = json.dumps(data, ensure_ascii=False, default=str)[:9000]
     raw = _call(BRIEF_PROMPT.format(kind=kind, data=payload, language=language, format=fmt),
-                temperature=0.4)
+                temperature=0.4, timeout=60)
     if raw and not raw.strip().startswith("{"):
         return raw.strip()
     if raw:
@@ -271,6 +277,19 @@ def generate_brief(kind: str, data: Any, language: str = "English",
 
 def _fallback_brief(kind: str, data: Any) -> str:
     """Templated, data-true, unglamorous. Runs offline. Never fabricates."""
+    if isinstance(data, dict) and "counters" in data:
+        c = data["counters"]
+        top = data.get("top_hotspots") or []
+        sectors = ", ".join(f"{s['sector']} ({s['count']})" for s in (c.get("by_sector") or [])[:4])
+        return (
+            f"{kind.title()} (offline template — Gemini call failed or no key set)\n\n"
+            f"{data.get('nation', '')} database holds {c.get('total', 0)} citizen reports, "
+            f"{c.get('live', 0)} filed live through the app/helpline, and "
+            f"{c.get('verifications', 0)} citizen verifications.\n"
+            f"Busiest sectors: {sectors}.\n"
+            f"Top priority hotspots: " +
+            (", ".join(f"{h['hotspot_id']} ({h['priority_score']})" for h in top[:5]) or "—") + "."
+        )
     if isinstance(data, dict):
         t = data.get("totals", {})
         return (

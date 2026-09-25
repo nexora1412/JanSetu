@@ -74,13 +74,30 @@
   .spin{display:inline-block;width:13px;height:13px;border:2px solid #231a00;
         border-top-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}
   @keyframes sp{to{transform:rotate(360deg)}}
+  .nswitch{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden}
+  .nbtn{background:transparent;color:var(--dim);border:0;padding:4px 12px;font-size:12.5px;
+        font-weight:700;cursor:pointer;border-radius:0}
+  .nbtn.active{background:var(--acc2);color:#04101f}
+  .live-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--good);
+        margin-right:6px;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.25}}
+  .feed-row-new td{animation:flash 2s}
+  @keyframes flash{0%{background:#1d3a2a}100%{background:transparent}}
+  .brief-item{border-left:3px solid var(--acc2);padding:6px 12px;margin:8px 0;background:#101830;
+        border-radius:0 8px 8px 0}
+  .brief-item b{color:var(--acc)}
 </style>
 </head>
 <body>
 <header>
   <div class="logo">Lok<span>Nivesh</span> <span style="color:var(--txt);font-weight:600">जनसेतु</span></div>
+  <div class="nswitch" title="Second BRICS nation — same engine, one adapter + one dataset">
+    <button class="nbtn active" id="nat-in">🇮🇳 India</button>
+    <button class="nbtn" id="nat-za">🇿🇦 South Africa</button>
+  </div>
   <div class="tag" id="t-gemini">Gemini: …</div>
   <div class="tag" id="t-tel">Telephony: …</div>
+  <div class="tag" id="t-db">SQLite: …</div>
   <div class="tag" id="t-counts">…</div>
   <div style="flex:1"></div>
   <a class="tag" href="/app" style="background:var(--acc);color:#1a1206;font-weight:700">📱 Citizen mobile app →</a>
@@ -99,6 +116,7 @@
 
   <div class="tabs">
     <button class="tab active" data-v="alloc">★ Allocator</button>
+    <button class="tab" data-v="live">📡 Live intake &amp; AI</button>
     <button class="tab" data-v="bias">⚖️ Bias correction</button>
     <button class="tab" data-v="hot">Demand hotspots</button>
     <button class="tab" data-v="impact">Impact ledger</button>
@@ -193,6 +211,55 @@
     </div>
   </section>
 
+  <!-- ══════════════════ LIVE INTAKE & AI ══════════════════ -->
+  <section class="view" id="v-live">
+    <div class="grid g4">
+      <div class="card"><div class="kpi" id="lv-total">—</div><small>reports in database</small></div>
+      <div class="card"><div class="kpi" id="lv-live" style="color:var(--good)">—</div>
+        <small>filed live via citizen app / helpline</small></div>
+      <div class="card"><div class="kpi" id="lv-verif">—</div><small>citizen verifications</small></div>
+      <div class="card"><div class="kpi" id="lv-chan">—</div><small>top channel</small></div>
+    </div>
+
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card">
+        <h3>Reports by sector</h3>
+        <div id="ch-sector"></div>
+        <div class="note">Straight from SQLite — every bar is a COUNT(*) an auditor can re-run.</div>
+      </div>
+      <div class="card">
+        <h3>Intake over time</h3>
+        <div id="ch-time"></div>
+        <div class="note">Demand is not uniform. The allocator reads this shape; so should the budget calendar.</div>
+      </div>
+    </div>
+
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card">
+        <h3><span class="live-dot"></span>Citizen reports — live feed</h3>
+        <div style="max-height:380px;overflow:auto">
+          <table><thead><tr><th>Ticket</th><th>Filed</th><th>Sector</th><th>Channel</th>
+            <th>Routed to</th><th>Status</th></tr></thead>
+            <tbody id="feed-body"></tbody></table>
+        </div>
+        <div class="note">Polls the database every 5 seconds. File a report in the
+          <b>📱 citizen app</b> or the helpline tab and watch it land here — same SQLite the
+          officer side reads, no refresh needed.</div>
+      </div>
+      <div class="card">
+        <h3>🤖 AI briefing — Gemini over live database numbers</h3>
+        <div class="row">
+          <button id="brief-btn">Generate briefing</button>
+          <span class="mono" id="brief-meta"></span>
+        </div>
+        <div id="brief-out" style="margin-top:10px;font-size:13px">
+          <span class="muted">Gemini reads the counters above and writes the operations brief.
+          It explains the numbers — it never computes them.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ══════════════════ BIAS ══════════════════ -->
   <section class="view" id="v-bias">
     <div class="card">
@@ -276,7 +343,7 @@
           <option value="whatsapp">WhatsApp</option>
           <option value="kiosk">Field kiosk (offline sync)</option>
         </select>
-        <label>Complaint text (any Indian language, or Roman script)</label>
+        <label>Complaint text (any Indian or South African language, or Roman script)</label>
         <select id="sample">
           <option value="धुळे तालुक्यात कुसुंबा गावाकडे जाणारा रस्ता पूर्णपणे खराब झाला आहे. पाऊस पडला तर गाड्या जात नाहीत.">Marathi — damaged approach road, Dhule</option>
           <option value="गया जिले के बोध गया ब्लॉक में पानी की बहुत समस्या है। हैंडपंप छह महीने से खराब पड़ा है।">Hindi — broken handpump, Gaya</option>
@@ -284,6 +351,9 @@
           <option value="கடலூர் மாவட்டத்தில் எங்கள் ஊர் சாலை மிகவும் மோசமாக உள்ளது.">Tamil — village road, Cuddalore</option>
           <option value="Bahraich mein bijli ki bahut problem hai, transformer 6 mahine se kharab pada hai">Hinglish (Roman) — power, Bahraich</option>
           <option value="पानी की बहुत समस्या है, कोई सुनने वाला नहीं है">Unresolvable location — tests the null-LGD path</option>
+          <option value="The access road to Lusikisiki clinic has washed away completely, no ambulances can pass">English 🇿🇦 — washed-away clinic road, Lusikisiki</option>
+          <option value="Die paaie in Gauteng is vol gate en dis gevaarlik vir kinders om skool toe te stap">Afrikaans 🇿🇦 — potholes near schools, Gauteng</option>
+          <option value="Amanzi acocekileyo awekho e Lusikisiki, abantwana bayagula">isiXhosa 🇿🇦 — no clean water, Lusikisiki</option>
         </select>
         <div class="row" style="margin-top:12px">
           <button id="file">File report</button>
@@ -312,6 +382,27 @@ const INR = n => '₹' + Number(n||0).toLocaleString('en-IN');
 const CR  = n => '₹' + (Number(n||0)/1e7).toFixed(2) + ' Cr';
 const NUM = n => Number(n||0).toLocaleString('en-IN');
 
+/* ── nation (BRICS portability demo) ─────────────────── */
+let NATION = 'in';
+const STATES = {
+  in: ['Maharashtra','Bihar','Uttar Pradesh','West Bengal','Tamil Nadu'],
+  za: ['Eastern Cape','Gauteng'],
+};
+function populateStates(){
+  $('#state').innerHTML = '<option value="">All states / provinces</option>' +
+    STATES[NATION].map(s=>'<option>'+s+'</option>').join('');
+}
+function setNation(n){
+  if (n === NATION) return;
+  NATION = n;
+  $('#nat-in').classList.toggle('active', n==='in');
+  $('#nat-za').classList.toggle('active', n==='za');
+  populateStates();
+  status(); solve(); loadHotspots(); loadImpact(); loadLive();
+}
+$('#nat-in').onclick = () => setNation('in');
+$('#nat-za').onclick = () => setNation('za');
+
 document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
   document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
   document.querySelectorAll('.view').forEach(x => x.classList.remove('active'));
@@ -330,8 +421,11 @@ async function status(){
   g.className = 'tag ' + (s.gemini.configured ? 'on' : 'off');
   t.textContent = 'Telephony: ' + s.telephony.provider;
   t.className = 'tag on';
+  $('#t-db').textContent = '💾 ' + (s.database ? 'SQLite' : 'in-memory');
+  $('#t-db').className = 'tag ' + (s.database ? 'on' : 'off');
+  const c = (s.counts && s.counts[NATION]) || s.counts || {};
   $('#t-counts').textContent =
-    NUM(s.counts.reports)+' reports · '+NUM(s.counts.hotspots)+' hotspots · '+NUM(s.counts.projects)+' projects';
+    NUM(c.reports)+' reports · '+NUM(c.hotspots)+' hotspots · '+NUM(c.projects)+' projects';
 }
 
 /* ── allocator ────────────────────────────────────────── */
@@ -352,7 +446,8 @@ async function solve(){
       state_filter: $('#state').value || null,
       sector_filter: null,
       weights:{demand:.30,deficit:.25,reach:.20,equity:.15,feasibility:.10},
-      fast: $('#fast').checked
+      fast: $('#fast').checked,
+      nation: NATION
     });
     render(pf);
   } finally { $('#solve').innerHTML='Solve portfolio'; $('#solve').disabled=false; }
@@ -420,8 +515,8 @@ function render(pf){
 /* ── hotspots & bias ──────────────────────────────────── */
 let CENSUS = {};
 async function loadHotspots(){
-  const [hs, ad] = await Promise.all([jget('/api/v1/hotspots/?limit=400'),
-                                      jget('/api/v1/routing/table').catch(()=>({}))]);
+  const [hs, ad] = await Promise.all([jget('/api/v1/hotspots/?limit=400&nation='+NATION),
+                                      jget('/api/v1/routing/table?nation='+NATION).catch(()=>({}))]);
   const rows = hs.hotspots||[];
   const sec = $('#h-sector').value;
   const view = sec ? rows.filter(h=>h.sector===sec) : rows;
@@ -466,7 +561,7 @@ $('#h-sector').onchange = loadHotspots;
 
 /* ── impact ───────────────────────────────────────────── */
 async function loadImpact(){
-  const r = await jget('/api/v1/impact/');
+  const r = await jget('/api/v1/impact/?nation='+NATION);
   const s = r.summary||{};
   $('#imp-kpis').innerHTML =
     kpi(s.projects_tracked||0,'projects tracked')+
@@ -493,7 +588,8 @@ function kpi(v,l,cls){ return '<div class="card"><div class="kpi '+(cls?'pill '+
 $('#file').onclick = async () => {
   $('#file').innerHTML='<span class="spin"></span> Filing…';
   const r = await jpost('/api/v1/intake/', {
-    text: $('#sample').value, channel: $('#ch').value, from_number:'+919876543210' });
+    text: $('#sample').value, channel: $('#ch').value, from_number:'+919876543210',
+    nation: NATION });
   $('#file').innerHTML='File report';
   const st=r.report.structured;
   $('#intake-out').textContent = JSON.stringify({
@@ -509,6 +605,7 @@ $('#file').onclick = async () => {
     ack_sent_to_citizen: r.ack
   }, null, 2);
   loadOutbox();
+  loadLive();
 };
 async function loadOutbox(){
   const o = await jget('/api/v1/telephony/outbox');
@@ -517,13 +614,123 @@ async function loadOutbox(){
     (x.body||x.tts||'')+'</div>').join('') || '<div class="muted">Empty.</div>';
 }
 
+/* ── live intake & AI ─────────────────────────────────── */
+let FEED_SEEN = new Set();
+let LIVE_TIMER = null;
+
+async function loadLive(){
+  const st = await jget('/api/v1/stats/?nation='+NATION);
+  $('#lv-total').textContent = NUM(st.total);
+  $('#lv-live').textContent  = NUM(st.live);
+  $('#lv-verif').textContent = NUM(st.verifications);
+  const topChan = (st.by_channel||[])[0];
+  $('#lv-chan').textContent = topChan ? topChan.channel.replace(/_/g,' ') : '—';
+  drawSectorChart(st.by_sector||[]);
+  drawTimeChart(st.by_day||[]);
+  await loadFeed();
+}
+
+async function loadFeed(){
+  const r = await jget('/api/v1/reports/?nation='+NATION+'&limit=12');
+  const rows = r.reports||[];
+  $('#feed-body').innerHTML = rows.map(x=>{
+    const stx = x.structured||{}, rt = x.routing||{};
+    const isNew = !FEED_SEEN.has(x.report_id);
+    FEED_SEEN.add(x.report_id);
+    const when = x.created_at ? new Date(x.created_at).toLocaleString() : '—';
+    return '<tr'+(isNew&&x.origin==='live'?' class="feed-row-new"':'')+'>'+
+      '<td class="mono">'+x.report_id+(x.origin==='live'?' <span class="pill p-good">live</span>':'')+'</td>'+
+      '<td class="muted" style="white-space:nowrap">'+when+'</td>'+
+      '<td>'+(stx.sector||'—')+'</td><td>'+(x.channel||'—')+'</td>'+
+      '<td>'+(rt.department||'—')+'</td>'+
+      '<td><span class="pill p-info">'+(x.status||'—')+'</span></td></tr>';
+  }).join('') || '<tr><td colspan="6" class="muted">No reports yet.</td></tr>';
+}
+
+function drawSectorChart(rows){
+  if (!rows.length){ $('#ch-sector').innerHTML='<div class="muted">No data.</div>'; return; }
+  const W=520, H=220, pad=40, top=rows.slice(0,8);
+  const max=Math.max(...top.map(r=>r.count));
+  const bw=(W-pad*2)/top.length;
+  $('#ch-sector').innerHTML =
+    '<svg viewBox="0 0 '+W+' '+H+'" width="100%" height="'+H+'">'+
+    '<line x1="'+pad+'" y1="'+(H-pad)+'" x2="'+(W-pad)+'" y2="'+(H-pad)+'" stroke="#26325a"/>'+
+    top.map((r,i)=>{
+      const h=(r.count/max)*(H-pad*2), x=pad+i*bw+bw*0.15, y=H-pad-h;
+      return '<rect x="'+x+'" y="'+y+'" width="'+(bw*0.7)+'" height="'+h+'" rx="3" fill="url(#gsec)"/>'+
+        '<text x="'+(x+bw*0.35)+'" y="'+(y-5)+'" fill="#e8edfb" font-size="10" text-anchor="middle">'+r.count+'</text>'+
+        '<text x="'+(x+bw*0.35)+'" y="'+(H-pad+14)+'" fill="#93a0c4" font-size="10" text-anchor="middle">'+r.sector+'</text>';
+    }).join('')+
+    '<defs><linearGradient id="gsec" x1="0" y1="0" x2="0" y2="1">'+
+    '<stop offset="0" stop-color="#ffb020"/><stop offset="1" stop-color="#4da3ff"/></linearGradient></defs>'+
+    '</svg>';
+}
+
+function drawTimeChart(days){
+  if (days.length<2){ $('#ch-time').innerHTML='<div class="muted">Not enough history yet.</div>'; return; }
+  const pts=days.slice(-30);
+  const W=520, H=220, pad=40;
+  const max=Math.max(...pts.map(p=>p.count))*1.05;
+  const px=i=>pad+i/((pts.length-1)||1)*(W-pad*2);
+  const py=v=>H-pad-(v/max)*(H-pad*2);
+  const line=pts.map((p,i)=>px(i)+','+py(p.count)).join(' ');
+  const area=line+' '+px(pts.length-1)+','+(H-pad)+' '+px(0)+','+(H-pad);
+  $('#ch-time').innerHTML =
+    '<svg viewBox="0 0 '+W+' '+H+'" width="100%" height="'+H+'">'+
+    '<line x1="'+pad+'" y1="'+(H-pad)+'" x2="'+(W-pad)+'" y2="'+(H-pad)+'" stroke="#26325a"/>'+
+    '<polygon points="'+area+'" fill="#4da3ff" opacity="0.12"/>'+
+    '<polyline points="'+line+'" fill="none" stroke="#4da3ff" stroke-width="2"/>'+
+    pts.filter((_,i)=>i%Math.ceil(pts.length/6)===0).map((p,i2)=>{
+      const idx=pts.indexOf(p);
+      return '<text x="'+px(idx)+'" y="'+(H-pad+14)+'" fill="#93a0c4" font-size="9" text-anchor="middle">'+p.day.slice(5)+'</text>';
+    }).join('')+
+    '<text x="10" y="'+(H/2)+'" fill="#93a0c4" font-size="11" transform="rotate(-90 10 '+(H/2)+')" text-anchor="middle">reports / day</text>'+
+    '</svg>';
+}
+
+$('#brief-btn').onclick = async () => {
+  $('#brief-btn').innerHTML='<span class="spin"></span> Thinking…';
+  $('#brief-btn').disabled=true;
+  try{
+    const r = await jpost('/api/v1/brief/', {
+      kind:'dashboard operations brief', subject:'dashboard', nation:NATION, language:'English' });
+    $('#brief-meta').textContent = r.degraded ? 'offline fallback (no Gemini key)' : 'Gemini · live';
+    let html;
+    try{
+      let raw = r.text.trim().replace(/^```(?:json)?/i,'').replace(/```$/,'').trim();
+      const cut = raw.indexOf('['), brace = raw.indexOf('{');
+      const start = Math.min(...[cut,brace].filter(i=>i>=0));
+      if (start > 0) raw = raw.slice(start);
+      const parsed = JSON.parse(raw);
+      const items = Array.isArray(parsed) ? parsed : (parsed.brief || []);
+      html = items.map(b=>{
+        const body = b.content || b.brief || b.text || JSON.stringify(b);
+        const head = b.headline || b.heading || b.title || 'Brief';
+        return '<div class="brief-item"><b>'+head+'</b><div>'+body+'</div></div>';
+      }).join('');
+      if (!items.length) throw new Error('empty');
+    }catch(e){ html = '<div class="brief-item">'+r.text.replace(/\n/g,'<br>')+'</div>'; }
+    $('#brief-out').innerHTML = html;
+  } finally { $('#brief-btn').innerHTML='Generate briefing'; $('#brief-btn').disabled=false; }
+};
+
+function startLivePolling(){
+  if (LIVE_TIMER) clearInterval(LIVE_TIMER);
+  LIVE_TIMER = setInterval(()=>{
+    if ($('#v-live').classList.contains('active')) loadLive();
+  }, 5000);
+}
+
 /* ── boot ─────────────────────────────────────────────── */
 (async function boot(){
+  populateStates();
   await status();
   solve();
   loadHotspots();
   loadImpact();
   loadOutbox();
+  loadLive();
+  startLivePolling();
 })();
 </script>
 </body>

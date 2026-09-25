@@ -282,6 +282,7 @@ class AllocationRequest(BaseModel):
     sector_filter: str | None = None
     weights: ScoreWeights = Field(default_factory=ScoreWeights)
     fast: bool = Field(default=False, description="Use greedy+2-opt instead of exact ILP")
+    nation: str = Field(default="in", description="Which country dataset to solve against (in|za)")
 
 
 class DroppedProject(BaseModel):

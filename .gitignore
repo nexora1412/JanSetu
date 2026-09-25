@@ -18,6 +18,8 @@ Thumbs.db
 *.log
 *.sqlite3
 *.db
+*.db-wal
+*.db-shm
 data/cache/
 backend/uploads/
 
@@ -46,3 +48,4 @@ node_modules/
 # NOTE: frontend/dist IS committed on purpose — a fresh clone (and Render /
 # Cloud Run) then serves the citizen PWA at /app without needing Node.
 # Rebuild with: cd frontend && npm ci && npm run build
+*.tsbuildinfo

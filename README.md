@@ -78,10 +78,12 @@ propensity-matched counterfactual.
 | Impact ledger + counterfactual | ✅ propensity matching, realization ratio ρ | `backend/engine/impact.py` |
 | Gemini client + offline fallback | ✅ 4 surfaces, degrades safely | `backend/services/gemini/client.py` |
 | Single-helpline telephony layer | ✅ simulator, 6 channels, provider = 1 env var | `backend/services/telephony/` |
-| FastAPI (18 endpoints) | ✅ fixture-backed, all contracts live | `backend/app/main.py` |
-| Dashboard | ✅ 5 views, no external CDN | `backend/static/index.html` |
+| FastAPI (20+ endpoints) | ✅ DB-backed, all contracts live | `backend/app/main.py` |
+| 💾 SQLite persistence | ✅ citizen submissions survive restarts, seed vs live origin | `backend/db.py` |
+| Dashboard | ✅ 6 views incl. live intake feed + charts + AI briefing, no external CDN | `backend/static/index.html` |
 | 📱 Citizen mobile app (PWA) | ✅ voice+text intake, track, verify, missed call · 3 languages · offline queue | `frontend/` |
 | Voice intake endpoint | ✅ recorded audio → STT chain → same pipeline | `POST /api/v1/intake/voice` |
+| 🇿🇦 Second-nation demo | ✅ India ⇄ South Africa toggle — same engine, adapter + dataset only | `?nation=za` on every endpoint |
 | BRICS adapters | ✅ 5 nations, config-only | `adapters/*.yaml` |
 
 **Proven on the seeded data:** Nandurbar files **13** complaints and ranks **#4**; Haveli
@@ -89,6 +91,13 @@ propensity-matched counterfactual.
 At ₹40 Cr the allocator funds **27 projects reaching 553,365 citizens at ₹722 each**,
 satisfying every constraint in 13 ms. Squeeze to ₹12 Cr and it reports honestly:
 *"covering every block needs ₹26.30 Cr; envelope is ₹12.00 Cr."*
+
+**The loop is live, not staged:** file a complaint in the citizen PWA (`/app`) and it is
+written to SQLite, re-scores the hotspots, and appears on the officer dashboard's
+**📡 Live intake & AI** tab within 5 seconds — with sector/time charts and a Gemini
+operations briefing computed over the same database counters. Flip the header toggle to
+🇿🇦 South Africa (531 reports, Eastern Cape + Gauteng) to show the whole engine is
+country-agnostic: one adapter, one dataset, zero code change.
 
 ---
 
