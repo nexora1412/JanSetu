@@ -72,6 +72,19 @@ const en: Dict = {
   pendingBanner: "{n} report(s) waiting to send",
   sending: "Sending…",
   errorGeneric: "Something went wrong. Please try again.",
+  proofTitle: "Proof of life",
+  proofSub: "A live photo + your location prove the report is real",
+  takePhoto: "Take a live photo",
+  retakePhoto: "Retake photo",
+  locating: "Getting your location…",
+  locationDenied: "Location was blocked — this photo will be marked unverified.",
+  gpsLocked: "GPS locked",
+  noGps: "No location",
+  timeStamped: "Time-stamped",
+  proofVerified: "Proof verified",
+  proofNotLive: "This photo could not be confirmed as taken live, so it counts for less.",
+  govTimeline: "How government will resolve it",
+  govTimelineSub: "Who handles your complaint, and by when",
 };
 
 const hi: Dict = {
@@ -138,6 +151,19 @@ const hi: Dict = {
   pendingBanner: "{n} शिकायत(ें) भेजने के लिए प्रतीक्षित",
   sending: "भेज रहे हैं…",
   errorGeneric: "कुछ गड़बड़ हुई। कृपया फिर कोशिश करें।",
+  proofTitle: "जीवंत प्रमाण",
+  proofSub: "लाइव फ़ोटो + आपका स्थान साबित करते हैं कि शिकायत असली है",
+  takePhoto: "लाइव फ़ोटो लें",
+  retakePhoto: "फिर फ़ोटो लें",
+  locating: "आपका स्थान मिल रहा है…",
+  locationDenied: "स्थान अवरुद्ध है — यह फ़ोटो असत्यापित माना जाएगा।",
+  gpsLocked: "स्थान लॉक (GPS)",
+  noGps: "स्थान नहीं",
+  timeStamped: "समय-मुद्रांकित",
+  proofVerified: "प्रमाण सत्यापित",
+  proofNotLive: "यह फ़ोटो लाइव ली गई पुष्टि नहीं हो सकी, इसलिए इसका भार कम होगा।",
+  govTimeline: "सरकार कैसे हल करेगी",
+  govTimelineSub: "आपकी शिकायत कौन संभालेगा, और कब तक",
 };
 
 const mr: Dict = {
@@ -204,6 +230,19 @@ const mr: Dict = {
   pendingBanner: "{n} अर्ज पाठवण्यासाठी प्रलंबित",
   sending: "पाठवत आहे…",
   errorGeneric: "काहीतरी चूक झाली. कृपया पुन्हा प्रयत्न करा.",
+  proofTitle: "जिवंत पुरावा",
+  proofSub: "लाइव्ह फोटो + तुमचे ठिकाण सिद्ध करते की तक्रार खरी आहे",
+  takePhoto: "लाइव्ह फोटो काढा",
+  retakePhoto: "पुन्हा फोटो काढा",
+  locating: "तुमचे ठिकाण मिळत आहे…",
+  locationDenied: "ठिकाण अवरोधित आहे — हा फोटो असत्यापित मानला जाईल.",
+  gpsLocked: "ठिकाण लॉक (GPS)",
+  noGps: "ठिकाण नाही",
+  timeStamped: "वेळ-नोंदणीकृत",
+  proofVerified: "पुरावा सत्यापित",
+  proofNotLive: "हा फोटो लाइव्ह घेतल्याची पुष्टी होऊ शकली नाही, म्हणून याला कमी महत्त्व.",
+  govTimeline: "सरकार कसे सोडवेल",
+  govTimelineSub: "तुमची तक्रार कोण हाताळेल, आणि कधीपर्यंत",
 };
 
 const DICTS: Record<Lang, Dict> = { en, hi, mr };

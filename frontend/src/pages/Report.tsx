@@ -2,6 +2,8 @@ import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useApp } from "../App";
 import { submitText, submitVoice, type IntakeResult } from "../api";
+import { MiniTimeline, VerdictChip } from "../components/Timeline";
+import { useLiveCapture } from "../evidence";
 import { addPending, saveTicket } from "../store";
 
 export default function Report() {
@@ -15,6 +17,8 @@ export default function Report() {
   const [error, setError] = useState("");
   const recorder = useRef<MediaRecorder | null>(null);
   const chunks = useRef<Blob[]>([]);
+  const photoRef = useRef<HTMLInputElement>(null);
+  const cap = useLiveCapture();
 
   function remember(res: IntakeResult, sourceText: string) {
     saveTicket({
@@ -36,7 +40,7 @@ export default function Report() {
     setBusy(true);
     setError("");
     try {
-      const res = await submitText(value, lang);
+      const res = await submitText(value, lang, cap.toPayload());
       remember(res, value);
     } catch {
       addPending({ text: value, lang, created_at: new Date().toISOString() });
@@ -65,7 +69,7 @@ export default function Report() {
         const blob = new Blob(chunks.current, { type: rec.mimeType || "audio/webm" });
         setBusy(true);
         try {
-          const res = await submitVoice(blob, lang);
+          const res = await submitVoice(blob, lang, cap.toPayload());
           if (res.transcribed) {
             setTranscript(res.transcript ?? "");
             remember(res, res.transcript ?? "");
@@ -128,6 +132,29 @@ export default function Report() {
           </div>
         </div>
         {result.ack && <div className="banner pending">💬 {result.ack}</div>}
+
+        {r.evidence?.proof_of_life && (
+          <div className="card" style={{ margin: "12px 0" }}>
+            <div className="proof-head">
+              <span className="proof-title">🔒 {t("proofVerified")}</span>
+            </div>
+            <VerdictChip verdict={r.evidence.proof_of_life.verdict} />
+            {r.evidence.proof_of_life.verdict !== "live_verified" && (
+              <p className="muted" style={{ marginTop: 8 }}>{t("proofNotLive")}</p>
+            )}
+          </div>
+        )}
+
+        {r.timeline && r.timeline.length > 0 && (
+          <div className="card" style={{ margin: "12px 0" }}>
+            <div className="proof-head">
+              <span className="proof-title">🏛 {t("govTimeline")}</span>
+              <span className="proof-sub">{t("govTimelineSub")}</span>
+            </div>
+            <MiniTimeline stages={r.timeline} />
+          </div>
+        )}
+
         <p className="muted">{t("ackNote")}</p>
         <div style={{ display: "grid", gap: 10, marginTop: 14 }}>
           <Link to="/track" className="btn" style={{ textDecoration: "none", textAlign: "center" }}>
@@ -153,6 +180,50 @@ export default function Report() {
       <h1>{t("reportTitle")}</h1>
 
       {error && <div className="banner err">⚠️ {error}</div>}
+
+      <div className="card proof-card">
+        <div className="proof-head">
+          <span className="proof-title">🔒 {t("proofTitle")}</span>
+          <span className="proof-sub">{t("proofSub")}</span>
+        </div>
+        <input
+          ref={photoRef}
+          type="file"
+          accept="image/*"
+          capture="environment"
+          style={{ display: "none" }}
+          onChange={(e) => {
+            const f = e.target.files?.[0];
+            if (f) void cap.capture(f);
+          }}
+        />
+        <button
+          className="btn secondary"
+          onClick={() => photoRef.current?.click()}
+          disabled={cap.capturing}
+        >
+          {cap.capturing ? `📡 ${t("locating")}` : cap.proof ? `📷 ${t("retakePhoto")}` : `📷 ${t("takePhoto")}`}
+        </button>
+        {cap.error === "location-denied" && (
+          <div className="banner pending" style={{ marginTop: 8 }}>📍 {t("locationDenied")}</div>
+        )}
+        {cap.proof && (
+          <>
+            <div className="photo-preview">
+              <img src={cap.proof.previewUrl} alt="proof" />
+            </div>
+            <div className="chips proof-chips">
+              <span className={`chip ${cap.hasGps ? "on-good" : "on-bad"}`}>
+                📍 {cap.hasGps ? t("gpsLocked") : t("noGps")}
+              </span>
+              <span className="chip on-good">⏱ {t("timeStamped")}</span>
+              {cap.hasGps && Number.isFinite(cap.proof.gps_accuracy_m) && (
+                <span className="chip">±{Math.round(cap.proof.gps_accuracy_m)} m</span>
+              )}
+            </div>
+          </>
+        )}
+      </div>
 
       <button
         className={`btn mic ${recording ? "recording" : ""}`}

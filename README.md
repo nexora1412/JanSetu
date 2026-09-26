@@ -87,6 +87,8 @@ propensity-matched counterfactual.
 | 🧑‍⚖️ Human escalation queue | ✅ low-confidence / unresolved-location reports wait for an officer, resolutions become labelled corrections | `GET/POST /api/v1/escalations/` |
 | ⚠️ Early-warning alerts | ✅ deterministic surge detection per block+sector (30-day window vs historical rate) | `GET /api/v1/alerts/` |
 | 🎧 Helpline live explorer | ✅ judges simulate a missed call → voice/text complaint → real pipeline, no handset needed | dashboard "Try the helpline" tab |
+| 🔒 Proof-of-life evidence | ✅ live photo + GPS fix + device timestamp bound at shutter; server re-checks freshness/accuracy, recycled photos flagged not trusted | `POST /api/v1/intake/` `evidence`, `GET /api/v1/evidence/{ticket}` |
+| 🏛 Government resolution timeline | ✅ citizen-visible 7-stage promise (received → assigned officer → field inspection → work start → SLA → resolved); officers advance stages, citizen sees who + when | `GET /api/v1/track/{id}`, `POST /api/v1/timeline/{id}/advance` |
 | BRICS adapters | ✅ 5 nations, config-only | `adapters/*.yaml` |
 
 **Proven on the seeded data:** Nandurbar files **13** complaints and ranks **#4**; Haveli
@@ -110,6 +112,17 @@ deterministically, no LLM in the loop. Unit economics: **₹1.57 per complaint**
 ~₹45 at a staffed call centre — the 28× gap is the scaling argument. Judges can try the
 whole helpline from their laptop: the **🎧 Try the helpline** tab simulates a missed
 call, takes voice (browser mic) or typed complaint, and runs the real pipeline.
+
+**Nothing is fake — proof-of-life on every photo.** A complaint or verification photo is
+only trusted when it was taken *live*: the PWA binds the shutter to a GPS fix and the
+device clock, and the server re-checks all three (magic-byte image validation, timestamp
+freshness ≤ 10 min, GPS accuracy). A recycled gallery photo or a denied location is
+downgraded to `partially_verified` / `unverified` and the flags are stored with the
+report so an auditor sees *why*. And the citizen is never left guessing: every ticket
+carries a **government resolution timeline** — which department and named officer owns
+it, when the field inspection and work order fall due, and the SLA completion date.
+Officers advance stages from the dashboard; the citizen's Track screen updates with the
+real actor and timestamp, plus a progress bar. *Accountability in both directions.*
 
 ---
 

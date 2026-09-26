@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useApp } from "../App";
 import { track, type TrackResult } from "../api";
+import { MiniTimeline, VerdictChip } from "../components/Timeline";
 import { STAGE_KEYS } from "../i18n";
 import { getTickets } from "../store";
 
@@ -64,28 +65,57 @@ export default function Track() {
             <span className="k">{t("routedTo")}</span>
             <span className="v">{result.routed_to}</span>
           </div>
+          {result.scheme && (
+            <div className="kv">
+              <span className="k">Scheme</span>
+              <span className="v">{result.scheme}</span>
+            </div>
+          )}
           <div className="kv">
             <span className="k">{t("sla")}</span>
             <span className="v">
               {result.sla_days} {t("days")}
             </span>
           </div>
-          <ul className="timeline">
-            {result.stages.map((s, i) => {
-              const cls =
-                i < result.current_stage_index
-                  ? "done"
-                  : i === result.current_stage_index
-                    ? "current"
-                    : "";
-              return (
-                <li key={s} className={cls}>
-                  <span className="dot">{i < result.current_stage_index ? "✓" : i + 1}</span>
-                  <span className="t">{t(STAGE_KEYS[s] ?? s)}</span>
-                </li>
-              );
-            })}
-          </ul>
+
+          {result.evidence?.verdict && (
+            <div className="kv">
+              <span className="k">{t("proofTitle")}</span>
+              <span className="v">
+                <VerdictChip verdict={result.evidence.verdict} />
+              </span>
+            </div>
+          )}
+
+          {result.timeline && result.timeline.length > 0 ? (
+            <>
+              {typeof result.progress_pct === "number" && (
+                <div className="progress">
+                  <div className="progress-bar" style={{ width: `${result.progress_pct}%` }} />
+                  <span className="progress-label">{Math.round(result.progress_pct)}%</span>
+                </div>
+              )}
+              <p className="muted gov-hint">🏛 {t("govTimelineSub")}</p>
+              <MiniTimeline stages={result.timeline} />
+            </>
+          ) : (
+            <ul className="timeline">
+              {result.stages.map((s, i) => {
+                const cls =
+                  i < result.current_stage_index
+                    ? "done"
+                    : i === result.current_stage_index
+                      ? "current"
+                      : "";
+                return (
+                  <li key={s} className={cls}>
+                    <span className="dot">{i < result.current_stage_index ? "✓" : i + 1}</span>
+                    <span className="t">{t(STAGE_KEYS[s] ?? s)}</span>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
         </div>
       )}
 

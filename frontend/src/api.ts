@@ -5,11 +5,46 @@ export interface Routing {
   ack_sent?: boolean;
 }
 
+export interface EvidencePayload {
+  photo_b64?: string;
+  gps_lat?: number;
+  gps_lng?: number;
+  gps_accuracy_m?: number;
+  captured_at?: string;
+}
+
+export interface ProofOfLife {
+  verdict: string;
+  has_photo?: boolean;
+  has_gps?: boolean;
+  timestamp_fresh?: boolean;
+  age_seconds?: number | null;
+  flags?: string[];
+  gps?: { lat: number; lng: number; accuracy_m?: number } | null;
+}
+
+export interface TimelineStage {
+  stage: string;
+  label: string;
+  actor: string;
+  status: string; // done | scheduled | pending
+  at?: string;
+  eta?: string;
+}
+
+export interface ReportEvidence {
+  served_at?: string | null;
+  captured_at?: string | null;
+  proof_of_life?: ProofOfLife;
+}
+
 export interface IntakeResult {
   report: {
     report_id: string;
     structured: { sector: string; confidence: number; extractor: string };
     routing: Routing;
+    evidence?: ReportEvidence | null;
+    timeline?: TimelineStage[];
   };
   ack?: string | null;
   degraded: boolean;
@@ -32,6 +67,17 @@ export interface TrackResult {
   language: string;
   stages: string[];
   current_stage_index: number;
+  timeline?: TimelineStage[];
+  progress_pct?: number;
+  evidence?: {
+    verdict?: string;
+    photo_url?: string | null;
+    captured_at?: string | null;
+    gps?: { lat: number; lng: number; accuracy_m?: number } | null;
+    flags?: string[];
+  } | null;
+  officer_ref?: string | null;
+  scheme?: string | null;
 }
 
 export interface Project {
@@ -45,7 +91,11 @@ export interface Project {
 }
 
 export interface VerifyResult {
-  verification: { verification_id: string; verdict: string };
+  verification: {
+    verification_id: string;
+    verdict: string;
+    photo?: { proof_of_life?: ProofOfLife | null };
+  };
   aggregates: {
     project_verification_count: number;
     social_audit_score: number;
@@ -65,7 +115,11 @@ async function jsonOrThrow<T>(r: Response): Promise<T> {
   return (await r.json()) as T;
 }
 
-export async function submitText(text: string, language: string): Promise<IntakeResult> {
+export async function submitText(
+  text: string,
+  language: string,
+  evidence?: EvidencePayload,
+): Promise<IntakeResult> {
   const r = await fetch("/api/v1/intake/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -74,16 +128,29 @@ export async function submitText(text: string, language: string): Promise<Intake
       channel: "app",
       language_hint: language,
       from_number: "+910000000000",
+      ...(evidence ? { evidence } : {}),
     }),
   });
   return jsonOrThrow<IntakeResult>(r);
 }
 
-export async function submitVoice(blob: Blob, language: string): Promise<VoiceResult> {
+export async function submitVoice(
+  blob: Blob,
+  language: string,
+  evidence?: EvidencePayload,
+): Promise<VoiceResult> {
   const fd = new FormData();
   fd.append("audio", blob, `voice.${blob.type.includes("mp4") ? "m4a" : "webm"}`);
   fd.append("language_hint", language);
   fd.append("channel", "app_voice");
+  if (evidence) {
+    if (evidence.photo_b64) fd.append("photo_b64", evidence.photo_b64);
+    if (evidence.gps_lat != null) fd.append("gps_lat", String(evidence.gps_lat));
+    if (evidence.gps_lng != null) fd.append("gps_lng", String(evidence.gps_lng));
+    if (evidence.gps_accuracy_m != null)
+      fd.append("gps_accuracy_m", String(evidence.gps_accuracy_m));
+    if (evidence.captured_at) fd.append("captured_at", evidence.captured_at);
+  }
   const r = await fetch("/api/v1/intake/voice", { method: "POST", body: fd });
   return jsonOrThrow<VoiceResult>(r);
 }
@@ -105,6 +172,10 @@ export async function verifyProject(payload: {
   verdict: string;
   comment: string;
   image_b64?: string;
+  gps_lat?: number;
+  gps_lng?: number;
+  gps_accuracy_m?: number;
+  captured_at?: string;
 }): Promise<VerifyResult> {
   const r = await fetch("/api/v1/verify/", {
     method: "POST",

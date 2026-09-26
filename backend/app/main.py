@@ -234,6 +234,18 @@ def status():
 
 # ------------------------------------------------------------------ INTAKE (A)
 
+UPLOADS = BACKEND / "uploads"
+UPLOADS.mkdir(exist_ok=True)
+
+
+class EvidenceIn(BaseModel):
+    photo_b64: str | None = None          # data-url or raw base64 jpeg/webp
+    gps_lat: float | None = None
+    gps_lng: float | None = None
+    gps_accuracy_m: float | None = None
+    captured_at: str | None = None        # device clock, ISO-8601, at shutter time
+
+
 class IntakeIn(BaseModel):
     text: str
     channel: str = "sms"
@@ -241,6 +253,128 @@ class IntakeIn(BaseModel):
     language_hint: str | None = None
     audio_uri: str | None = None
     nation: str = "in"
+    evidence: EvidenceIn | None = None
+
+
+def _process_evidence(ticket: str, ev_in: EvidenceIn | None) -> dict | None:
+    """ANTI-FAKE GUARD. A complaint photo is only trusted when it was taken
+    live: fresh device timestamp + GPS fix at shutter time. Stored server-side;
+    the checks are stored with the report so an auditor sees WHY it passed."""
+    if ev_in is None or not (ev_in.photo_b64 or ev_in.gps_lat is not None):
+        return None
+    import base64
+    import re as _re
+
+    checks: dict[str, Any] = {
+        "has_photo": False, "has_gps": False,
+        "timestamp_fresh": False, "age_seconds": None,
+        "gps_accuracy_m": ev_in.gps_accuracy_m, "flags": [],
+    }
+    photo_path = None
+    if ev_in.photo_b64:
+        raw = _re.sub(r"^data:image/\w+;base64,", "", ev_in.photo_b64)
+        try:
+            blob = base64.b64decode(raw, validate=True)
+        except Exception:
+            blob = b""
+        if blob[:3] in (b"\xff\xd8\xff", b"\x89PN") or blob[:4] == b"RIFF":
+            safe = _re.sub(r"[^A-Za-z0-9_-]", "", ticket)[:40]
+            photo_path = UPLOADS / f"{safe}.jpg"
+            photo_path.write_bytes(blob)
+            checks["has_photo"] = True
+            checks["photo_bytes"] = len(blob)
+        else:
+            checks["flags"].append("photo_payload_not_an_image")
+    if ev_in.gps_lat is not None and ev_in.gps_lng is not None:
+        checks["has_gps"] = True
+        checks["gps"] = {"lat": ev_in.gps_lat, "lng": ev_in.gps_lng,
+                         "accuracy_m": ev_in.gps_accuracy_m}
+        if ev_in.gps_accuracy_m and ev_in.gps_accuracy_m > 500:
+            checks["flags"].append("gps_accuracy_poor_>500m")
+    if ev_in.captured_at:
+        try:
+            cap = datetime.fromisoformat(ev_in.captured_at.replace("Z", "+00:00"))
+            age = abs((datetime.now(timezone.utc) - cap).total_seconds())
+            checks["age_seconds"] = round(age)
+            checks["timestamp_fresh"] = age <= 600
+            if age > 600:
+                checks["flags"].append("stale_timestamp_photo_may_be_reused")
+        except ValueError:
+            checks["flags"].append("captured_at_unparseable")
+    else:
+        checks["flags"].append("no_device_timestamp")
+
+    checks["verdict"] = ("live_verified"
+                         if checks["has_photo"] and checks["has_gps"] and checks["timestamp_fresh"]
+                         else "partially_verified" if (checks["has_photo"] or checks["has_gps"])
+                         else "unverified")
+    return {"stored_path": str(photo_path) if photo_path else None,
+            "served_at": f"/api/v1/evidence/{ticket}" if photo_path else None,
+            "captured_at": ev_in.captured_at,
+            "proof_of_life": checks}
+
+
+def _build_timeline(r: dict) -> list[dict]:
+    """The citizen-visible promise: WHO handles it and WHEN, stage by stage.
+    Dates derive from the routing SLA; officer actions upgrade `scheduled`
+    to `done` with real timestamps (stored in r['timeline_state'])."""
+    created = r.get("created_at") or datetime.now(timezone.utc).isoformat()
+    try:
+        t0 = datetime.fromisoformat(created.replace("Z", "+00:00"))
+    except ValueError:
+        t0 = datetime.now(timezone.utc)
+    routing = r.get("routing") or {}
+    dept = routing.get("department", "—")
+    off = routing.get("officer_ref", "—")
+    sla = int(routing.get("sla_days") or 30)
+    state = r.get("timeline_state") or {}
+
+    def eta(days: float) -> str:
+        return (t0 + timedelta(days=days)).isoformat()
+
+    stages = [
+        {"stage": "received", "label": "Complaint received",
+         "actor": f"JanSetu helpline ({r.get('channel', 'app')})",
+         "at": created, "status": "done"},
+        {"stage": "assigned", "label": "Assigned to department & officer",
+         "actor": f"{dept} · officer ref {off} · {routing.get('scheme', 'District Plan')}",
+         "at": routing.get("routed_at") or created, "status": "done" if dept != "—" else "pending"},
+        {"stage": "acknowledged", "label": "SMS acknowledgement sent to citizen",
+         "actor": "JanSetu automated SMS",
+         "at": created, "status": "done" if routing.get("ack_sent") else "pending"},
+        {"stage": "field_inspection", "label": "Field inspection scheduled",
+         "actor": f"Junior Engineer, {dept}",
+         "eta": eta(3), "status": "scheduled"},
+        {"stage": "work_start", "label": "Work order issued / work starts",
+         "actor": f"Assistant Executive Engineer, {dept}",
+         "eta": eta(7), "status": "scheduled"},
+        {"stage": "completion_due", "label": "Completion deadline (SLA)",
+         "actor": f"{dept} — payment only after citizen verification",
+         "eta": eta(sla), "status": "scheduled"},
+        {"stage": "resolved", "label": "Resolved & citizen-certified",
+         "actor": "Citizen social audit via app",
+         "eta": eta(sla), "status": "pending"},
+    ]
+    for s in stages:
+        if s["stage"] in state:
+            s["status"] = "done"
+            s["at"] = state[s["stage"]]["at"]
+            s.pop("eta", None)
+            if state[s["stage"]].get("by"):
+                s["actor"] = state[s["stage"]]["by"] + " · " + s["actor"]
+    return stages
+
+
+@app.get("/api/v1/evidence/{ticket}")
+def get_evidence_photo(ticket: str):
+    """Serve a stored complaint photo. Ticket ids are sanitised; path traversal
+    is impossible because we rebuild the filename from [A-Za-z0-9_-] only."""
+    import re as _re
+    safe = _re.sub(r"[^A-Za-z0-9_-]", "", ticket)[:40]
+    p = (UPLOADS / f"{safe}.jpg").resolve()
+    if not p.is_file() or not p.is_relative_to(UPLOADS.resolve()):
+        raise HTTPException(404, f"No evidence photo for {ticket}")
+    return FileResponse(p, media_type="image/jpeg")
 
 
 @app.post("/api/v1/intake/")
@@ -308,11 +442,21 @@ def intake(body: IntakeIn):
         esc_reasons.append("location_unresolved")
     if report["structured"]["sector"] == "other":
         esc_reasons.append("sector_unclassified")
+
+    # 4c · proof-of-life evidence — photo taken live with GPS + device timestamp
+    evidence = _process_evidence(ticket, body.evidence)
+    if evidence:
+        report["evidence"] = evidence
+        if evidence["proof_of_life"]["verdict"] == "unverified":
+            esc_reasons.append("evidence_unverified")
     if esc_reasons:
         report["status"] = "needs_human_review"
         report["escalation"] = {"reasons": esc_reasons,
                                 "confidence": report["structured"]["confidence"],
                                 "opened_at": report["created_at"]}
+
+    # 4d · the citizen-visible promise: who handles it, and by when
+    report["timeline"] = _build_timeline(report)
 
     # 5 · persist + refresh derived state
     _S(nation)["REPORTS"].append(report)
@@ -398,6 +542,11 @@ async def intake_voice(
     channel: str = Form("app_voice"),
     from_number: str = Form("+910000000000"),
     nation: str = Form("in"),
+    photo_b64: str | None = Form(None),
+    gps_lat: float | None = Form(None),
+    gps_lng: float | None = Form(None),
+    gps_accuracy_m: float | None = Form(None),
+    captured_at: str | None = Form(None),
 ):
     """Voice intake from the mobile app: recorded audio -> STT chain -> the SAME
     intake pipeline as a missed call or SMS. Never raises on a missing key:
@@ -415,9 +564,13 @@ async def intake_voice(
             "note": ("No STT provider succeeded (missing keys or network). "
                      "The app should offer typed text — intake still works."),
         }
+    ev = EvidenceIn(photo_b64=photo_b64, gps_lat=gps_lat, gps_lng=gps_lng,
+                    gps_accuracy_m=gps_accuracy_m, captured_at=captured_at) \
+        if (photo_b64 or gps_lat is not None) else None
     result = intake(IntakeIn(text=st["text"], channel=channel,
                              from_number=from_number, nation=nation,
-                             language_hint=st.get("language") or language_hint))
+                             language_hint=st.get("language") or language_hint,
+                             evidence=ev))
     return {"transcribed": True, "transcript": st["text"],
             "stt_provider": st.get("provider"), **result}
 
@@ -585,16 +738,55 @@ def track(ticket_id: str, nation: str = "in"):
                     break
     if not r:
         raise HTTPException(404, f"Unknown ticket {ticket_id}")
+    timeline = r.get("timeline") or _build_timeline(r)
+    done = sum(1 for s in timeline if s["status"] == "done")
     return {
         "report_id": ticket_id,
         "status": r.get("status"),
         "sector": (r.get("structured") or {}).get("sector"),
         "routed_to": (r.get("routing") or {}).get("department"),
+        "officer_ref": (r.get("routing") or {}).get("officer_ref"),
+        "scheme": (r.get("routing") or {}).get("scheme"),
         "sla_days": (r.get("routing") or {}).get("sla_days"),
         "language": r.get("raw_language"),
-        "stages": ["received", "routed", "acknowledged", "in_progress", "resolved"],
-        "current_stage_index": 1,
+        "timeline": timeline,
+        "progress_pct": round(100 * done / max(len(timeline), 1)),
+        "evidence": ({"verdict": (r.get("evidence") or {}).get("proof_of_life", {}).get("verdict"),
+                      "photo_url": (r.get("evidence") or {}).get("served_at"),
+                      "captured_at": (r.get("evidence") or {}).get("captured_at"),
+                      "gps": (r.get("evidence") or {}).get("proof_of_life", {}).get("gps"),
+                      "flags": (r.get("evidence") or {}).get("proof_of_life", {}).get("flags")}
+                     if r.get("evidence") else None),
+        "stages": [s["stage"] for s in timeline],
+        "current_stage_index": max(done - 1, 0),
     }
+
+
+@app.post("/api/v1/timeline/{ticket_id}/advance")
+def timeline_advance(ticket_id: str, body: dict):
+    """Officer marks the next stage as done — the citizen's timeline updates
+    instantly. Every advance is persisted with who did it and when."""
+    nation = body.get("nation", "in")
+    s = _S(nation if nation in STATE else "in")
+    nation = nation if nation in STATE else "in"
+    r = next((x for x in s["REPORTS"] if x.get("report_id") == ticket_id), None)
+    if not r:
+        raise HTTPException(404, f"Unknown ticket {ticket_id}")
+    stage = body.get("stage")
+    valid = {"field_inspection", "work_start", "completion_due", "resolved"}
+    if stage not in valid:
+        raise HTTPException(400, f"stage must be one of {sorted(valid)}")
+
+    tl_state = r.setdefault("timeline_state", {})
+    tl_state[stage] = {"at": datetime.now(timezone.utc).isoformat(),
+                       "by": body.get("officer") or (r.get("routing") or {}).get("officer_ref", "officer")}
+    if stage == "resolved":
+        r["status"] = "resolved"
+    elif r.get("status") in ("routed", "needs_human_review", "in_progress"):
+        r["status"] = "in_progress"
+    r["timeline"] = _build_timeline(r)
+    db.update_report(nation, r)
+    return {"report_id": ticket_id, "status": r["status"], "timeline": r["timeline"]}
 
 
 # ------------------------------------------------------------ HOTSPOTS (B)
@@ -745,15 +937,28 @@ def verify(body: dict):
     values = {"completed": 1.0, "partial": 0.5, "not_done": 0.0}
     trust = float(body.get("trust_weight", 0.5))
 
+    # proof-of-life on the verification photo too: live GPS + fresh timestamp.
+    # A "completed" verdict from an armchair with a recycled photo is exactly
+    # the fraud this guards against.
+    ev_id = f"V-{datetime.now(timezone.utc).strftime('%Y%m%d')}-{len(s['VERIFICATIONS']):05d}"
+    proof = _process_evidence(ev_id, EvidenceIn(
+        photo_b64=body.get("image_b64"),
+        gps_lat=body.get("gps_lat"), gps_lng=body.get("gps_lng"),
+        gps_accuracy_m=body.get("gps_accuracy_m"),
+        captured_at=body.get("captured_at")))
+    if proof and proof["proof_of_life"]["verdict"] != "live_verified":
+        trust = min(trust, 0.25)   # unverified evidence counts far less
+
     ev = {
-        "verification_id": f"V-{datetime.now(timezone.utc).strftime('%Y%m%d')}-{len(s['VERIFICATIONS']):05d}",
+        "verification_id": ev_id,
         "project_id": pid, "created_at": datetime.now(timezone.utc).isoformat(),
         "channel": body.get("channel", "whatsapp"),
         "respondent": {"trust_weight": trust},
         "verdict": verdict,
         "raw_comment": comment,
         "comment_language": PROVIDER.detect_language(comment),
-        "photo": {"vision_check": vision},
+        "photo": {"vision_check": vision,
+                  "proof_of_life": (proof or {}).get("proof_of_life")},
     }
     s["VERIFICATIONS"].append(ev)
     db.insert_verification(nation, ev, origin="live")

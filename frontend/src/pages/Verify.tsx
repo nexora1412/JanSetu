@@ -2,18 +2,8 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useApp } from "../App";
 import { listProjects, verifyProject, type Project, type VerifyResult } from "../api";
-
-async function fileToSmallB64(file: File): Promise<string> {
-  const bitmap = await createImageBitmap(file);
-  const max = 800;
-  const scale = Math.min(1, max / Math.max(bitmap.width, bitmap.height));
-  const canvas = document.createElement("canvas");
-  canvas.width = Math.round(bitmap.width * scale);
-  canvas.height = Math.round(bitmap.height * scale);
-  canvas.getContext("2d")!.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
-  const dataUrl = canvas.toDataURL("image/jpeg", 0.7);
-  return dataUrl.split(",", 2)[1];
-}
+import { VerdictChip } from "../components/Timeline";
+import { useLiveCapture } from "../evidence";
 
 function scoreColor(s: number) {
   return s > 0.8 ? "#34d399" : s >= 0.5 ? "#ff9933" : "#f87171";
@@ -25,12 +15,11 @@ export default function Verify() {
   const [selected, setSelected] = useState<Project | null>(null);
   const [verdict, setVerdict] = useState("");
   const [comment, setComment] = useState("");
-  const [photoB64, setPhotoB64] = useState<string | null>(null);
-  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<VerifyResult | null>(null);
   const [error, setError] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
+  const cap = useLiveCapture();
 
   useEffect(() => {
     listProjects()
@@ -38,27 +27,21 @@ export default function Verify() {
       .catch(() => setProjects([]));
   }, []);
 
-  async function onPhoto(e: React.ChangeEvent<HTMLInputElement>) {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    setPhotoPreview(URL.createObjectURL(file));
-    try {
-      setPhotoB64(await fileToSmallB64(file));
-    } catch {
-      setPhotoB64(null);
-    }
-  }
-
   async function submit() {
     if (!selected || !verdict || busy) return;
     setBusy(true);
     setError("");
     try {
+      const ev = cap.toPayload();
       const res = await verifyProject({
         project_id: selected.project_id,
         verdict,
         comment,
-        image_b64: photoB64 ?? undefined,
+        image_b64: ev?.photo_b64,
+        gps_lat: ev?.gps_lat,
+        gps_lng: ev?.gps_lng,
+        gps_accuracy_m: ev?.gps_accuracy_m,
+        captured_at: ev?.captured_at,
       });
       setResult(res);
     } catch {
@@ -93,6 +76,14 @@ export default function Verify() {
             <span className="k">{t("govAction")}</span>
             <span className="v">{result.aggregates.recommended_action.replaceAll("_", " ")}</span>
           </div>
+          {result.verification.photo?.proof_of_life && (
+            <div className="kv">
+              <span className="k">{t("proofTitle")}</span>
+              <span className="v">
+                <VerdictChip verdict={result.verification.photo.proof_of_life.verdict} />
+              </span>
+            </div>
+          )}
         </div>
         <Link to="/" className="btn" style={{ textDecoration: "none", textAlign: "center" }}>
           {t("back")}
@@ -159,16 +150,34 @@ export default function Verify() {
         type="file"
         accept="image/*"
         capture="environment"
-        onChange={onPhoto}
         style={{ display: "none" }}
+        onChange={(e) => {
+          const f = e.target.files?.[0];
+          if (f) void cap.capture(f);
+        }}
       />
-      <button className="btn secondary" onClick={() => fileRef.current?.click()}>
-        📷 {t("addPhoto")}
+      <button
+        className="btn secondary"
+        onClick={() => fileRef.current?.click()}
+        disabled={cap.capturing}
+      >
+        {cap.capturing ? `📡 ${t("locating")}` : cap.proof ? `📷 ${t("retakePhoto")}` : `📷 ${t("addPhoto")}`}
       </button>
-      {photoPreview && (
-        <div className="photo-preview">
-          <img src={photoPreview} alt="preview" />
-        </div>
+      {cap.error === "location-denied" && (
+        <div className="banner pending" style={{ marginTop: 8 }}>📍 {t("locationDenied")}</div>
+      )}
+      {cap.proof && (
+        <>
+          <div className="photo-preview">
+            <img src={cap.proof.previewUrl} alt="preview" />
+          </div>
+          <div className="chips proof-chips">
+            <span className={`chip ${cap.hasGps ? "on-good" : "on-bad"}`}>
+              📍 {cap.hasGps ? t("gpsLocked") : t("noGps")}
+            </span>
+            <span className="chip on-good">⏱ {t("timeStamped")}</span>
+          </div>
+        </>
       )}
 
       <label>{t("yourComment")}</label>
