@@ -86,6 +86,29 @@
   .brief-item{border-left:3px solid var(--acc2);padding:6px 12px;margin:8px 0;background:#101830;
         border-radius:0 8px 8px 0}
   .brief-item b{color:var(--acc)}
+  /* phone mockup — the "live explorer": judges try the helpline without a handset */
+  .phone{width:310px;margin:0 auto;background:#070b16;border:2px solid #2a3760;border-radius:30px;
+        padding:14px 12px;box-shadow:0 14px 44px rgba(0,0,0,.55)}
+  .phone .notch{width:110px;height:5px;border-radius:99px;background:#2a3760;margin:0 auto 10px}
+  .phone .screen{background:#0d1428;border-radius:18px;min-height:430px;padding:12px;
+        display:flex;flex-direction:column;gap:8px}
+  .callstate{text-align:center;padding:16px 6px}
+  .ringcircle{width:74px;height:74px;border-radius:50%;background:radial-gradient(circle,#1d5f45,#0f2a20);
+        margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:30px;
+        animation:pulse 1.2s infinite}
+  .bubble{max-width:88%;padding:8px 11px;border-radius:12px;font-size:12.5px;line-height:1.45;
+        animation:slideup .3s ease}
+  @keyframes slideup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .b-cit{background:#233154;align-self:flex-start;border-bottom-left-radius:3px}
+  .b-sys{background:#0f2a20;border:1px solid #1d5f45;align-self:flex-end;border-bottom-right-radius:3px}
+  .b-sys .mono{color:#9fd8bf}
+  .phone textarea{width:100%;background:#131c36;color:var(--txt);border:1px solid var(--line);
+        border-radius:9px;padding:8px;font-size:12.5px;resize:none;min-height:56px}
+  .alert-card{border-left:3px solid var(--bad);background:#2c1212;border-radius:0 8px 8px 0;
+        padding:9px 12px;margin-bottom:8px;font-size:12.5px}
+  .alert-card.medium{border-color:var(--warn);background:#241d08}
+  .escal-actions select,.escal-actions input{width:auto;padding:4px 7px;font-size:12px}
+  .escal-actions button{padding:5px 11px;font-size:12px}
 </style>
 </head>
 <body>
@@ -117,6 +140,7 @@
   <div class="tabs">
     <button class="tab active" data-v="alloc">★ Allocator</button>
     <button class="tab" data-v="live">📡 Live intake &amp; AI</button>
+    <button class="tab" data-v="explore">🎧 Try the helpline</button>
     <button class="tab" data-v="bias">⚖️ Bias correction</button>
     <button class="tab" data-v="hot">Demand hotspots</button>
     <button class="tab" data-v="impact">Impact ledger</button>
@@ -213,12 +237,13 @@
 
   <!-- ══════════════════ LIVE INTAKE & AI ══════════════════ -->
   <section class="view" id="v-live">
+    <div id="alert-zone"></div>
     <div class="grid g4">
       <div class="card"><div class="kpi" id="lv-total">—</div><small>reports in database</small></div>
       <div class="card"><div class="kpi" id="lv-live" style="color:var(--good)">—</div>
         <small>filed live via citizen app / helpline</small></div>
       <div class="card"><div class="kpi" id="lv-verif">—</div><small>citizen verifications</small></div>
-      <div class="card"><div class="kpi" id="lv-chan">—</div><small>top channel</small></div>
+      <div class="card"><div class="kpi" id="lv-cost">—</div><small>cost per complaint (₹ vs ₹45 call centre)</small></div>
     </div>
 
     <div class="grid g2" style="margin-top:14px">
@@ -255,6 +280,71 @@
         <div id="brief-out" style="margin-top:10px;font-size:13px">
           <span class="muted">Gemini reads the counters above and writes the operations brief.
           It explains the numbers — it never computes them.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3>🧑‍⚖️ Human escalation queue — the AI knows what it doesn't know</h3>
+      <p style="margin:0 0 8px;font-size:13px">
+        When extraction confidence is low, or the location cannot be resolved to a real
+        administrative code, the report is <b>not</b> auto-routed to a department. It waits
+        here for an officer. Every resolution is a labelled correction — the training data
+        a production rollout would fine-tune on.
+      </p>
+      <table><thead><tr><th>Ticket</th><th>Heard (raw)</th><th>Why escalated</th>
+        <th>Confidence</th><th style="width:330px">Officer correction</th></tr></thead>
+        <tbody id="esc-body"></tbody></table>
+      <div class="note" id="esc-empty"></div>
+    </div>
+  </section>
+
+  <!-- ══════════════════ HELPLINE EXPLORER ══════════════════ -->
+  <section class="view" id="v-explore">
+    <div class="grid g2">
+      <div class="card">
+        <h3>🎧 The live explorer — try the helpline without a handset</h3>
+        <div class="phone">
+          <div class="notch"></div>
+          <div class="screen" id="phone-screen">
+            <div class="callstate">
+              <div style="font-size:34px">📞</div>
+              <div style="font-weight:800;margin:6px 0 2px">JanSetu Helpline</div>
+              <div class="muted" style="font-size:12px;margin-bottom:14px">
+                Toll-free 1800-123-4567 · any language · no menu</div>
+              <button id="call-btn">Give a missed call (₹0)</button>
+              <div class="muted" style="font-size:11px;margin-top:10px">
+                The poorest citizen cannot afford to wait on hold. They ring once and hang up —
+                we ring back.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>What just happened, and why judges should care</h3>
+        <div id="explore-notes">
+          <div class="flip">
+            <b>1 · No IVR menu tree.</b> Menu trees ARE the fragmentation the brief names —
+            "press 3 for water" assumes the citizen knows water is a PHED/JJM matter.
+            They shouldn't have to. They speak; the system routes.
+          </div>
+          <div class="flip" style="background:#0e2036;border-color:#1d4f6f">
+            <b>2 · Real pipeline, not a scripted demo.</b> Your words go through the same
+            Gemini extraction → LGD resolution → department routing → SMS acknowledgement
+            that a real missed call triggers. Low-confidence results are escalated to the
+            human queue on the Live tab instead of being silently guessed.
+          </div>
+          <div class="flip" style="background:#241d08;border-color:#5f4a1d">
+            <b>3 · Works on a ₹500 keypad phone.</b> The citizen app needs a smartphone;
+            this channel needs one ring. Voice is recorded via your browser mic when you
+            press 🎙 (Chrome), or type what the citizen would say — the pipeline after
+            that point is identical.
+          </div>
+          <div class="note">
+            Cost to serve one complaint end-to-end: <b>₹1.57</b> (STT + Gemini + SMS + infra
+            share) versus roughly <b>₹45</b> at a staffed call centre. That 28× gap is why
+            this can be a national DPI rather than a pilot.
+          </div>
         </div>
       </div>
     </div>
@@ -623,11 +713,58 @@ async function loadLive(){
   $('#lv-total').textContent = NUM(st.total);
   $('#lv-live').textContent  = NUM(st.live);
   $('#lv-verif').textContent = NUM(st.verifications);
-  const topChan = (st.by_channel||[])[0];
-  $('#lv-chan').textContent = topChan ? topChan.channel.replace(/_/g,' ') : '—';
+  const ue = st.unit_economics;
+  $('#lv-cost').textContent = ue ? '₹'+ue.per_complaint_inr.total.toFixed(2) : '—';
   drawSectorChart(st.by_sector||[]);
   drawTimeChart(st.by_day||[]);
-  await loadFeed();
+  await Promise.all([loadFeed(), loadAlerts(), loadEscalations()]);
+}
+
+async function loadAlerts(){
+  const r = await jget('/api/v1/alerts/?nation='+NATION);
+  const a = r.alerts||[];
+  $('#alert-zone').innerHTML = a.length ?
+    '<div style="margin-bottom:12px"><div style="font-size:12px;color:var(--dim);'+
+    'text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">⚠️ Early-warning alerts'+
+    ' — surge detection over the last '+r.window_days+' days (deterministic, no LLM)</div>'+
+    a.slice(0,4).map(x=>
+      '<div class="alert-card '+x.severity+'"><b>'+x.block+' · '+x.sector+'</b> — '+
+      x.recent_reports+' reports vs '+x.expected+' expected (<b>×'+x.surge_ratio+
+      '</b>, '+x.severity+'). '+x.action+'</div>').join('')+'</div>'
+    : '';
+}
+
+async function loadEscalations(){
+  const r = await jget('/api/v1/escalations/?nation='+NATION);
+  const q = r.queue||[];
+  $('#esc-empty').textContent = q.length ? '' :
+    'Queue empty — every recent report was structured with sufficient confidence. ' +
+    'File an ambiguous complaint (helpline tab, "unresolvable location" sample) to see it land here.';
+  $('#esc-body').innerHTML = q.map(x=>{
+    const e = x.escalation||{}, st = x.structured||{};
+    return '<tr><td class="mono">'+x.report_id+'</td>'+
+      '<td style="max-width:220px">'+(x.raw_text||'').slice(0,80)+'</td>'+
+      '<td>'+(e.reasons||[]).map(z=>'<span class="pill p-warn">'+z.replace(/_/g,' ')+'</span>').join(' ')+'</td>'+
+      '<td class="num">'+((e.confidence!=null)?e.confidence.toFixed(2):'—')+'</td>'+
+      '<td class="escal-actions"><div class="row" style="gap:5px">'+
+        '<select data-esc-sector="'+x.report_id+'">'+
+        ['water','roads','power','health','education','sanitation','digital'].map(s=>
+          '<option'+(s===st.sector?' selected':'')+'>'+s+'</option>').join('')+'</select>'+
+        '<input data-esc-block="'+x.report_id+'" placeholder="block" style="width:90px" value="'+((st.geo||{}).block||'')+'"/>'+
+        '<button data-esc-resolve="'+x.report_id+'">Resolve &amp; route</button>'+
+      '</div></td></tr>';
+  }).join('');
+  document.querySelectorAll('[data-esc-resolve]').forEach(b=>b.onclick=async()=>{
+    const tid=b.dataset.escResolve;
+    b.innerHTML='<span class="spin"></span>';
+    await jpost('/api/v1/escalations/'+tid+'/resolve', {
+      nation: NATION,
+      sector: document.querySelector('[data-esc-sector="'+tid+'"]').value,
+      block: document.querySelector('[data-esc-block="'+tid+'"]').value || null,
+      officer: 'dashboard-officer'
+    });
+    loadEscalations(); loadFeed(); loadHotspots();
+  });
 }
 
 async function loadFeed(){
@@ -720,6 +857,78 @@ function startLivePolling(){
     if ($('#v-live').classList.contains('active')) loadLive();
   }, 5000);
 }
+
+/* ── 🎧 helpline explorer — phone mockup ──────────────── */
+function phoneBubble(cls, html){
+  const scr = $('#phone-screen');
+  const d = document.createElement('div');
+  d.className = 'bubble ' + cls;
+  d.innerHTML = html;
+  scr.appendChild(d);
+  scr.scrollTop = scr.scrollHeight;
+  return d;
+}
+
+$('#call-btn').onclick = async () => {
+  const scr = $('#phone-screen');
+  // 1 · the missed call — ₹0, any keypad handset
+  await jpost('/api/v1/telephony/missed-call', {from:'+919876543210', language:'hi'});
+  scr.innerHTML = '<div class="callstate"><div class="ringcircle">📳</div>'+
+    '<div style="font-weight:800">Missed call received…</div>'+
+    '<div class="muted" style="font-size:12px">ringing back the citizen</div></div>';
+  await new Promise(r=>setTimeout(r,1800));
+  // 2 · connected — speak or type
+  scr.innerHTML =
+    '<div class="callstate" style="padding:8px 6px"><div style="font-size:24px">🟢</div>'+
+    '<div style="font-weight:800;font-size:13px">Connected — बोलिए / speak</div>'+
+    '<div class="muted" style="font-size:11px">no menu. just say what is wrong and where.</div></div>'+
+    '<textarea id="call-text" placeholder="e.g. गावातील रस्ता खराब झाला आहे, शाळेजवळ…"></textarea>'+
+    '<div class="row" style="margin-top:2px"><button id="mic-btn" class="ghost" style="padding:7px 12px">🎙 Speak</button>'+
+    '<button id="say-btn" style="padding:7px 14px;margin-left:auto">Say it →</button></div>'+
+    '<div class="mono" id="call-status" style="text-align:center"></div>';
+
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) $('#mic-btn').title = 'Speech recognition needs Chrome; typing works identically';
+  $('#mic-btn').onclick = () => {
+    if (!SR){ $('#call-status').textContent='mic needs Chrome — type instead'; return; }
+    const rec = new SR();
+    rec.lang = NATION==='za' ? 'en-ZA' : 'hi-IN';
+    rec.interimResults = false;
+    $('#call-status').textContent = 'listening… speak now';
+    rec.onresult = e => { $('#call-text').value = e.results[0][0].transcript;
+                          $('#call-status').textContent = 'heard you ✓'; };
+    rec.onerror = () => { $('#call-status').textContent = 'mic blocked/denied — type instead'; };
+    rec.onend = () => { if ($('#call-status').textContent==='listening… speak now')
+                          $('#call-status').textContent = 'nothing heard — type instead'; };
+    rec.start();
+  };
+
+  $('#say-btn').onclick = async () => {
+    const text = $('#call-text').value.trim();
+    if (!text) return;
+    $('#say-btn').disabled = true;
+    $('#call-status').innerHTML = '<span class="spin"></span> understanding…';
+    phoneBubble('b-cit', '🗣 "'+text.replace(/</g,'&lt;')+'"');
+    const r = await jpost('/api/v1/intake/', {
+      text, channel:'voice_call', from_number:'+919876543210', nation:NATION });
+    $('#call-status').textContent = '';
+    const st = r.report.structured, rt = r.report.routing;
+    phoneBubble('b-sys',
+      '✅ <b>'+r.report.report_id+'</b> · '+st.sector+
+      (st.geo && st.geo.block ? ' · '+st.geo.block : '')+
+      '<div class="mono">conf '+st.confidence.toFixed(2)+' · '+st.extractor+'</div>');
+    if (r.report.status === 'needs_human_review'){
+      phoneBubble('b-sys', '🧑‍⚖️ Not confident enough to auto-route — <b>escalated to a human officer</b>. '+
+        'See the queue on the 📡 Live tab. We will call you back.');
+    } else {
+      phoneBubble('b-sys', '🏛 Routed to <b>'+rt.department+'</b><div class="mono">'+
+        rt.scheme+' · SLA '+rt.sla_days+' days</div>');
+    }
+    if (r.ack) phoneBubble('b-sys', '📩 SMS to citizen:<div class="mono">'+r.ack+'</div>');
+    phoneBubble('b-sys', '<span class="muted">call ended · complaint is now in the officer dashboard</span>');
+    loadLive();
+  };
+};
 
 /* ── boot ─────────────────────────────────────────────── */
 (async function boot(){

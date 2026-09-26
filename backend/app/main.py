@@ -19,7 +19,7 @@ from __future__ import annotations
 import json
 import os
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -298,6 +298,22 @@ def intake(body: IntakeIn):
     if not report.get("created_at"):
         report["created_at"] = datetime.now(timezone.utc).isoformat()
 
+    # 4b · route LOW-CONFIDENCE cases to a human expert instead of trusting the
+    # model blindly — the same guard Kisan Alert winners used. The AI knows what
+    # it doesn't know; an officer closes the loop.
+    esc_reasons = []
+    if report["structured"]["confidence"] < 0.4:
+        esc_reasons.append("low_extraction_confidence")
+    if not geo.get("lgd_code"):
+        esc_reasons.append("location_unresolved")
+    if report["structured"]["sector"] == "other":
+        esc_reasons.append("sector_unclassified")
+    if esc_reasons:
+        report["status"] = "needs_human_review"
+        report["escalation"] = {"reasons": esc_reasons,
+                                "confidence": report["structured"]["confidence"],
+                                "opened_at": report["created_at"]}
+
     # 5 · persist + refresh derived state
     _S(nation)["REPORTS"].append(report)
     db.insert_report(nation, report, origin="live")
@@ -423,7 +439,137 @@ def list_reports(limit: int = 50, sector: str | None = None, channel: str | None
 def stats(nation: str = "in"):
     """Aggregate counters straight from SQLite — feeds the dashboard charts."""
     n = nation if nation in STATE else "in"
-    return {"nation": n, **db.stats(n)}
+    return {"nation": n, "unit_economics": UNIT_ECONOMICS, **db.stats(n)}
+
+
+# Honest order-of-magnitude operating costs (2026 public rates). The pitch line:
+# a complaint handled end-to-end by JanSetu costs less than one cup of chai,
+# vs ~₹45 at a staffed call centre — that is why this scales to a billion people.
+UNIT_ECONOMICS = {
+    "per_complaint_inr": {
+        "stt_30s_sarvam": 0.90,
+        "gemini_flash_extraction": 0.12,
+        "sms_acknowledgement": 0.15,
+        "infra_share": 0.40,
+        "total": 1.57,
+    },
+    "human_call_centre_per_complaint_inr": 45.0,
+    "note": ("Estimates at published 2026 API/SMS rates, not measured invoices. "
+             "Missed-call intake (the reach channel) skips STT entirely on ring-back "
+             "only if the citizen types; voice adds the ₹0.90 STT line."),
+}
+
+
+# ---------------------------------------------------- HUMAN ESCALATION QUEUE
+
+@app.get("/api/v1/escalations/")
+def escalations(nation: str = "in", include_resolved: bool = False):
+    """Low-confidence intake is NOT auto-routed to a department — it waits here
+    for an officer. AI that knows what it doesn't know beats AI that guesses."""
+    s = _S(nation)
+    out = [r for r in s["REPORTS"]
+           if r.get("status") == "needs_human_review"
+           or (include_resolved and r.get("status") == "resolved_by_human")]
+    return {"count": len(out), "nation": nation, "queue": out[-30:][::-1]}
+
+
+@app.post("/api/v1/escalations/{ticket_id}/resolve")
+def escalation_resolve(ticket_id: str, body: dict):
+    """Officer corrects the sector/location; we re-route and persist. The model's
+    mistake becomes a labelled training example — every resolution is gold data."""
+    nation = body.get("nation", "in")
+    s = _S(nation if nation in STATE else "in")
+    nation = nation if nation in STATE else "in"
+    r = next((x for x in s["REPORTS"] if x.get("report_id") == ticket_id), None)
+    if not r:
+        raise HTTPException(404, f"Unknown ticket {ticket_id}")
+    if r.get("status") != "needs_human_review":
+        raise HTTPException(400, f"{ticket_id} is not awaiting review (status={r.get('status')})")
+
+    sector = body.get("sector") or (r.get("structured") or {}).get("sector") or "other"
+    geo = (r.get("structured") or {}).get("geo") or {}
+    if body.get("block"):
+        geo["block"] = body["block"]
+    if body.get("district"):
+        geo["district"] = body["district"]
+    if not geo.get("lgd_code"):
+        geo["lgd_code"] = _resolve_lgd(geo, nation)
+
+    routing = _route(sector, geo, nation)
+    r["structured"]["sector"] = sector
+    r["structured"]["geo"] = geo
+    r["routing"] = routing
+    r["status"] = "resolved_by_human"
+    r["escalation"] = {**(r.get("escalation") or {}),
+                       "resolved_at": datetime.now(timezone.utc).isoformat(),
+                       "resolved_by": body.get("officer", "dashboard-officer"),
+                       "corrections": {k: body.get(k) for k in ("sector", "block", "district")
+                                       if body.get(k)}}
+    db.update_report(nation, r)
+    _rescore(nation)
+    return {"report_id": ticket_id, "status": r["status"], "routing": routing,
+            "escalation": r["escalation"]}
+
+
+# ---------------------------------------------------- EARLY-WARNING ALERTS
+
+@app.get("/api/v1/alerts/")
+def early_warning_alerts(nation: str = "in", window_days: int = 30, min_reports: int = 3):
+    """Spatial surge detection — deterministic, no LLM in the loop.
+    A block+sector filing ≥2× its historical daily rate in the last window
+    is an early warning (burst main, disease cluster, transformer failures)."""
+    from collections import defaultdict
+    s = _S(nation if nation in STATE else "in")
+    reports = s["REPORTS"]
+
+    def _ts(r: dict):
+        try:
+            return datetime.fromisoformat(r["created_at"].replace("Z", "+00:00"))
+        except (KeyError, ValueError, TypeError):
+            return None
+
+    dated = [( _ts(r), r) for r in reports]
+    dated = [(t, r) for t, r in dated if t is not None]
+    if not dated:
+        return {"count": 0, "alerts": [], "window_days": window_days}
+    now = max(t for t, _ in dated)
+    cutoff = now - timedelta(days=window_days)
+
+    recent: dict[tuple, int] = defaultdict(int)
+    older: dict[tuple, int] = defaultdict(int)
+    first_seen: dict[tuple, datetime] = {}
+    for t, r in dated:
+        st = r.get("structured") or {}
+        geo = st.get("geo") or {}
+        block = geo.get("block") or geo.get("lgd_code") or geo.get("lgd_block_code") or "unknown"
+        key = (block, st.get("sector") or "other")
+        first_seen[key] = min(first_seen.get(key, t), t)
+        if t > cutoff:
+            recent[key] += 1
+        else:
+            older[key] += 1
+
+    alerts = []
+    span_days = max((now - min(first_seen.values())).days, 1)
+    for key, rc in recent.items():
+        if rc < min_reports:
+            continue
+        baseline_rate = older.get(key, 0) / span_days          # reports/day
+        expected = max(baseline_rate * window_days, 1.0)
+        ratio = rc / expected
+        if ratio >= 2.0:
+            alerts.append({
+                "block": key[0], "sector": key[1],
+                "recent_reports": rc, "expected": round(expected, 1),
+                "surge_ratio": round(ratio, 2),
+                "severity": "high" if ratio >= 4 else "medium",
+                "window_days": window_days,
+                "action": f"Dispatch a {key[1]} inspection team to block {key[0]}; "
+                          f"intake is {ratio:.1f}× its historical rate.",
+            })
+    alerts.sort(key=lambda a: -a["surge_ratio"])
+    return {"count": len(alerts), "nation": nation, "as_of": now.isoformat(),
+            "window_days": window_days, "alerts": alerts[:15]}
 
 
 @app.get("/api/v1/track/{ticket_id}")

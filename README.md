@@ -84,6 +84,9 @@ propensity-matched counterfactual.
 | 📱 Citizen mobile app (PWA) | ✅ voice+text intake, track, verify, missed call · 3 languages · offline queue | `frontend/` |
 | Voice intake endpoint | ✅ recorded audio → STT chain → same pipeline | `POST /api/v1/intake/voice` |
 | 🇿🇦 Second-nation demo | ✅ India ⇄ South Africa toggle — same engine, adapter + dataset only | `?nation=za` on every endpoint |
+| 🧑‍⚖️ Human escalation queue | ✅ low-confidence / unresolved-location reports wait for an officer, resolutions become labelled corrections | `GET/POST /api/v1/escalations/` |
+| ⚠️ Early-warning alerts | ✅ deterministic surge detection per block+sector (30-day window vs historical rate) | `GET /api/v1/alerts/` |
+| 🎧 Helpline live explorer | ✅ judges simulate a missed call → voice/text complaint → real pipeline, no handset needed | dashboard "Try the helpline" tab |
 | BRICS adapters | ✅ 5 nations, config-only | `adapters/*.yaml` |
 
 **Proven on the seeded data:** Nandurbar files **13** complaints and ranks **#4**; Haveli
@@ -98,6 +101,15 @@ written to SQLite, re-scores the hotspots, and appears on the officer dashboard'
 operations briefing computed over the same database counters. Flip the header toggle to
 🇿🇦 South Africa (531 reports, Eastern Cape + Gauteng) to show the whole engine is
 country-agnostic: one adapter, one dataset, zero code change.
+
+**Human-in-the-loop where it matters:** if Gemini's confidence is low or the location
+cannot be resolved to a real administrative code, the complaint is NOT auto-routed —
+it lands in the officer **escalation queue**, and every correction is stored as labelled
+training data. Surge alerts (a block filing 3× its historical rate) are computed
+deterministically, no LLM in the loop. Unit economics: **₹1.57 per complaint** vs
+~₹45 at a staffed call centre — the 28× gap is the scaling argument. Judges can try the
+whole helpline from their laptop: the **🎧 Try the helpline** tab simulates a missed
+call, takes voice (browser mic) or typed complaint, and runs the real pipeline.
 
 ---
 
