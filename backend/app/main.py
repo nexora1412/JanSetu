@@ -79,6 +79,7 @@ NATIONS = {
         "ticket_prefix": "JS-2026-",
         "fixtures": {"reports": "reports_8lang.json", "hotspots": "hotspots.json",
                      "projects": "projects.json", "verifications": "verifications.json"},
+        "centroids": "geo_centroids_in.json",
         "routing": DATA / "routing.json",
     },
     "za": {
@@ -757,6 +758,83 @@ def list_reports(limit: int = 50, sector: str | None = None, channel: str | None
     if origin:
         out = [r for r in out if r.get("origin") == origin]
     return {"count": len(out), "nation": nation, "reports": out[-limit:][::-1]}
+
+
+def _report_row(r: dict, nation: str = "in") -> dict:
+    """One complaint, flattened for the officer register: what the citizen said,
+    where, how bad, who owns it, the live scene photo and how far the fix has got."""
+    st = r.get("structured") or {}
+    geo = st.get("geo") or {}
+    ev = r.get("evidence") or {}
+    pol = ev.get("proof_of_life") or {}
+    rt = r.get("routing") or _route(st.get("sector", "other"), geo, nation)
+    review = r.get("review") or {}
+    dsp = r.get("dispatch") or {}
+    tl = r.get("timeline") or []
+    done = sum(1 for t in tl if t.get("status") == "done")
+    loc = ", ".join(x for x in (geo.get("village"), geo.get("block"),
+                                geo.get("district"), geo.get("state")) if x)
+    # coord source mirrors map_points: exact geo → photo GPS → district centroid.
+    gps = pol.get("gps") or {}
+    s = _S(nation)
+    if geo.get("lat") is not None or gps.get("lat") is not None:
+        coord = "exact" if geo.get("lat") is not None else "photo_gps"
+    else:
+        coord = None
+        cent = s.get("CENTROIDS") or {}
+        for key in (geo.get("municipality"), geo.get("block"),
+                    geo.get("village"), geo.get("district")):
+            if key and key in cent:
+                coord = "centroid"; break
+    return {
+        "report_id": r.get("report_id"), "created_at": r.get("created_at"),
+        "channel": r.get("channel"), "status": r.get("status"),
+        "origin": r.get("origin"), "language": r.get("raw_language"),
+        "text": r.get("raw_text") or r.get("normalized_text_en") or "",
+        "text_en": r.get("normalized_text_en"),
+        "sector": st.get("sector"), "issue": st.get("issue"),
+        "severity": st.get("severity_1_5"), "confidence": st.get("confidence"),
+        "location": loc, "has_location": bool(loc),
+        "has_coords": coord is not None, "coord_source": coord,
+        "department": rt.get("department"), "officer_ref": rt.get("officer_ref"),
+        "sla_days": rt.get("sla_days"),
+        "photo_url": ev.get("served_at"), "verdict": pol.get("verdict") or "unverified",
+        "gps": pol.get("gps"), "age_seconds": pol.get("age_seconds"),
+        "flags": pol.get("flags") or [],
+        "review_status": review.get("status"), "reviewed_by": review.get("by"),
+        "dispatched_to": dsp.get("department"), "dispatch_due": dsp.get("due_at"),
+        "timeline_done": done, "timeline_total": len(tl) or 7,
+        "timeline": tl,
+        "verification": r.get("verification"),
+    }
+
+
+@app.get("/api/v1/reports/register")
+def reports_register(nation: str = "in", limit: int = 200,
+                     status: str | None = None, q: str = None,
+                     with_photo: bool = False, live_only: bool = False,
+                     authorization: str | None = Header(None)):
+    """The officer's complaint register — every filed problem in one searchable
+    table, newest first, live submissions on top. Admin-gated (photos + PII)."""
+    _require_role(authorization, "admin")
+    n = nation if nation in STATE else "in"
+    rows = [_report_row(r, n) for r in _S(n)["REPORTS"]]
+    if status:
+        rows = [x for x in rows if x["status"] == status]
+    if with_photo:
+        rows = [x for x in rows if x["photo_url"]]
+    if live_only:
+        rows = [x for x in rows if x["origin"] == "live"]
+    if q:
+        ql = q.lower()
+        rows = [x for x in rows if ql in (x["text"] or "").lower()
+                or ql in (x["location"] or "").lower()
+                or ql in (x["report_id"] or "").lower()
+                or ql in (x["sector"] or "").lower()]
+    rows.sort(key=lambda x: (x["origin"] != "live", x["created_at"] or ""), reverse=False)
+    rows.sort(key=lambda x: x["created_at"] or "", reverse=True)
+    rows = [x for x in rows if x["origin"] == "live"] + [x for x in rows if x["origin"] != "live"]
+    return {"count": len(rows), "nation": n, "reports": rows[:limit]}
 
 
 @app.get("/api/v1/stats/")

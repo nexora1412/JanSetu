@@ -176,6 +176,55 @@
     border-radius:8px;padding:9px 11px;line-height:1.5;margin-top:4px}
   .leaflet-tooltip{font-size:11.5px}
   .map-pin{font-size:22px;line-height:24px;text-align:center;filter:drop-shadow(0 1px 2px #000)}
+
+  /* ── complaint register ─────────────────────────────── */
+  .hdr-counts{font-size:12px;color:var(--dim);margin-right:6px;white-space:nowrap}
+  .reg-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+  .reg-bar input[type=text]{flex:1;min-width:220px;background:#141e30;color:var(--txt);
+    border:1px solid #2a3a5e;border-radius:9px;padding:8px 11px;font-size:13px}
+  .reg-bar select{background:#141e30;color:var(--txt);border:1px solid #2a3a5e;
+    border-radius:9px;padding:8px 10px;font-size:13px}
+  .reg-chk{font-size:12.5px;color:var(--dim);display:flex;align-items:center;gap:5px;cursor:pointer}
+  .reg-scroll{max-height:560px;overflow:auto;border:1px solid #223056;border-radius:12px}
+  .reg-scroll table{width:100%;border-collapse:collapse;font-size:12.5px}
+  .reg-scroll thead th{position:sticky;top:0;background:#141e30;color:var(--dim);text-align:left;
+    padding:9px 10px;font-weight:600;border-bottom:1px solid #2a3a5e;z-index:2}
+  .reg-scroll tbody td{padding:8px 10px;border-bottom:1px solid #1c2740;vertical-align:middle}
+  .reg-scroll tbody tr{cursor:pointer}
+  .reg-scroll tbody tr:hover{background:#18233a}
+  .reg-thumb{width:44px;height:44px;object-fit:cover;border-radius:7px;border:1px solid #2a3a5e;display:block}
+  .reg-noimg{width:44px;height:44px;border-radius:7px;background:#1c2740;color:#55607a;
+    display:flex;align-items:center;justify-content:center;font-size:16px}
+  .reg-text{max-width:320px;font-size:12px;color:var(--txt);line-height:1.4}
+  .reg-tkt{font-family:ui-monospace,monospace;font-size:11.5px;color:var(--acc)}
+  .reg-badge{display:inline-block;padding:2px 7px;border-radius:20px;font-size:11px;font-weight:600}
+  .rb-new{background:#243049;color:#9fb0d0}.rb-ack{background:#2a2f4a;color:#aab6ff}
+  .rb-dispatched{background:#1f3a52;color:#4da3ff}.rb-progress{background:#3a3016;color:#ffb020}
+  .rb-resolved{background:#16301f;color:#2fbf71}.rb-fake{background:#3a1616;color:#ff5a5a}
+  .p-live{color:#2fbf71}.p-partial{color:#ffb020}.p-unverified{color:#8a93a6}
+  .loc-ok{color:var(--txt)}.loc-no{color:var(--bad);font-size:11.5px}
+  .reg-prog{width:70px;height:7px;background:#1c2740;border-radius:5px;overflow:hidden}
+  .reg-prog i{display:block;height:100%;background:var(--acc2)}
+
+  /* detail drawer */
+  #reg-detail{margin-top:14px}
+  .rd-card{background:var(--panel);border:1px solid #223056;border-radius:14px;padding:16px 18px}
+  .rd-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .rd-grid{display:grid;grid-template-columns:300px 1fr;gap:18px;margin-top:14px}
+  @media(max-width:760px){.rd-grid{grid-template-columns:1fr}}
+  .rd-photo img{width:100%;border-radius:12px;border:1px solid #2a3a5e;display:block}
+  .rd-photo .noimg{background:#1c2740;color:#55607a;border-radius:12px;height:200px;
+    display:flex;align-items:center;justify-content:center;font-size:13px;text-align:center;padding:14px}
+  .rd-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px 20px;font-size:13px}
+  .rd-fields div{padding:5px 0;border-bottom:1px solid #1c2740}
+  .rd-fields b{color:var(--dim);font-weight:600;font-size:11.5px;display:block;margin-bottom:2px}
+  .rd-close{background:#243049;color:var(--txt);border:1px solid #2a3a5e;border-radius:8px;
+    padding:6px 12px;cursor:pointer;font-size:12.5px}
+  .rd-tl{margin-top:14px}
+  .rd-tl .step{display:flex;gap:10px;padding:7px 0;font-size:12.5px;border-left:2px solid #2a3a5e;margin-left:6px;padding-left:14px}
+  .rd-tl .step.done{border-left-color:#2fbf71}
+  .rd-tl .step .dot{width:9px;height:9px;border-radius:50%;background:#55607a;margin-left:-19px;margin-top:4px;flex:none}
+  .rd-tl .step.done .dot{background:#2fbf71}
 </style>
 <link rel="stylesheet" href="/static/vendor/leaflet/leaflet.css">
 </head>
@@ -203,15 +252,11 @@
     <button class="nbtn active" id="nat-in">🇮🇳 India</button>
     <button class="nbtn" id="nat-za">🇿🇦 South Africa</button>
   </div>
-  <div class="tag" id="t-gemini">Gemini: …</div>
-  <div class="tag" id="t-tel">Telephony: …</div>
-  <div class="tag" id="t-db">SQLite: …</div>
-  <div class="tag" id="t-counts">…</div>
   <div class="tag on" id="t-admin" style="display:none"></div>
-  <button class="tag off" id="li-out" style="display:none;cursor:pointer">logout</button>
+  <button class="tag off" id="li-out" style="display:none;cursor:pointer">Sign out</button>
   <div style="flex:1"></div>
+  <span id="t-counts" class="hdr-counts">…</span>
   <a class="tag" href="/app" style="background:var(--acc);color:#1a1206;font-weight:700">📱 Citizen mobile app →</a>
-  <a class="tag" href="/docs" target="_blank">API docs ↗</a>
 </header>
 
 <main>
@@ -227,6 +272,7 @@
   <div class="tabs">
     <button class="tab active" data-v="alloc">★ Allocator</button>
     <button class="tab" data-v="live">📡 Live intake &amp; AI</button>
+    <button class="tab" data-v="reports">📋 Complaint register</button>
     <button class="tab" data-v="analytics">📊 Analytics</button>
     <button class="tab" data-v="map">🗺️ Issue map</button>
     <button class="tab" data-v="explore">🎧 Try the helpline</button>
@@ -468,6 +514,12 @@
   <section class="view" id="v-hot">
     <div class="card">
       <h3>Demand hotspots — deterministic 0–100, fully auditable</h3>
+      <div class="muted" style="font-size:12.5px;margin:-4px 0 10px">
+        Where to spend first. Each block/sector pair gets one score blending how many complaints
+        there are (Demand), how under-served the area already is (Deficit), how many people a fix
+        reaches (Reach), equity floor, and feasibility — so a loud, well-connected area can't beat a
+        quiet, genuinely neglected one on volume alone. The Bias column shows how much the raw
+        complaint count was corrected for over- and under-reporting.</div>
       <div class="row" style="margin-bottom:8px">
         <select id="h-sector" style="max-width:220px"><option value="">All sectors</option>
           <option>roads</option><option>water</option><option>power</option><option>health</option>
@@ -623,6 +675,49 @@
       clock; "Fake — reject" keeps a bogus complaint out of the work queue entirely.
       Seed-history points have no photo by design; treat them as unverified until proven.</div>
   </section>
+
+  <!-- ══════════════════ COMPLAINT REGISTER ══════════════════ -->
+  <section class="view" id="v-reports">
+    <div class="card">
+      <h3>Public Grievance Register</h3>
+      <div class="muted" style="font-size:12.5px;margin:-4px 0 12px">
+        Every complaint filed by a citizen — the officer's master list. Newest live filings on top.
+        Open any row to view the scene photo, proof-of-life, routing and resolution timeline.</div>
+      <div class="reg-bar">
+        <input id="reg-q" type="text" placeholder="Search ticket, text, location or sector…" autocomplete="off">
+        <select id="reg-status">
+          <option value="">All statuses</option>
+          <option value="received">Received</option>
+          <option value="routed">Routed to dept.</option>
+          <option value="needs_human_review">Needs review</option>
+          <option value="dispatched">Dispatched (verified)</option>
+          <option value="in_progress">In progress</option>
+          <option value="resolved_by_human">Resolved</option>
+          <option value="rejected_fake">Rejected (fake)</option>
+        </select>
+        <label class="reg-chk"><input type="checkbox" id="reg-photo"> With photo</label>
+        <label class="reg-chk"><input type="checkbox" id="reg-live"> Live filings only</label>
+        <button id="reg-refresh">Refresh</button>
+        <span id="reg-count" class="muted">loading…</span>
+      </div>
+      <div class="reg-scroll">
+        <table><thead><tr>
+          <th>Ticket</th><th>Received</th><th class="num">Photo</th><th>Complaint</th>
+          <th>Location</th><th>Sector</th><th>Department · Officer</th>
+          <th>Status</th><th>Proof</th><th class="num">Progress</th>
+        </tr></thead>
+        <tbody id="reg-body"></tbody></table>
+      </div>
+    </div>
+    <div id="reg-detail"></div>
+    <div class="note">The register reads the same complaint objects the helpline, mobile app and
+      map write to — nothing here is a separate demo store, so a filing a citizen makes appears in
+      this table immediately. <b>Photo</b> shows the actual scene image a citizen attached via the
+      mobile app (proof-of-life); <b>Proof</b> is the machine's integrity check on that photo
+      (GPS present + timestamp freshness), and <b>Progress</b> tracks the official resolution
+      timeline an officer advances. Seed-history rows have no photo by design — treat them as
+      unverified until a field officer attaches proof.</div>
+  </section>
 </main>
 
 <script src="/static/vendor/leaflet/leaflet.js"></script>
@@ -649,6 +744,7 @@ function setNation(n){
   $('#nat-za').classList.toggle('active', n==='za');
   populateStates();
   status(); solve(); loadHotspots(); loadImpact(); loadLive(); loadAnalytics();
+  if (document.querySelector('.tab.active')?.dataset.v === 'reports') loadReports();
   if (MAP) loadMap();
 }
 $('#nat-in').onclick = () => setNation('in');
@@ -660,6 +756,7 @@ document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
   t.classList.add('active');
   $('#v-' + t.dataset.v).classList.add('active');
   if (t.dataset.v === 'analytics') loadAnalytics();
+  if (t.dataset.v === 'reports') loadReports();
   if (t.dataset.v === 'map') loadMap();
 });
 
@@ -693,16 +790,8 @@ async function ensureAuth(){
 /* ── status ───────────────────────────────────────────── */
 async function status(){
   const s = await jget('/api/v1/status');
-  const g = $('#t-gemini'), t = $('#t-tel');
-  g.textContent = 'Gemini: ' + (s.gemini.configured ? 'live ('+s.gemini.model+')' : 'offline fallback');
-  g.className = 'tag ' + (s.gemini.configured ? 'on' : 'off');
-  t.textContent = 'Telephony: ' + s.telephony.provider;
-  t.className = 'tag on';
-  $('#t-db').textContent = '💾 ' + (s.database ? 'SQLite' : 'in-memory');
-  $('#t-db').className = 'tag ' + (s.database ? 'on' : 'off');
   const c = (s.counts && s.counts[NATION]) || s.counts || {};
-  $('#t-counts').textContent =
-    NUM(c.reports)+' reports · '+NUM(c.hotspots)+' hotspots · '+NUM(c.projects)+' projects';
+  $('#t-counts').textContent = NUM(c.reports)+' complaints on register';
 }
 
 /* ── allocator ────────────────────────────────────────── */
@@ -1344,6 +1433,125 @@ $('#li-out').onclick = async () => {
   localStorage.removeItem('jansetu_admin_token');
   location.reload();
 };
+
+/* ── complaint register ───────────────────────────────── */
+let REG = [];
+const STATUS_BADGE = {received:['rb-new','Received'], new:['rb-new','New'],
+  routed:['rb-ack','Routed'], acknowledged:['rb-ack','Acknowledged'],
+  needs_human_review:['rb-progress','Needs review'],
+  dispatched:['rb-dispatched','Dispatched'], in_progress:['rb-progress','In progress'],
+  resolved:['rb-resolved','Resolved'], resolved_by_human:['rb-resolved','Resolved'],
+  rejected_fake:['rb-fake','Rejected (fake)']};
+const PROOF_CLASS = {live_verified:'p-live', partially_verified:'p-partial', unverified:'p-unverified'};
+const fmtdt = iso => { if(!iso) return '—'; const d=new Date(iso);
+  return isNaN(d)?iso:d.toLocaleDateString('en-IN',{day:'2-digit',month:'short'})+' '+
+    d.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'}); };
+
+async function loadReports(){
+  const el = $('#reg-body'); if (!el) return;
+  const params = new URLSearchParams({nation:NATION, limit:'400'});
+  const q = $('#reg-q')?.value.trim(); if (q) params.set('q', q);
+  const st = $('#reg-status')?.value; if (st) params.set('status', st);
+  if ($('#reg-photo')?.checked) params.set('with_photo','true');
+  if ($('#reg-live')?.checked) params.set('live_only','true');
+  $('#reg-count').textContent = 'loading…';
+  let d;
+  try { d = await jget('/api/v1/reports/register?' + params.toString()); }
+  catch(e){ $('#reg-count').textContent = 'could not load — signed in?'; return; }
+  REG = d.reports || [];
+  $('#reg-count').textContent = d.count + ' complaint' + (d.count===1?'':'s');
+  renderRegister();
+}
+
+function renderRegister(){
+  const rows = REG.map((r,i) => {
+    const badge = STATUS_BADGE[r.status] || ['rb-new', esc(r.status||'')];
+    const prov = (r.verdict||'unverified').replace('_',' ');
+    const pc = PROOF_CLASS[r.verdict] || 'p-unverified';
+    const photo = r.photo_url
+      ? `<img class="reg-thumb" src="${esc(r.photo_url)}" alt="photo" loading="lazy">`
+      : `<div class="reg-noimg">—</div>`;
+    const loc = r.has_location
+      ? `<span class="loc-ok">${esc(r.location)}${r.has_coords?'':' · <span class="loc-no">no map pin</span>'}</span>`
+      : `<span class="loc-no">Location not provided</span>`;
+    const pct = r.timeline_total ? Math.round(100*r.timeline_done/r.timeline_total) : 0;
+    const dept = esc(r.dispatched_to || r.department || '—');
+    return `<tr data-i="${i}">
+      <td class="reg-tkt">${esc(r.report_id)}</td>
+      <td>${fmtdt(r.created_at)}</td>
+      <td>${photo}</td>
+      <td class="reg-text">${esc((r.text||'').slice(0,90))}</td>
+      <td>${loc}</td>
+      <td>${esc(r.sector||'—')}${r.severity?' · S'+r.severity:''}</td>
+      <td>${dept}<br><span class="muted" style="font-size:11px">${esc(r.officer_ref||'')}</span></td>
+      <td><span class="reg-badge ${badge[0]}">${badge[1]}</span></td>
+      <td><span class="${pc}">${prov}</span></td>
+      <td><div class="reg-prog"><i style="width:${pct}%"></i></div>
+        <span class="muted" style="font-size:10.5px">${r.timeline_done}/${r.timeline_total}</span></td>
+    </tr>`;
+  }).join('');
+  $('#reg-body').innerHTML = rows ||
+    `<tr><td colspan="10" class="muted" style="padding:20px;text-align:center">No complaints match.</td></tr>`;
+  $('#reg-body').querySelectorAll('tr[data-i]').forEach(tr =>
+    tr.onclick = () => openRegDetail(REG[+tr.dataset.i]));
+}
+
+function openRegDetail(r){
+  if (!r) return;
+  const badge = STATUS_BADGE[r.status] || ['rb-new', esc(r.status||'')];
+  const prov = (r.verdict||'unverified').replace('_',' ');
+  const pc = PROOF_CLASS[r.verdict] || 'p-unverified';
+  const photo = r.photo_url
+    ? `<img src="${esc(r.photo_url)}" alt="scene photo">`
+    : `<div class="noimg">No scene photo attached.<br>Seed-history record or the citizen filed without the mobile camera.</div>`;
+  const gps = r.gps && r.gps.lat!=null ? `${r.gps.lat.toFixed(4)}, ${r.gps.lng.toFixed(4)}` : 'not captured';
+  const flags = (r.flags&&r.flags.length) ? r.flags.join(', ') : 'none';
+  const nice = s => String(s||'').replace(/_/g,' ').replace(/\b\w/g, c=>c.toUpperCase());
+  const tl = (r.timeline||[]).map(t =>
+    `<div class="step ${t.status==='done'?'done':''}"><div class="dot"></div>
+      <div><b style="color:var(--txt)">${esc(nice(t.stage))}</b>
+      <span class="muted">— ${esc(nice(t.status||'pending'))}${t.at?' · '+fmtdt(t.at):''}</span></div></div>`).join('');
+  const v = r.verification || {};
+  $('#reg-detail').innerHTML = `<div class="rd-card">
+    <div class="rd-head">
+      <div><div class="reg-tkt" style="font-size:15px">${esc(r.report_id)}</div>
+        <div class="muted" style="font-size:12px">${esc(r.channel||'')} · ${esc(r.language||'')} · filed ${fmtdt(r.created_at)}</div></div>
+      <div style="display:flex;gap:8px;align-items:center">
+        <span class="reg-badge ${badge[0]}">${badge[1]}</span>
+        <button class="rd-close" id="rd-x">Close ✕</button></div>
+    </div>
+    <div class="rd-grid">
+      <div class="rd-photo">${photo}
+        <div class="muted" style="font-size:11.5px;margin-top:8px">Proof-of-life:
+          <span class="${pc}">${prov}</span> · GPS ${gps} · age ${r.age_seconds!=null?Math.round(r.age_seconds)+'s':'—'} · flags: ${esc(flags)}</div>
+      </div>
+      <div>
+        <div style="font-size:13.5px;line-height:1.5">${esc(r.text)}</div>
+        ${r.text_en && r.text_en!==r.text ? `<div class="muted" style="font-size:12.5px;margin-top:6px">EN: ${esc(r.text_en)}</div>`:''}
+        <div class="rd-fields" style="margin-top:14px">
+          <div><b>Sector · severity</b>${esc(r.sector||'—')} · ${r.severity?('S'+r.severity):'—'}</div>
+          <div><b>Confidence</b>${r.confidence!=null?r.confidence:'—'}</div>
+          <div><b>Location</b>${r.has_location?esc(r.location):'<span class="loc-no">Location not provided</span>'}</div>
+          <div><b>Map pin</b>${r.coord_source==='centroid'?'district centroid (approx)':r.coord_source==='photo_gps'?'from photo GPS':r.coord_source==='exact'?'exact coordinates':'<span class="loc-no">not mappable</span>'}</div>
+          <div><b>Department</b>${esc(r.dispatched_to || r.department || '—')}</div>
+          <div><b>Officer ref · SLA</b>${esc(r.officer_ref||'—')} · ${r.sla_days!=null?r.sla_days+'d':'—'}</div>
+          <div><b>Dispatched</b>${r.dispatch_due?('to '+esc(r.dispatched_to||'')+', due '+fmtdt(r.dispatch_due)):'not yet dispatched'}</div>
+          <div><b>Officer review</b>${r.review_status?esc(r.review_status)+(r.reviewed_by?' · '+esc(r.reviewed_by):''):'pending'}</div>
+          <div><b>Completion proof</b>${v.verdict?esc(v.verdict):'not yet verified by citizens'}</div>
+        </div>
+        <div class="rd-tl"><b style="color:var(--dim);font-size:11.5px">RESOLUTION TIMELINE</b>${tl||'<div class="muted">no stages</div>'}</div>
+      </div>
+    </div>
+  </div>`;
+  $('#rd-x').onclick = () => { $('#reg-detail').innerHTML=''; };
+  $('#reg-detail').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+['#reg-q','#reg-status','#reg-photo','#reg-live'].forEach(sel=>{
+  const e = $(sel); if(!e) return;
+  e.addEventListener(e.tagName==='INPUT'&&e.type==='text'?'input':'change',
+    () => { clearTimeout(window._regT); window._regT = setTimeout(loadReports, e.type==='text'?300:0); });
+});
+const _rb = $('#reg-refresh'); if (_rb) _rb.onclick = loadReports;
 
 function bootConsole(){
   populateStates();

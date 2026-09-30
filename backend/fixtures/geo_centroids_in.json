@@ -1,0 +1,77 @@
+{
+ "Aurangabad": {
+  "lat": 19.877263,
+  "lon": 75.3390241,
+  "display": "Chhatrapati Sambhajinagar, Maharashtra, 431002, India"
+ },
+ "Bahraich": {
+  "lat": 27.7343823,
+  "lon": 81.47654,
+  "display": "Bahraich, Uttar Pradesh, India"
+ },
+ "Cuddalore": {
+  "lat": 11.5202071,
+  "lon": 79.3396356,
+  "display": "Cuddalore, Tamil Nadu, India"
+ },
+ "Dhule": {
+  "lat": 21.1305215,
+  "lon": 74.4900614,
+  "display": "Dhule, Maharashtra, India"
+ },
+ "Gaya": {
+  "lat": 24.679389,
+  "lon": 85.0115833,
+  "display": "Gaya, Bihar, India"
+ },
+ "Jalgaon": {
+  "lat": 20.8428827,
+  "lon": 75.5261246,
+  "display": "Jalgaon, Maharashtra, India"
+ },
+ "Khandwa": {
+  "lat": 21.9769779,
+  "lon": 76.5675344,
+  "display": "Khandwa, Madhya Pradesh, India"
+ },
+ "Murshidabad": {
+  "lat": 24.2904032,
+  "lon": 88.366432,
+  "display": "Murshidabad, West Bengal, India"
+ },
+ "Namakkal": {
+  "lat": 11.3033889,
+  "lon": 78.118604,
+  "display": "Namakkal, Tamil Nadu, India"
+ },
+ "Nandurbar": {
+  "lat": 21.5141622,
+  "lon": 74.5405513,
+  "display": "Nandurbar, Maharashtra, India"
+ },
+ "Nashik": {
+  "lat": 20.2254559,
+  "lon": 74.104233,
+  "display": "Nashik, Maharashtra, India"
+ },
+ "Pune": {
+  "lat": 18.6448627,
+  "lon": 73.9224157,
+  "display": "Pune, Maharashtra, India"
+ },
+ "Purulia": {
+  "lat": 23.2020967,
+  "lon": 86.3228988,
+  "display": "Purulia, West Bengal, India"
+ },
+ "Shravasti": {
+  "lat": 27.5083429,
+  "lon": 82.0263569,
+  "display": "Sravasti, Ikauna, Sharavasti, Uttar Pradesh, India"
+ },
+ "Uttar Dinajpur": {
+  "lat": 25.8721428,
+  "lon": 87.961986,
+  "display": "Uttar Dinajpur, West Bengal, India"
+ }
+}
