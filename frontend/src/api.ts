@@ -1,3 +1,5 @@
+import { clearToken, getToken } from "./store";
+
 export interface Routing {
   department: string;
   scheme?: string;
@@ -115,6 +117,61 @@ async function jsonOrThrow<T>(r: Response): Promise<T> {
   return (await r.json()) as T;
 }
 
+async function detailOrThrow<T>(r: Response): Promise<T> {
+  if (!r.ok) {
+    let msg = `HTTP ${r.status}`;
+    try {
+      msg = ((await r.json()) as { detail?: string }).detail ?? msg;
+    } catch {
+      /* non-JSON error body */
+    }
+    throw new Error(msg);
+  }
+  return (await r.json()) as T;
+}
+
+function authHeaders(extra?: Record<string, string>): Record<string, string> {
+  const h: Record<string, string> = { ...extra };
+  const tok = getToken();
+  if (tok) h.Authorization = `Bearer ${tok}`;
+  return h;
+}
+
+export async function requestOtp(
+  phone: string,
+  name?: string,
+): Promise<{ demo_otp?: string | null; expires_in_s: number }> {
+  const r = await fetch("/api/v1/auth/otp/request", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ phone, ...(name ? { name } : {}) }),
+  });
+  return detailOrThrow<{ demo_otp?: string | null; expires_in_s: number }>(r);
+}
+
+export async function verifyOtp(
+  phone: string,
+  otp: string,
+  name?: string,
+): Promise<{ token: string; role: string; subject: string }> {
+  const r = await fetch("/api/v1/auth/otp/verify", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ phone, otp, ...(name ? { name } : {}) }),
+  });
+  return detailOrThrow<{ token: string; role: string; subject: string }>(r);
+}
+
+export async function me(): Promise<{ role: string; subject: string }> {
+  const r = await fetch("/api/v1/auth/me", { headers: authHeaders() });
+  return detailOrThrow<{ role: string; subject: string }>(r);
+}
+
+export async function logout(): Promise<void> {
+  await fetch("/api/v1/auth/logout", { method: "POST", headers: authHeaders() }).catch(() => {});
+  clearToken();
+}
+
 export async function submitText(
   text: string,
   language: string,
@@ -122,7 +179,7 @@ export async function submitText(
 ): Promise<IntakeResult> {
   const r = await fetch("/api/v1/intake/", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: authHeaders({ "Content-Type": "application/json" }),
     body: JSON.stringify({
       text,
       channel: "app",
@@ -151,7 +208,11 @@ export async function submitVoice(
       fd.append("gps_accuracy_m", String(evidence.gps_accuracy_m));
     if (evidence.captured_at) fd.append("captured_at", evidence.captured_at);
   }
-  const r = await fetch("/api/v1/intake/voice", { method: "POST", body: fd });
+  const r = await fetch("/api/v1/intake/voice", {
+    method: "POST",
+    headers: authHeaders(),
+    body: fd,
+  });
   return jsonOrThrow<VoiceResult>(r);
 }
 
@@ -179,7 +240,7 @@ export async function verifyProject(payload: {
 }): Promise<VerifyResult> {
   const r = await fetch("/api/v1/verify/", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: authHeaders({ "Content-Type": "application/json" }),
     body: JSON.stringify({ channel: "app", ...payload }),
   });
   return jsonOrThrow<VerifyResult>(r);

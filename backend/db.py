@@ -58,6 +58,35 @@ def init() -> None:
             payload         TEXT NOT NULL,
             PRIMARY KEY (nation, verification_id)
         );
+
+        CREATE TABLE IF NOT EXISTS admins (
+            username      TEXT PRIMARY KEY,
+            password_hash TEXT NOT NULL,
+            salt          TEXT NOT NULL,
+            created_at    TEXT NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS citizens (
+            phone      TEXT PRIMARY KEY,
+            name       TEXT,
+            created_at TEXT NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS otps (
+            phone      TEXT PRIMARY KEY,
+            code       TEXT NOT NULL,
+            expires_at TEXT NOT NULL,
+            attempts   INTEGER NOT NULL DEFAULT 0,
+            created_at TEXT NOT NULL
+        );
+
+        CREATE TABLE IF NOT EXISTS sessions (
+            token      TEXT PRIMARY KEY,
+            role       TEXT NOT NULL,
+            subject    TEXT NOT NULL,
+            created_at TEXT NOT NULL,
+            expires_at TEXT NOT NULL
+        );
         """)
         c.commit()
 
@@ -178,8 +207,118 @@ def stats(nation: str) -> dict:
             "GROUP BY d ORDER BY d", (nation,)).fetchall()
         verifications = c.execute(
             "SELECT COUNT(*) FROM verifications WHERE nation=?", (nation,)).fetchone()[0]
+        by_status = c.execute(
+            "SELECT COALESCE(status,'unknown'), COUNT(*) FROM reports WHERE nation=? "
+            "GROUP BY status ORDER BY COUNT(*) DESC", (nation,)).fetchall()
+        by_verdict = c.execute(
+            "SELECT COALESCE(verdict,'unknown'), COUNT(*) FROM verifications WHERE nation=? "
+            "GROUP BY verdict ORDER BY COUNT(*) DESC", (nation,)).fetchall()
+        by_block = c.execute(
+            "SELECT payload FROM reports WHERE nation=?", (nation,)).fetchall()
+    blocks: dict[str, int] = {}
+    for (payload,) in by_block:
+        geo = ((json.loads(payload).get("structured") or {}).get("geo") or {})
+        key = geo.get("block") or geo.get("municipality") or geo.get("lgd_block_code") or "unknown"
+        blocks[key] = blocks.get(key, 0) + 1
+    top_blocks = sorted(blocks.items(), key=lambda kv: -kv[1])[:10]
     return {"total": total, "live": live,
             "by_sector": [{"sector": s, "count": n} for s, n in by_sector],
             "by_channel": [{"channel": s, "count": n} for s, n in by_channel],
             "by_day": [{"day": d, "count": n} for d, n in by_day],
+            "by_status": [{"status": s, "count": n} for s, n in by_status],
+            "by_verdict": [{"verdict": s, "count": n} for s, n in by_verdict],
+            "top_blocks": [{"block": s, "count": n} for s, n in top_blocks],
             "verifications": verifications}
+
+
+# ------------------------------------------------------------------ AUTH ----
+# Sessions/OTP live in SQLite so a restart does not log everyone out mid-demo.
+
+
+def get_admin(username: str) -> dict | None:
+    with _lock:
+        row = _get().execute(
+            "SELECT username, password_hash, salt FROM admins WHERE username=?",
+            (username,)).fetchone()
+    return {"username": row[0], "password_hash": row[1], "salt": row[2]} if row else None
+
+
+def create_admin(username: str, password_hash: str, salt: str, created_at: str) -> None:
+    with _lock:
+        c = _get()
+        c.execute("INSERT OR REPLACE INTO admins (username,password_hash,salt,created_at) "
+                  "VALUES (?,?,?,?)", (username, password_hash, salt, created_at))
+        c.commit()
+
+
+def admin_count() -> int:
+    with _lock:
+        return _get().execute("SELECT COUNT(*) FROM admins").fetchone()[0]
+
+
+def upsert_citizen(phone: str, name: str | None, created_at: str) -> None:
+    with _lock:
+        c = _get()
+        c.execute("INSERT INTO citizens (phone,name,created_at) VALUES (?,?,?) "
+                  "ON CONFLICT(phone) DO UPDATE SET name=COALESCE(?, name)",
+                  (phone, name, created_at, name))
+        c.commit()
+
+
+def get_citizen(phone: str) -> dict | None:
+    with _lock:
+        row = _get().execute(
+            "SELECT phone, name, created_at FROM citizens WHERE phone=?", (phone,)).fetchone()
+    return {"phone": row[0], "name": row[1], "created_at": row[2]} if row else None
+
+
+def set_otp(phone: str, code: str, expires_at: str, created_at: str) -> None:
+    with _lock:
+        c = _get()
+        c.execute("INSERT OR REPLACE INTO otps (phone,code,expires_at,attempts,created_at) "
+                  "VALUES (?,?,?,0,?)", (phone, code, expires_at, created_at))
+        c.commit()
+
+
+def get_otp(phone: str) -> dict | None:
+    with _lock:
+        row = _get().execute(
+            "SELECT code, expires_at, attempts FROM otps WHERE phone=?", (phone,)).fetchone()
+    return {"code": row[0], "expires_at": row[1], "attempts": row[2]} if row else None
+
+
+def bump_otp_attempts(phone: str) -> None:
+    with _lock:
+        c = _get()
+        c.execute("UPDATE otps SET attempts=attempts+1 WHERE phone=?", (phone,))
+        c.commit()
+
+
+def delete_otp(phone: str) -> None:
+    with _lock:
+        c = _get()
+        c.execute("DELETE FROM otps WHERE phone=?", (phone,))
+        c.commit()
+
+
+def create_session(token: str, role: str, subject: str,
+                   created_at: str, expires_at: str) -> None:
+    with _lock:
+        c = _get()
+        c.execute("INSERT OR REPLACE INTO sessions (token,role,subject,created_at,expires_at) "
+                  "VALUES (?,?,?,?,?)", (token, role, subject, created_at, expires_at))
+        c.commit()
+
+
+def get_session(token: str) -> dict | None:
+    with _lock:
+        row = _get().execute(
+            "SELECT role, subject, expires_at FROM sessions WHERE token=?", (token,)).fetchone()
+    return {"role": row[0], "subject": row[1], "expires_at": row[2]} if row else None
+
+
+def delete_session(token: str) -> None:
+    with _lock:
+        c = _get()
+        c.execute("DELETE FROM sessions WHERE token=?", (token,))
+        c.commit()

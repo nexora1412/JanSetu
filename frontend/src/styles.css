@@ -109,6 +109,23 @@ header .logo small {
   font-weight: 700;
 }
 
+.signout {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--muted);
+  font-size: 12px;
+  padding: 7px 11px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.signout:hover {
+  color: var(--text);
+  border-color: var(--saffron);
+}
+
 /* ---------- layout ---------- */
 main {
   flex: 1;

@@ -18,6 +18,7 @@ export interface PendingReport {
 const TICKETS_KEY = "jansetu.tickets";
 const PENDING_KEY = "jansetu.pending";
 const LANG_KEY = "jansetu.lang";
+const TOKEN_KEY = "jansetu.token";
 
 function read<T>(key: string, fallback: T): T {
   try {
@@ -62,4 +63,16 @@ export function getLang(): string | null {
 
 export function setLang(code: string) {
   localStorage.setItem(LANG_KEY, code);
+}
+
+export function getToken(): string | null {
+  return localStorage.getItem(TOKEN_KEY);
+}
+
+export function setToken(token: string) {
+  localStorage.setItem(TOKEN_KEY, token);
+}
+
+export function clearToken() {
+  localStorage.removeItem(TOKEN_KEY);
 }

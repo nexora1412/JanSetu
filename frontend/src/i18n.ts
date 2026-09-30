@@ -85,6 +85,19 @@ const en: Dict = {
   proofNotLive: "This photo could not be confirmed as taken live, so it counts for less.",
   govTimeline: "How government will resolve it",
   govTimelineSub: "Who handles your complaint, and by when",
+  loginTitle: "Sign in to continue",
+  loginSub: "Enter your phone number. We will send a one-time code.",
+  loginPhone: "Your phone number",
+  loginName: "Your name (optional)",
+  loginSendOtp: "Send code",
+  loginOtpLabel: "Enter the 6-digit code",
+  loginVerify: "Verify & continue",
+  loginResend: "Send a new code",
+  loginDemoOtp: "Demo mode — your code is {code}",
+  loginWrong: "That code is not correct. Please try again.",
+  loginRequired: "Please sign in with your phone number to file a report or verify work.",
+  loginSending: "Sending…",
+  logout: "Sign out",
 };
 
 const hi: Dict = {
@@ -164,6 +177,19 @@ const hi: Dict = {
   proofNotLive: "यह फ़ोटो लाइव ली गई पुष्टि नहीं हो सकी, इसलिए इसका भार कम होगा।",
   govTimeline: "सरकार कैसे हल करेगी",
   govTimelineSub: "आपकी शिकायत कौन संभालेगा, और कब तक",
+  loginTitle: "जारी रखने के लिए साइन इन करें",
+  loginSub: "अपना फ़ोन नंबर दर्ज करें। हम एक बार का कोड भेजेंगे।",
+  loginPhone: "आपका फ़ोन नंबर",
+  loginName: "आपका नाम (वैकल्पिक)",
+  loginSendOtp: "कोड भेजें",
+  loginOtpLabel: "6 अंकों का कोड दर्ज करें",
+  loginVerify: "सत्यापित करें और जारी रखें",
+  loginResend: "नया कोड भेजें",
+  loginDemoOtp: "डेमो मोड — आपका कोड {code} है",
+  loginWrong: "यह कोड सही नहीं है। कृपया फिर कोशिश करें।",
+  loginRequired: "शिकायत दर्ज करने या काम सत्यापित करने के लिए कृपया अपने फ़ोन नंबर से साइन इन करें।",
+  loginSending: "भेज रहे हैं…",
+  logout: "साइन आउट",
 };
 
 const mr: Dict = {
@@ -243,6 +269,19 @@ const mr: Dict = {
   proofNotLive: "हा फोटो लाइव्ह घेतल्याची पुष्टी होऊ शकली नाही, म्हणून याला कमी महत्त्व.",
   govTimeline: "सरकार कसे सोडवेल",
   govTimelineSub: "तुमची तक्रार कोण हाताळेल, आणि कधीपर्यंत",
+  loginTitle: "पुढे जाण्यासाठी साइन इन करा",
+  loginSub: "तुमचा फोन नंबर टाका. आम्ही एकदा वापरण्यासाठी कोड पाठवू.",
+  loginPhone: "तुमचा फोन नंबर",
+  loginName: "तुमचे नाव (ऐच्छिक)",
+  loginSendOtp: "कोड पाठवा",
+  loginOtpLabel: "6 अंकी कोड टाका",
+  loginVerify: "पडताळा आणि पुढे जा",
+  loginResend: "नवीन कोड पाठवा",
+  loginDemoOtp: "डेमो मोड — तुमचा कोड {code} आहे",
+  loginWrong: "हा कोड बरोबर नाही. कृपया पुन्हा प्रयत्न करा.",
+  loginRequired: "तक्रार नोंदवण्यासाठी किंवा काम पडताळण्यासाठी कृपया तुमच्या फोन नंबरने साइन इन करा.",
+  loginSending: "पाठवत आहे…",
+  logout: "साइन आउट",
 };
 
 const DICTS: Record<Lang, Dict> = { en, hi, mr };

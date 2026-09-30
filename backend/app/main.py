@@ -32,7 +32,7 @@ try:
 except ImportError:
     pass
 
-from fastapi import FastAPI, File, Form, HTTPException, UploadFile  # noqa: E402
+from fastapi import FastAPI, File, Form, Header, HTTPException, UploadFile  # noqa: E402
 from fastapi.middleware.cors import CORSMiddleware            # noqa: E402
 from fastapi.responses import FileResponse, HTMLResponse, JSONResponse  # noqa: E402
 from pydantic import ValidationError                            # noqa: E402
@@ -137,6 +137,168 @@ def _bootstrap() -> None:
 
 
 _bootstrap()
+
+
+# ---------------------------------------------------------------------------
+# AUTH — two roles, one session table.
+#   admin    : officers / policymakers — password login, gates the dashboard's
+#              write actions (escalation resolve, timeline advance).
+#   citizen  : anyone filing or verifying — OTP to their phone, delivered over
+#              the SAME telephony layer as complaint acknowledgements. In
+#              simulator mode the OTP is returned in the response so judges can
+#              log in without a real handset; with Exotel/Twilio it is a real SMS.
+# The helpline channels (missed call / SMS / IVR / WhatsApp / kiosk) stay OPEN on
+# purpose: a ₹1,200 keypad phone must never face a login wall.
+# ---------------------------------------------------------------------------
+import hashlib  # noqa: E402
+import re as _re_auth  # noqa: E402
+import secrets  # noqa: E402
+
+ADMIN_SESSION_H = 12
+CITIZEN_SESSION_DAYS = 30
+OTP_TTL_S = 300
+OTP_MAX_ATTEMPTS = 5
+
+
+def _now() -> datetime:
+    return datetime.now(timezone.utc)
+
+
+def _hash_pw(password: str, salt: str) -> str:
+    return hashlib.pbkdf2_hmac("sha256", password.encode("utf-8"),
+                               salt.encode("utf-8"), 120_000).hex()
+
+
+def _seed_admin() -> None:
+    if db.admin_count():
+        return
+    username = os.getenv("ADMIN_USERNAME", "admin")
+    password = os.getenv("ADMIN_PASSWORD", "jansetu2026")
+    salt = secrets.token_hex(8)
+    db.create_admin(username, _hash_pw(password, salt), salt, _now().isoformat())
+
+
+_seed_admin()
+
+
+def _new_session(role: str, subject: str, ttl: timedelta) -> dict:
+    token = secrets.token_urlsafe(32)
+    now = _now()
+    exp = now + ttl
+    db.create_session(token, role, subject, now.isoformat(), exp.isoformat())
+    return {"token": token, "role": role, "subject": subject,
+            "expires_at": exp.isoformat()}
+
+
+def _current_session(authorization: str | None) -> dict | None:
+    if not authorization:
+        return None
+    m = _re_auth.match(r"Bearer\s+(\S+)", authorization.strip())
+    token = m.group(1) if m else authorization.strip()
+    sess = db.get_session(token)
+    if not sess:
+        return None
+    try:
+        if datetime.fromisoformat(sess["expires_at"]) < _now():
+            db.delete_session(token)
+            return None
+    except ValueError:
+        return None
+    sess["token"] = token
+    return sess
+
+
+def _require_role(authorization: str | None, role: str) -> dict:
+    sess = _current_session(authorization)
+    if not sess or sess["role"] != role:
+        raise HTTPException(401, f"Login required ({role}). Use /api/v1/auth/ endpoints.")
+    return sess
+
+
+class AdminLoginIn(BaseModel):
+    username: str
+    password: str
+
+
+class OtpRequestIn(BaseModel):
+    phone: str
+    name: str | None = None
+
+
+class OtpVerifyIn(BaseModel):
+    phone: str
+    otp: str
+    name: str | None = None
+
+
+@app.post("/api/v1/auth/admin/login")
+def admin_login(body: AdminLoginIn):
+    row = db.get_admin(body.username.strip())
+    if not row or not secrets.compare_digest(
+            _hash_pw(body.password, row["salt"]), row["password_hash"]):
+        raise HTTPException(401, "Invalid username or password")
+    return _new_session("admin", row["username"], timedelta(hours=ADMIN_SESSION_H))
+
+
+@app.post("/api/v1/auth/otp/request")
+def otp_request(body: OtpRequestIn):
+    phone = body.phone.strip()
+    if not _re_auth.fullmatch(r"\+?\d{8,15}", phone):
+        raise HTTPException(422, "Phone must be 8-15 digits, optional leading +")
+    code = f"{secrets.randbelow(1_000_000):06d}"
+    db.set_otp(phone, code, (_now() + timedelta(seconds=OTP_TTL_S)).isoformat(),
+               _now().isoformat())
+    msg = f"JanSetu login OTP: {code}. Valid {OTP_TTL_S // 60} minutes. Do not share."
+    demo_otp = None
+    if isinstance(PROVIDER, SimulatorProvider):
+        PROVIDER.send_sms(phone, msg, "en")
+        demo_otp = code  # simulator has no real handset — judges read it here/outbox
+    else:  # pragma: no cover — real provider path
+        PROVIDER.send_sms(phone, msg, "en")
+    return {"sent": True, "channel": "sms", "expires_in_s": OTP_TTL_S,
+            "demo_otp": demo_otp,
+            "note": None if demo_otp else "OTP sent over the configured telephony provider."}
+
+
+@app.post("/api/v1/auth/otp/verify")
+def otp_verify(body: OtpVerifyIn):
+    phone = body.phone.strip()
+    rec = db.get_otp(phone)
+    if not rec:
+        raise HTTPException(401, "No OTP requested for this phone")
+    if rec["attempts"] >= OTP_MAX_ATTEMPTS:
+        db.delete_otp(phone)
+        raise HTTPException(401, "Too many wrong attempts — request a new OTP")
+    try:
+        if datetime.fromisoformat(rec["expires_at"]) < _now():
+            db.delete_otp(phone)
+            raise HTTPException(401, "OTP expired — request a new one")
+    except ValueError:
+        db.delete_otp(phone)
+        raise HTTPException(401, "OTP expired — request a new one")
+    if not secrets.compare_digest(rec["code"], body.otp.strip()):
+        db.bump_otp_attempts(phone)
+        raise HTTPException(401, "Wrong OTP")
+    db.delete_otp(phone)
+    db.upsert_citizen(phone, (body.name or None), _now().isoformat())
+    return _new_session("citizen", phone, timedelta(days=CITIZEN_SESSION_DAYS))
+
+
+@app.get("/api/v1/auth/me")
+def auth_me(authorization: str | None = Header(None)):
+    sess = _current_session(authorization)
+    if not sess:
+        raise HTTPException(401, "Not logged in")
+    return {"role": sess["role"], "subject": sess["subject"],
+            "expires_at": sess["expires_at"]}
+
+
+@app.post("/api/v1/auth/logout")
+def auth_logout(authorization: str | None = Header(None)):
+    sess = _current_session(authorization)
+    if sess:
+        db.delete_session(sess["token"])
+    return {"logged_out": True}
 
 
 def _S(nation: str) -> dict:
@@ -378,14 +540,18 @@ def get_evidence_photo(ticket: str):
 
 
 @app.post("/api/v1/intake/")
-def intake(body: IntakeIn):
+def intake(body: IntakeIn, authorization: str | None = Header(None)):
     """
     THE SINGLE HELPLINE entrypoint. Any channel, any language -> one CitizenReport
     -> structured by Gemini -> resolved to an LGD code -> auto-routed to the right
     department -> acknowledged by SMS in the citizen's own language.
     Persisted to SQLite, so the officer dashboard sees it immediately.
+    App channels require a citizen OTP session; open helpline channels do not.
     """
     nation = body.nation if body.nation in STATE else "in"
+    sess = _current_session(authorization)
+    if body.channel in ("app", "app_voice"):
+        sess = _require_role(authorization, "citizen")
 
     # 1 · normalise the channel payload
     partial = PROVIDER.parse_inbound({
@@ -428,6 +594,7 @@ def intake(body: IntakeIn):
         "me_too": 0,
         "status": "routed",
         "origin": "live",
+        "filed_by": sess["subject"] if sess else None,
     }
     if not report.get("created_at"):
         report["created_at"] = datetime.now(timezone.utc).isoformat()
@@ -547,6 +714,7 @@ async def intake_voice(
     gps_lng: float | None = Form(None),
     gps_accuracy_m: float | None = Form(None),
     captured_at: str | None = Form(None),
+    authorization: str | None = Header(None),
 ):
     """Voice intake from the mobile app: recorded audio -> STT chain -> the SAME
     intake pipeline as a missed call or SMS. Never raises on a missing key:
@@ -570,7 +738,7 @@ async def intake_voice(
     result = intake(IntakeIn(text=st["text"], channel=channel,
                              from_number=from_number, nation=nation,
                              language_hint=st.get("language") or language_hint,
-                             evidence=ev))
+                             evidence=ev), authorization)
     return {"transcribed": True, "transcript": st["text"],
             "stt_provider": st.get("provider"), **result}
 
@@ -627,9 +795,11 @@ def escalations(nation: str = "in", include_resolved: bool = False):
 
 
 @app.post("/api/v1/escalations/{ticket_id}/resolve")
-def escalation_resolve(ticket_id: str, body: dict):
+def escalation_resolve(ticket_id: str, body: dict,
+                       authorization: str | None = Header(None)):
     """Officer corrects the sector/location; we re-route and persist. The model's
     mistake becomes a labelled training example — every resolution is gold data."""
+    sess = _require_role(authorization, "admin")
     nation = body.get("nation", "in")
     s = _S(nation if nation in STATE else "in")
     nation = nation if nation in STATE else "in"
@@ -655,7 +825,7 @@ def escalation_resolve(ticket_id: str, body: dict):
     r["status"] = "resolved_by_human"
     r["escalation"] = {**(r.get("escalation") or {}),
                        "resolved_at": datetime.now(timezone.utc).isoformat(),
-                       "resolved_by": body.get("officer", "dashboard-officer"),
+                       "resolved_by": body.get("officer") or f"officer:{sess['subject']}",
                        "corrections": {k: body.get(k) for k in ("sector", "block", "district")
                                        if body.get(k)}}
     db.update_report(nation, r)
@@ -763,9 +933,11 @@ def track(ticket_id: str, nation: str = "in"):
 
 
 @app.post("/api/v1/timeline/{ticket_id}/advance")
-def timeline_advance(ticket_id: str, body: dict):
+def timeline_advance(ticket_id: str, body: dict,
+                     authorization: str | None = Header(None)):
     """Officer marks the next stage as done — the citizen's timeline updates
     instantly. Every advance is persisted with who did it and when."""
+    sess = _require_role(authorization, "admin")
     nation = body.get("nation", "in")
     s = _S(nation if nation in STATE else "in")
     nation = nation if nation in STATE else "in"
@@ -779,7 +951,7 @@ def timeline_advance(ticket_id: str, body: dict):
 
     tl_state = r.setdefault("timeline_state", {})
     tl_state[stage] = {"at": datetime.now(timezone.utc).isoformat(),
-                       "by": body.get("officer") or (r.get("routing") or {}).get("officer_ref", "officer")}
+                       "by": body.get("officer") or f"officer:{sess['subject']}"}
     if stage == "resolved":
         r["status"] = "resolved"
     elif r.get("status") in ("routed", "needs_human_review", "in_progress"):
@@ -920,8 +1092,11 @@ def impact(nation: str = "in"):
 
 
 @app.post("/api/v1/verify/")
-def verify(body: dict):
-    """Citizen photo / comment verification on a COMPLETED project."""
+def verify(body: dict, authorization: str | None = Header(None)):
+    """Citizen photo / comment verification on a COMPLETED project.
+    Requires a citizen OTP session — verifications release payment, so the
+    respondent must be a logged-in phone, not an anonymous script."""
+    sess = _require_role(authorization, "citizen")
     nation = body.get("nation", "in")
     if nation not in STATE:
         nation = "in"
@@ -953,7 +1128,7 @@ def verify(body: dict):
         "verification_id": ev_id,
         "project_id": pid, "created_at": datetime.now(timezone.utc).isoformat(),
         "channel": body.get("channel", "whatsapp"),
-        "respondent": {"trust_weight": trust},
+        "respondent": {"trust_weight": trust, "phone": sess["subject"]},
         "verdict": verdict,
         "raw_comment": comment,
         "comment_language": PROVIDER.detect_language(comment),

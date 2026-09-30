@@ -109,9 +109,40 @@
   .alert-card.medium{border-color:var(--warn);background:#241d08}
   .escal-actions select,.escal-actions input{width:auto;padding:4px 7px;font-size:12px}
   .escal-actions button{padding:5px 11px;font-size:12px}
+  .overlay{position:fixed;inset:0;background:rgba(5,8,18,.94);display:none;
+           align-items:center;justify-content:center;z-index:100}
+  .login-card{background:var(--panel);border:1px solid var(--acc);border-radius:14px;
+              padding:26px 28px;width:min(420px,92vw)}
+  .donut-wrap{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .legend{font-size:12px;display:grid;gap:4px}
+  .legend .lg i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px}
+  .dn-num{fill:var(--txt);font-size:22px;font-weight:800}
+  .dn-sub{fill:var(--dim);font-size:10px}
+  .hbar{display:flex;align-items:center;gap:8px;font-size:12px;margin:4px 0}
+  .hb-l{width:92px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--dim)}
+  .hb-t{flex:1;height:8px;background:#223056;border-radius:99px;overflow:hidden}
+  .hb-t i{display:block;height:100%}
+  .hb-v{width:44px;text-align:right;font-variant-numeric:tabular-nums}
 </style>
 </head>
 <body>
+<div class="overlay" id="login-overlay">
+  <div class="login-card">
+    <div class="logo" style="font-size:24px">Lok<span>Nivesh</span>
+      <span style="color:var(--txt);font-weight:600">जनसेतु</span></div>
+    <div class="muted" style="margin:6px 0 14px;font-size:12.5px">
+      Officer / policymaker console — sign in to continue.</div>
+    <label>Username</label>
+    <input type="text" id="li-user" autocomplete="username" value="admin"/>
+    <label>Password</label>
+    <input type="password" id="li-pass" autocomplete="current-password" placeholder="••••••••"/>
+    <div class="row" style="margin-top:14px"><button id="li-btn">Sign in</button></div>
+    <div class="note" id="li-err" style="color:var(--bad)"></div>
+    <div class="note">Demo credentials: <code>admin</code> / <code>jansetu2026</code> (override with
+      <code>ADMIN_USERNAME</code> / <code>ADMIN_PASSWORD</code>). Citizens sign in to the mobile app
+      with a phone OTP; the toll-free helpline itself needs no login at all.</div>
+  </div>
+</div>
 <header>
   <div class="logo">Lok<span>Nivesh</span> <span style="color:var(--txt);font-weight:600">जनसेतु</span></div>
   <div class="nswitch" title="Second BRICS nation — same engine, one adapter + one dataset">
@@ -122,6 +153,8 @@
   <div class="tag" id="t-tel">Telephony: …</div>
   <div class="tag" id="t-db">SQLite: …</div>
   <div class="tag" id="t-counts">…</div>
+  <div class="tag on" id="t-admin" style="display:none"></div>
+  <button class="tag off" id="li-out" style="display:none;cursor:pointer">logout</button>
   <div style="flex:1"></div>
   <a class="tag" href="/app" style="background:var(--acc);color:#1a1206;font-weight:700">📱 Citizen mobile app →</a>
   <a class="tag" href="/docs" target="_blank">API docs ↗</a>
@@ -140,6 +173,7 @@
   <div class="tabs">
     <button class="tab active" data-v="alloc">★ Allocator</button>
     <button class="tab" data-v="live">📡 Live intake &amp; AI</button>
+    <button class="tab" data-v="analytics">📊 Analytics</button>
     <button class="tab" data-v="explore">🎧 Try the helpline</button>
     <button class="tab" data-v="bias">⚖️ Bias correction</button>
     <button class="tab" data-v="hot">Demand hotspots</button>
@@ -464,6 +498,33 @@
         provisioned inside a hackathon window, so we built the adapter boundary instead of faking it.</div>
     </div>
   </section>
+
+  <!-- ══════════════════ ANALYTICS ══════════════════ -->
+  <section class="view" id="v-analytics">
+    <div class="grid g4">
+      <div class="card"><h3>Reports on record</h3>
+        <div class="kpi" id="an-total">—</div><small id="an-live">—</small></div>
+      <div class="card"><h3>Citizen verifications</h3>
+        <div class="kpi" id="an-verif">—</div><small>photo social audits</small></div>
+      <div class="card"><h3>Busiest block</h3>
+        <div class="kpi" id="an-topblock">—</div><small id="an-topblock-n">—</small></div>
+      <div class="card"><h3>Awaiting human review</h3>
+        <div class="kpi" id="an-esc">—</div><small>escalation queue</small></div>
+    </div>
+    <div class="grid g4" style="margin-top:14px">
+      <div class="card"><h3>Share by sector</h3><div id="dn-sector"></div></div>
+      <div class="card"><h3>Share by channel</h3><div id="dn-channel"></div></div>
+      <div class="card"><h3>Share by status</h3><div id="dn-status"></div></div>
+      <div class="card"><h3>Verification verdicts</h3><div id="dn-verdict"></div></div>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card"><h3>Top 10 blocks by reports</h3><div id="an-blocks"></div></div>
+      <div class="card"><h3>Reports per day (last 14)</h3><div id="an-days"></div></div>
+    </div>
+    <div class="note">Every chart is computed server-side from the same SQLite database citizens
+      write to — live submissions and seed history in one auditable place. No CDN, no client-side
+      fudging, no sample data.</div>
+  </section>
 </main>
 
 <script>
@@ -488,7 +549,7 @@ function setNation(n){
   $('#nat-in').classList.toggle('active', n==='in');
   $('#nat-za').classList.toggle('active', n==='za');
   populateStates();
-  status(); solve(); loadHotspots(); loadImpact(); loadLive();
+  status(); solve(); loadHotspots(); loadImpact(); loadLive(); loadAnalytics();
 }
 $('#nat-in').onclick = () => setNation('in');
 $('#nat-za').onclick = () => setNation('za');
@@ -498,10 +559,35 @@ document.querySelectorAll('.tab').forEach(t => t.onclick = () => {
   document.querySelectorAll('.view').forEach(x => x.classList.remove('active'));
   t.classList.add('active');
   $('#v-' + t.dataset.v).classList.add('active');
+  if (t.dataset.v === 'analytics') loadAnalytics();
 });
 
-async function jget(u){ const r = await fetch(u); return r.json(); }
-async function jpost(u,b){ const r = await fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)}); return r.json(); }
+async function jget(u){ const h = {}; if (ATOK()) h['Authorization'] = 'Bearer ' + ATOK();
+  const r = await fetch(u, {headers:h}); return r.json(); }
+async function jpost(u,b){ const h = {'Content-Type':'application/json'};
+  if (ATOK()) h['Authorization'] = 'Bearer ' + ATOK();
+  const r = await fetch(u,{method:'POST',headers:h,body:JSON.stringify(b)}); return r.json(); }
+
+/* ── officer auth ─────────────────────────────────────── */
+const ATOK = () => localStorage.getItem('jansetu_admin_token');
+function enterConsole(me){
+  $('#login-overlay').style.display = 'none';
+  const chip = $('#t-admin');
+  chip.style.display = ''; chip.textContent = '👤 ' + me.subject + ' · ' + me.role;
+  $('#li-out').style.display = '';
+}
+async function ensureAuth(){
+  const tok = ATOK();
+  if (tok){
+    try {
+      const r = await fetch('/api/v1/auth/me', {headers:{Authorization:'Bearer ' + tok}});
+      if (r.ok){ enterConsole(await r.json()); return true; }
+    } catch (e) { /* network down — fall through to the login card */ }
+    localStorage.removeItem('jansetu_admin_token');
+  }
+  $('#login-overlay').style.display = 'flex';
+  return false;
+}
 
 /* ── status ───────────────────────────────────────────── */
 async function status(){
@@ -930,16 +1016,86 @@ $('#call-btn').onclick = async () => {
   };
 };
 
-/* ── boot ─────────────────────────────────────────────── */
-(async function boot(){
+/* ── analytics: donut pies + horizontal bars (inline SVG, no CDN) ── */
+const PIE = ['#ffb020','#4da3ff','#3ddc97','#a78bfa','#ff6b6b','#f472b6','#22d3ee','#a3e635','#fb923c','#94a3b8'];
+function donut(el, items){
+  const total = items.reduce((a,b)=>a+b.count,0);
+  if (!total){ el.innerHTML = '<div class="muted">no data yet</div>'; return; }
+  const R = 52, C = 2*Math.PI*R; let off = 0, arcs = '';
+  items.slice(0,8).forEach((it,i)=>{
+    const len = (it.count/total)*C;
+    arcs += '<circle r="'+R+'" cx="70" cy="70" fill="none" stroke="'+PIE[i%PIE.length]+
+            '" stroke-width="24" stroke-dasharray="'+len.toFixed(2)+' '+(C-len).toFixed(2)+
+            '" stroke-dashoffset="'+(-off).toFixed(2)+'" transform="rotate(-90 70 70)"><title>'+
+            it.label+': '+it.count+'</title></circle>';
+    off += len;
+  });
+  const legend = items.slice(0,8).map((it,i)=>
+    '<div class="lg"><i style="background:'+PIE[i%PIE.length]+'"></i>'+it.label+' <b>'+
+    Math.round(100*it.count/total)+'%</b> <span class="muted">('+it.count+')</span></div>').join('');
+  el.innerHTML = '<div class="donut-wrap"><svg width="140" height="140" viewBox="0 0 140 140">'+
+    arcs+'<text x="70" y="68" text-anchor="middle" class="dn-num">'+NUM(total)+
+    '</text><text x="70" y="86" text-anchor="middle" class="dn-sub">total</text></svg>'+
+    '<div class="legend">'+legend+'</div></div>';
+}
+function hbars(el, items, color){
+  if (!items.length){ el.innerHTML = '<div class="muted">no data yet</div>'; return; }
+  const max = Math.max(...items.map(i=>i.count), 1);
+  el.innerHTML = items.map(it=>'<div class="hbar"><span class="hb-l">'+it.label+'</span>'+
+    '<span class="hb-t"><i style="width:'+(100*it.count/max).toFixed(1)+'%;background:'+
+    (color||'var(--acc2)')+'"></i></span><span class="hb-v">'+it.count+'</span></div>').join('');
+}
+async function loadAnalytics(){
+  const st = await jget('/api/v1/stats/?nation='+NATION);
+  $('#an-total').textContent = NUM(st.total);
+  $('#an-live').textContent = NUM(st.live)+' filed live via app / helpline';
+  $('#an-verif').textContent = NUM(st.verifications);
+  const tb = (st.top_blocks||[])[0];
+  $('#an-topblock').textContent = tb ? tb.block : '—';
+  $('#an-topblock-n').textContent = tb ? NUM(tb.count)+' reports' : '—';
+  const esc = (st.by_status||[]).find(s=>s.status==='needs_human_review');
+  $('#an-esc').textContent = esc ? esc.count : 0;
+  donut($('#dn-sector'),  (st.by_sector||[]).map(x=>({label:x.sector,  count:x.count})));
+  donut($('#dn-channel'), (st.by_channel||[]).map(x=>({label:x.channel, count:x.count})));
+  donut($('#dn-status'),  (st.by_status||[]).map(x=>({label:x.status,  count:x.count})));
+  donut($('#dn-verdict'), (st.by_verdict||[]).map(x=>({label:x.verdict, count:x.count})));
+  hbars($('#an-blocks'), (st.top_blocks||[]).map(x=>({label:x.block, count:x.count})));
+  hbars($('#an-days'), (st.by_day||[]).slice(-14).map(x=>({label:x.day.slice(5), count:x.count})), 'var(--acc)');
+}
+
+/* ── boot (gated on officer login) ────────────────────── */
+$('#li-btn').onclick = async () => {
+  $('#li-err').textContent = '';
+  const r = await fetch('/api/v1/auth/admin/login', {method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({username: $('#li-user').value.trim(), password: $('#li-pass').value})});
+  if (!r.ok){ $('#li-err').textContent = 'Wrong username or password.'; return; }
+  const d = await r.json();
+  localStorage.setItem('jansetu_admin_token', d.token);
+  enterConsole({subject: d.subject, role: d.role});
+  bootConsole();
+};
+$('#li-pass').addEventListener('keydown', e => { if (e.key === 'Enter') $('#li-btn').click(); });
+$('#li-out').onclick = async () => {
+  await fetch('/api/v1/auth/logout', {method:'POST',
+    headers:{Authorization:'Bearer '+ATOK()}}).catch(()=>{});
+  localStorage.removeItem('jansetu_admin_token');
+  location.reload();
+};
+
+function bootConsole(){
   populateStates();
-  await status();
+  status();
   solve();
   loadHotspots();
   loadImpact();
   loadOutbox();
   loadLive();
+  loadAnalytics();
   startLivePolling();
+}
+(async function boot(){
+  if (await ensureAuth()) bootConsole();
 })();
 </script>
 </body>

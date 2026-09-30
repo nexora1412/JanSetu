@@ -5,14 +5,25 @@ import {
   useEffect,
   useState,
 } from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Link,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { LANGS, translate, type Lang } from "./i18n";
 import { getLang, getPending, setLang, setPending, submitTextSync } from "./sync";
+import { logout } from "./api";
+import { getToken } from "./store";
 import Home from "./pages/Home";
 import Report from "./pages/Report";
 import Track from "./pages/Track";
 import Verify from "./pages/Verify";
 import MissedCall from "./pages/MissedCall";
+import Login from "./pages/Login";
 
 interface LangCtx {
   lang: Lang;
@@ -26,10 +37,29 @@ interface LangCtx {
 const Ctx = createContext<LangCtx>(null!);
 export const useApp = () => useContext(Ctx);
 
+function RequireCitizen({ children }: { children: JSX.Element }) {
+  const loc = useLocation();
+  if (!getToken()) {
+    return <Navigate to="/login" replace state={{ from: loc.pathname }} />;
+  }
+  return children;
+}
+
 function Shell() {
   const [lang, setLangState] = useState<Lang>((getLang() as Lang) || "mr");
   const [online, setOnline] = useState(navigator.onLine);
   const [pending, setPendingCount] = useState(getPending().length);
+  const [signedIn, setSignedIn] = useState(!!getToken());
+  const loc = useLocation();
+  const nav = useNavigate();
+
+  useEffect(() => setSignedIn(!!getToken()), [loc.pathname]);
+
+  const signOut = useCallback(() => {
+    void logout();
+    setSignedIn(false);
+    nav("/");
+  }, [nav]);
 
   const refreshPending = useCallback(() => setPendingCount(getPending().length), []);
 
@@ -89,13 +119,33 @@ function Shell() {
             </button>
           ))}
         </div>
+        {signedIn && (
+          <button className="signout" onClick={signOut} title={t("logout")}>
+            ⎋ {t("logout")}
+          </button>
+        )}
       </header>
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/report" element={<Report />} />
+          <Route
+            path="/report"
+            element={
+              <RequireCitizen>
+                <Report />
+              </RequireCitizen>
+            }
+          />
           <Route path="/track" element={<Track />} />
-          <Route path="/verify" element={<Verify />} />
+          <Route
+            path="/verify"
+            element={
+              <RequireCitizen>
+                <Verify />
+              </RequireCitizen>
+            }
+          />
+          <Route path="/login" element={<Login />} />
           <Route path="/missed-call" element={<MissedCall />} />
         </Routes>
       </main>

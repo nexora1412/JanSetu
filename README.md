@@ -28,6 +28,13 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 Open **http://localhost:8000** → dashboard · **http://localhost:8000/app** → citizen
 mobile app · **http://localhost:8000/docs** → interactive API.
 
+**Signing in.** The officer dashboard asks for a password — demo credentials are
+`admin` / `jansetu2026` (override with `ADMIN_USERNAME` / `ADMIN_PASSWORD` in `.env`).
+In the citizen app, *Report* and *Verify* ask for a phone OTP; with the default
+`TELEPHONY_PROVIDER=simulator` the code is shown on screen (and logged to the provider
+outbox) so you can sign in without a real handset. The toll-free helpline channels need
+no login at all.
+
 **It runs with no API key.** Every Gemini call degrades to a deterministic fallback, so the
 demo survives a dead network on judging day.
 
@@ -80,8 +87,8 @@ propensity-matched counterfactual.
 | Single-helpline telephony layer | ✅ simulator, 6 channels, provider = 1 env var | `backend/services/telephony/` |
 | FastAPI (20+ endpoints) | ✅ DB-backed, all contracts live | `backend/app/main.py` |
 | 💾 SQLite persistence | ✅ citizen submissions survive restarts, seed vs live origin | `backend/db.py` |
-| Dashboard | ✅ 6 views incl. live intake feed + charts + AI briefing, no external CDN | `backend/static/index.html` |
-| 📱 Citizen mobile app (PWA) | ✅ voice+text intake, track, verify, missed call · 3 languages · offline queue | `frontend/` |
+| Dashboard | ✅ 7 views incl. live intake feed + charts + AI briefing + analytics donuts, login-gated, no external CDN | `backend/static/index.html` |
+| 📱 Citizen mobile app (PWA) | ✅ voice+text intake, track, verify, missed call · 3 languages · offline queue · phone-OTP sign-in | `frontend/` |
 | Voice intake endpoint | ✅ recorded audio → STT chain → same pipeline | `POST /api/v1/intake/voice` |
 | 🇿🇦 Second-nation demo | ✅ India ⇄ South Africa toggle — same engine, adapter + dataset only | `?nation=za` on every endpoint |
 | 🧑‍⚖️ Human escalation queue | ✅ low-confidence / unresolved-location reports wait for an officer, resolutions become labelled corrections | `GET/POST /api/v1/escalations/` |
@@ -89,6 +96,8 @@ propensity-matched counterfactual.
 | 🎧 Helpline live explorer | ✅ judges simulate a missed call → voice/text complaint → real pipeline, no handset needed | dashboard "Try the helpline" tab |
 | 🔒 Proof-of-life evidence | ✅ live photo + GPS fix + device timestamp bound at shutter; server re-checks freshness/accuracy, recycled photos flagged not trusted | `POST /api/v1/intake/` `evidence`, `GET /api/v1/evidence/{ticket}` |
 | 🏛 Government resolution timeline | ✅ citizen-visible 7-stage promise (received → assigned officer → field inspection → work start → SLA → resolved); officers advance stages, citizen sees who + when | `GET /api/v1/track/{id}`, `POST /api/v1/timeline/{id}/advance` |
+| 🔐 Officer + citizen auth | ✅ admin password login (pbkdf2-sha256, 12 h sessions) gates the dashboard and every officer mutation; citizens sign in to the PWA with a phone OTP delivered over the same telephony layer (30-day sessions); the toll-free helpline stays login-free by design | `POST /api/v1/auth/*`, `Authorization: Bearer` |
+| 📊 Analytics tab | ✅ server-computed donut charts (sector / channel / status / verdicts) + top-10 blocks + 14-day intake — all inline SVG, no CDN | dashboard "📊 Analytics" tab, `GET /api/v1/stats/` |
 | BRICS adapters | ✅ 5 nations, config-only | `adapters/*.yaml` |
 
 **Proven on the seeded data:** Nandurbar files **13** complaints and ranks **#4**; Haveli
@@ -123,6 +132,20 @@ carries a **government resolution timeline** — which department and named offi
 it, when the field inspection and work order fall due, and the SLA completion date.
 Officers advance stages from the dashboard; the citizen's Track screen updates with the
 real actor and timestamp, plus a progress bar. *Accountability in both directions.*
+
+**Two doors, both locked — but the helpline stays open.** The officer console is gated
+behind a password login (demo `admin` / `jansetu2026`, override with `ADMIN_USERNAME` /
+`ADMIN_PASSWORD`); passwords are pbkdf2-sha256 with a per-admin salt, sessions are opaque
+tokens in SQLite, and every officer mutation (resolving an escalation, advancing a
+timeline stage) requires a valid admin session and records *who* did it. Citizens signing
+in to the PWA authenticate with a **phone OTP** delivered over the exact same telephony
+adapter as the helpline — under the simulator the code is returned in the response and
+written to the provider outbox, so judges can complete the flow with no real handset.
+Filing a complaint (`app` / `app_voice`) and verifying a project require a citizen
+session; the report is stamped `filed_by`. Crucially, the **toll-free helpline channels
+(missed call, SMS, IVR, WhatsApp, voice, kiosk) need no login at all** — a feature for the
+poorest, least-connected citizens would fail if it forced them to create an account first.
+Auth is applied where identity matters and deliberately absent where access matters more.
 
 ---
 
