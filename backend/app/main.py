@@ -852,6 +852,8 @@ def map_points(nation: str = "in", authorization: str | None = Header(None)):
         ev = r.get("evidence") or {}
         pol = ev.get("proof_of_life") or {}
         review = r.get("review") or {}
+        dsp = r.get("dispatch") or {}
+        routing = r.get("routing") or {}
         # Coordinates may come from the resolved LGD geometry (seed + text-matched)
         # or from the device GPS stamped on the scene photo (live captures). The two
         # use different keys, so honour both before deciding a report is unmappable.
@@ -885,16 +887,29 @@ def map_points(nation: str = "in", authorization: str | None = Header(None)):
             "review_status": review.get("status"),
             "reviewed_by": review.get("by"), "reviewed_at": review.get("at"),
             "review_note": review.get("note"),
+            "dispatched_to": dsp.get("department"),
+            "dispatch_officer": dsp.get("officer_ref"),
+            "dispatch_due": dsp.get("due_at"),
+            "dispatch_at": dsp.get("dispatched_at"),
+            "officer_ref": routing.get("officer_ref"),
+            "sla_days": routing.get("sla_days"),
         })
     return {"nation": n, "count": len(pts), "points": pts}
 
 
 @app.post("/api/v1/map/review")
 def map_review(body: dict, authorization: str | None = Header(None)):
-    """Officer confirms a complaint as real or flags it as fake, straight off the
-    map. A problem is never accepted on the citizen's word alone — a named human
-    decision is stamped with who and when and persisted. Reviewing does NOT change
-    a report's seed/live origin, so the trust metrics stay honest."""
+    """Officer verifies a complaint straight off the map, then it is handed over.
+
+    A problem is never taken on the citizen's word alone:
+      · confirmed_real  → stamped, then DISPATCHED to the routed department /
+        officer; the SLA clock starts and the citizen timeline advances so the
+        department owns the fix.
+      · flagged_fake    → stamped and REJECTED; it is explicitly *not* sent to
+        any department, keeping bogus complaints out of the work queue.
+
+    Reviewing does NOT change a report's seed/live origin, so trust metrics
+    stay honest."""
     sess = _require_role(authorization, "admin")
     nation = body.get("nation", "in")
     n = nation if nation in STATE else "in"
@@ -906,14 +921,43 @@ def map_review(body: dict, authorization: str | None = Header(None)):
     status = (body.get("status") or "").strip().lower()
     if status not in ("confirmed_real", "flagged_fake", "pending"):
         raise HTTPException(400, "status must be confirmed_real | flagged_fake | pending")
+    now = datetime.now(timezone.utc).isoformat()
+    officer = f"officer:{sess['subject']}"
     r["review"] = {
         "status": status,
-        "by": f"officer:{sess['subject']}",
-        "at": datetime.now(timezone.utc).isoformat(),
+        "by": officer,
+        "at": now,
         "note": (body.get("note") or "").strip()[:400] or None,
     }
+
+    dispatch = None
+    routing = r.get("routing") or {}
+    if status == "confirmed_real":
+        sla = int(routing.get("sla_days") or 30)
+        dispatch = {
+            "department": routing.get("department", "—"),
+            "officer_ref": routing.get("officer_ref", "UNROUTED"),
+            "scheme": routing.get("scheme", "District Plan"),
+            "sla_days": sla,
+            "due_at": (datetime.now(timezone.utc) + timedelta(days=sla)).isoformat(),
+            "dispatched_at": now,
+            "dispatched_by": officer,
+        }
+        r["dispatch"] = dispatch
+        r["status"] = "dispatched"
+        # Advance the citizen-visible timeline so the department's ownership is
+        # explicit (the handoff is done; the field inspection stays scheduled by SLA).
+        state = r.setdefault("timeline_state", {})
+        state.setdefault("assigned", {"at": now,
+                                      "by": f"{officer} · verified via map · → {dispatch['department']}"})
+        r["timeline"] = _build_timeline(r)
+    elif status == "flagged_fake":
+        r["status"] = "rejected_fake"
+        r.pop("dispatch", None)
+
     db.insert_report(n, r, origin=(r.get("origin") or "live"))
-    return {"report_id": ticket, "review": r["review"]}
+    return {"report_id": ticket, "review": r["review"],
+            "status": r.get("status"), "dispatch": dispatch}
 
 
 # ---------------------------------------------------- EARLY-WARNING ALERTS

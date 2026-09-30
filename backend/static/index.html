@@ -160,6 +160,12 @@
     font-size:12.5px;cursor:pointer;color:#0b1220}
   .mp-real{background:#2fbf71}.mp-fake{background:#ff5a5a}
   .mp-btns button:disabled{opacity:.45;cursor:default}
+  .mp-ask{font-size:12px;color:var(--dim);background:#101a2c;border-left:3px solid var(--acc);
+    border-radius:8px;padding:9px 11px;line-height:1.5}
+  .mp-dispatch{font-size:12px;color:#dff5e6;background:#123a24;border-left:3px solid #2fbf71;
+    border-radius:8px;padding:9px 11px;line-height:1.5;margin-top:4px}
+  .mp-reject{font-size:12px;color:#ffe0e0;background:#3a1616;border-left:3px solid #ff5a5a;
+    border-radius:8px;padding:9px 11px;line-height:1.5;margin-top:4px}
   .leaflet-tooltip{font-size:11.5px}
 </style>
 <link rel="stylesheet" href="/static/vendor/leaflet/leaflet.css">
@@ -590,12 +596,16 @@
       <div id="map-canvas"></div>
       <div id="map-panel">
         <div class="mp-empty">Click a pin on the map to inspect the complaint,<br>
-          its live photo and proof-of-life — then confirm it real or flag it fake.</div>
+          its live photo and proof-of-life — confirm it real to <b>dispatch it to the department</b>,
+          or flag it fake to reject it.</div>
       </div>
     </div>
     <div class="note">Every dot is a citizen complaint with coordinates. Colour shows the
       machine's proof-of-life verdict; the panel shows the actual scene photo, GPS accuracy and
       how old the timestamp is, so an officer — not an algorithm — decides if it is real.
+      <b>Nothing reaches a department until a human verifies it on this map:</b>
+      "Real — send to department" hands the problem to its routed officer and starts the SLA
+      clock; "Fake — reject" keeps a bogus complaint out of the work queue entirely.
       Seed-history points have no photo by design; treat them as unverified until proven.</div>
   </section>
 </main>
@@ -1206,14 +1216,26 @@ function openPanel(p){
   const ageTxt = p.age_seconds==null ? 'unknown'
     : (p.age_seconds<90 ? p.age_seconds+'s' : (p.age_seconds/60).toFixed(0)+' min');
   const rs = p.review_status;
+  const fmtD = d => d ? new Date(d).toLocaleDateString('en-IN',{day:'numeric',month:'short'}) : '—';
+  const dispatchCard = rs === 'confirmed_real' ? ('<div class="mp-dispatch">→ Handed to <b>'+
+      esc(p.dispatched_to || p.department || 'the department')+'</b>'
+      + (p.dispatch_officer ? ' · officer '+esc(p.dispatch_officer) : '')
+      + (p.sla_days ? ' · SLA '+esc(p.sla_days)+' days · due '+fmtD(p.dispatch_due) : '')
+      + '</div>') : '';
+  const rejectCard = rs === 'flagged_fake' ? ('<div class="mp-reject">✗ Rejected as fake — '
+      + 'NOT sent to any department</div>') : '';
   const reviewBox = rs
     ? '<div class="mp-row"><b>Officer decision</b><span>'+
         badge(rs, rs==='confirmed_real'?VCOL.confirmed_real:VCOL.flagged_fake)+
         '</span></div><div class="muted" style="font-size:11.5px">'+esc(p.reviewed_by||'')+
         (p.review_note? ' · '+esc(p.review_note):'')+'</div>'
-    : '<textarea id="mp-note" class="mp-note" rows="2" placeholder="Optional note for the record…"></textarea>'+
-      '<div class="mp-btns"><button class="mp-real" id="mp-real">✓ Confirm real</button>'+
-      '<button class="mp-fake" id="mp-fake">⚑ Flag fake</button></div>';
+        + dispatchCard + rejectCard
+    : '<div class="mp-ask">Verify the proof above. If genuine, confirm — it is then '
+        + '<b>dispatched to the routed department</b> to fix. If fake, reject it so it '
+        + 'never reaches the work queue.</div>'
+        + '<textarea id="mp-note" class="mp-note" rows="2" placeholder="Optional note for the record…"></textarea>'+
+      '<div class="mp-btns"><button class="mp-real" id="mp-real">✓ Real — send to department</button>'+
+      '<button class="mp-fake" id="mp-fake">⚑ Fake — reject</button></div>';
   el.innerHTML =
     photo +
     '<div class="mp-title">'+esc((p.sector||'issue')+(p.issue? ' — '+p.issue:''))+'</div>'+
@@ -1227,14 +1249,13 @@ function openPanel(p){
     '<div class="mp-row"><b>Severity</b><span>'+(p.severity||'—')+'/5 · conf '+
       (p.confidence!=null?Math.round(p.confidence*100)+'%':'—')+'</span></div>'+
     '<div class="mp-row"><b>Location</b><span>'+esc(geo||'—')+'</span></div>'+
-    '<div class="mp-row"><b>Department</b><span>'+esc(p.department||'—')+'</span></div>'+
+    '<div class="mp-row"><b>Routed to</b><span>'+esc(p.department||'—')+'</span></div>'+
     '<div class="mp-row"><b>Proof-of-life</b><span>'+
       badge(p.verdict, VCOL[p.verdict]||VCOL.unverified)+'</span></div>'+
     '<div class="mp-row"><b>GPS accuracy</b><span>'+
       (p.gps_accuracy_m!=null? p.gps_accuracy_m+' m':'—')+'</span></div>'+
     '<div class="mp-row"><b>Photo age</b><span>'+ageTxt+'</span></div>'+
-    (p.flags&&p.flags.length? '<div class="mp-flag">⚠ '+p.flags.map(esc).join(' · ')+'</div>':'')+
-    (!rs?'':'');
+    (p.flags&&p.flags.length? '<div class="mp-flag">⚠ '+p.flags.map(esc).join(' · ')+'</div>':'');
   if (!rs){
     $('#mp-real').onclick = () => submitReview(p.report_id, 'confirmed_real');
     $('#mp-fake').onclick = () => submitReview(p.report_id, 'flagged_fake');
@@ -1248,7 +1269,12 @@ async function submitReview(id, status){
     { nation:NATION, report_id:id, status, note });
   const p = MAPPTS.find(x => x.report_id === id);
   if (p){ p.review_status = (r.review||{}).status || status;
-          p.reviewed_by = (r.review||{}).by; p.review_note = (r.review||{}).note; }
+          p.reviewed_by = (r.review||{}).by; p.review_note = (r.review||{}).note;
+          p.status = r.status || p.status;
+          const d = r.dispatch || {};
+          p.dispatched_to = d.department; p.dispatch_officer = d.officer_ref;
+          p.dispatch_due = d.due_at; p.dispatch_at = d.dispatched_at;
+          if (status === 'flagged_fake'){ p.dispatched_to = null; } }
   renderMap(false);
   openPanel(p);
 }
