@@ -834,6 +834,88 @@ def escalation_resolve(ticket_id: str, body: dict,
             "escalation": r["escalation"]}
 
 
+# ------------------------------------------------------------ ISSUE MAP (geo)
+
+@app.get("/api/v1/map/points")
+def map_points(nation: str = "in", authorization: str | None = Header(None)):
+    """Every geo-located complaint as a map point — with its proof-of-life verdict,
+    the live scene photo (when one was submitted) and the officer's real/fake
+    review — so an admin can eyeball on a map whether a problem is genuine before
+    it is ever taken on trust. Admin-gated (photos + locations are sensitive)."""
+    _require_role(authorization, "admin")
+    n = nation if nation in STATE else "in"
+    s = _S(n)
+    pts = []
+    for r in s["REPORTS"]:
+        geo = (r.get("structured") or {}).get("geo") or {}
+        st = r.get("structured") or {}
+        ev = r.get("evidence") or {}
+        pol = ev.get("proof_of_life") or {}
+        review = r.get("review") or {}
+        # Coordinates may come from the resolved LGD geometry (seed + text-matched)
+        # or from the device GPS stamped on the scene photo (live captures). The two
+        # use different keys, so honour both before deciding a report is unmappable.
+        gps = pol.get("gps") or {}
+        lat, lon = geo.get("lat"), geo.get("lon")
+        src = "geo"
+        if lat is None or lon is None:
+            lat, lon = gps.get("lat"), gps.get("lng")
+            src = "photo_gps"
+        if lat is None or lon is None:
+            continue
+        pts.append({
+            "report_id": r.get("report_id"),
+            "lat": lat, "lon": lon, "coord_source": src,
+            "sector": st.get("sector"), "issue": st.get("issue"),
+            "severity": st.get("severity_1_5"), "confidence": st.get("confidence"),
+            "status": r.get("status"), "channel": r.get("channel"),
+            "origin": r.get("origin"), "created_at": r.get("created_at"),
+            "language": r.get("raw_language"),
+            "text": r.get("raw_text") or r.get("normalized_text_en") or "",
+            "text_en": r.get("normalized_text_en"),
+            "block": geo.get("block"), "district": geo.get("district"),
+            "village": geo.get("village"), "state": geo.get("state"),
+            "department": (r.get("routing") or {}).get("department"),
+            "photo_url": ev.get("served_at"),
+            "has_photo": bool(ev.get("served_at")),
+            "verdict": pol.get("verdict") or "unverified",
+            "gps_accuracy_m": (pol.get("gps") or {}).get("accuracy_m"),
+            "age_seconds": pol.get("age_seconds"),
+            "flags": pol.get("flags") or [],
+            "review_status": review.get("status"),
+            "reviewed_by": review.get("by"), "reviewed_at": review.get("at"),
+            "review_note": review.get("note"),
+        })
+    return {"nation": n, "count": len(pts), "points": pts}
+
+
+@app.post("/api/v1/map/review")
+def map_review(body: dict, authorization: str | None = Header(None)):
+    """Officer confirms a complaint as real or flags it as fake, straight off the
+    map. A problem is never accepted on the citizen's word alone — a named human
+    decision is stamped with who and when and persisted. Reviewing does NOT change
+    a report's seed/live origin, so the trust metrics stay honest."""
+    sess = _require_role(authorization, "admin")
+    nation = body.get("nation", "in")
+    n = nation if nation in STATE else "in"
+    s = _S(n)
+    ticket = (body.get("report_id") or "").strip()
+    r = next((x for x in s["REPORTS"] if x.get("report_id") == ticket), None)
+    if not r:
+        raise HTTPException(404, f"Unknown ticket {ticket}")
+    status = (body.get("status") or "").strip().lower()
+    if status not in ("confirmed_real", "flagged_fake", "pending"):
+        raise HTTPException(400, "status must be confirmed_real | flagged_fake | pending")
+    r["review"] = {
+        "status": status,
+        "by": f"officer:{sess['subject']}",
+        "at": datetime.now(timezone.utc).isoformat(),
+        "note": (body.get("note") or "").strip()[:400] or None,
+    }
+    db.insert_report(n, r, origin=(r.get("origin") or "live"))
+    return {"report_id": ticket, "review": r["review"]}
+
+
 # ---------------------------------------------------- EARLY-WARNING ALERTS
 
 @app.get("/api/v1/alerts/")
