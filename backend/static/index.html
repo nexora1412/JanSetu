@@ -130,6 +130,14 @@
   #map-canvas{height:540px;border-radius:14px;overflow:hidden;border:1px solid #223056;
     background:#0f1830;position:relative;z-index:0}
   .map-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+  .map-search{display:flex;gap:6px;flex:1;min-width:240px}
+  .map-search input{flex:1;background:#141e30;color:var(--txt);border:1px solid #2a3a5e;
+    border-radius:8px;padding:7px 11px;font-size:12.5px}
+  .map-search button{background:var(--acc);color:#0b1220;border:0;border-radius:8px;
+    padding:0 14px;font-weight:800;font-size:12.5px;cursor:pointer;white-space:nowrap}
+  .map-search button:disabled{opacity:.5;cursor:default}
+  .map-hint{font-size:12px;color:var(--dim);margin:-6px 0 10px}
+  .map-hint b{color:var(--txt)}
   .map-bar select{background:#141e30;color:var(--txt);border:1px solid #2a3a5e;
     border-radius:8px;padding:6px 10px;font-size:12.5px}
   .map-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--dim)}
@@ -167,6 +175,7 @@
   .mp-reject{font-size:12px;color:#ffe0e0;background:#3a1616;border-left:3px solid #ff5a5a;
     border-radius:8px;padding:9px 11px;line-height:1.5;margin-top:4px}
   .leaflet-tooltip{font-size:11.5px}
+  .map-pin{font-size:22px;line-height:24px;text-align:center;filter:drop-shadow(0 1px 2px #000)}
 </style>
 <link rel="stylesheet" href="/static/vendor/leaflet/leaflet.css">
 </head>
@@ -575,6 +584,10 @@
   <!-- ══════════════════ ISSUE MAP ══════════════════ -->
   <section class="view" id="v-map">
     <div class="map-bar">
+      <div class="map-search">
+        <input id="map-q" type="text" placeholder="Search any place — e.g. Dhule, Soweto, Mthatha…" autocomplete="off">
+        <button id="map-go">🔎 Find location</button>
+      </div>
       <select id="map-filter">
         <option value="all">All reported issues</option>
         <option value="photo">With live photo</option>
@@ -590,8 +603,10 @@
         <span><i style="background:#4da3ff"></i>live-verified</span>
         <span><i style="background:#ffb020"></i>partial</span>
         <span><i style="background:#8a93a6"></i>unverified</span>
+        <span><i style="background:#8a93a6;border-style:dashed"></i>approx location</span>
       </div>
     </div>
+    <div id="map-hint" class="map-hint"></div>
     <div class="map-wrap">
       <div id="map-canvas"></div>
       <div id="map-panel">
@@ -1152,7 +1167,7 @@ async function loadAnalytics(){
 /* ── issue map (Leaflet, vendored — no CDN) ────────────── */
 const VCOL = { confirmed_real:'#2fbf71', flagged_fake:'#ff5a5a',
   live_verified:'#4da3ff', partially_verified:'#ffb020', unverified:'#8a93a6' };
-let MAP = null, LAYER = null, MAPPTS = [], MAPSEL = null;
+let MAP = null, LAYER = null, MAPPTS = [], MAPSEL = null, SEARCH = null;
 function ptColor(p){
   if (p.review_status === 'confirmed_real') return VCOL.confirmed_real;
   if (p.review_status === 'flagged_fake')   return VCOL.flagged_fake;
@@ -1165,7 +1180,36 @@ function mapInit(){
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19, attribution:'&copy; OpenStreetMap contributors' }).addTo(MAP);
   LAYER = L.layerGroup().addTo(MAP);
+  SEARCH = L.layerGroup().addTo(MAP);
   $('#map-filter').onchange = () => renderMap(true);
+  $('#map-go').onclick = searchMap;
+  $('#map-q').addEventListener('keydown', e => { if (e.key === 'Enter') searchMap(); });
+}
+async function searchMap(){
+  const q = ($('#map-q').value || '').trim();
+  if (q.length < 2){ $('#map-hint').innerHTML = 'Type at least 2 characters.'; return; }
+  const btn = $('#map-go'); btn.disabled = true; btn.textContent = 'Searching…';
+  const c = MAP.getCenter();
+  const vb = (c.lng-5)+','+(c.lat+5)+','+(c.lng+5)+','+(c.lat-5);
+  let r;
+  try { r = await jget('/api/v1/geo/search?q='+encodeURIComponent(q)+'&viewbox='+encodeURIComponent(vb)); }
+  catch(e){ r = {detail:'network error'}; }
+  btn.disabled = false; btn.textContent = '🔎 Find location';
+  if (r.lat==null){ $('#map-hint').innerHTML = '<b>Not found:</b> '+esc(r.detail||'try another name'); return; }
+  SEARCH.clearLayers();
+  L.marker([r.lat, r.lon], {
+    icon: L.divIcon({className:'map-pin', html:'📍', iconSize:[24,24], iconAnchor:[12,22]})
+  }).addTo(SEARCH).bindTooltip(esc(r.name), {direction:'top'});
+  MAP.setView([r.lat, r.lon], Math.max(MAP.getZoom(), 11));
+  const name = (r.name || '').toLowerCase();
+  const near = MAPPTS.filter(p => {
+    if (Math.abs(p.lat-r.lat) < 0.35 && Math.abs(p.lon-r.lon) < 0.35) return true;
+    const place = [p.village, p.block, p.district, p.municipality].filter(Boolean).join(' ').toLowerCase();
+    return place.length > 2 && name.indexOf(place.split(' ')[0]) >= 0;
+  });
+  $('#map-hint').innerHTML = '📍 <b>'+esc(r.name.split(',').slice(0,2).join(', '))+
+    '</b> — '+near.length+' complaint'+(near.length===1?'':'s')+' around here.'
+    + (near.length? ' Click a pin to verify & dispatch.' : ' No complaints logged at this spot yet.');
 }
 async function loadMap(){
   mapInit();
@@ -1195,9 +1239,10 @@ function renderMap(refit){
   pts.forEach(p => {
     const m = L.circleMarker([p.lat, p.lon], {
       radius: p.has_photo ? 9 : 6, weight: p.has_photo ? 2.5 : 1.5,
-      color: '#0b1220', fillColor: ptColor(p), fillOpacity: .92 });
-    m.bindTooltip(esc(p.sector||'issue') + ' · ' + (p.severity||'—') + '/5',
-      { direction:'top' });
+      color: '#0b1220', fillColor: ptColor(p), fillOpacity: .92,
+      dashArray: p.approx ? '2,2' : null });
+    m.bindTooltip(esc(p.sector||'issue') + ' · ' + (p.severity||'—') + '/5'
+      + (p.approx ? ' · approx' : ''), { direction:'top' });
     m.on('click', () => { MAPSEL = p; openPanel(p); });
     m.addTo(LAYER);
     bounds.push([p.lat, p.lon]);
@@ -1248,7 +1293,8 @@ function openPanel(p){
     '<div class="mp-row"><b>Status</b><span>'+esc(p.status||'—')+'</span></div>'+
     '<div class="mp-row"><b>Severity</b><span>'+(p.severity||'—')+'/5 · conf '+
       (p.confidence!=null?Math.round(p.confidence*100)+'%':'—')+'</span></div>'+
-    '<div class="mp-row"><b>Location</b><span>'+esc(geo||'—')+'</span></div>'+
+    '<div class="mp-row"><b>Location</b><span>'+esc(geo||'—')+
+      (p.approx? ' <span class="muted">(approx · district centre)</span>' : '')+'</span></div>'+
     '<div class="mp-row"><b>Routed to</b><span>'+esc(p.department||'—')+'</span></div>'+
     '<div class="mp-row"><b>Proof-of-life</b><span>'+
       badge(p.verdict, VCOL[p.verdict]||VCOL.unverified)+'</span></div>'+

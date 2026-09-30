@@ -89,6 +89,7 @@ NATIONS = {
                      "hotspots": "south_africa_hotspots.json",
                      "projects": "south_africa_projects.json",
                      "verifications": "south_africa_verifications.json"},
+        "centroids": "geo_centroids_za.json",
         "routing": DATA / "south_africa_routing.json",
     },
 }
@@ -117,6 +118,7 @@ def _bootstrap_nation(nation: str) -> None:
     verifications = db.all_verifications(nation)
     hotspots = _load(cfg["fixtures"]["hotspots"])
     projects = _load(cfg["fixtures"]["projects"])
+    centroids = _load(cfg["centroids"]) if cfg.get("centroids") else {}
 
     STATE[nation] = {
         "REPORTS": reports,
@@ -125,6 +127,7 @@ def _bootstrap_nation(nation: str) -> None:
         "PROJECTS": projects,
         "VERIFICATIONS": verifications,
         "ROUTING": routing,
+        "CENTROIDS": centroids,      # place-name -> lat/lon, used to map reports
         "LEDGER": compute_impact_ledger(projects, verifications),
         "ticket_seq": db.max_ticket_seq(nation, cfg["ticket_prefix"]),
     }
@@ -864,10 +867,24 @@ def map_points(nation: str = "in", authorization: str | None = Header(None)):
             lat, lon = gps.get("lat"), gps.get("lng")
             src = "photo_gps"
         if lat is None or lon is None:
+            # Fall back to a place-name centroid (municipality / block / district).
+            # This is what maps the whole South Africa dataset, whose seed reports
+            # carry only names — the pin is a district centre, so we label it so.
+            cent = s.get("CENTROIDS") or {}
+            for key in (geo.get("municipality"), geo.get("block"),
+                        geo.get("village"), geo.get("district")):
+                if key and key in cent:
+                    lat, lon = cent[key]["lat"], cent[key]["lon"]
+                    src = "centroid"
+                    break
+        if lat is None or lon is None:
             continue
+        # Show the owning department even for unrouted seed reports (compute, don't persist).
+        dept = routing.get("department") or _route(st.get("sector", "other"), geo, n)["department"]
         pts.append({
             "report_id": r.get("report_id"),
             "lat": lat, "lon": lon, "coord_source": src,
+            "approx": src == "centroid",
             "sector": st.get("sector"), "issue": st.get("issue"),
             "severity": st.get("severity_1_5"), "confidence": st.get("confidence"),
             "status": r.get("status"), "channel": r.get("channel"),
@@ -877,7 +894,7 @@ def map_points(nation: str = "in", authorization: str | None = Header(None)):
             "text_en": r.get("normalized_text_en"),
             "block": geo.get("block"), "district": geo.get("district"),
             "village": geo.get("village"), "state": geo.get("state"),
-            "department": (r.get("routing") or {}).get("department"),
+            "department": dept,
             "photo_url": ev.get("served_at"),
             "has_photo": bool(ev.get("served_at")),
             "verdict": pol.get("verdict") or "unverified",
@@ -933,6 +950,12 @@ def map_review(body: dict, authorization: str | None = Header(None)):
     dispatch = None
     routing = r.get("routing") or {}
     if status == "confirmed_real":
+        # Seed reports are never routed at intake, so resolve the owning department
+        # now — a verified complaint must name who actually fixes it.
+        if not routing.get("department"):
+            geo = (r.get("structured") or {}).get("geo") or {}
+            routing = _route((r.get("structured") or {}).get("sector", "other"), geo, n)
+            r["routing"] = routing
         sla = int(routing.get("sla_days") or 30)
         dispatch = {
             "department": routing.get("department", "—"),
@@ -958,6 +981,48 @@ def map_review(body: dict, authorization: str | None = Header(None)):
     db.insert_report(n, r, origin=(r.get("origin") or "live"))
     return {"report_id": ticket, "review": r["review"],
             "status": r.get("status"), "dispatch": dispatch}
+
+
+# ---------------------------------------------------- GEOCODER (map search)
+
+_GEO_CACHE: dict[str, dict] = {}
+
+
+@app.get("/api/v1/geo/search")
+def geo_search(q: str = "", viewbox: str | None = None,
+               authorization: str | None = Header(None)):
+    """Resolve a free-text place ("Dhule", "Soweto", "Mthatha …") to an exact
+    lat/lon so the officer can jump the map to any location and see the
+    complaints around it. Proxies OpenStreetMap Nominatim server-side (sets the
+    required User-Agent, avoids browser CORS) and caches lookups. Admin-gated."""
+    import urllib.parse, urllib.request
+    _require_role(authorization, "admin")
+    q = (q or "").strip()
+    if len(q) < 2:
+        raise HTTPException(400, "Enter at least 2 characters.")
+    key = q.lower()
+    if key in _GEO_CACHE:
+        return _GEO_CACHE[key]
+    params = {"q": q, "format": "jsonv2", "limit": "1", "addressdetails": "1"}
+    if viewbox:
+        params.update({"viewbox": viewbox, "bounded": "0"})
+    url = ("https://nominatim.openstreetmap.org/search?"
+           + urllib.parse.urlencode(params))
+    req = urllib.request.Request(url, headers={
+        "User-Agent": "JanSetu-demo/1.0 (hackathon prototype)"})
+    try:
+        with urllib.request.urlopen(req, timeout=12) as resp:
+            data = json.load(resp)
+    except Exception as exc:  # network / upstream error surfaced, not swallowed
+        raise HTTPException(502, f"Geocoder unavailable: {exc}") from exc
+    if not data:
+        raise HTTPException(404, f"No location found for “{q}”.")
+    hit = data[0]
+    out = {"query": q, "lat": float(hit["lat"]), "lon": float(hit["lon"]),
+           "name": hit.get("display_name", q),
+           "type": hit.get("type"), "importance": hit.get("importance")}
+    _GEO_CACHE[key] = out
+    return out
 
 
 # ---------------------------------------------------- EARLY-WARNING ALERTS

@@ -1,0 +1,82 @@
+{
+ "Nyandeni": {
+  "lat": -31.6580309,
+  "lon": 28.7076857,
+  "display": "Nyandeni, King Sabata Dalindyebo Ward 33, Mthatha, King Sabata Dalindyebo Local Municipali"
+ },
+ "Port St Johns": {
+  "lat": -31.6204519,
+  "lon": 29.5453373,
+  "display": "Port St Johns, Port St Johns Local Municipality, O.R. Tambo District Municipality, Eastern"
+ },
+ "Enoch Mgijima": {
+  "lat": -32.0087497,
+  "lon": 26.2616828,
+  "display": "Enoch Mgijima Local Municipality Administrative Office, Grey Street, Zola, Tsolwana Ward 4"
+ },
+ "King Sabata Dalindyebo": {
+  "lat": -31.591375,
+  "lon": 28.7888786,
+  "display": "University of South Africa, Victoria Street, Umtata Central, King Sabata Dalindyebo Ward 7"
+ },
+ "Mhlontlo": {
+  "lat": -31.16873,
+  "lon": 28.9336415,
+  "display": "Mhlontlo Local Municipality, O.R. Tambo District Municipality, Eastern Cape, South Africa"
+ },
+ "Ingquza Hill": {
+  "lat": -31.2181871,
+  "lon": 29.6209925,
+  "display": "Ingquza Hill Local Municipality, O.R. Tambo District Municipality, Eastern Cape, South Afr"
+ },
+ "Intsika Yethu": {
+  "lat": -31.9455998,
+  "lon": 27.6167619,
+  "display": "Intsika Yethu Local Municipality, Chris Hani District Municipality, Eastern Cape, South Af"
+ },
+ "Engcobo": {
+  "lat": -31.675,
+  "lon": 27.9961111,
+  "display": "Ngcobo, Engcobo Local Municipality, Chris Hani District Municipality, Eastern Cape, South "
+ },
+ "Pretoria Central": {
+  "lat": -25.7518426,
+  "lon": 28.1899743,
+  "display": "Pretoria Central, Tshwane Ward 80, Pretoria, City of Tshwane Metropolitan Municipality, Ga"
+ },
+ "Mamelodi": {
+  "lat": -25.7158053,
+  "lon": 28.3808295,
+  "display": "Mamelodi, City of Tshwane Metropolitan Municipality, Gauteng, 0101, South Africa"
+ },
+ "Soshanguve": {
+  "lat": -25.5263889,
+  "lon": 28.0994444,
+  "display": "Soshanguve, Tshwane Ward 35, City of Tshwane Metropolitan Municipality, Gauteng, 0152, Sou"
+ },
+ "Soweto (Region D)": {
+  "lat": -26.2227778,
+  "lon": 27.89,
+  "display": "Soweto, City of Johannesburg Metropolitan Municipality, Gauteng, 1852, South Africa"
+ },
+ "Sandton / Alex (Region E)": {
+  "lat": -26.1045525,
+  "lon": 28.0545147,
+  "display": "Sandton, City of Johannesburg Metropolitan Municipality, Gauteng, 2146, South Africa"
+ },
+ "Roodepoort (Region C)": {
+  "lat": -26.1574741,
+  "lon": 27.9280649,
+  "display": "Roodepoort, Western Bypass, Quellerina, Johannesburg Ward 89, Randburg, City of Johannesbu"
+ },
+ "Kempton Park / Tembisa": {
+  "lat": -26.0964372,
+  "lon": 28.2336325,
+  "display": "Kempton Park, City of Ekurhuleni Metropolitan Municipality, Gauteng, 1619, South Africa"
+ },
+ "Germiston / Katlehong": {
+  "lat": -26.229444,
+  "lon": 28.180556,
+  "display": "Germiston, City of Ekurhuleni Metropolitan Municipality, Gauteng, 1411, South Africa"
+ }
+}
